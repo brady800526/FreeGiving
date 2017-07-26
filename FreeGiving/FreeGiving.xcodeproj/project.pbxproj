@@ -7,21 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		93D8CB927A7388E4F77E81C0 /* Pods_FreeGiving.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 120963B07886DCE7B2DB2C1D /* Pods_FreeGiving.framework */; };
+		E52D35CD1F288AAD0030B08F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52D35CC1F288AAD0030B08F /* LoginViewController.swift */; };
+		E52D35CF1F2894C90030B08F /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52D35CE1F2894C90030B08F /* extension.swift */; };
 		E59370BA1F285AF500FA1A72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59370B91F285AF500FA1A72 /* AppDelegate.swift */; };
-		E59370BC1F285AF500FA1A72 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59370BB1F285AF500FA1A72 /* ViewController.swift */; };
 		E59370BF1F285AF500FA1A72 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E59370BD1F285AF500FA1A72 /* Main.storyboard */; };
 		E59370C11F285AF500FA1A72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E59370C01F285AF500FA1A72 /* Assets.xcassets */; };
 		E59370C41F285AF500FA1A72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E59370C21F285AF500FA1A72 /* LaunchScreen.storyboard */; };
+		E59370CC1F28642D00FA1A72 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E59370CB1F28642D00FA1A72 /* GoogleService-Info.plist */; };
+		E59370D21F2878C300FA1A72 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59370D11F2878C300FA1A72 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		120963B07886DCE7B2DB2C1D /* Pods_FreeGiving.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FreeGiving.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		86315F7C05B604C783DE93DA /* Pods-FreeGiving.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeGiving.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FreeGiving/Pods-FreeGiving.debug.xcconfig"; sourceTree = "<group>"; };
+		C26005079E9120F8E6245187 /* Pods-FreeGiving.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeGiving.release.xcconfig"; path = "Pods/Target Support Files/Pods-FreeGiving/Pods-FreeGiving.release.xcconfig"; sourceTree = "<group>"; };
+		E52D35CC1F288AAD0030B08F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = FreeGiving/LoginViewController.swift; sourceTree = "<group>"; };
+		E52D35CE1F2894C90030B08F /* extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
 		E59370B61F285AF500FA1A72 /* FreeGiving.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreeGiving.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E59370B91F285AF500FA1A72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E59370BB1F285AF500FA1A72 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E59370BE1F285AF500FA1A72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E59370C01F285AF500FA1A72 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E59370C31F285AF500FA1A72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E59370C51F285AF500FA1A72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E59370CB1F28642D00FA1A72 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E59370D11F2878C300FA1A72 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = FreeGiving/MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +39,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93D8CB927A7388E4F77E81C0 /* Pods_FreeGiving.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F590DA84DEB33A1641303EE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				120963B07886DCE7B2DB2C1D /* Pods_FreeGiving.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E59370AD1F285AF500FA1A72 = {
 			isa = PBXGroup;
 			children = (
 				E59370B81F285AF500FA1A72 /* FreeGiving */,
 				E59370B71F285AF500FA1A72 /* Products */,
+				FFBA5DF63FF29A0E64AF90C8 /* Pods */,
+				1F590DA84DEB33A1641303EE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +75,35 @@
 		E59370B81F285AF500FA1A72 /* FreeGiving */ = {
 			isa = PBXGroup;
 			children = (
+				E59370CE1F28730400FA1A72 /* Controller */,
 				E59370B91F285AF500FA1A72 /* AppDelegate.swift */,
-				E59370BB1F285AF500FA1A72 /* ViewController.swift */,
 				E59370BD1F285AF500FA1A72 /* Main.storyboard */,
 				E59370C01F285AF500FA1A72 /* Assets.xcassets */,
 				E59370C21F285AF500FA1A72 /* LaunchScreen.storyboard */,
 				E59370C51F285AF500FA1A72 /* Info.plist */,
+				E59370CB1F28642D00FA1A72 /* GoogleService-Info.plist */,
+				E52D35CE1F2894C90030B08F /* extension.swift */,
 			);
 			path = FreeGiving;
+			sourceTree = "<group>";
+		};
+		E59370CE1F28730400FA1A72 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E52D35CC1F288AAD0030B08F /* LoginViewController.swift */,
+				E59370D11F2878C300FA1A72 /* MapViewController.swift */,
+			);
+			name = Controller;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		FFBA5DF63FF29A0E64AF90C8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				86315F7C05B604C783DE93DA /* Pods-FreeGiving.debug.xcconfig */,
+				C26005079E9120F8E6245187 /* Pods-FreeGiving.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +113,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E59370C81F285AF500FA1A72 /* Build configuration list for PBXNativeTarget "FreeGiving" */;
 			buildPhases = (
+				E8F3D5A4BF147CBA7C08674F /* [CP] Check Pods Manifest.lock */,
 				E59370B21F285AF500FA1A72 /* Sources */,
 				E59370B31F285AF500FA1A72 /* Frameworks */,
 				E59370B41F285AF500FA1A72 /* Resources */,
+				A911B31F0D24E08AD65AD234 /* [CP] Embed Pods Frameworks */,
+				875DAB96059AC764D6FD22A3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -125,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E59370C41F285AF500FA1A72 /* LaunchScreen.storyboard in Resources */,
+				E59370CC1F28642D00FA1A72 /* GoogleService-Info.plist in Resources */,
 				E59370C11F285AF500FA1A72 /* Assets.xcassets in Resources */,
 				E59370BF1F285AF500FA1A72 /* Main.storyboard in Resources */,
 			);
@@ -132,13 +178,63 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		875DAB96059AC764D6FD22A3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FreeGiving/Pods-FreeGiving-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A911B31F0D24E08AD65AD234 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FreeGiving/Pods-FreeGiving-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8F3D5A4BF147CBA7C08674F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E59370B21F285AF500FA1A72 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E59370BC1F285AF500FA1A72 /* ViewController.swift in Sources */,
+				E52D35CD1F288AAD0030B08F /* LoginViewController.swift in Sources */,
+				E59370D21F2878C300FA1A72 /* MapViewController.swift in Sources */,
 				E59370BA1F285AF500FA1A72 /* AppDelegate.swift in Sources */,
+				E52D35CF1F2894C90030B08F /* extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,26 +355,32 @@
 		};
 		E59370C91F285AF500FA1A72 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86315F7C05B604C783DE93DA /* Pods-FreeGiving.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 9Y4D3HN9L5;
 				INFOPLIST_FILE = FreeGiving/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tw.appworks.FreeGiving;
+				PRODUCT_BUNDLE_IDENTIFIER = tw.bradyhuang.FreeGiving;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		E59370CA1F285AF500FA1A72 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C26005079E9120F8E6245187 /* Pods-FreeGiving.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 9Y4D3HN9L5;
 				INFOPLIST_FILE = FreeGiving/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tw.appworks.FreeGiving;
+				PRODUCT_BUNDLE_IDENTIFIER = tw.bradyhuang.FreeGiving;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -302,6 +404,7 @@
 				E59370CA1F285AF500FA1A72 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
