@@ -29,7 +29,6 @@ class LoginViewController: UIViewController {
         
         loginSegmentedControl.addTarget(self, action: #selector(handleLoginRegisterChange), for: .valueChanged)
         
-        loginView.layer.border
     }
     
     
@@ -88,7 +87,8 @@ class LoginViewController: UIViewController {
     func handleLoginRegisterChange() {
         let title = loginSegmentedControl.titleForSegment(at: loginSegmentedControl.selectedSegmentIndex)
         loginSubmitButton.setTitle(title, for: .normal)
-        inputsContainerViewHeightAnchor?.constant = 100
+        loginView.widthAnchor.constraint(equalToConstant: loginView.frame.width * 2/3).isActive = true
+        loginView.heightAnchor.constraint(equalToConstant: loginView.frame.height * 2.5/3).isActive = true
     }
 
     /*
