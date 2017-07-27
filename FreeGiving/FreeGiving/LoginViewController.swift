@@ -19,6 +19,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginView: UIView!
     
     var inputsContainerViewHeightAnchor: NSLayoutConstraint?
+    var nameTextFieldHeightAnchor: NSLayoutConstraint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,36 +30,123 @@ class LoginViewController: UIViewController {
         
         loginSegmentedControl.addTarget(self, action: #selector(handleLoginRegisterChange), for: .valueChanged)
         
+//        inputsContainerViewHeightAnchor = inputView?.heightAnchor.constraint(equalToConstant: (inputView?.frame.height)!)
+        
+//        inputsContainerViewHeightAnchor?.isActive = true
+        
+//        nameTextFieldHeightAnchor = loginNameTextField?.heightAnchor.constraint(equalToConstant: (inputView?.frame.height)!)
+        
+//        nameTextFieldHeightAnchor?.isActive = true
+        
     }
+    
+    func handleLoginRegisterChange() {
+
+        let title = loginSegmentedControl.titleForSegment(at: loginSegmentedControl.selectedSegmentIndex)
+
+        loginSubmitButton.setTitle(title, for: .normal)
+        
+//        inputsContainerViewHeightAnchor?.constant = 100
+
+        //        loginView.heightAnchor.constraint(equalToConstant: loginView.frame.height * 2/3).isActive = true
+        
+        //        loginNameTextField.heightAnchor.constraint(equalToConstant: loginView.frame.height/3).isActive = false
+        //
+        //        nameTextFieldHeightAnchor = loginNameTextField.heightAnchor.constraint(equalTo: (inputView?.heightAnchor)!, multiplier: 0)
+        //
+        //        nameTextFieldHeightAnchor?.isActive = true
+    }
+
     
     
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
+
         return .lightContent
+
     }
     
     @IBAction func register(_ sender: Any) {
-            
+        
+        if loginSegmentedControl.selectedSegmentIndex == 0 {
+
+            handleLogin()
+
+        } else {
+
+            handleRegister()
+
+        }
+        
+        
+    }
+    
+    func handleLogin() {
+        
         guard
-            let name = loginNameTextField.text,
             let email = loginEmailTextField.text,
+
             let password = loginPasswordTextField.text
+
             else {
+
                 print("Form is not valid")
+
                 return
+
+        }
+
+        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+            
+            if error != nil {
+
+                print(error!)
+
+                return
+
+            }
+            
+            self.dismiss(animated: true, completion: nil)
+            
+        }
+        
+    }
+    
+    func handleRegister() {
+        
+        guard
+
+            let name = loginNameTextField.text,
+
+            let email = loginEmailTextField.text,
+
+            let password = loginPasswordTextField.text
+
+            else {
+
+                print("Form is not valid")
+
+                return
+
         }
         
         Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
             
             if error != nil {
-                print(error)
+
+                print(error!)
+
                 return
             }
             
             guard
+
                 let uid = user?.uid
+
                 else {
+
                     return
+
             }
             
             let ref = Database.database().reference()
@@ -70,7 +158,9 @@ class LoginViewController: UIViewController {
             usersRefernece.updateChildValues(values, withCompletionBlock: { (err, ref) in
                 
                 if err != nil {
-                    print(err)
+
+                    print(err!)
+
                     return
                 }
                 
@@ -81,24 +171,7 @@ class LoginViewController: UIViewController {
             })
             
         })
-        
+
     }
     
-    func handleLoginRegisterChange() {
-        let title = loginSegmentedControl.titleForSegment(at: loginSegmentedControl.selectedSegmentIndex)
-        loginSubmitButton.setTitle(title, for: .normal)
-        loginView.widthAnchor.constraint(equalToConstant: loginView.frame.width * 2/3).isActive = true
-        loginView.heightAnchor.constraint(equalToConstant: loginView.frame.height * 2.5/3).isActive = true
-    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

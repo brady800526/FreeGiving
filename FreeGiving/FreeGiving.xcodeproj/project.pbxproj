@@ -10,6 +10,8 @@
 		93D8CB927A7388E4F77E81C0 /* Pods_FreeGiving.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 120963B07886DCE7B2DB2C1D /* Pods_FreeGiving.framework */; };
 		E52D35CD1F288AAD0030B08F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52D35CC1F288AAD0030B08F /* LoginViewController.swift */; };
 		E52D35CF1F2894C90030B08F /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52D35CE1F2894C90030B08F /* extension.swift */; };
+		E54457801F29E22800BF8E2B /* ImageUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E544577F1F29E22800BF8E2B /* ImageUploadViewController.swift */; };
+		E54457821F29EDBC00BF8E2B /* ImageUploadViewController+handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54457811F29EDBC00BF8E2B /* ImageUploadViewController+handlers.swift */; };
 		E59370BA1F285AF500FA1A72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59370B91F285AF500FA1A72 /* AppDelegate.swift */; };
 		E59370BF1F285AF500FA1A72 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E59370BD1F285AF500FA1A72 /* Main.storyboard */; };
 		E59370C11F285AF500FA1A72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E59370C01F285AF500FA1A72 /* Assets.xcassets */; };
@@ -24,6 +26,8 @@
 		C26005079E9120F8E6245187 /* Pods-FreeGiving.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeGiving.release.xcconfig"; path = "Pods/Target Support Files/Pods-FreeGiving/Pods-FreeGiving.release.xcconfig"; sourceTree = "<group>"; };
 		E52D35CC1F288AAD0030B08F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = FreeGiving/LoginViewController.swift; sourceTree = "<group>"; };
 		E52D35CE1F2894C90030B08F /* extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
+		E544577F1F29E22800BF8E2B /* ImageUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUploadViewController.swift; sourceTree = "<group>"; };
+		E54457811F29EDBC00BF8E2B /* ImageUploadViewController+handlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ImageUploadViewController+handlers.swift"; sourceTree = "<group>"; };
 		E59370B61F285AF500FA1A72 /* FreeGiving.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreeGiving.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E59370B91F285AF500FA1A72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E59370BE1F285AF500FA1A72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -92,6 +96,8 @@
 			children = (
 				E52D35CC1F288AAD0030B08F /* LoginViewController.swift */,
 				E59370D11F2878C300FA1A72 /* MapViewController.swift */,
+				E544577F1F29E22800BF8E2B /* ImageUploadViewController.swift */,
+				E54457811F29EDBC00BF8E2B /* ImageUploadViewController+handlers.swift */,
 			);
 			name = Controller;
 			path = ..;
@@ -232,6 +238,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E52D35CD1F288AAD0030B08F /* LoginViewController.swift in Sources */,
+				E54457801F29E22800BF8E2B /* ImageUploadViewController.swift in Sources */,
+				E54457821F29EDBC00BF8E2B /* ImageUploadViewController+handlers.swift in Sources */,
 				E59370D21F2878C300FA1A72 /* MapViewController.swift in Sources */,
 				E59370BA1F285AF500FA1A72 /* AppDelegate.swift in Sources */,
 				E52D35CF1F2894C90030B08F /* extension.swift in Sources */,
