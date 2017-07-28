@@ -18,6 +18,8 @@
 		E59370C41F285AF500FA1A72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E59370C21F285AF500FA1A72 /* LaunchScreen.storyboard */; };
 		E59370CC1F28642D00FA1A72 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E59370CB1F28642D00FA1A72 /* GoogleService-Info.plist */; };
 		E59370D21F2878C300FA1A72 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59370D11F2878C300FA1A72 /* MapViewController.swift */; };
+		E5E93D8C1F2AB75B00DE01CE /* OwnerProductTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E93D8B1F2AB75B00DE01CE /* OwnerProductTableViewController.swift */; };
+		E5E93D8E1F2AB81000DE01CE /* SearchItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E93D8D1F2AB81000DE01CE /* SearchItemViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		E59370C51F285AF500FA1A72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E59370CB1F28642D00FA1A72 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E59370D11F2878C300FA1A72 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = FreeGiving/MapViewController.swift; sourceTree = "<group>"; };
+		E5E93D8B1F2AB75B00DE01CE /* OwnerProductTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerProductTableViewController.swift; sourceTree = "<group>"; };
+		E5E93D8D1F2AB81000DE01CE /* SearchItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchItemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,8 @@
 				E59370D11F2878C300FA1A72 /* MapViewController.swift */,
 				E544577F1F29E22800BF8E2B /* ImageUploadViewController.swift */,
 				E54457811F29EDBC00BF8E2B /* ImageUploadViewController+handlers.swift */,
+				E5E93D8D1F2AB81000DE01CE /* SearchItemViewController.swift */,
+				E5E93D8B1F2AB75B00DE01CE /* OwnerProductTableViewController.swift */,
 			);
 			name = Controller;
 			path = ..;
@@ -242,7 +248,9 @@
 				E54457821F29EDBC00BF8E2B /* ImageUploadViewController+handlers.swift in Sources */,
 				E59370D21F2878C300FA1A72 /* MapViewController.swift in Sources */,
 				E59370BA1F285AF500FA1A72 /* AppDelegate.swift in Sources */,
+				E5E93D8E1F2AB81000DE01CE /* SearchItemViewController.swift in Sources */,
 				E52D35CF1F2894C90030B08F /* extension.swift in Sources */,
+				E5E93D8C1F2AB75B00DE01CE /* OwnerProductTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

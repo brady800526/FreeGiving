@@ -49,22 +49,20 @@ extension ImageUploadViewController: UIImagePickerControllerDelegate, UINavigati
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         
         print("image cacnel")
+
         dismiss(animated: true, completion: nil)
         
     }
     
     func handleUploadProduct() {
 
-        
-        handleUploadText()
-        
-        
-        
+        handleUploadPhoto()
+
         self.dismiss(animated: true, completion: nil)
 
     }
     
-    func handleUploadText() {
+    func handleUploadText(ImageUrl: String) {
         
         let ref = Database.database().reference()
         
@@ -87,7 +85,8 @@ extension ImageUploadViewController: UIImagePickerControllerDelegate, UINavigati
              "productName": name,
              "productOnShelfTime": time,
              "productLocation": location,
-             "productDescription": description]
+             "productDescription": description,
+             "productImageURL": ImageUrl]
         
         usersRefernece.updateChildValues(values, withCompletionBlock: { (err, ref) in
             
@@ -108,7 +107,7 @@ extension ImageUploadViewController: UIImagePickerControllerDelegate, UINavigati
         
         let imageName = NSUUID().uuidString
         
-        let storageRef = Storage.storage().reference().child("postsPhoto").child("\(imageName)myImage.png")
+        let storageRef = Storage.storage().reference().child("postsPhoto").child("\(imageName).png")
 
         if let uploadData = UIImagePNGRepresentation(self.uploadImageView.image!) {
 
@@ -122,6 +121,10 @@ extension ImageUploadViewController: UIImagePickerControllerDelegate, UINavigati
             }
 
             if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
+                
+                print(profileImageUrl)
+                
+                self.handleUploadText(ImageUrl: profileImageUrl)
                 
             }
             

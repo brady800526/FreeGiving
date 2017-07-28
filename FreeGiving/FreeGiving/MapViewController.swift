@@ -19,10 +19,34 @@ class MapViewController: UIViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Upload", style: .plain, target: self, action: #selector(handleUpload))
 
+        checkedIfUserLoggedIn()
+        
+    }
+
+    func checkedIfUserLoggedIn() {
+
         if Auth.auth().currentUser?.uid == nil {
             
             perform(#selector(handleLogout), with: nil, afterDelay: 0)
+
             handleLogout()
+            
+        } else {
+            
+            let ref = Database.database().reference()
+            
+            let uid = Auth.auth().currentUser?.uid
+            
+            ref.child("users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                if let dictionary = snapshot.value as? [String:Any] {
+                    
+                    self.navigationItem.title = dictionary["name"] as? String
+                    
+                }
+                
+            }, withCancel: nil)
+            
         }
     }
  
