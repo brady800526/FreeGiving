@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var loginNameTextField: UITextField!
     @IBOutlet weak var loginEmailTextField: UITextField!
@@ -30,35 +30,12 @@ class LoginViewController: UIViewController {
         
         loginSegmentedControl.addTarget(self, action: #selector(handleLoginRegisterChange), for: .valueChanged)
         
-//        inputsContainerViewHeightAnchor = inputView?.heightAnchor.constraint(equalToConstant: (inputView?.frame.height)!)
-        
-//        inputsContainerViewHeightAnchor?.isActive = true
-        
-//        nameTextFieldHeightAnchor = loginNameTextField?.heightAnchor.constraint(equalToConstant: (inputView?.frame.height)!)
-        
-//        nameTextFieldHeightAnchor?.isActive = true
-        
-    }
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+
+        view.addGestureRecognizer(tap)
     
-    func handleLoginRegisterChange() {
-
-        let title = loginSegmentedControl.titleForSegment(at: loginSegmentedControl.selectedSegmentIndex)
-
-        loginSubmitButton.setTitle(title, for: .normal)
-        
-//        inputsContainerViewHeightAnchor?.constant = 100
-
-        //        loginView.heightAnchor.constraint(equalToConstant: loginView.frame.height * 2/3).isActive = true
-        
-        //        loginNameTextField.heightAnchor.constraint(equalToConstant: loginView.frame.height/3).isActive = false
-        //
-        //        nameTextFieldHeightAnchor = loginNameTextField.heightAnchor.constraint(equalTo: (inputView?.heightAnchor)!, multiplier: 0)
-        //
-        //        nameTextFieldHeightAnchor?.isActive = true
     }
 
-    
-    
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
 
@@ -78,100 +55,17 @@ class LoginViewController: UIViewController {
 
         }
         
-        
     }
-    
-    func handleLogin() {
-        
-        guard
-            let email = loginEmailTextField.text,
 
-            let password = loginPasswordTextField.text
-
-            else {
-
-                print("Form is not valid")
-
-                return
-
-        }
-
-        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-            
-            if error != nil {
-
-                print(error!)
-
-                return
-
-            }
-            
-            self.dismiss(animated: true, completion: nil)
-            
-        }
-        
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
-    
-    func handleRegister() {
-        
-        guard
 
-            let name = loginNameTextField.text,
-
-            let email = loginEmailTextField.text,
-
-            let password = loginPasswordTextField.text
-
-            else {
-
-                print("Form is not valid")
-
-                return
-
-        }
-        
-        Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
-            
-            if error != nil {
-
-                print(error!)
-
-                return
-            }
-            
-            guard
-
-                let uid = user?.uid
-
-                else {
-
-                    return
-
-            }
-            
-            let ref = Database.database().reference()
-            
-            let usersRefernece = ref.child("users").child(uid)
-            
-            let values = ["name": name, "email": email]
-            
-            usersRefernece.updateChildValues(values, withCompletionBlock: { (err, ref) in
-                
-                if err != nil {
-
-                    print(err!)
-
-                    return
-                }
-                
-                print("Saved user successfully into Firebase db")
-                
-                self.dismiss(animated: true, completion: nil)
-                
-            })
-            
-        })
-
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
+
     
 }

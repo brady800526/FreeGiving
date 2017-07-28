@@ -12,6 +12,7 @@ import MapKit
 import CoreLocation
 
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+
     @IBOutlet weak var mapView: MKMapView!
 
     let mapManager = CLLocationManager()
@@ -29,6 +30,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         print(currentLocation.coordinate.latitude)
         
         self.mapView.showsUserLocation = true
+        self.mapView.showsScale = true
+        self.mapView.showsTraffic = true
         
     }
 
@@ -95,36 +98,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         mapView.camera.heading = 180
         
     }
-    
-    
-    @IBAction func segmentControlChanged(_ sender: UISegmentedControl) {
-        
-        switch sender.selectedSegmentIndex {
-        case 1:
-            mapView.mapType = MKMapType.satellite
-            cameraSetup()
-            
-        case 2:
-            mapView.mapType = MKMapType.hybridFlyover
-            cameraSetup()
 
-        default:
-            mapView.mapType = MKMapType.standard
-            cameraSetup()
-        }
-    }
-    
-    
-    @IBAction func trafficBtn(_ sender: UIButton) {
-        mapView.showsTraffic = !mapView.showsTraffic
-        
-        if mapView.showsTraffic == true {
-            sender.setTitle("Hide Traffic ", for: UIControlState.normal)
-        } else {
-            sender.setTitle("Show Traffic", for: UIControlState.normal)
-        }
-        
-    }
     
     @IBAction func compassBtn(_ sender: UIButton) {
         mapView.showsCompass = !mapView.showsCompass
