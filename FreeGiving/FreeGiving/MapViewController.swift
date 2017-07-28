@@ -8,10 +8,30 @@
 
 import UIKit
 import Firebase
+import MapKit
+import CoreLocation
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+    @IBOutlet weak var mapView: MKMapView!
 
-    @IBOutlet weak var logoutButtonItem: UIBarButtonItem!
+    let mapManager = CLLocationManager()
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        let currentLocation = locations[0]
+        
+        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
+        let mylocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude)
+        let region: MKCoordinateRegion = MKCoordinateRegionMake(mylocation, span)
+        mapView.setRegion(region, animated: true)
+        
+        print(currentLocation.coordinate.longitude)
+        print(currentLocation.coordinate.latitude)
+        
+        self.mapView.showsUserLocation = true
+        
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,6 +40,24 @@ class MapViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Upload", style: .plain, target: self, action: #selector(handleUpload))
 
         checkedIfUserLoggedIn()
+        
+        mapManager.delegate = self
+        
+        mapManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        mapManager.requestWhenInUseAuthorization()
+        
+        mapManager.startUpdatingLocation()
+        
+//        let berlin = MKCoordinateRegionMake(CLLocationCoordinate2DMake(52.52007, 13.404954), MKCoordinateSpanMake(0.1766154, 0.153035))
+//        
+//        mapView.setRegion(berlin, animated: true)
+//        
+//        let bsuCSClassPin = BSUAnnotation(title: "Title", subtitle: "Subtitle", coordinate: CLLocationCoordinate2D(latitude: 52.52007, longitude: 13.404954))
+//        
+//        cameraSetup()
+//        
+//        mapView.addAnnotation(bsuC SClassPin)
         
     }
 
@@ -50,29 +88,52 @@ class MapViewController: UIViewController {
         }
     }
  
-    func handleLogout() {
+    private func cameraSetup() {
         
-        do {
-
-            try Auth.auth().signOut()
-
-        } catch let logoutError {
-
-            print(logoutError)
-
-        }
+        mapView.camera.altitude = 1400
+        mapView.camera.pitch = 50
+        mapView.camera.heading = 180
         
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "loginPage") as! LoginViewController
-
-        self.present(vc, animated: true, completion: nil)
-
     }
     
-    func handleUpload() {
+    
+    @IBAction func segmentControlChanged(_ sender: UISegmentedControl) {
         
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "uploadPage") as! ImageUploadViewController
+        switch sender.selectedSegmentIndex {
+        case 1:
+            mapView.mapType = MKMapType.satellite
+            cameraSetup()
+            
+        case 2:
+            mapView.mapType = MKMapType.hybridFlyover
+            cameraSetup()
+
+        default:
+            mapView.mapType = MKMapType.standard
+            cameraSetup()
+        }
+    }
+    
+    
+    @IBAction func trafficBtn(_ sender: UIButton) {
+        mapView.showsTraffic = !mapView.showsTraffic
         
-        self.present(vc, animated: true, completion: nil)
+        if mapView.showsTraffic == true {
+            sender.setTitle("Hide Traffic ", for: UIControlState.normal)
+        } else {
+            sender.setTitle("Show Traffic", for: UIControlState.normal)
+        }
+        
+    }
+    
+    @IBAction func compassBtn(_ sender: UIButton) {
+        mapView.showsCompass = !mapView.showsCompass
+        
+        if mapView.showsTraffic == true {
+            sender.setTitle("Hide Compass ", for: UIControlState.normal)
+        } else {
+            sender.setTitle("Show Compass", for: UIControlState.normal)
+        }
     }
 }
 
