@@ -10,6 +10,8 @@ import Firebase
 
 extension LoginViewController {
     
+    // Control the loginButton based on the segmentedControl value
+    
     func handleLoginRegisterChange() {
         
         let title = loginSegmentedControl.titleForSegment(at: loginSegmentedControl.selectedSegmentIndex)
@@ -17,6 +19,8 @@ extension LoginViewController {
         loginSubmitButton.setTitle(title, for: .normal)
         
     }
+    
+    // Sign in with email and password
     
     func handleLogin() {
         
@@ -48,6 +52,8 @@ extension LoginViewController {
         }
         
     }
+    
+    // Register with name, email and password
     
     func handleRegister() {
         

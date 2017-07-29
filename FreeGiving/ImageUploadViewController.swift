@@ -23,7 +23,7 @@ class ImageUploadViewController: UIViewController {
         
         uploadButton.addTarget(self, action: #selector(handleUploadProduct), for: .touchUpInside)
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         
         view.addGestureRecognizer(tap)
     }

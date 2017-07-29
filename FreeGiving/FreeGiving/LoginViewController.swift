@@ -21,51 +21,66 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     var inputsContainerViewHeightAnchor: NSLayoutConstraint?
     var nameTextFieldHeightAnchor: NSLayoutConstraint?
     
+    // Set the style of status bar
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        
+        return .lightContent
+        
+    }
+
     override func viewDidLoad() {
+
         super.viewDidLoad()
         
+        // FIXME: Placeholder for the backgorund
+        
         view.backgroundColor = UIColor.cyan
+        
+        // Default the selectedSegmented to SignIn and handle the value change
         
         loginSegmentedControl.selectedSegmentIndex = 0
         
         loginSegmentedControl.addTarget(self, action: #selector(handleLoginRegisterChange), for: .valueChanged)
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        
+        // Disable keyboard when tap outside the view
+
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
 
         view.addGestureRecognizer(tap)
     
     }
 
+    // Causes the view (or one of its embedded text fields) to resign the first responder status.
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
+    func dismissKeyboard() {
 
-        return .lightContent
+        view.endEditing(true)
 
     }
+
+    // Disable keyboard when return
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+
+        textField.resignFirstResponder()
+
+        return true
+    }
+    
+    //Enter the app depends on your status
     
     @IBAction func register(_ sender: Any) {
         
         if loginSegmentedControl.selectedSegmentIndex == 0 {
-
+            
             handleLogin()
-
+            
         } else {
-
+            
             handleRegister()
-
+            
         }
         
-    }
-
-    func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
-    }
-
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-
-    
-}
+    }}

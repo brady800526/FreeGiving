@@ -113,7 +113,7 @@ extension ImageUploadViewController: UIImagePickerControllerDelegate, UINavigati
 
         storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
 
-            if error != nil {
+            if let error = error {
 
                 print(error)
 
