@@ -11,36 +11,26 @@ import Firebase
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UITextFieldDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var searchTextField: UITextField!
 
-    let mapManager = CLLocationManager()
+    let locationManager = CLLocationManager()
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        for location in locations {
-            print(location.coordinate.latitude)
-            print(location.coordinate.longitude)
-            print()
-        }
-        let currentLocation = locations[0]
-        
-        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
-        let mylocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude)
-        let region: MKCoordinateRegion = MKCoordinateRegionMake(mylocation, span)
-        mapView.setRegion(region, animated: true)
-        
+    var resultSearchController: UISearchController?
+    
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+
 //        print(currentLocation.coordinate.longitude)
 //        print(currentLocation.coordinate.latitude)
         
-        self.mapView.showsUserLocation = true
-        self.mapView.showsScale = true
-        
-    }
+//        self.mapView.showsUserLocation = true
+//        self.mapView.showsScale = true
+//        
+//    }
 
     override func viewDidLoad() {
+
         super.viewDidLoad()
         
         // HandleLogout
@@ -53,16 +43,21 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
         checkedIfUserLoggedIn()
         
-        searchTextField.delegate = self
+        setMapViewBehavior()
         
-        mapManager.delegate = self
+        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "searchPage") as! LoactionSearchTableViewController
+        resultSearchController = UISearchController(searchResultsController: locationSearchTable)
+        resultSearchController?.searchResultsUpdater = locationSearchTable
         
-        mapManager.desiredAccuracy = kCLLocationAccuracyBest
         
-        mapManager.requestWhenInUseAuthorization()
+        let searchBar = resultSearchController!.searchBar
+        searchBar.sizeToFit()
+        searchBar.placeholder = "Search for places"
+        navigationItem.titleView = resultSearchController?.searchBar
         
-        mapManager.startUpdatingLocation()
-        
+        resultSearchController?.hidesNavigationBarDuringPresentation = false
+        resultSearchController?.dimsBackgroundDuringPresentation = true
+        definesPresentationContext = true
 //        let location = "New York, NY, USA"
 //        let geocoder:CLGeocoder = CLGeocoder()
 //        geocoder.geocodeAddressString(location) { (placemarks, error) in
@@ -90,6 +85,24 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 //        mapView.addAnnotation(bsuC SClassPin)
         
     }
+    
+    // Set the mapView behavioe when viewdidload
+
+    func setMapViewBehavior() {
+        
+        locationManager.delegate = self
+        
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        locationManager.requestWhenInUseAuthorization()
+        
+        locationManager.requestLocation()
+        
+//        locationManager.startUpdatingLocation()
+        
+    }
+    
+    
     
     // CheckIfUserLoggin before by checking uuid, if not send the user to login page
 
@@ -120,47 +133,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
     }
     
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        print("Searching address")
-        searchTextField.resignFirstResponder()
-        CLGeocoder().geocodeAddressString(searchTextField.text!) { (placemarks, error) in
-            
-            if let error = error {
-                print(error)
-                return
-            }
-            
-            guard let placemark = placemarks?.first
-                else {
-
-                    print("placemarks doesn't exist")
-                    
-                    return
-            }
-            
-//            let coordinate = placemark.location?.coordinate
-//            print("get the coordinate")
-//            
-//            if !self.firstCoordinateSet {
-//                self.firstCoordinate = coordinate!
-//                self.firstCoordinateSet = true
-//                print("Here1")
-//            } else {
-//                self.mapView.add(MKPolyline(coordinates: [self.firstCoordinate!], count: 2))
-//                self.firstCoordinateSet = false
-//                print("Here2")
-//            }
-            
-        }
-        return true
-    }
- 
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        let renderer = MKPolylineRenderer(overlay: overlay)
-        renderer.strokeColor = UIColor.blue
-        renderer.lineWidth = 1
-        return renderer
-    }
+// 
+//    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+//        let renderer = MKPolylineRenderer(overlay: overlay)
+//        renderer.strokeColor = UIColor.blue
+//        renderer.lineWidth = 1
+//        return renderer
+//    }
     
 //    private func cameraSetup() {
 //        
@@ -180,5 +159,27 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 //            sender.setTitle("Show Compass", for: UIControlState.normal)
 //        }
 //    }
+}
+
+extension MapViewController : CLLocationManagerDelegate {
+
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            locationManager.requestLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            let span = MKCoordinateSpanMake(0.05, 0.05)
+            let region = MKCoordinateRegion(center: location.coordinate, span: span)
+            mapView.setRegion(region, animated: true)
+            
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("error:: (error)")
+    }
 }
 

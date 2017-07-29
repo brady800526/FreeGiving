@@ -12,6 +12,7 @@
 		E52D35CF1F2894C90030B08F /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52D35CE1F2894C90030B08F /* extension.swift */; };
 		E54457801F29E22800BF8E2B /* ImageUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E544577F1F29E22800BF8E2B /* ImageUploadViewController.swift */; };
 		E54457821F29EDBC00BF8E2B /* ImageUploadViewController+handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54457811F29EDBC00BF8E2B /* ImageUploadViewController+handlers.swift */; };
+		E55F22BD1F2C7C1500C9E862 /* LoactionSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55F22BC1F2C7C1500C9E862 /* LoactionSearchTableViewController.swift */; };
 		E59370BA1F285AF500FA1A72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59370B91F285AF500FA1A72 /* AppDelegate.swift */; };
 		E59370BF1F285AF500FA1A72 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E59370BD1F285AF500FA1A72 /* Main.storyboard */; };
 		E59370C11F285AF500FA1A72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E59370C01F285AF500FA1A72 /* Assets.xcassets */; };
@@ -20,7 +21,7 @@
 		E59370D21F2878C300FA1A72 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59370D11F2878C300FA1A72 /* MapViewController.swift */; };
 		E5E93D8C1F2AB75B00DE01CE /* OwnerProductTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E93D8B1F2AB75B00DE01CE /* OwnerProductTableViewController.swift */; };
 		E5E93D8E1F2AB81000DE01CE /* SearchItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E93D8D1F2AB81000DE01CE /* SearchItemViewController.swift */; };
-		E5E93DD11F2B0C2800DE01CE /* MapViewController+handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E93DD01F2B0C2800DE01CE /* MapViewController+handler.swift */; };
+		E5E93DD11F2B0C2800DE01CE /* MapViewController+navigateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E93DD01F2B0C2800DE01CE /* MapViewController+navigateHandler.swift */; };
 		E5E93DD51F2B14B200DE01CE /* BSUAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E93DD41F2B14B200DE01CE /* BSUAnnotation.swift */; };
 		E5E93DD71F2B17ED00DE01CE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5E93DD61F2B17ED00DE01CE /* CoreLocation.framework */; };
 		E5E93DD91F2B39F400DE01CE /* LoginViewController+loginHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E93DD81F2B39F400DE01CE /* LoginViewController+loginHandler.swift */; };
@@ -34,6 +35,7 @@
 		E52D35CE1F2894C90030B08F /* extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
 		E544577F1F29E22800BF8E2B /* ImageUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUploadViewController.swift; sourceTree = "<group>"; };
 		E54457811F29EDBC00BF8E2B /* ImageUploadViewController+handlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ImageUploadViewController+handlers.swift"; sourceTree = "<group>"; };
+		E55F22BC1F2C7C1500C9E862 /* LoactionSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoactionSearchTableViewController.swift; sourceTree = "<group>"; };
 		E59370B61F285AF500FA1A72 /* FreeGiving.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreeGiving.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E59370B91F285AF500FA1A72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E59370BE1F285AF500FA1A72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -44,7 +46,7 @@
 		E59370D11F2878C300FA1A72 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = FreeGiving/MapViewController.swift; sourceTree = "<group>"; };
 		E5E93D8B1F2AB75B00DE01CE /* OwnerProductTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerProductTableViewController.swift; sourceTree = "<group>"; };
 		E5E93D8D1F2AB81000DE01CE /* SearchItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchItemViewController.swift; sourceTree = "<group>"; };
-		E5E93DD01F2B0C2800DE01CE /* MapViewController+handler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MapViewController+handler.swift"; sourceTree = "<group>"; };
+		E5E93DD01F2B0C2800DE01CE /* MapViewController+navigateHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MapViewController+navigateHandler.swift"; sourceTree = "<group>"; };
 		E5E93DD41F2B14B200DE01CE /* BSUAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSUAnnotation.swift; sourceTree = "<group>"; };
 		E5E93DD61F2B17ED00DE01CE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E5E93DD81F2B39F400DE01CE /* LoginViewController+loginHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoginViewController+loginHandler.swift"; sourceTree = "<group>"; };
@@ -70,6 +72,20 @@
 				120963B07886DCE7B2DB2C1D /* Pods_FreeGiving.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E55F22BE1F2C7F6500C9E862 /* loginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E52D35CC1F288AAD0030B08F /* LoginViewController.swift */,
+				E5E93DD81F2B39F400DE01CE /* LoginViewController+loginHandler.swift */,
+				E59370D11F2878C300FA1A72 /* MapViewController.swift */,
+				E5E93DD01F2B0C2800DE01CE /* MapViewController+navigateHandler.swift */,
+				E55F22BC1F2C7C1500C9E862 /* LoactionSearchTableViewController.swift */,
+				E544577F1F29E22800BF8E2B /* ImageUploadViewController.swift */,
+				E54457811F29EDBC00BF8E2B /* ImageUploadViewController+handlers.swift */,
+			);
+			name = loginViewController;
 			sourceTree = "<group>";
 		};
 		E59370AD1F285AF500FA1A72 = {
@@ -109,12 +125,7 @@
 		E59370CE1F28730400FA1A72 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E52D35CC1F288AAD0030B08F /* LoginViewController.swift */,
-				E5E93DD81F2B39F400DE01CE /* LoginViewController+loginHandler.swift */,
-				E59370D11F2878C300FA1A72 /* MapViewController.swift */,
-				E5E93DD01F2B0C2800DE01CE /* MapViewController+handler.swift */,
-				E544577F1F29E22800BF8E2B /* ImageUploadViewController.swift */,
-				E54457811F29EDBC00BF8E2B /* ImageUploadViewController+handlers.swift */,
+				E55F22BE1F2C7F6500C9E862 /* loginViewController */,
 				E5E93D8D1F2AB81000DE01CE /* SearchItemViewController.swift */,
 				E5E93D8B1F2AB75B00DE01CE /* OwnerProductTableViewController.swift */,
 			);
@@ -264,12 +275,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E55F22BD1F2C7C1500C9E862 /* LoactionSearchTableViewController.swift in Sources */,
 				E52D35CD1F288AAD0030B08F /* LoginViewController.swift in Sources */,
 				E5E93DD51F2B14B200DE01CE /* BSUAnnotation.swift in Sources */,
 				E54457801F29E22800BF8E2B /* ImageUploadViewController.swift in Sources */,
 				E54457821F29EDBC00BF8E2B /* ImageUploadViewController+handlers.swift in Sources */,
 				E59370D21F2878C300FA1A72 /* MapViewController.swift in Sources */,
-				E5E93DD11F2B0C2800DE01CE /* MapViewController+handler.swift in Sources */,
+				E5E93DD11F2B0C2800DE01CE /* MapViewController+navigateHandler.swift in Sources */,
 				E59370BA1F285AF500FA1A72 /* AppDelegate.swift in Sources */,
 				E5E93D8E1F2AB81000DE01CE /* SearchItemViewController.swift in Sources */,
 				E52D35CF1F2894C90030B08F /* extension.swift in Sources */,
