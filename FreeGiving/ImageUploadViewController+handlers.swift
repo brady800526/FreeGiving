@@ -12,7 +12,10 @@ import Firebase
 
 extension ImageUploadViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    // Handle imageview when selected
+    
     func handleSelectUploadImageView() {
+
         let picker = UIImagePickerController()
         
         picker.delegate = self
@@ -21,6 +24,8 @@ extension ImageUploadViewController: UIImagePickerControllerDelegate, UINavigati
         
         present(picker, animated: true, completion: nil)
     }
+    
+    // Optional crop the image if user wanted
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
@@ -45,6 +50,8 @@ extension ImageUploadViewController: UIImagePickerControllerDelegate, UINavigati
         self.dismiss(animated: true, completion: nil)
         
     }
+    
+    // Handle if picker is cancel
  
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         
@@ -61,6 +68,8 @@ extension ImageUploadViewController: UIImagePickerControllerDelegate, UINavigati
         self.dismiss(animated: true, completion: nil)
 
     }
+    
+    // Take the URL with current info to save in the database
     
     func handleUploadText(ImageUrl: String) {
         
@@ -100,9 +109,11 @@ extension ImageUploadViewController: UIImagePickerControllerDelegate, UINavigati
             print("Saved product detail successfully into Firebase db")
             
         })
-
+        
     }
 
+    // Save the photo to storage and take the imageURL to handleUploadText
+    
     func handleUploadPhoto() {
         
         let imageName = NSUUID().uuidString
@@ -110,26 +121,26 @@ extension ImageUploadViewController: UIImagePickerControllerDelegate, UINavigati
         let storageRef = Storage.storage().reference().child("postsPhoto").child("\(imageName).png")
 
         if let uploadData = UIImagePNGRepresentation(self.uploadImageView.image!) {
-
-        storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
-
-            if let error = error {
-
-                print(error)
-
-                return
-            }
-
-            if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
-                
-                print(profileImageUrl)
-                
-                self.handleUploadText(ImageUrl: profileImageUrl)
-                
-            }
             
-        })
-        
+            storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+                
+                if let error = error {
+                    
+                    print(error)
+                    
+                    return
+                }
+                
+                if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
+                    
+                    print(profileImageUrl)
+                    
+                    self.handleUploadText(ImageUrl: profileImageUrl)
+                    
+                }
+                
+            })
+            
         }
     }
 }

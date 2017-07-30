@@ -17,14 +17,15 @@ class ImageUploadViewController: UIViewController {
     @IBOutlet weak var productDescription: UITextField!
 
     override func viewDidLoad() {
-        super.viewDidLoad()
 
+        super.viewDidLoad()
+        // User can tap the imageView to select the photo
         uploadImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectUploadImageView)))
-        
+        // Tap the button to upload the data to firebase
         uploadButton.addTarget(self, action: #selector(handleUploadProduct), for: .touchUpInside)
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        
+        // Tap outside the screen to dismiss the keyboard
         view.addGestureRecognizer(tap)
     }
 
