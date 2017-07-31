@@ -13,6 +13,12 @@ import CoreLocation
 
 extension ImageUploadViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    func handleDismiss() {
+        
+        self.dismiss(animated: true, completion: nil)
+        
+    }
+    
     // Handle imageview when selected
     
     func handleSelectUploadImageView() {

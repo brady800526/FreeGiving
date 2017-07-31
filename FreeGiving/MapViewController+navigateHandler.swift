@@ -30,7 +30,7 @@ extension MapViewController {
     
     func handleUpload() {
         
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "uploadPage") as! ImageUploadViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "uploadPage") as! UINavigationController
         
         self.present(vc, animated: true, completion: nil)
     }

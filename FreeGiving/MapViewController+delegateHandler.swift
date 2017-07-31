@@ -40,7 +40,7 @@ extension MapViewController: HandleMapSearch {
         // cache the pin
         selectedPin = placemark
         // clear existing pins
-        mapView.removeAnnotations(mapView.annotations)
+//        mapView.removeAnnotations(mapView.annotations)
         
         let annotation = MKPointAnnotation()
         

@@ -18,8 +18,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginSegmentedControl: UISegmentedControl!
     @IBOutlet weak var loginView: UIView!
     
-    var inputsContainerViewHeightAnchor: NSLayoutConstraint?
-    var nameTextFieldHeightAnchor: NSLayoutConstraint?
+//    var inputsContainerViewHeightAnchor: NSLayoutConstraint?
+//    var nameTextFieldHeightAnchor: NSLayoutConstraint?
     
     // Set the style of status bar
     
