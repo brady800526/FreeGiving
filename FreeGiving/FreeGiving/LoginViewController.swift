@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var loginNameTextField: UITextField!
     @IBOutlet weak var loginEmailTextField: UITextField!
@@ -21,157 +21,66 @@ class LoginViewController: UIViewController {
     var inputsContainerViewHeightAnchor: NSLayoutConstraint?
     var nameTextFieldHeightAnchor: NSLayoutConstraint?
     
+    // Set the style of status bar
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        
+        return .lightContent
+        
+    }
+
     override func viewDidLoad() {
+
         super.viewDidLoad()
         
+        // FIXME: Placeholder for the backgorund
+        
         view.backgroundColor = UIColor.cyan
+        
+        // Default the selectedSegmented to SignIn and handle the value change
         
         loginSegmentedControl.selectedSegmentIndex = 0
         
         loginSegmentedControl.addTarget(self, action: #selector(handleLoginRegisterChange), for: .valueChanged)
         
-//        inputsContainerViewHeightAnchor = inputView?.heightAnchor.constraint(equalToConstant: (inputView?.frame.height)!)
         
-//        inputsContainerViewHeightAnchor?.isActive = true
-        
-//        nameTextFieldHeightAnchor = loginNameTextField?.heightAnchor.constraint(equalToConstant: (inputView?.frame.height)!)
-        
-//        nameTextFieldHeightAnchor?.isActive = true
-        
-    }
+        // Disable keyboard when tap outside the view
+
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+
+        view.addGestureRecognizer(tap)
     
-    func handleLoginRegisterChange() {
-
-        let title = loginSegmentedControl.titleForSegment(at: loginSegmentedControl.selectedSegmentIndex)
-
-        loginSubmitButton.setTitle(title, for: .normal)
-        
-//        inputsContainerViewHeightAnchor?.constant = 100
-
-        //        loginView.heightAnchor.constraint(equalToConstant: loginView.frame.height * 2/3).isActive = true
-        
-        //        loginNameTextField.heightAnchor.constraint(equalToConstant: loginView.frame.height/3).isActive = false
-        //
-        //        nameTextFieldHeightAnchor = loginNameTextField.heightAnchor.constraint(equalTo: (inputView?.heightAnchor)!, multiplier: 0)
-        //
-        //        nameTextFieldHeightAnchor?.isActive = true
     }
 
-    
-    
+    // Causes the view (or one of its embedded text fields) to resign the first responder status.
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
+    func dismissKeyboard() {
 
-        return .lightContent
+        view.endEditing(true)
 
     }
+
+    // Disable keyboard when return
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+
+        textField.resignFirstResponder()
+
+        return true
+    }
+    
+    //Enter the app depends on your status
     
     @IBAction func register(_ sender: Any) {
         
         if loginSegmentedControl.selectedSegmentIndex == 0 {
-
+            
             handleLogin()
-
+            
         } else {
-
+            
             handleRegister()
-
-        }
-        
-        
-    }
-    
-    func handleLogin() {
-        
-        guard
-            let email = loginEmailTextField.text,
-
-            let password = loginPasswordTextField.text
-
-            else {
-
-                print("Form is not valid")
-
-                return
-
-        }
-
-        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-            
-            if error != nil {
-
-                print(error!)
-
-                return
-
-            }
-            
-            self.dismiss(animated: true, completion: nil)
             
         }
         
-    }
-    
-    func handleRegister() {
-        
-        guard
-
-            let name = loginNameTextField.text,
-
-            let email = loginEmailTextField.text,
-
-            let password = loginPasswordTextField.text
-
-            else {
-
-                print("Form is not valid")
-
-                return
-
-        }
-        
-        Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
-            
-            if error != nil {
-
-                print(error!)
-
-                return
-            }
-            
-            guard
-
-                let uid = user?.uid
-
-                else {
-
-                    return
-
-            }
-            
-            let ref = Database.database().reference()
-            
-            let usersRefernece = ref.child("users").child(uid)
-            
-            let values = ["name": name, "email": email]
-            
-            usersRefernece.updateChildValues(values, withCompletionBlock: { (err, ref) in
-                
-                if err != nil {
-
-                    print(err!)
-
-                    return
-                }
-                
-                print("Saved user successfully into Firebase db")
-                
-                self.dismiss(animated: true, completion: nil)
-                
-            })
-            
-        })
-
-    }
-    
-}
+    }}
