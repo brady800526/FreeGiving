@@ -63,9 +63,7 @@ class MapViewController: UIViewController {
         if Auth.auth().currentUser?.uid == nil {
             
             perform(#selector(handleLogout), with: nil, afterDelay: 0)
-            
-            handleLogout()
-            
+
         } else {
             
             let ref = Database.database().reference()

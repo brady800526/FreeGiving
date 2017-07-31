@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Firebase
+import CoreLocation
 
 extension ImageUploadViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -143,4 +144,42 @@ extension ImageUploadViewController: UIImagePickerControllerDelegate, UINavigati
             
         }
     }
+}
+
+extension ImageUploadViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        let geoCoder = CLGeocoder()
+    
+        switch textField {
+    
+        case productLocation:
+            
+            guard let address = productLocation.text else { return true }
+            
+            geoCoder.geocodeAddressString(address, completionHandler: { (placemarks, error) in
+                if let error = error {
+                    return
+                }
+                
+                guard let placemarks = placemarks else { return }
+                    for placemark in placemarks {
+                        
+                        print("-ssssssssssssss-")
+                        print(placemark.addressDictionary)
+                        print(placemark.areasOfInterest)
+                    }
+            })
+            
+        return true
+            
+        default: print("nothing return")
+            
+        return true
+
+        }
+        
+    }
+
 }

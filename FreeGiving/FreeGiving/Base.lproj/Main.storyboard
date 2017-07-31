@@ -25,7 +25,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="andrew-neel-48762" translatesAutoresizingMaskIntoConstraints="NO" id="dkl-hR-6XR">
-                                <rect key="frame" x="4" y="6" width="406" height="724"/>
+                                <rect key="frame" x="4" y="7" width="406" height="722"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="dkl-hR-6XR" secondAttribute="height" multiplier="375:667" id="Yw7-vz-hbE"/>
                                 </constraints>
