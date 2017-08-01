@@ -19,6 +19,7 @@ class ImageUploadViewController: UIViewController {
     var resultSearchController: UISearchController?
     let mapView = MKMapView()
     var selectedPin: MKPlacemark?
+    @IBOutlet weak var testBar: UISearchBar!
 
     override func viewDidLoad() {
 
@@ -64,11 +65,7 @@ class ImageUploadViewController: UIViewController {
         searchBar.placeholder = "Search for places"
         
         navigationItem.titleView = resultSearchController?.searchBar
-        
-//        productLocation.inputAccessoryView = resultSearchController?.searchBar
-        
-        productLocation.inputView = resultSearchController?.searchBar
-        
+
         resultSearchController?.hidesNavigationBarDuringPresentation = false
         
         resultSearchController?.dimsBackgroundDuringPresentation = true

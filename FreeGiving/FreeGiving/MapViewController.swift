@@ -20,6 +20,8 @@ class MapViewController: UIViewController {
     var resultSearchController: UISearchController?
     
     var selectedPin: MKPlacemark?
+    
+    @IBOutlet weak var searchBarView: UIView!
 
     override func viewDidLoad() {
 
@@ -121,7 +123,9 @@ class MapViewController: UIViewController {
     
         searchBar.placeholder = "Search for places"
 
-        navigationItem.titleView = resultSearchController?.searchBar
+        searchBarView.addSubview((resultSearchController?.searchBar)!)
+        
+//        navigationItem.titleView = resultSearchController?.searchBar
 
         resultSearchController?.hidesNavigationBarDuringPresentation = false
 
