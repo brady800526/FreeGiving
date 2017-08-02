@@ -46,6 +46,8 @@ extension LoginViewController {
                 return
 
             }
+            
+            self.mapViewController?.fetchUserAndSetupNavBarTitle()
 
             self.dismiss(animated: true, completion: nil)
 
@@ -108,6 +110,8 @@ extension LoginViewController {
                 }
 
                 print("Saved user successfully into Firebase db")
+                
+                self.mapViewController?.fetchUserAndSetupNavBarTitle()
 
                 self.dismiss(animated: true, completion: nil)
 

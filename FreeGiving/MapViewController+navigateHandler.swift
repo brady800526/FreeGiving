@@ -24,6 +24,8 @@ extension MapViewController {
 
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "loginPage") as! LoginViewController
 
+        vc.mapViewController = self
+        
         self.present(vc, animated: true, completion: nil)
 
     }

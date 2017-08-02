@@ -83,51 +83,19 @@ extension ImageUploadViewController: UIImagePickerControllerDelegate, UINavigati
 
         let imageName = NSUUID().uuidString
 
-        let storageRef = Storage.storage().reference().child("postsPhoto").child("\(imageName).png")
-
-        if let uploadData = UIImagePNGRepresentation(self.uploadImageView.image!) {
-
-            storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
-
-                if let error = error {
-
-                    print(error)
-
-                    return
-                }
-
-                if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
-
-                    print(profileImageUrl)
-
-                    self.handleUploadText(ImageUrl: profileImageUrl)
-
-                }
-
-            })
-
-        }
-    }
-    
-    // Take the URL with current info to save in the database
-    
-    func handleUploadText(ImageUrl: String) {
-        
-        let ref = Database.database().reference()
-        
-        let usersRefernece = ref.child("posts").childByAutoId()
+        let storageRef = Storage.storage().reference().child("postsPhoto").child("\(imageName).jpg")
         
         let date : Date = Date()
-
+        
         let dateFormatter = DateFormatter()
-
+        
         dateFormatter.dateFormat = "yyyy MM dd,hh mm"
-
+        
         dateFormatter.string(from: date)
         
         guard let name = productName.text,
             let time = productOnShelfTime.text,
-            let location = productOnShelfTime.text,
+//            let location = productOnShelfTime.text,
             let description = productDescription.text,
             let latitude = self.latitude,
             let longtitude = self.longtitude,
@@ -139,17 +107,52 @@ extension ImageUploadViewController: UIImagePickerControllerDelegate, UINavigati
                 return
         }
         
-        let values: [String: Any] =
-            ["user": uid,
-             "productName": name,
-             "productOnShelfTime": time,
-             "latitude": latitude,
-             "longtitude": longtitude,
-             "productDescription": description,
-             "productImageURL": ImageUrl,
-             "timeStamp": dateFormatter.string(from: date),
-             "available": true]
+        if let uploadData = UIImageJPEGRepresentation(self.uploadImageView.image!, 0.1) {
         
+//        if let uploadData = UIImagePNGRepresentation(self.uploadImageView.image!) {
+
+            storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+
+                if let error = error {
+
+                    print(error)
+
+                    return
+                }
+
+                if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
+                
+                let values: [String: Any] =
+                    ["user": uid,
+                     "productName": name,
+                     "productOnShelfTime": time,
+                     "latitude": latitude,
+                     "longtitude": longtitude,
+                     "productDescription": description,
+                     "productImageURL": profileImageUrl,
+                     "timeStamp": dateFormatter.string(from: date),
+                     "available": true]
+                
+
+                    print(profileImageUrl)
+
+                    self.handleUploadText(values: values)
+
+                }
+
+            })
+
+        }
+    }
+    
+    // Take the URL with curr ent info to save in the database
+    
+    func handleUploadText(values: [String: Any]) {
+        
+        let ref = Database.database().reference()
+        
+        let usersRefernece = ref.child("posts").childByAutoId()
+
         usersRefernece.updateChildValues(values, withCompletionBlock: { (err, _) in
             
             if err != nil {

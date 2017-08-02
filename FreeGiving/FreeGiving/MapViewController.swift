@@ -12,7 +12,7 @@ import MapKit
 import CoreLocation
 
 class MapViewController: UIViewController {
-
+    
     @IBOutlet weak var mapView: MKMapView!
 
     let locationManager = CLLocationManager()
@@ -35,12 +35,23 @@ class MapViewController: UIViewController {
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Upload", style: .plain, target: self, action: #selector(handleUpload))
 
+        navigationItem.rightBarButtonItems?.append(UIBarButtonItem(title: "Message", style: .plain, target: self, action: #selector(test)))
+        
         checkedIfUserLoggedIn()
 
         setLocationManagerBehavior()
 
         setLocationSearchTable()
 
+    }
+    
+    func test() {
+        
+        let newMessageConctroller = myTableViewController()
+//        present(newMessageConctroller, animated: true, completion: nil)
+//        let navController = UINavigationController(rootViewController: newMessageConctroller)
+        navigationController?.pushViewController(newMessageConctroller, animated: true)
+        
     }
 
     // CheckIfUserLoggin before by checking uuid, if not send the user to login page
@@ -53,23 +64,29 @@ class MapViewController: UIViewController {
 
         } else {
 
-            let ref = Database.database().reference()
-
-            let uid = Auth.auth().currentUser?.uid
-
-            // FIXME: Can't get the username since search bar override this title
-
-            ref.child("users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
-
-                if let dictionary = snapshot.value as? [String:Any] {
-
-                    self.navigationItem.title = dictionary["name"] as? String
-
-                }
-
-            }, withCancel: nil)
-
+            fetchUserAndSetupNavBarTitle()
         }
+    }
+    
+    func fetchUserAndSetupNavBarTitle() {
+        
+        let ref = Database.database().reference()
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        // FIXME: Can't get the username since search bar override this title
+        
+        ref.child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String:Any] {
+                
+                self.navigationItem.title = dictionary["name"] as? String
+                
+            }
+            
+        }, withCancel: nil)
+
+        
     }
 
     // Set the mapView behavior when viewdidload

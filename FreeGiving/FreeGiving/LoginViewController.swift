@@ -17,6 +17,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginSubmitButton: UIButton!
     @IBOutlet weak var loginSegmentedControl: UISegmentedControl!
     @IBOutlet weak var loginView: UIView!
+    
+    var mapViewController: MapViewController?
 
 //    var inputsContainerViewHeightAnchor: NSLayoutConstraint?
 //    var nameTextFieldHeightAnchor: NSLayoutConstraint?
