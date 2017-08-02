@@ -46,8 +46,8 @@
 		E59370C51F285AF500FA1A72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E59370CB1F28642D00FA1A72 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E59370D11F2878C300FA1A72 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = FreeGiving/MapViewController.swift; sourceTree = "<group>"; };
-		E5E93D8B1F2AB75B00DE01CE /* OwnerProductTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerProductTableViewController.swift; sourceTree = "<group>"; };
-		E5E93D8D1F2AB81000DE01CE /* SearchItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchItemViewController.swift; sourceTree = "<group>"; };
+		E5E93D8B1F2AB75B00DE01CE /* OwnerProductTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OwnerProductTableViewController.swift; path = ../OwnerProductTableViewController.swift; sourceTree = "<group>"; };
+		E5E93D8D1F2AB81000DE01CE /* SearchItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchItemViewController.swift; path = ../SearchItemViewController.swift; sourceTree = "<group>"; };
 		E5E93DD01F2B0C2800DE01CE /* MapViewController+navigateHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MapViewController+navigateHandler.swift"; sourceTree = "<group>"; };
 		E5E93DD41F2B14B200DE01CE /* BSUAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSUAnnotation.swift; sourceTree = "<group>"; };
 		E5E93DD61F2B17ED00DE01CE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -82,9 +82,6 @@
 				E59370D11F2878C300FA1A72 /* MapViewController.swift */,
 				E52E1A941F2E1B4500C07A50 /* MapViewController+delegateHandler.swift */,
 				E5E93DD01F2B0C2800DE01CE /* MapViewController+navigateHandler.swift */,
-				E55F22BE1F2C7F6500C9E862 /* loginViewController */,
-				E52E8DD11F2F60A300B2EB73 /* LoactionSearchTableViewController */,
-				E52E8DD01F2F5C7900B2EB73 /* ImageUploadViewController */,
 			);
 			name = MapViewController;
 			sourceTree = "<group>";
@@ -136,6 +133,8 @@
 		E59370B81F285AF500FA1A72 /* FreeGiving */ = {
 			isa = PBXGroup;
 			children = (
+				E5E93D8D1F2AB81000DE01CE /* SearchItemViewController.swift */,
+				E5E93D8B1F2AB75B00DE01CE /* OwnerProductTableViewController.swift */,
 				E59370CE1F28730400FA1A72 /* Controller */,
 				E5E93DD31F2B149300DE01CE /* Model */,
 				E59370B91F285AF500FA1A72 /* AppDelegate.swift */,
@@ -153,8 +152,9 @@
 			isa = PBXGroup;
 			children = (
 				E52E8DCF1F2F5C1700B2EB73 /* MapViewController */,
-				E5E93D8D1F2AB81000DE01CE /* SearchItemViewController.swift */,
-				E5E93D8B1F2AB75B00DE01CE /* OwnerProductTableViewController.swift */,
+				E55F22BE1F2C7F6500C9E862 /* loginViewController */,
+				E52E8DD11F2F60A300B2EB73 /* LoactionSearchTableViewController */,
+				E52E8DD01F2F5C7900B2EB73 /* ImageUploadViewController */,
 			);
 			name = Controller;
 			path = ..;
@@ -370,7 +370,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_OPTIMIZATION_LEVEL = fast;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -419,6 +419,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = fast;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
