@@ -10,8 +10,9 @@
 		93D8CB927A7388E4F77E81C0 /* Pods_FreeGiving.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 120963B07886DCE7B2DB2C1D /* Pods_FreeGiving.framework */; };
 		E52D35CD1F288AAD0030B08F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52D35CC1F288AAD0030B08F /* LoginViewController.swift */; };
 		E52D35CF1F2894C90030B08F /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52D35CE1F2894C90030B08F /* extension.swift */; };
+		E52DA5421F32CFF400B1F02D /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52DA5411F32CFF400B1F02D /* Post.swift */; };
 		E52E1A951F2E1B4500C07A50 /* MapViewController+delegateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52E1A941F2E1B4500C07A50 /* MapViewController+delegateHandler.swift */; };
-		E540D27A1F316FEB006523ED /* myTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E540D2791F316FEB006523ED /* myTableViewController.swift */; };
+		E540D27A1F316FEB006523ED /* FriendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E540D2791F316FEB006523ED /* FriendTableViewController.swift */; };
 		E540D27D1F317275006523ED /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E540D27C1F317275006523ED /* User.swift */; };
 		E540D27F1F31BE3C006523ED /* ChatLogTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E540D27E1F31BE3C006523ED /* ChatLogTableController.swift */; };
 		E54457801F29E22800BF8E2B /* ImageUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E544577F1F29E22800BF8E2B /* ImageUploadViewController.swift */; };
@@ -37,8 +38,9 @@
 		C26005079E9120F8E6245187 /* Pods-FreeGiving.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeGiving.release.xcconfig"; path = "Pods/Target Support Files/Pods-FreeGiving/Pods-FreeGiving.release.xcconfig"; sourceTree = "<group>"; };
 		E52D35CC1F288AAD0030B08F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = FreeGiving/LoginViewController.swift; sourceTree = "<group>"; };
 		E52D35CE1F2894C90030B08F /* extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
+		E52DA5411F32CFF400B1F02D /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		E52E1A941F2E1B4500C07A50 /* MapViewController+delegateHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MapViewController+delegateHandler.swift"; sourceTree = "<group>"; };
-		E540D2791F316FEB006523ED /* myTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myTableViewController.swift; sourceTree = "<group>"; };
+		E540D2791F316FEB006523ED /* FriendTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewController.swift; sourceTree = "<group>"; };
 		E540D27C1F317275006523ED /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E540D27E1F31BE3C006523ED /* ChatLogTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatLogTableController.swift; sourceTree = "<group>"; };
 		E544577F1F29E22800BF8E2B /* ImageUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUploadViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				E540D27C1F317275006523ED /* User.swift */,
+				E52DA5411F32CFF400B1F02D /* Post.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -130,7 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				E540D27B1F317256006523ED /* Model */,
-				E540D2791F316FEB006523ED /* myTableViewController.swift */,
+				E540D2791F316FEB006523ED /* FriendTableViewController.swift */,
 				E540D27E1F31BE3C006523ED /* ChatLogTableController.swift */,
 				E59370B81F285AF500FA1A72 /* FreeGiving */,
 				E59370B71F285AF500FA1A72 /* Products */,
@@ -320,7 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E55F22BD1F2C7C1500C9E862 /* LoactionSearchTableViewController.swift in Sources */,
-				E540D27A1F316FEB006523ED /* myTableViewController.swift in Sources */,
+				E540D27A1F316FEB006523ED /* FriendTableViewController.swift in Sources */,
 				E52D35CD1F288AAD0030B08F /* LoginViewController.swift in Sources */,
 				E5E93DD51F2B14B200DE01CE /* BSUAnnotation.swift in Sources */,
 				E54457801F29E22800BF8E2B /* ImageUploadViewController.swift in Sources */,
@@ -330,6 +333,7 @@
 				E5E93DD11F2B0C2800DE01CE /* MapViewController+navigateHandler.swift in Sources */,
 				E540D27D1F317275006523ED /* User.swift in Sources */,
 				E59370BA1F285AF500FA1A72 /* AppDelegate.swift in Sources */,
+				E52DA5421F32CFF400B1F02D /* Post.swift in Sources */,
 				E5E93D8E1F2AB81000DE01CE /* SearchItemViewController.swift in Sources */,
 				E52E1A951F2E1B4500C07A50 /* MapViewController+delegateHandler.swift in Sources */,
 				E52D35CF1F2894C90030B08F /* extension.swift in Sources */,

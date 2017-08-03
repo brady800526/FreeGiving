@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class myTableViewController: UITableViewController {
+class FriendTableViewController: UITableViewController {
 
     let cellid = "cellid"
     

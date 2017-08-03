@@ -20,6 +20,8 @@ class MapViewController: UIViewController {
     var resultSearchController: UISearchController?
 
     var selectedPin: MKPlacemark?
+    
+    var posts = [Post]()
 
     @IBOutlet weak var searchBarView: UIView!
 
@@ -35,21 +37,61 @@ class MapViewController: UIViewController {
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Upload", style: .plain, target: self, action: #selector(handleUpload))
 
-        navigationItem.rightBarButtonItems?.append(UIBarButtonItem(title: "Message", style: .plain, target: self, action: #selector(test)))
+        navigationItem.rightBarButtonItems?.append(UIBarButtonItem(title: "Message", style: .plain, target: self, action: #selector(handleChat)))
         
         checkedIfUserLoggedIn()
 
         setLocationManagerBehavior()
 
         setLocationSearchTable()
+        
+        fetchAnnotations()
 
     }
     
-    func test() {
+    func fetchAnnotations() {
         
-        let newMessageConctroller = myTableViewController()
-//        present(newMessageConctroller, animated: true, completion: nil)
-//        let navController = UINavigationController(rootViewController: newMessageConctroller)
+        Database.database().reference().child("posts").observe(.childAdded, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String: AnyObject] {
+                let post = Post()
+                post.setValuesForKeys(dictionary)
+                
+                guard
+                let available = post.available,
+                let availableBool = Bool(available),
+                let latitude = post.latitude,
+                let latitudeDouble = Double(latitude),
+                let longtitude = post.longtitude,
+                let longtitudeDouble = Double(longtitude),
+                let description = post.productDescription,
+                let imageURL = post.productImageURL,
+                let name = post.productName,
+                let time = post.productOnShelfTime,
+                let timeStamp = post.timeStamp,
+                let user = post.user
+                    else {
+                        print("format invalide")
+                        return
+                }
+
+                print(availableBool, latitudeDouble, longtitudeDouble, description, imageURL, name, time, timeStamp, user)
+                
+                let anno = MKPointAnnotation()
+                anno.coordinate = CLLocationCoordinate2D(latitude: latitudeDouble, longitude: longtitudeDouble)
+                anno.title = name
+                self.mapView.addAnnotation(anno)
+                
+            }
+            
+        })
+
+        
+    }
+    
+    func handleChat() {
+        
+        let newMessageConctroller = FriendTableViewController()
         navigationController?.pushViewController(newMessageConctroller, animated: true)
         
     }
