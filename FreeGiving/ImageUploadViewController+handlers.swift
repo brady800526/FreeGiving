@@ -131,7 +131,7 @@ extension ImageUploadViewController: UIImagePickerControllerDelegate, UINavigati
                      "productDescription": description,
                      "productImageURL": profileImageUrl,
                      "timeStamp": dateFormatter.string(from: date),
-                     "available": true]
+                     "available": String(true)]
                 
 
                     print(profileImageUrl)
@@ -196,8 +196,8 @@ extension ImageUploadViewController: UITextFieldDelegate {
                     else {
                         return }
                     print("Lat: \(lat), Lon: \(lon)")
-                self.latitude = lat
-                self.longtitude = lon
+                self.latitude = String(lat)
+                self.longtitude = String(lon)
                 
             })
 
