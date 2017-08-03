@@ -306,10 +306,10 @@
             </objects>
             <point key="canvasLocation" x="276.81159420289856" y="-713.31521739130437"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Item-->
         <scene sceneID="djO-c6-waR">
             <objects>
-                <tableViewController id="sb6-6i-k97" sceneMemberID="viewController">
+                <tableViewController id="sb6-6i-k97" customClass="FriendTableViewController" customModule="FreeGiving" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="flr-I0-Q4j">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -329,6 +329,7 @@
                             <outlet property="delegate" destination="sb6-6i-k97" id="XQs-3i-8aK"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Item" id="Vp5-yy-QxY"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EV4-85-jsc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -390,6 +391,7 @@
                     <connections>
                         <segue destination="l5j-eZ-S1E" kind="relationship" relationship="viewControllers" id="nye-Hd-ABp"/>
                         <segue destination="6gv-ma-rvu" kind="relationship" relationship="viewControllers" id="0wr-qZ-gPH"/>
+                        <segue destination="sb6-6i-k97" kind="relationship" relationship="viewControllers" id="P6y-Fe-soi"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6bZ-zr-FZu" userLabel="First Responder" sceneMemberID="firstResponder"/>
