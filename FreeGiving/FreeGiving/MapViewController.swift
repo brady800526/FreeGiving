@@ -36,8 +36,6 @@ class MapViewController: UIViewController {
         // HandleUpload
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Upload", style: .plain, target: self, action: #selector(handleUpload))
-
-        navigationItem.rightBarButtonItems?.append(UIBarButtonItem(title: "Message", style: .plain, target: self, action: #selector(handleChat)))
         
         checkedIfUserLoggedIn()
 
@@ -86,13 +84,6 @@ class MapViewController: UIViewController {
             
         })
 
-        
-    }
-    
-    func handleChat() {
-        
-        let newMessageConctroller = FriendTableViewController()
-        navigationController?.pushViewController(newMessageConctroller, animated: true)
         
     }
 

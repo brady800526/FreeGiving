@@ -133,8 +133,6 @@
 			isa = PBXGroup;
 			children = (
 				E540D27B1F317256006523ED /* Model */,
-				E540D2791F316FEB006523ED /* FriendTableViewController.swift */,
-				E540D27E1F31BE3C006523ED /* ChatLogTableController.swift */,
 				E59370B81F285AF500FA1A72 /* FreeGiving */,
 				E59370B71F285AF500FA1A72 /* Products */,
 				FFBA5DF63FF29A0E64AF90C8 /* Pods */,
@@ -171,6 +169,7 @@
 		E59370CE1F28730400FA1A72 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E5D648941F32EAA50075A4BA /* FriendTableViewController */,
 				E52E8DCF1F2F5C1700B2EB73 /* MapViewController */,
 				E55F22BE1F2C7F6500C9E862 /* loginViewController */,
 				E52E8DD11F2F60A300B2EB73 /* LoactionSearchTableViewController */,
@@ -178,6 +177,15 @@
 			);
 			name = Controller;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		E5D648941F32EAA50075A4BA /* FriendTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E540D2791F316FEB006523ED /* FriendTableViewController.swift */,
+				E540D27E1F31BE3C006523ED /* ChatLogTableController.swift */,
+			);
+			name = FriendTableViewController;
 			sourceTree = "<group>";
 		};
 		E5E93DD31F2B149300DE01CE /* Model */ = {
