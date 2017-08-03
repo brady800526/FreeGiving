@@ -1,6 +1,5 @@
-
 //
-//  File.swift
+//  PostsAnnotation.swift
 //  FreeGiving
 //
 //  Created by Brady Huang on 2017/8/3.
@@ -10,7 +9,7 @@
 import UIKit
 import MapKit
 
-class Post: NSObject, MKAnnotation {
+class PostsAnnotation: NSObject {
     var available: String?
     var latitude: String?
     var longtitude: String?
@@ -20,9 +19,9 @@ class Post: NSObject, MKAnnotation {
     var productOnShelfTime: String?
     var timeStamp: String?
     var user: String?
-    var coordinate: CLLocationCoordinate2D
+    var coordinates: CLLocationCoordinate2D?
 
-    init(coordinate: CLLocationCoordinate2D) {
-        self.coordinate = coordinate
-    }
+        init(latitude: Double, longtitude: Double) {
+            self.coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longtitude)
+        }
 }

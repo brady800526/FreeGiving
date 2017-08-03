@@ -24,6 +24,10 @@
 		E59370C41F285AF500FA1A72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E59370C21F285AF500FA1A72 /* LaunchScreen.storyboard */; };
 		E59370CC1F28642D00FA1A72 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E59370CB1F28642D00FA1A72 /* GoogleService-Info.plist */; };
 		E59370D21F2878C300FA1A72 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59370D11F2878C300FA1A72 /* MapViewController.swift */; };
+		E5D648961F32F9A70075A4BA /* PostsAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D648951F32F9A70075A4BA /* PostsAnnotation.swift */; };
+		E5D6489D1F32FF2F0075A4BA /* CustomCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5D6489B1F32FF2F0075A4BA /* CustomCalloutView.xib */; };
+		E5D6489E1F32FF2F0075A4BA /* CustomCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D6489C1F32FF2F0075A4BA /* CustomCalloutView.swift */; };
+		E5D648A11F3308F40075A4BA /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D648A01F3308F40075A4BA /* AnnotationView.swift */; };
 		E5E93D8C1F2AB75B00DE01CE /* OwnerProductTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E93D8B1F2AB75B00DE01CE /* OwnerProductTableViewController.swift */; };
 		E5E93D8E1F2AB81000DE01CE /* SearchItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E93D8D1F2AB81000DE01CE /* SearchItemViewController.swift */; };
 		E5E93DD11F2B0C2800DE01CE /* MapViewController+navigateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E93DD01F2B0C2800DE01CE /* MapViewController+navigateHandler.swift */; };
@@ -54,6 +58,10 @@
 		E59370C51F285AF500FA1A72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E59370CB1F28642D00FA1A72 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E59370D11F2878C300FA1A72 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = FreeGiving/MapViewController.swift; sourceTree = "<group>"; };
+		E5D648951F32F9A70075A4BA /* PostsAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsAnnotation.swift; sourceTree = "<group>"; };
+		E5D6489B1F32FF2F0075A4BA /* CustomCalloutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCalloutView.xib; sourceTree = "<group>"; };
+		E5D6489C1F32FF2F0075A4BA /* CustomCalloutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCalloutView.swift; sourceTree = "<group>"; };
+		E5D648A01F3308F40075A4BA /* AnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		E5E93D8B1F2AB75B00DE01CE /* OwnerProductTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OwnerProductTableViewController.swift; path = ../OwnerProductTableViewController.swift; sourceTree = "<group>"; };
 		E5E93D8D1F2AB81000DE01CE /* SearchItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchItemViewController.swift; path = ../SearchItemViewController.swift; sourceTree = "<group>"; };
 		E5E93DD01F2B0C2800DE01CE /* MapViewController+navigateHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MapViewController+navigateHandler.swift"; sourceTree = "<group>"; };
@@ -116,6 +124,7 @@
 			children = (
 				E540D27C1F317275006523ED /* User.swift */,
 				E52DA5411F32CFF400B1F02D /* Post.swift */,
+				E5D648951F32F9A70075A4BA /* PostsAnnotation.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -132,6 +141,8 @@
 		E59370AD1F285AF500FA1A72 = {
 			isa = PBXGroup;
 			children = (
+				E5D648A01F3308F40075A4BA /* AnnotationView.swift */,
+				E5D6489F1F32FF580075A4BA /* CustomCallout */,
 				E540D27B1F317256006523ED /* Model */,
 				E59370B81F285AF500FA1A72 /* FreeGiving */,
 				E59370B71F285AF500FA1A72 /* Products */,
@@ -169,11 +180,11 @@
 		E59370CE1F28730400FA1A72 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E5D648941F32EAA50075A4BA /* FriendTableViewController */,
 				E52E8DCF1F2F5C1700B2EB73 /* MapViewController */,
 				E55F22BE1F2C7F6500C9E862 /* loginViewController */,
 				E52E8DD11F2F60A300B2EB73 /* LoactionSearchTableViewController */,
 				E52E8DD01F2F5C7900B2EB73 /* ImageUploadViewController */,
+				E5D648941F32EAA50075A4BA /* FriendTableViewController */,
 			);
 			name = Controller;
 			path = ..;
@@ -186,6 +197,15 @@
 				E540D27E1F31BE3C006523ED /* ChatLogTableController.swift */,
 			);
 			name = FriendTableViewController;
+			sourceTree = "<group>";
+		};
+		E5D6489F1F32FF580075A4BA /* CustomCallout */ = {
+			isa = PBXGroup;
+			children = (
+				E5D6489B1F32FF2F0075A4BA /* CustomCalloutView.xib */,
+				E5D6489C1F32FF2F0075A4BA /* CustomCalloutView.swift */,
+			);
+			name = CustomCallout;
 			sourceTree = "<group>";
 		};
 		E5E93DD31F2B149300DE01CE /* Model */ = {
@@ -271,6 +291,7 @@
 				E59370C41F285AF500FA1A72 /* LaunchScreen.storyboard in Resources */,
 				E59370CC1F28642D00FA1A72 /* GoogleService-Info.plist in Resources */,
 				E59370C11F285AF500FA1A72 /* Assets.xcassets in Resources */,
+				E5D6489D1F32FF2F0075A4BA /* CustomCalloutView.xib in Resources */,
 				E59370BF1F285AF500FA1A72 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -334,10 +355,12 @@
 				E540D27A1F316FEB006523ED /* FriendTableViewController.swift in Sources */,
 				E52D35CD1F288AAD0030B08F /* LoginViewController.swift in Sources */,
 				E5E93DD51F2B14B200DE01CE /* BSUAnnotation.swift in Sources */,
+				E5D648961F32F9A70075A4BA /* PostsAnnotation.swift in Sources */,
 				E54457801F29E22800BF8E2B /* ImageUploadViewController.swift in Sources */,
 				E540D27F1F31BE3C006523ED /* ChatLogTableController.swift in Sources */,
 				E54457821F29EDBC00BF8E2B /* ImageUploadViewController+handlers.swift in Sources */,
 				E59370D21F2878C300FA1A72 /* MapViewController.swift in Sources */,
+				E5D6489E1F32FF2F0075A4BA /* CustomCalloutView.swift in Sources */,
 				E5E93DD11F2B0C2800DE01CE /* MapViewController+navigateHandler.swift in Sources */,
 				E540D27D1F317275006523ED /* User.swift in Sources */,
 				E59370BA1F285AF500FA1A72 /* AppDelegate.swift in Sources */,
@@ -345,6 +368,7 @@
 				E5E93D8E1F2AB81000DE01CE /* SearchItemViewController.swift in Sources */,
 				E52E1A951F2E1B4500C07A50 /* MapViewController+delegateHandler.swift in Sources */,
 				E52D35CF1F2894C90030B08F /* extension.swift in Sources */,
+				E5D648A11F3308F40075A4BA /* AnnotationView.swift in Sources */,
 				E5E93D8C1F2AB75B00DE01CE /* OwnerProductTableViewController.swift in Sources */,
 				E5E93DD91F2B39F400DE01CE /* LoginViewController+loginHandler.swift in Sources */,
 			);
