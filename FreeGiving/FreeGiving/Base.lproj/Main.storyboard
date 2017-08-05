@@ -33,7 +33,7 @@
                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DI9-zJ-Ffg">
                                 <rect key="frame" x="40" y="291.66666666666669" width="334" height="152.66666666666663"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OJs-Qh-OhP">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OJs-Qh-OhP">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="51.333333333333314"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
@@ -42,7 +42,7 @@
                                             <outlet property="delegate" destination="kr0-x8-bVK" id="M0O-mf-tOK"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Email" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CHg-fe-AHF">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CHg-fe-AHF">
                                         <rect key="frame" x="0.0" y="51.333333333333314" width="334" height="51"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
@@ -51,7 +51,7 @@
                                             <outlet property="delegate" destination="kr0-x8-bVK" id="X74-F4-mq7"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1xp-zs-HHp">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1xp-zs-HHp">
                                         <rect key="frame" x="0.0" y="102.33333333333331" width="334" height="50.333333333333314"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
@@ -186,7 +186,7 @@
                             </textField>
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dqB-CP-7qP">
                                 <rect key="frame" x="70" y="64" width="274" height="414"/>
-                                <color key="backgroundColor" red="0.25098040700000002" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ProductName" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rVm-gi-CQT">
                                 <rect key="frame" x="70" y="506" width="274" height="30"/>
@@ -306,10 +306,10 @@
             </objects>
             <point key="canvasLocation" x="276.81159420289856" y="-713.31521739130437"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Item-->
         <scene sceneID="djO-c6-waR">
             <objects>
-                <tableViewController id="sb6-6i-k97" sceneMemberID="viewController">
+                <tableViewController id="sb6-6i-k97" customClass="FriendTableViewController" customModule="FreeGiving" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="flr-I0-Q4j">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -329,6 +329,7 @@
                             <outlet property="delegate" destination="sb6-6i-k97" id="XQs-3i-8aK"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Item" id="Vp5-yy-QxY"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EV4-85-jsc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -390,6 +391,7 @@
                     <connections>
                         <segue destination="l5j-eZ-S1E" kind="relationship" relationship="viewControllers" id="nye-Hd-ABp"/>
                         <segue destination="6gv-ma-rvu" kind="relationship" relationship="viewControllers" id="0wr-qZ-gPH"/>
+                        <segue destination="sb6-6i-k97" kind="relationship" relationship="viewControllers" id="P6y-Fe-soi"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6bZ-zr-FZu" userLabel="First Responder" sceneMemberID="firstResponder"/>

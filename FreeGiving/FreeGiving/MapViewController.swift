@@ -36,8 +36,6 @@ class MapViewController: UIViewController {
         // HandleUpload
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Upload", style: .plain, target: self, action: #selector(handleUpload))
-
-        navigationItem.rightBarButtonItems?.append(UIBarButtonItem(title: "Message", style: .plain, target: self, action: #selector(handleChat)))
         
         checkedIfUserLoggedIn()
 
@@ -53,8 +51,12 @@ class MapViewController: UIViewController {
         
         Database.database().reference().child("posts").observe(.childAdded, with: { (snapshot) in
             
-            if let dictionary = snapshot.value as? [String: AnyObject] {
-                let post = Post()
+            if let dictionary = snapshot.value as? [String: AnyObject],
+                let latitude = dictionary["latitude"] as? String,
+                let latitudeDouble = Double(latitude),
+                let longtitude = dictionary["longtitude"] as? String,
+                let longtitudeDouble = Double(longtitude) {
+                let post = Post(coordinate: CLLocationCoordinate2D(latitude: latitudeDouble, longitude: longtitudeDouble))
                 post.setValuesForKeys(dictionary)
                 
                 guard
@@ -75,24 +77,20 @@ class MapViewController: UIViewController {
                         return
                 }
 
-                print(availableBool, latitudeDouble, longtitudeDouble, description, imageURL, name, time, timeStamp, user)
+                self.posts.append(post)
                 
-                let anno = MKPointAnnotation()
-                anno.coordinate = CLLocationCoordinate2D(latitude: latitudeDouble, longitude: longtitudeDouble)
-                anno.title = name
-                self.mapView.addAnnotation(anno)
+//                let anno = MKPointAnnotation()
+//                anno.coordinate = CLLocationCoordinate2D(latitude: latitudeDouble, longitude: longtitudeDouble)
+//                anno.title = name
+                
+                self.mapView.addAnnotation(post)
                 
             }
             
         })
+        
+        
 
-        
-    }
-    
-    func handleChat() {
-        
-        let newMessageConctroller = FriendTableViewController()
-        navigationController?.pushViewController(newMessageConctroller, animated: true)
         
     }
 
