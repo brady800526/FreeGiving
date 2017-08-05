@@ -29,7 +29,6 @@ class ChatLogTableController: UICollectionViewController {
     func setupInputComponent() {
 
         let containerView = UIView()
-        containerView.backgroundColor = UIColor.red
         containerView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(containerView)
@@ -46,8 +45,8 @@ class ChatLogTableController: UICollectionViewController {
         containerView.addSubview(sendButton)
         
         sendButton.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
-        sendButton.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
-        sendButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        sendButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+        sendButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
         sendButton.heightAnchor.constraint(equalTo: containerView.heightAnchor).isActive = true
         
         let inputTextField = UITextField()
@@ -59,6 +58,16 @@ class ChatLogTableController: UICollectionViewController {
         inputTextField.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
         inputTextField.widthAnchor.constraint(equalToConstant: 100).isActive = true
         inputTextField.heightAnchor.constraint(equalTo: containerView.heightAnchor).isActive = true
+        
+        let separatorLineView = UIView()
+        separatorLineView.backgroundColor = UIColor.black
+        separatorLineView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addSubview(separatorLineView)
+        
+        separatorLineView.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
+        separatorLineView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
+        separatorLineView.widthAnchor.constraint(equalTo: containerView.widthAnchor).isActive = true
+        separatorLineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
     }
 }
