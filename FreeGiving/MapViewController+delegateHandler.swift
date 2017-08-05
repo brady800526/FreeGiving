@@ -23,7 +23,6 @@ extension MapViewController : CLLocationManagerDelegate {
             let span = MKCoordinateSpanMake(0.05, 0.05)
             let region = MKCoordinateRegion(center: location.coordinate, span: span)
             mapView.setRegion(region, animated: true)
-
         }
     }
 
@@ -98,7 +97,8 @@ extension MapViewController : MKMapViewDelegate {
             let data = try Data(contentsOf: url!)
             
                 calloutView.starbucksImage.image = UIImage(data: data)
-
+            
+            self.mapView.reloadInputViews()
             
         } catch {
             
@@ -113,37 +113,6 @@ extension MapViewController : MKMapViewDelegate {
     }
     
 
-//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-//
-//        if annotation is MKUserLocation {
-//            //return nil so map view draws "blue dot" for standard user location
-//            return nil
-//        }
-//
-//        let reuseId = "pin"
-//
-//        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
-//
-//        pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-//
-//        pinView?.pinTintColor = UIColor.orange
-//
-//        pinView?.canShowCallout = true
-//
-//        let smallSquare = CGSize(width: 30, height: 30)
-//
-//        let button = UIButton(frame: CGRect(origin: CGPoint.zero, size: smallSquare))
-//
-//        button.setBackgroundImage(UIImage(named: "car"), for: .normal)
-//
-//        button.addTarget(self, action: #selector(getDirections), for: .touchUpInside)
-//
-//        pinView?.leftCalloutAccessoryView = button
-//
-//        return pinView
-//
-//    }
-
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         if view.isKind(of: AnnotationView.self)
         {
@@ -154,15 +123,4 @@ extension MapViewController : MKMapViewDelegate {
         }
     }
 
-//    func getDirections() {
-//
-//        if let selectedPin = selectedPin {
-//
-//            let mapItem = MKMapItem(placemark: selectedPin)
-//
-//            let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
-//
-//            mapItem.openInMaps(launchOptions: launchOptions)
-//        }
-//    }
 }

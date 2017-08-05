@@ -78,8 +78,6 @@ class MapViewController: UIViewController {
                 }
 
                 self.posts.append(post)
-                print(self.posts.count)
-                print(availableBool, latitudeDouble, longtitudeDouble, description, imageURL, name, time, timeStamp, user)
                 
 //                let anno = MKPointAnnotation()
 //                anno.coordinate = CLLocationCoordinate2D(latitude: latitudeDouble, longitude: longtitudeDouble)
