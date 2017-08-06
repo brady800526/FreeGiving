@@ -26,26 +26,10 @@ class FriendTableViewController: UITableViewController {
         
         fetchUser()
         
-        let button =  UIButton(type: .custom)
-        button.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
-        button.backgroundColor = UIColor.red
-        button.setTitle("Button", for: .normal)
-        button.addTarget(self, action: #selector(showChatController), for: .touchUpInside)
-        self.navigationItem.titleView = button
     }
     
     func handleNewMessage() {
         
-        let chatLog = ChatLogTableController(collectionViewLayout: UICollectionViewLayout())
-
-        navigationController?.pushViewController(chatLog, animated: true)
-    }
-    
-    func showChatController() {
-//        let registrationView = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "chatPage") as! ChatLogTableController
-//        let test: myCollectionViewController = storyboard!.instantiateViewController(withIdentifier: "my") as! myCollectionViewController
-        //        let newMessageController = ChatLogTableController()
-        //        let navController = UINavigationController(rootViewController: newMessageController)
         let chatLog = ChatLogTableController(collectionViewLayout: UICollectionViewLayout())
         navigationController?.pushViewController(chatLog, animated: true)
     }
@@ -56,6 +40,8 @@ class FriendTableViewController: UITableViewController {
             
             if let dictionary = snapshot.value as? [String: AnyObject] {
                 let user = User()
+                user.id = snapshot.key
+                
                 user.setValuesForKeys(dictionary)
                 self.users.append(user)
                 
@@ -99,21 +85,14 @@ class FriendTableViewController: UITableViewController {
         
     }
     
+    var messageController: newMessageTableViewController?
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)  {
+            let user = self.users[indexPath.row]
+            self.messageController?.showChatControllerForUser(user: user)
+        }
         
     }
-}
-
-class UserCell: UITableViewCell {
-    
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
 }

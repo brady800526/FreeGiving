@@ -44,7 +44,7 @@ class MapViewController: UIViewController {
         setLocationSearchTable()
         
         fetchAnnotations()
-
+        
     }
     
     func fetchAnnotations() {

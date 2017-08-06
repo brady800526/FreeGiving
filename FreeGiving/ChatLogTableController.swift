@@ -6,10 +6,17 @@
 //  Copyright © 2017年 AppWorks. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import Firebase
 
 class ChatLogTableController: UICollectionViewController, UITextFieldDelegate {
+    
+    var user: User? {
+        didSet {
+            navigationItem.title = user?.name
+        }
+    }
     
     lazy var inputTextField: UITextField = {
         let textField = UITextField()
@@ -22,9 +29,7 @@ class ChatLogTableController: UICollectionViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = "Chat Log Controlller"
-        
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "back", style: .plain, target: self, action: #selector(handleDismiss))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "back", style: .plain, target: self, action: #selector(handleDismiss))
         
         collectionView?.backgroundColor = UIColor.white
         
@@ -32,6 +37,9 @@ class ChatLogTableController: UICollectionViewController, UITextFieldDelegate {
     }
     
     func handleDismiss() {
+        
+        dismiss(animated: true, completion: nil)
+        
      }
 
     func setupInputComponent() {
@@ -81,7 +89,10 @@ class ChatLogTableController: UICollectionViewController, UITextFieldDelegate {
         
         let ref = Database.database().reference().child("messages")
         let childRef = ref.childByAutoId()
-        let values = ["text": inputTextField.text!, "name": "test"]
+        let toId = user!.id!
+        let fromId = Auth.auth().currentUser!.uid
+        let timestamp: NSNumber = NSNumber(value: Date().timeIntervalSinceReferenceDate)
+        let values = ["text": inputTextField.text!, "toId": toId, "fromId": fromId, "timestamp": timestamp] as [String : Any]
         childRef.updateChildValues(values)
         
     }

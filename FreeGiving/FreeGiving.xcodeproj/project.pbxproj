@@ -14,6 +14,8 @@
 		E52E1A951F2E1B4500C07A50 /* MapViewController+delegateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52E1A941F2E1B4500C07A50 /* MapViewController+delegateHandler.swift */; };
 		E535A87F1F36983600E635CF /* newMessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E535A87E1F36983600E635CF /* newMessageTableViewController.swift */; };
 		E535A8811F36DC0100E635CF /* myCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E535A8801F36DC0100E635CF /* myCollectionViewController.swift */; };
+		E53A7F101F37464C0022DE9A /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53A7F0F1F37464C0022DE9A /* Message.swift */; };
+		E53A7F131F374EC10022DE9A /* Usercell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53A7F121F374EC10022DE9A /* Usercell.swift */; };
 		E540D27A1F316FEB006523ED /* FriendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E540D2791F316FEB006523ED /* FriendTableViewController.swift */; };
 		E540D27D1F317275006523ED /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E540D27C1F317275006523ED /* User.swift */; };
 		E540D27F1F31BE3C006523ED /* ChatLogTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E540D27E1F31BE3C006523ED /* ChatLogTableController.swift */; };
@@ -48,6 +50,8 @@
 		E52E1A941F2E1B4500C07A50 /* MapViewController+delegateHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MapViewController+delegateHandler.swift"; sourceTree = "<group>"; };
 		E535A87E1F36983600E635CF /* newMessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newMessageTableViewController.swift; sourceTree = "<group>"; };
 		E535A8801F36DC0100E635CF /* myCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myCollectionViewController.swift; sourceTree = "<group>"; };
+		E53A7F0F1F37464C0022DE9A /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		E53A7F121F374EC10022DE9A /* Usercell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usercell.swift; sourceTree = "<group>"; };
 		E540D2791F316FEB006523ED /* FriendTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewController.swift; sourceTree = "<group>"; };
 		E540D27C1F317275006523ED /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E540D27E1F31BE3C006523ED /* ChatLogTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatLogTableController.swift; sourceTree = "<group>"; };
@@ -123,12 +127,21 @@
 			name = LoactionSearchTableViewController;
 			sourceTree = "<group>";
 		};
+		E53A7F111F374EB10022DE9A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E53A7F121F374EC10022DE9A /* Usercell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		E540D27B1F317256006523ED /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				E540D27C1F317275006523ED /* User.swift */,
 				E52DA5411F32CFF400B1F02D /* Post.swift */,
 				E5D648951F32F9A70075A4BA /* PostsAnnotation.swift */,
+				E53A7F0F1F37464C0022DE9A /* Message.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -145,6 +158,7 @@
 		E59370AD1F285AF500FA1A72 = {
 			isa = PBXGroup;
 			children = (
+				E53A7F111F374EB10022DE9A /* View */,
 				E535A8801F36DC0100E635CF /* myCollectionViewController.swift */,
 				E5D648A01F3308F40075A4BA /* AnnotationView.swift */,
 				E5D6489F1F32FF580075A4BA /* CustomCallout */,
@@ -370,10 +384,12 @@
 				E59370D21F2878C300FA1A72 /* MapViewController.swift in Sources */,
 				E5D6489E1F32FF2F0075A4BA /* CustomCalloutView.swift in Sources */,
 				E5E93DD11F2B0C2800DE01CE /* MapViewController+navigateHandler.swift in Sources */,
+				E53A7F131F374EC10022DE9A /* Usercell.swift in Sources */,
 				E540D27D1F317275006523ED /* User.swift in Sources */,
 				E59370BA1F285AF500FA1A72 /* AppDelegate.swift in Sources */,
 				E52DA5421F32CFF400B1F02D /* Post.swift in Sources */,
 				E5E93D8E1F2AB81000DE01CE /* SearchItemViewController.swift in Sources */,
+				E53A7F101F37464C0022DE9A /* Message.swift in Sources */,
 				E52E1A951F2E1B4500C07A50 /* MapViewController+delegateHandler.swift in Sources */,
 				E52D35CF1F2894C90030B08F /* extension.swift in Sources */,
 				E5D648A11F3308F40075A4BA /* AnnotationView.swift in Sources */,
