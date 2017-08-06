@@ -36,17 +36,18 @@ class FriendTableViewController: UITableViewController {
     
     func handleNewMessage() {
         
-        let test: myCollectionViewController = storyboard!.instantiateViewController(withIdentifier: "my") as! myCollectionViewController
+        let chatLog = ChatLogTableController(collectionViewLayout: UICollectionViewLayout())
 
-        navigationController?.pushViewController(test, animated: true)
+        navigationController?.pushViewController(chatLog, animated: true)
     }
     
     func showChatController() {
-        let registrationView = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "chatPage") as! ChatLogTableController
-        let test: myCollectionViewController = storyboard!.instantiateViewController(withIdentifier: "my") as! myCollectionViewController
+//        let registrationView = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "chatPage") as! ChatLogTableController
+//        let test: myCollectionViewController = storyboard!.instantiateViewController(withIdentifier: "my") as! myCollectionViewController
         //        let newMessageController = ChatLogTableController()
         //        let navController = UINavigationController(rootViewController: newMessageController)
-        navigationController?.pushViewController(test, animated: true)
+        let chatLog = ChatLogTableController(collectionViewLayout: UICollectionViewLayout())
+        navigationController?.pushViewController(chatLog, animated: true)
     }
     
     func fetchUser() {

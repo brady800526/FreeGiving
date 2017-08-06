@@ -47,22 +47,22 @@ class ChatLogTableController: UICollectionViewController, UITextFieldDelegate {
         containerView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         let sendButton = UIButton(type: .system)
-        
         sendButton.setTitle("Send", for: .normal)
         sendButton.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(sendButton)
+        sendButton.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
+ 
         
         sendButton.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
         sendButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
         sendButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
         sendButton.heightAnchor.constraint(equalTo: containerView.heightAnchor).isActive = true
-        sendButton.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
         
         containerView.addSubview(inputTextField)
         
         inputTextField.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
         inputTextField.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
-        inputTextField.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        inputTextField.rightAnchor.constraint(equalTo: sendButton.leftAnchor).isActive = true
         inputTextField.heightAnchor.constraint(equalTo: containerView.heightAnchor).isActive = true
         
         let separatorLineView = UIView()
