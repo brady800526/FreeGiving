@@ -7,8 +7,17 @@
 //
 
 import UIKit
+import Firebase
 
-class ChatLogTableController: UICollectionViewController {
+class ChatLogTableController: UICollectionViewController, UITextFieldDelegate {
+    
+    lazy var inputTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Enter message..."
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.delegate = self
+        return textField
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,10 +57,8 @@ class ChatLogTableController: UICollectionViewController {
         sendButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
         sendButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
         sendButton.heightAnchor.constraint(equalTo: containerView.heightAnchor).isActive = true
+        sendButton.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
         
-        let inputTextField = UITextField()
-        inputTextField.placeholder = "Enter message..."
-        inputTextField.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(inputTextField)
         
         inputTextField.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
@@ -60,7 +67,7 @@ class ChatLogTableController: UICollectionViewController {
         inputTextField.heightAnchor.constraint(equalTo: containerView.heightAnchor).isActive = true
         
         let separatorLineView = UIView()
-        separatorLineView.backgroundColor = UIColor.black
+        separatorLineView.backgroundColor = UIColor(red: 220/365, green: 220/365, blue: 220/365, alpha: 1)
         separatorLineView.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(separatorLineView)
         
@@ -69,5 +76,19 @@ class ChatLogTableController: UICollectionViewController {
         separatorLineView.widthAnchor.constraint(equalTo: containerView.widthAnchor).isActive = true
         separatorLineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
+    }
+    
+    func handleSend() {
+        
+        let ref = Database.database().reference().child("messages")
+        let childRef = ref.childByAutoId()
+        let values = ["text": inputTextField.text!, "name": "test"]
+        childRef.updateChildValues(values)
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        handleSend()
+        return true
     }
 }

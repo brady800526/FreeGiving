@@ -12,6 +12,7 @@
 		E52D35CF1F2894C90030B08F /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52D35CE1F2894C90030B08F /* extension.swift */; };
 		E52DA5421F32CFF400B1F02D /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52DA5411F32CFF400B1F02D /* Post.swift */; };
 		E52E1A951F2E1B4500C07A50 /* MapViewController+delegateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52E1A941F2E1B4500C07A50 /* MapViewController+delegateHandler.swift */; };
+		E535A87F1F36983600E635CF /* newMessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E535A87E1F36983600E635CF /* newMessageTableViewController.swift */; };
 		E540D27A1F316FEB006523ED /* FriendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E540D2791F316FEB006523ED /* FriendTableViewController.swift */; };
 		E540D27D1F317275006523ED /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E540D27C1F317275006523ED /* User.swift */; };
 		E540D27F1F31BE3C006523ED /* ChatLogTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E540D27E1F31BE3C006523ED /* ChatLogTableController.swift */; };
@@ -44,6 +45,7 @@
 		E52D35CE1F2894C90030B08F /* extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
 		E52DA5411F32CFF400B1F02D /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		E52E1A941F2E1B4500C07A50 /* MapViewController+delegateHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MapViewController+delegateHandler.swift"; sourceTree = "<group>"; };
+		E535A87E1F36983600E635CF /* newMessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newMessageTableViewController.swift; sourceTree = "<group>"; };
 		E540D2791F316FEB006523ED /* FriendTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewController.swift; sourceTree = "<group>"; };
 		E540D27C1F317275006523ED /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E540D27E1F31BE3C006523ED /* ChatLogTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatLogTableController.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 		E59370AD1F285AF500FA1A72 = {
 			isa = PBXGroup;
 			children = (
+				E535A87E1F36983600E635CF /* newMessageTableViewController.swift */,
 				E5D648A01F3308F40075A4BA /* AnnotationView.swift */,
 				E5D6489F1F32FF580075A4BA /* CustomCallout */,
 				E540D27B1F317256006523ED /* Model */,
@@ -359,6 +362,7 @@
 				E54457801F29E22800BF8E2B /* ImageUploadViewController.swift in Sources */,
 				E540D27F1F31BE3C006523ED /* ChatLogTableController.swift in Sources */,
 				E54457821F29EDBC00BF8E2B /* ImageUploadViewController+handlers.swift in Sources */,
+				E535A87F1F36983600E635CF /* newMessageTableViewController.swift in Sources */,
 				E59370D21F2878C300FA1A72 /* MapViewController.swift in Sources */,
 				E5D6489E1F32FF2F0075A4BA /* CustomCalloutView.swift in Sources */,
 				E5E93DD11F2B0C2800DE01CE /* MapViewController+navigateHandler.swift in Sources */,

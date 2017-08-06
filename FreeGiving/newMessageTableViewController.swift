@@ -1,15 +1,15 @@
 //
-//  myTableViewController.swift
+//  newMessageTableViewController.swift
 //  FreeGiving
 //
-//  Created by Brady Huang on 2017/8/2.
+//  Created by Brady Huang on 2017/8/6.
 //  Copyright © 2017年 AppWorks. All rights reserved.
 //
 
 import UIKit
 import Firebase
 
-class FriendTableViewController: UITableViewController {
+class newMessageTableViewController: UITableViewController {
 
     let cellid = "cellid"
     
@@ -17,7 +17,7 @@ class FriendTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "mes", style: .plain, target: self, action: #selector(handleNewMessage))
@@ -67,7 +67,7 @@ class FriendTableViewController: UITableViewController {
     }
     
     func handleCancel() {
-        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -77,8 +77,8 @@ class FriendTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
-//        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellid)
-     
+        //        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellid)
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: cellid, for: indexPath)
         
         let user = users[indexPath.row]
@@ -88,4 +88,16 @@ class FriendTableViewController: UITableViewController {
         return cell
         
     }
+}
+
+class UserCell: UITableViewCell {
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 }
