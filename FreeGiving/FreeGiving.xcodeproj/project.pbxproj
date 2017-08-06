@@ -13,6 +13,7 @@
 		E52DA5421F32CFF400B1F02D /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52DA5411F32CFF400B1F02D /* Post.swift */; };
 		E52E1A951F2E1B4500C07A50 /* MapViewController+delegateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52E1A941F2E1B4500C07A50 /* MapViewController+delegateHandler.swift */; };
 		E535A87F1F36983600E635CF /* newMessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E535A87E1F36983600E635CF /* newMessageTableViewController.swift */; };
+		E535A8811F36DC0100E635CF /* myCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E535A8801F36DC0100E635CF /* myCollectionViewController.swift */; };
 		E540D27A1F316FEB006523ED /* FriendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E540D2791F316FEB006523ED /* FriendTableViewController.swift */; };
 		E540D27D1F317275006523ED /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E540D27C1F317275006523ED /* User.swift */; };
 		E540D27F1F31BE3C006523ED /* ChatLogTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E540D27E1F31BE3C006523ED /* ChatLogTableController.swift */; };
@@ -46,6 +47,7 @@
 		E52DA5411F32CFF400B1F02D /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		E52E1A941F2E1B4500C07A50 /* MapViewController+delegateHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MapViewController+delegateHandler.swift"; sourceTree = "<group>"; };
 		E535A87E1F36983600E635CF /* newMessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newMessageTableViewController.swift; sourceTree = "<group>"; };
+		E535A8801F36DC0100E635CF /* myCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myCollectionViewController.swift; sourceTree = "<group>"; };
 		E540D2791F316FEB006523ED /* FriendTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewController.swift; sourceTree = "<group>"; };
 		E540D27C1F317275006523ED /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E540D27E1F31BE3C006523ED /* ChatLogTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatLogTableController.swift; sourceTree = "<group>"; };
@@ -143,7 +145,7 @@
 		E59370AD1F285AF500FA1A72 = {
 			isa = PBXGroup;
 			children = (
-				E535A87E1F36983600E635CF /* newMessageTableViewController.swift */,
+				E535A8801F36DC0100E635CF /* myCollectionViewController.swift */,
 				E5D648A01F3308F40075A4BA /* AnnotationView.swift */,
 				E5D6489F1F32FF580075A4BA /* CustomCallout */,
 				E540D27B1F317256006523ED /* Model */,
@@ -196,6 +198,7 @@
 		E5D648941F32EAA50075A4BA /* FriendTableViewController */ = {
 			isa = PBXGroup;
 			children = (
+				E535A87E1F36983600E635CF /* newMessageTableViewController.swift */,
 				E540D2791F316FEB006523ED /* FriendTableViewController.swift */,
 				E540D27E1F31BE3C006523ED /* ChatLogTableController.swift */,
 			);
@@ -356,6 +359,7 @@
 			files = (
 				E55F22BD1F2C7C1500C9E862 /* LoactionSearchTableViewController.swift in Sources */,
 				E540D27A1F316FEB006523ED /* FriendTableViewController.swift in Sources */,
+				E535A8811F36DC0100E635CF /* myCollectionViewController.swift in Sources */,
 				E52D35CD1F288AAD0030B08F /* LoginViewController.swift in Sources */,
 				E5E93DD51F2B14B200DE01CE /* BSUAnnotation.swift in Sources */,
 				E5D648961F32F9A70075A4BA /* PostsAnnotation.swift in Sources */,

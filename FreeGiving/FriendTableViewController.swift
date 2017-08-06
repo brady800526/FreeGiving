@@ -35,15 +35,18 @@ class FriendTableViewController: UITableViewController {
     }
     
     func handleNewMessage() {
-        let newMessageController = newMessageTableViewController()
-        let navController = UINavigationController(rootViewController: newMessageController)
-        present(navController, animated: true, completion: nil)
+        
+        let test: myCollectionViewController = storyboard!.instantiateViewController(withIdentifier: "my") as! myCollectionViewController
+
+        navigationController?.pushViewController(test, animated: true)
     }
     
     func showChatController() {
-        let chatLogController = ChatLogTableController(collectionViewLayout: UICollectionViewFlowLayout())
-        let nav = UINavigationController(rootViewController: chatLogController)
-        present(nav, animated: true)
+        let registrationView = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "chatPage") as! ChatLogTableController
+        let test: myCollectionViewController = storyboard!.instantiateViewController(withIdentifier: "my") as! myCollectionViewController
+        //        let newMessageController = ChatLogTableController()
+        //        let navController = UINavigationController(rootViewController: newMessageController)
+        navigationController?.pushViewController(test, animated: true)
     }
     
     func fetchUser() {
@@ -53,7 +56,6 @@ class FriendTableViewController: UITableViewController {
             if let dictionary = snapshot.value as? [String: AnyObject] {
                 let user = User()
                 user.setValuesForKeys(dictionary)
-                print(user.name, user.email)
                 self.users.append(user)
                 
                 DispatchQueue.main.async {
@@ -67,7 +69,8 @@ class FriendTableViewController: UITableViewController {
     }
     
     func handleCancel() {
-        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+//        navigationController?.popViewController(animated: true)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -88,4 +91,28 @@ class FriendTableViewController: UITableViewController {
         return cell
         
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 72
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        dismiss(animated: true, completion: nil)
+        
+    }
+}
+
+class UserCell: UITableViewCell {
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 }

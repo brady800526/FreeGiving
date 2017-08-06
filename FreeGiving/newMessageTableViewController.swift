@@ -11,93 +11,16 @@ import Firebase
 
 class newMessageTableViewController: UITableViewController {
 
-    let cellid = "cellid"
-    
-    var users = [User]()
-    
     override func viewDidLoad() {
-        super.viewDidLoad()
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "mess", style: .plain, target: self, action: #selector(showChatController))
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "mes", style: .plain, target: self, action: #selector(handleNewMessage))
-        
-        tableView.register(UserCell.self, forCellReuseIdentifier: cellid)
-        
-        fetchUser()
-        
-        let button =  UIButton(type: .custom)
-        button.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
-        button.backgroundColor = UIColor.red
-        button.setTitle("Button", for: .normal)
-        button.addTarget(self, action: #selector(showChatController), for: .touchUpInside)
-        self.navigationItem.titleView = button
-    }
-    
-    func handleNewMessage() {
-        let newMessageController = newMessageTableViewController()
-        let navController = UINavigationController(rootViewController: newMessageController)
-        present(navController, animated: true, completion: nil)
     }
     
     func showChatController() {
-        let chatLogController = ChatLogTableController(collectionViewLayout: UICollectionViewFlowLayout())
-        let nav = UINavigationController(rootViewController: chatLogController)
-        present(nav, animated: true)
-    }
-    
-    func fetchUser() {
-        
-        Database.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
-            
-            if let dictionary = snapshot.value as? [String: AnyObject] {
-                let user = User()
-                user.setValuesForKeys(dictionary)
-                print(user.name, user.email)
-                self.users.append(user)
-                
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-                
-            }
-            
-        })
-        
-    }
-    
-    func handleCancel() {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        
-        //        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellid)
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellid, for: indexPath)
-        
-        let user = users[indexPath.row]
-        cell.textLabel?.text = user.name
-        cell.detailTextLabel?.text = user.email
-        
-        return cell
-        
+        let vc = FriendTableViewController()
+        let nv = UINavigationController(rootViewController: vc)
+        present(nv, animated: true, completion: nil)
     }
 }
 
-class UserCell: UITableViewCell {
-    
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-}

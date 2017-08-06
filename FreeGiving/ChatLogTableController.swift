@@ -24,7 +24,7 @@ class ChatLogTableController: UICollectionViewController, UITextFieldDelegate {
 
         navigationItem.title = "Chat Log Controlller"
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "back", style: .plain, target: self, action: #selector(handleDismiss))
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "back", style: .plain, target: self, action: #selector(handleDismiss))
         
         collectionView?.backgroundColor = UIColor.white
         
@@ -32,8 +32,7 @@ class ChatLogTableController: UICollectionViewController, UITextFieldDelegate {
     }
     
     func handleDismiss() {
-        dismiss(animated: true, completion: nil)
-    }
+     }
 
     func setupInputComponent() {
 
