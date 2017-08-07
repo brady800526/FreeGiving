@@ -17,14 +17,14 @@ class newMessageTableViewController: UITableViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "mess", style: .plain, target: self, action: #selector(handleNewMessage))
         
-        let button =  UIButton(type: .custom)
-        button.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
-        button.backgroundColor = UIColor.red
-        button.setTitle("Button", for: .normal)
+//        let button =  UIButton(type: .custom)
+//        button.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
+//        button.backgroundColor = UIColor.red
+//        button.setTitle("Button", for: .normal)
 //        button.addTarget(self, action: #selector(showChatController), for: .touchUpInside)
-        self.navigationItem.titleView = button
+//        self.navigationItem.titleView = button
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
+        tableView.register(UserCell.self, forCellReuseIdentifier: cellId)
         
 //        observeMessages()user
         
@@ -128,7 +128,9 @@ class newMessageTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! UserCell
         
         let message = messages[indexPath.row]
+
         cell.message = message
+
         return cell
     }
     
@@ -172,7 +174,7 @@ class newMessageTableViewController: UITableViewController {
     }
     
     func showChatControllerForUser(user: User) {
-        let vc = ChatLogTableController(collectionViewLayout: UICollectionViewLayout())
+        let vc = ChatLogTableController(collectionViewLayout: UICollectionViewFlowLayout())
         vc.user = user
         let nv = UINavigationController(rootViewController: vc)
         present(nv, animated: true)

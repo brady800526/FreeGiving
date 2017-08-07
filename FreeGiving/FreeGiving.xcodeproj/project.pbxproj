@@ -125,6 +125,14 @@
 			name = LoactionSearchTableViewController;
 			sourceTree = "<group>";
 		};
+		E53176221F389838002D8CDF /* SearchItemViewCom */ = {
+			isa = PBXGroup;
+			children = (
+				E5E93D8D1F2AB81000DE01CE /* SearchItemViewController.swift */,
+			);
+			name = SearchItemViewCom;
+			sourceTree = "<group>";
+		};
 		E53A7F111F374EB10022DE9A /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,7 +187,7 @@
 		E59370B81F285AF500FA1A72 /* FreeGiving */ = {
 			isa = PBXGroup;
 			children = (
-				E5E93D8D1F2AB81000DE01CE /* SearchItemViewController.swift */,
+				E53176221F389838002D8CDF /* SearchItemViewCom */,
 				E5E93D8B1F2AB75B00DE01CE /* OwnerProductTableViewController.swift */,
 				E53A7F111F374EB10022DE9A /* View */,
 				E540D27B1F317256006523ED /* Model */,

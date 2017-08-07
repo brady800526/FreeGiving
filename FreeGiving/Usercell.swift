@@ -13,6 +13,7 @@ import Firebase
 class UserCell: UITableViewCell {
     
     var message: Message? {
+
         didSet {
             setupNameAndProfileImage()
             self.detailTextLabel?.text = message?.text

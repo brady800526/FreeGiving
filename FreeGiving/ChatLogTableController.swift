@@ -44,6 +44,14 @@ class ChatLogTableController: UICollectionViewController, UITextFieldDelegate, U
                 
                 let message = Message()
                 message.setValuesForKeys(dictionary)
+                
+                if message.chatPartnerId() == self.user?.id {
+                    self.messages.append(message)
+                    DispatchQueue.main.async {
+                        self.collectionView?.reloadData()
+                    }
+                }
+                
                 self.messages.append(message)
                 
                 DispatchQueue.main.async {
@@ -70,9 +78,11 @@ class ChatLogTableController: UICollectionViewController, UITextFieldDelegate, U
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "back", style: .plain, target: self, action: #selector(handleDismiss))
         
+        collectionView?.alwaysBounceVertical = true
+        
         collectionView?.backgroundColor = UIColor.white
         
-        collectionView?.register(FriendCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.register(ChatMessageCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         
         setupInputComponent()
     }
@@ -82,21 +92,28 @@ class ChatLogTableController: UICollectionViewController, UITextFieldDelegate, U
     }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 5
+        return messages.count
         
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: view.frame.height, height: 80)
+        return CGSize(width: view.frame.width, height: 80)
         
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-
-        cell.backgroundColor = UIColor.blue
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ChatMessageCollectionViewCell
+        
+        let message = messages[indexPath.row]
+        cell.textView.text = message.text
+        
+        if message.fromId == Auth.auth().currentUser?.uid {
+            cell.backgroundColor = UIColor.blue
+        } else {
+            cell.backgroundColor = UIColor.lightGray
+        }
         
         return cell
         
@@ -181,48 +198,4 @@ class ChatLogTableController: UICollectionViewController, UITextFieldDelegate, U
         handleSend()
         return true
     }
-}
-
-import UIKit
-
-class FriendsController: UICollectionViewController {
-    
-    private let cellId = "cellId"
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        collectionView?.backgroundColor = UIColor.white
-        collectionView?.register(FriendCell.self, forCellWithReuseIdentifier: cellId)
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-    }
-    
-    
-}
-
-class FriendCell: UICollectionViewCell {
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupViews()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setupViews() {
-        
-        backgroundColor = UIColor.blue
-    }
-    
-    
 }
