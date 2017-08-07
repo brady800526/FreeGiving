@@ -48,7 +48,7 @@ extension LoginViewController {
             }
             
             self.mapViewController?.fetchUserAndSetupNavBarTitle()
-
+            
             self.dismiss(animated: true, completion: nil)
 
         }
@@ -113,6 +113,8 @@ extension LoginViewController {
                 
                 self.mapViewController?.fetchUserAndSetupNavBarTitle()
 
+                self.mapViewController?.navigationItem.title = values["name"] as?  String
+                
                 self.dismiss(animated: true, completion: nil)
 
             })

@@ -114,8 +114,6 @@ class MapViewController: UIViewController {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        // FIXME: Can't get the username since search bar override this title
-        
         ref.child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
             
             if let dictionary = snapshot.value as? [String:Any] {

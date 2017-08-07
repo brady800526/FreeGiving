@@ -30,7 +30,7 @@ class FriendTableViewController: UITableViewController {
     
     func handleNewMessage() {
         
-        let chatLog = ChatLogTableController(collectionViewLayout: UICollectionViewLayout())
+        let chatLog = ChatLogTableController(collectionViewLayout: UICollectionViewFlowLayout())
         navigationController?.pushViewController(chatLog, animated: true)
     }
     

@@ -10,12 +10,51 @@ import Foundation
 import UIKit
 import Firebase
 
-class ChatLogTableController: UICollectionViewController, UITextFieldDelegate {
+class ChatLogTableController: UICollectionViewController, UITextFieldDelegate, UICollectionViewDelegateFlowLayout {
+    
+    let cellId = "cellId"
     
     var user: User? {
+
         didSet {
             navigationItem.title = user?.name
+            
+            observeMessage()
         }
+    }
+    
+    var messages = [Message]()
+    
+    func observeMessage() {
+        guard let uid = Auth.auth().currentUser?.uid else {
+            return
+        }
+        
+        let userMessageRef = Database.database().reference().child("user-messages").child(uid)
+        userMessageRef.observe(.childAdded, with: { (snapshot) in
+            let messageId = snapshot.key
+            let messagesRef = Database.database().reference().child("messages").child(messageId)
+            messagesRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                print(snapshot)
+                
+                guard let dictionary = snapshot.value as? [String: AnyObject] else {
+                    return
+                }
+                
+                let message = Message()
+                message.setValuesForKeys(dictionary)
+                self.messages.append(message)
+                
+                DispatchQueue.main.async {
+                    
+                    self.collectionView?.reloadData()
+                    
+                }
+                
+            }, withCancel: nil)
+            
+        }, withCancel: nil)
     }
     
     lazy var inputTextField: UITextField = {
@@ -33,7 +72,34 @@ class ChatLogTableController: UICollectionViewController, UITextFieldDelegate {
         
         collectionView?.backgroundColor = UIColor.white
         
+        collectionView?.register(FriendCell.self, forCellWithReuseIdentifier: cellId)
+        
         setupInputComponent()
+    }
+   
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return 5
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: view.frame.height, height: 80)
+        
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+
+        cell.backgroundColor = UIColor.blue
+        
+        return cell
+        
     }
     
     func handleDismiss() {
@@ -45,6 +111,7 @@ class ChatLogTableController: UICollectionViewController, UITextFieldDelegate {
     func setupInputComponent() {
 
         let containerView = UIView()
+        containerView.backgroundColor = UIColor.white
         containerView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(containerView)
@@ -93,7 +160,20 @@ class ChatLogTableController: UICollectionViewController, UITextFieldDelegate {
         let fromId = Auth.auth().currentUser!.uid
         let timestamp: NSNumber = NSNumber(value: Date().timeIntervalSinceReferenceDate)
         let values = ["text": inputTextField.text!, "toId": toId, "fromId": fromId, "timestamp": timestamp] as [String : Any]
-        childRef.updateChildValues(values)
+//        childRef.updateChildValues(values)
+        childRef.updateChildValues(values) { (error, ref) in
+            if error != nil {
+                print(error)
+                return
+            }
+            
+            let userMessageRef = Database.database().reference().child("user-messages").child(fromId)
+            let messageId = childRef.key
+            userMessageRef.updateChildValues([messageId : 1])
+            
+            let recipientUserMessageRef = Database.database().reference().child("user-messages").child(toId)
+            recipientUserMessageRef.updateChildValues([messageId: 1])
+        }
         
     }
     
@@ -101,4 +181,48 @@ class ChatLogTableController: UICollectionViewController, UITextFieldDelegate {
         handleSend()
         return true
     }
+}
+
+import UIKit
+
+class FriendsController: UICollectionViewController {
+    
+    private let cellId = "cellId"
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        collectionView?.backgroundColor = UIColor.white
+        collectionView?.register(FriendCell.self, forCellWithReuseIdentifier: cellId)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+    }
+    
+    
+}
+
+class FriendCell: UICollectionViewCell {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupViews()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupViews() {
+        
+        backgroundColor = UIColor.blue
+    }
+    
+    
 }
