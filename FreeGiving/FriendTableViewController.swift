@@ -20,23 +20,19 @@ class FriendTableViewController: UITableViewController {
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
         
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "mes", style: .plain, target: self, action: #selector(handleNewMessage))
+        
         tableView.register(UserCell.self, forCellReuseIdentifier: cellid)
         
         fetchUser()
         
-        let button =  UIButton(type: .custom)
-        button.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
-        button.backgroundColor = UIColor.red
-        button.setTitle("Button", for: .normal)
-        button.addTarget(self, action: #selector(showChatController), for: .touchUpInside)
-        self.navigationItem.titleView = button
     }
     
-    func showChatController() {
-        let chatLogController = ChatLogTableController(collectionViewLayout: UICollectionViewFlowLayout())
-        let nav = UINavigationController(rootViewController: chatLogController)
-        present(nav, animated: true)
-    }
+//    func handleNewMessage() {
+//        
+//        let chatLog = ChatLogTableController(collectionViewLayout: UICollectionViewFlowLayout())
+//        navigationController?.pushViewController(chatLog, animated: true)
+//    }
     
     func fetchUser() {
         
@@ -44,8 +40,9 @@ class FriendTableViewController: UITableViewController {
             
             if let dictionary = snapshot.value as? [String: AnyObject] {
                 let user = User()
+                user.id = snapshot.key
+                
                 user.setValuesForKeys(dictionary)
-                print(user.name, user.email)
                 self.users.append(user)
                 
                 DispatchQueue.main.async {
@@ -59,7 +56,8 @@ class FriendTableViewController: UITableViewController {
     }
     
     func handleCancel() {
-        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+//        navigationController?.popViewController(animated: true)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,16 +78,21 @@ class FriendTableViewController: UITableViewController {
         return cell
         
     }
-}
-
-class UserCell: UITableViewCell {
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 72
+        
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var messageController: MessageTableViewController?
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        dismiss(animated: true)  {
+            let user = self.users[indexPath.row]
+            self.messageController?.showChatControllerForUser(user: user)
+        }
+        
+    }
 }

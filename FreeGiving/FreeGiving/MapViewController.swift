@@ -44,7 +44,7 @@ class MapViewController: UIViewController {
         setLocationSearchTable()
         
         fetchAnnotations()
-
+        
     }
     
     func fetchAnnotations() {
@@ -113,8 +113,6 @@ class MapViewController: UIViewController {
         let ref = Database.database().reference()
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
-        
-        // FIXME: Can't get the username since search bar override this title
         
         ref.child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
             
