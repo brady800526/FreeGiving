@@ -190,9 +190,9 @@
 		E59370B81F285AF500FA1A72 /* FreeGiving */ = {
 			isa = PBXGroup;
 			children = (
+				E53A7F111F374EB10022DE9A /* View */,
 				E53176221F389838002D8CDF /* SearchItemViewCom */,
 				E5E93D8B1F2AB75B00DE01CE /* OwnerProductTableViewController.swift */,
-				E53A7F111F374EB10022DE9A /* View */,
 				E540D27B1F317256006523ED /* Model */,
 				E59370CE1F28730400FA1A72 /* Controller */,
 				E59370B91F285AF500FA1A72 /* AppDelegate.swift */,

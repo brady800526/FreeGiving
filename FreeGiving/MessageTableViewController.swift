@@ -6,6 +6,7 @@
 //  Copyright © 2017年 AppWorks. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import Firebase
 
@@ -75,9 +76,8 @@ class MessageTableViewController: UITableViewController {
                         })
                     }
                     
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
+                    self.timer?.invalidate()
+                    self.timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(self.handleReloadTable), userInfo: nil, repeats: nil)
 
                 }
                 
@@ -89,37 +89,16 @@ class MessageTableViewController: UITableViewController {
         
     }
     
-//    func observeMessages() {
-//        
-//        let ref = Database.database().reference().child("messages")
-//        
-//        ref.observe(.childAdded, with: { (snapshot) in
-//            
-//            if let dictionary = snapshot.value as? [String: Any] {
-//                
-//                let message = Message()
-//                
-//                message.setValuesForKeys(dictionary)
-//                
-//                print(message.text!)
-//                
-//                self.messages.append(message)
-//                
-//                if let toId = message.toId {
-//                    self.messagesDictionary[toId] = message
-//                    self.messages = Array(self.messagesDictionary.values)
-//                    self.messages.sort(by: { (message1, message2) -> Bool in
-//                        return (message1.timestamp?.intValue)! > (message2.timestamp?.intValue)!
-//                    })
-//                }
-//                
-//                DispatchQueue.main.async {
-//                    self.tableView.reloadData()
-//                }
-//            }
-//            
-//        }, withCancel: nil)
-//    }
+    var timer: Timer?
+    
+    func handleReloadTable() {
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+        
+    }
+    
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         

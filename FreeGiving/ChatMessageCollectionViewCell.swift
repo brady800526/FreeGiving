@@ -22,7 +22,7 @@ class ChatMessageCollectionViewCell: UICollectionViewCell {
     
     let bubbleView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(red: 0, green: 137/255, blue: 249/255, alpha: 1)
+//        view.backgroundColor = UIColor(red: 0, green: 137/255, blue: 249/255, alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 16
         view.layer.masksToBounds = true
@@ -30,21 +30,26 @@ class ChatMessageCollectionViewCell: UICollectionViewCell {
     }()
     
     var bubbleWidthAnchor: NSLayoutConstraint?
+    var bubbleViewRightAnchor: NSLayoutConstraint?
+    var bubbleViewLeftAnchor: NSLayoutConstraint?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(bubbleView)
         addSubview(textView)
         
-        bubbleView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8).isActive = true
+        bubbleViewRightAnchor =  bubbleView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8)
+        bubbleViewRightAnchor?.isActive = true
         bubbleView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        bubbleView.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        bubbleViewLeftAnchor = bubbleView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8)
+        bubbleWidthAnchor = bubbleView.widthAnchor.constraint(equalToConstant: 200)
+        bubbleWidthAnchor?.isActive = true
         bubbleView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
         
         textView.rightAnchor.constraint(equalTo: bubbleView.rightAnchor).isActive = true
         textView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         textView.leftAnchor.constraint(equalTo: bubbleView.leftAnchor, constant: 8).isActive = true
-//        textView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+        textView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
     }
     
     required init?(coder aDecoder: NSCoder) {

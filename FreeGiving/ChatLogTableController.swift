@@ -137,15 +137,29 @@ class ChatLogTableController: UICollectionViewController, UITextFieldDelegate, U
         
         let message = messages[indexPath.item]
         cell.textView.text = message.text
-        
-//        if message.fromId == Auth.auth().currentUser?.uid {
-//            cell.backgroundColor = UIColor.blue
-//        } else {
-//            cell.backgroundColor = UIColor.lightGray
-//        }
+
         cell.bubbleWidthAnchor?.constant = estimateFrameForText(text: message.text!).width + 32
         
+        setupCell(cell: cell, message: message)
+        
         return cell
+        
+    }
+    
+    private func setupCell(cell: ChatMessageCollectionViewCell, message: Message) {
+        
+        if message.fromId == Auth.auth().currentUser?.uid {
+            cell.bubbleView.backgroundColor = UIColor(red: 0, green: 137/255, blue: 249/255, alpha: 1)
+            cell.textView.textColor = UIColor.white
+            cell.bubbleViewRightAnchor?.isActive = true
+            cell.bubbleViewLeftAnchor?.isActive = false
+        } else {
+            cell.bubbleView.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
+            cell.textView.textColor = UIColor.black
+            
+            cell.bubbleViewRightAnchor?.isActive = false
+            cell.bubbleViewLeftAnchor?.isActive = true
+        }
         
     }
     
