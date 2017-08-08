@@ -257,7 +257,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d4z-og-u1d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-655" y="1502"/>
+            <point key="canvasLocation" x="1183" y="739"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -377,7 +377,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nLX-uR-mge" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3100" y="-3"/>
+            <point key="canvasLocation" x="3174" y="-713"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="lOi-h5-xjA">
@@ -397,25 +397,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6bZ-zr-FZu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1953" y="-217"/>
-        </scene>
-        <!--Search Item View Controller-->
-        <scene sceneID="nIw-Mh-dFn">
-            <objects>
-                <viewController id="hh6-RL-T9l" customClass="SearchItemViewController" customModule="FreeGiving" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="GSF-sF-vgf"/>
-                        <viewControllerLayoutGuide type="bottom" id="emu-JR-Gfl"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Kc3-25-oJn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="mOb-R8-zZc"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2jN-dP-eoG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="309" y="739"/>
         </scene>
         <!--Item-->
         <scene sceneID="b7f-VI-amD">
@@ -457,12 +438,47 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="hh6-RL-T9l" kind="relationship" relationship="rootViewController" id="9ZN-gV-nn6"/>
+                        <segue destination="72Y-92-QqW" kind="relationship" relationship="rootViewController" id="1Y4-CH-bjs"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i03-vw-dsl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-655" y="739"/>
+        </scene>
+        <!--Search Item Collection View Controller-->
+        <scene sceneID="rPv-Bp-B3t">
+            <objects>
+                <collectionViewController id="72Y-92-QqW" customClass="SearchItemCollectionViewController" customModule="FreeGiving" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="ahc-77-l1o">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tmg-JD-hqW">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="wCO-el-mG8">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="72Y-92-QqW" id="iF3-pW-gzO"/>
+                            <outlet property="delegate" destination="72Y-92-QqW" id="dhd-36-k8U"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="Jux-B4-dAW"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Bc-Gw-wPl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="252" y="739"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Afo-Xz-E4r">

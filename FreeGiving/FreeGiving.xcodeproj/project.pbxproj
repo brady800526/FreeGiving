@@ -16,6 +16,8 @@
 		E535A87F1F36983600E635CF /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E535A87E1F36983600E635CF /* MessageTableViewController.swift */; };
 		E53A7F101F37464C0022DE9A /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53A7F0F1F37464C0022DE9A /* Message.swift */; };
 		E53A7F131F374EC10022DE9A /* Usercell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53A7F121F374EC10022DE9A /* Usercell.swift */; };
+		E53D861E1F3A2FA20034131B /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53D861D1F3A2FA20034131B /* CollectionViewController.swift */; };
+		E53D86201F3A30FC0034131B /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53D861F1F3A30FC0034131B /* PostCollectionViewCell.swift */; };
 		E53FD3191F3969280094E18A /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53FD3181F3969280094E18A /* TableViewCell.swift */; };
 		E540D27A1F316FEB006523ED /* FriendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E540D2791F316FEB006523ED /* FriendTableViewController.swift */; };
 		E540D27D1F317275006523ED /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E540D27C1F317275006523ED /* User.swift */; };
@@ -52,6 +54,8 @@
 		E535A87E1F36983600E635CF /* MessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewController.swift; sourceTree = "<group>"; };
 		E53A7F0F1F37464C0022DE9A /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		E53A7F121F374EC10022DE9A /* Usercell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usercell.swift; sourceTree = "<group>"; };
+		E53D861D1F3A2FA20034131B /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		E53D861F1F3A30FC0034131B /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
 		E53FD3181F3969280094E18A /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		E540D2791F316FEB006523ED /* FriendTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewController.swift; sourceTree = "<group>"; };
 		E540D27C1F317275006523ED /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -131,8 +135,10 @@
 			isa = PBXGroup;
 			children = (
 				E5E93D8D1F2AB81000DE01CE /* SearchItemViewController.swift */,
+				E5E93D8B1F2AB75B00DE01CE /* OwnerProductTableViewController.swift */,
 			);
 			name = SearchItemViewCom;
+			path = FreeGiving;
 			sourceTree = "<group>";
 		};
 		E53A7F111F374EB10022DE9A /* View */ = {
@@ -142,6 +148,7 @@
 				E53FD3181F3969280094E18A /* TableViewCell.swift */,
 				E53A7F0F1F37464C0022DE9A /* Message.swift */,
 				E53175FE1F38541B002D8CDF /* ChatMessageCollectionViewCell.swift */,
+				E53D861F1F3A30FC0034131B /* PostCollectionViewCell.swift */,
 				E5D648A01F3308F40075A4BA /* AnnotationView.swift */,
 			);
 			name = View;
@@ -191,8 +198,6 @@
 			isa = PBXGroup;
 			children = (
 				E53A7F111F374EB10022DE9A /* View */,
-				E53176221F389838002D8CDF /* SearchItemViewCom */,
-				E5E93D8B1F2AB75B00DE01CE /* OwnerProductTableViewController.swift */,
 				E540D27B1F317256006523ED /* Model */,
 				E59370CE1F28730400FA1A72 /* Controller */,
 				E59370B91F285AF500FA1A72 /* AppDelegate.swift */,
@@ -202,6 +207,7 @@
 				E59370C51F285AF500FA1A72 /* Info.plist */,
 				E59370CB1F28642D00FA1A72 /* GoogleService-Info.plist */,
 				E52D35CE1F2894C90030B08F /* extension.swift */,
+				E53D861D1F3A2FA20034131B /* CollectionViewController.swift */,
 			);
 			path = FreeGiving;
 			sourceTree = "<group>";
@@ -209,6 +215,7 @@
 		E59370CE1F28730400FA1A72 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E53176221F389838002D8CDF /* SearchItemViewCom */,
 				E52E8DCF1F2F5C1700B2EB73 /* MapViewController */,
 				E52E8DD11F2F60A300B2EB73 /* LoactionSearchTableViewController */,
 				E55F22BE1F2C7F6500C9E862 /* loginViewController */,
@@ -392,8 +399,10 @@
 				E52DA5421F32CFF400B1F02D /* Post.swift in Sources */,
 				E5E93D8E1F2AB81000DE01CE /* SearchItemViewController.swift in Sources */,
 				E53A7F101F37464C0022DE9A /* Message.swift in Sources */,
+				E53D861E1F3A2FA20034131B /* CollectionViewController.swift in Sources */,
 				E52E1A951F2E1B4500C07A50 /* MapViewController+delegateHandler.swift in Sources */,
 				E52D35CF1F2894C90030B08F /* extension.swift in Sources */,
+				E53D86201F3A30FC0034131B /* PostCollectionViewCell.swift in Sources */,
 				E5D648A11F3308F40075A4BA /* AnnotationView.swift in Sources */,
 				E5E93D8C1F2AB75B00DE01CE /* OwnerProductTableViewController.swift in Sources */,
 				E5E93DD91F2B39F400DE01CE /* LoginViewController+loginHandler.swift in Sources */,
