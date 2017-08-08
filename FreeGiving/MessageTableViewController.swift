@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class newMessageTableViewController: UITableViewController {
+class MessageTableViewController: UITableViewController {
 
     let cellId = "cellId"
 
@@ -158,7 +158,7 @@ class newMessageTableViewController: UITableViewController {
             let user = User()
             user.id = chatPartnerId
             user.setValuesForKeys(dictionary)
-//            self.showChatControllerForUser(user: user)
+            self.showChatControllerForUser(user: user)
             
         }, withCancel: nil)
         

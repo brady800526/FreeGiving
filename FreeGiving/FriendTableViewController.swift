@@ -20,7 +20,7 @@ class FriendTableViewController: UITableViewController {
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "mes", style: .plain, target: self, action: #selector(handleNewMessage))
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "mes", style: .plain, target: self, action: #selector(handleNewMessage))
         
         tableView.register(UserCell.self, forCellReuseIdentifier: cellid)
         
@@ -28,11 +28,11 @@ class FriendTableViewController: UITableViewController {
         
     }
     
-    func handleNewMessage() {
-        
-        let chatLog = ChatLogTableController(collectionViewLayout: UICollectionViewFlowLayout())
-        navigationController?.pushViewController(chatLog, animated: true)
-    }
+//    func handleNewMessage() {
+//        
+//        let chatLog = ChatLogTableController(collectionViewLayout: UICollectionViewFlowLayout())
+//        navigationController?.pushViewController(chatLog, animated: true)
+//    }
     
     func fetchUser() {
         
@@ -85,7 +85,7 @@ class FriendTableViewController: UITableViewController {
         
     }
     
-    var messageController: newMessageTableViewController?
+    var messageController: MessageTableViewController?
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

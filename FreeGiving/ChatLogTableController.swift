@@ -17,42 +17,55 @@ class ChatLogTableController: UICollectionViewController, UITextFieldDelegate, U
     var user: User? {
 
         didSet {
+
             navigationItem.title = user?.name
             
             observeMessage()
         }
+
     }
     
     var messages = [Message]()
     
     func observeMessage() {
+
         guard let uid = Auth.auth().currentUser?.uid else {
+
             return
+
         }
         
         let userMessageRef = Database.database().reference().child("user-messages").child(uid)
         userMessageRef.observe(.childAdded, with: { (snapshot) in
+
             let messageId = snapshot.key
+
             let messagesRef = Database.database().reference().child("messages").child(messageId)
+
             messagesRef.observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 print(snapshot)
                 
                 guard let dictionary = snapshot.value as? [String: AnyObject] else {
+
                     return
+
                 }
                 
                 let message = Message()
+
                 message.setValuesForKeys(dictionary)
                 
                 if message.chatPartnerId() == self.user?.id {
+
                     self.messages.append(message)
+
                     DispatchQueue.main.async {
+
                         self.collectionView?.reloadData()
+
                     }
                 }
-                
-                self.messages.append(message)
                 
                 DispatchQueue.main.async {
                     
@@ -143,7 +156,6 @@ class ChatLogTableController: UICollectionViewController, UITextFieldDelegate, U
         sendButton.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(sendButton)
         sendButton.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
- 
         
         sendButton.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
         sendButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
@@ -169,15 +181,27 @@ class ChatLogTableController: UICollectionViewController, UITextFieldDelegate, U
         
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        handleSend()
+        return true
+    }
+    
     func handleSend() {
         
         let ref = Database.database().reference().child("messages")
+
         let childRef = ref.childByAutoId()
+
         let toId = user!.id!
+
         let fromId = Auth.auth().currentUser!.uid
+
         let timestamp: NSNumber = NSNumber(value: Date().timeIntervalSinceReferenceDate)
+
         let values = ["text": inputTextField.text!, "toId": toId, "fromId": fromId, "timestamp": timestamp] as [String : Any]
-//        childRef.updateChildValues(values)
+
+        //        childRef.updateChildValues(values)
+
         childRef.updateChildValues(values) { (error, ref) in
             if error != nil {
                 print(error)
@@ -185,17 +209,15 @@ class ChatLogTableController: UICollectionViewController, UITextFieldDelegate, U
             }
             
             let userMessageRef = Database.database().reference().child("user-messages").child(fromId)
+
             let messageId = childRef.key
+
             userMessageRef.updateChildValues([messageId : 1])
             
             let recipientUserMessageRef = Database.database().reference().child("user-messages").child(toId)
+
             recipientUserMessageRef.updateChildValues([messageId: 1])
         }
         
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        handleSend()
-        return true
     }
 }
