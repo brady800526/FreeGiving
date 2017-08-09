@@ -61,16 +61,11 @@ class MessageTableViewController: UITableViewController {
                     
                     message.setValuesForKeys(dictionary)
                     
-                    print(message.text!)
-                    
                     self.messages.append(message)
-                    
-                    print(self.messages.count)
                     
                     if let chatPartnerId = message.chatPartnerId() {
                         self.messagesDictionary[chatPartnerId] = message
                         self.messages = Array(self.messagesDictionary.values)
-                        print(self.messagesDictionary.count)
                         self.messages.sort(by: { (message1, message2) -> Bool in
                             return (message1.timestamp?.intValue)! > (message2.timestamp?.intValue)!
                         })

@@ -67,12 +67,6 @@ class ChatLogTableController: UICollectionViewController, UITextFieldDelegate, U
                     }
                 }
                 
-                DispatchQueue.main.async {
-                    
-                    self.collectionView?.reloadData()
-                    
-                }
-                
             }, withCancel: nil)
             
         }, withCancel: nil)

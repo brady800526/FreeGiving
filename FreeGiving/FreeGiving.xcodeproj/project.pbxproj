@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		93D8CB927A7388E4F77E81C0 /* Pods_FreeGiving.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 120963B07886DCE7B2DB2C1D /* Pods_FreeGiving.framework */; };
+		E52B87B71F3AD6A000361249 /* ProductPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52B87B61F3AD6A000361249 /* ProductPost.swift */; };
 		E52D35CD1F288AAD0030B08F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52D35CC1F288AAD0030B08F /* LoginViewController.swift */; };
 		E52D35CF1F2894C90030B08F /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52D35CE1F2894C90030B08F /* extension.swift */; };
 		E52DA5421F32CFF400B1F02D /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52DA5411F32CFF400B1F02D /* Post.swift */; };
@@ -18,7 +19,6 @@
 		E53A7F131F374EC10022DE9A /* Usercell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53A7F121F374EC10022DE9A /* Usercell.swift */; };
 		E53D861E1F3A2FA20034131B /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53D861D1F3A2FA20034131B /* CollectionViewController.swift */; };
 		E53D86201F3A30FC0034131B /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53D861F1F3A30FC0034131B /* PostCollectionViewCell.swift */; };
-		E53FD3191F3969280094E18A /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53FD3181F3969280094E18A /* TableViewCell.swift */; };
 		E540D27A1F316FEB006523ED /* FriendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E540D2791F316FEB006523ED /* FriendTableViewController.swift */; };
 		E540D27D1F317275006523ED /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E540D27C1F317275006523ED /* User.swift */; };
 		E540D27F1F31BE3C006523ED /* ChatLogTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E540D27E1F31BE3C006523ED /* ChatLogTableController.swift */; };
@@ -46,6 +46,7 @@
 		120963B07886DCE7B2DB2C1D /* Pods_FreeGiving.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FreeGiving.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86315F7C05B604C783DE93DA /* Pods-FreeGiving.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeGiving.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FreeGiving/Pods-FreeGiving.debug.xcconfig"; sourceTree = "<group>"; };
 		C26005079E9120F8E6245187 /* Pods-FreeGiving.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeGiving.release.xcconfig"; path = "Pods/Target Support Files/Pods-FreeGiving/Pods-FreeGiving.release.xcconfig"; sourceTree = "<group>"; };
+		E52B87B61F3AD6A000361249 /* ProductPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductPost.swift; sourceTree = "<group>"; };
 		E52D35CC1F288AAD0030B08F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = FreeGiving/LoginViewController.swift; sourceTree = "<group>"; };
 		E52D35CE1F2894C90030B08F /* extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
 		E52DA5411F32CFF400B1F02D /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -56,7 +57,6 @@
 		E53A7F121F374EC10022DE9A /* Usercell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usercell.swift; sourceTree = "<group>"; };
 		E53D861D1F3A2FA20034131B /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		E53D861F1F3A30FC0034131B /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
-		E53FD3181F3969280094E18A /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		E540D2791F316FEB006523ED /* FriendTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewController.swift; sourceTree = "<group>"; };
 		E540D27C1F317275006523ED /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E540D27E1F31BE3C006523ED /* ChatLogTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatLogTableController.swift; sourceTree = "<group>"; };
@@ -145,7 +145,6 @@
 			isa = PBXGroup;
 			children = (
 				E53A7F121F374EC10022DE9A /* Usercell.swift */,
-				E53FD3181F3969280094E18A /* TableViewCell.swift */,
 				E53A7F0F1F37464C0022DE9A /* Message.swift */,
 				E53175FE1F38541B002D8CDF /* ChatMessageCollectionViewCell.swift */,
 				E53D861F1F3A30FC0034131B /* PostCollectionViewCell.swift */,
@@ -160,6 +159,7 @@
 			children = (
 				E540D27C1F317275006523ED /* User.swift */,
 				E52DA5411F32CFF400B1F02D /* Post.swift */,
+				E52B87B61F3AD6A000361249 /* ProductPost.swift */,
 				E5D648951F32F9A70075A4BA /* PostsAnnotation.swift */,
 				E5D6489F1F32FF580075A4BA /* CustomCallout */,
 			);
@@ -389,11 +389,11 @@
 				E53175FF1F38541B002D8CDF /* ChatMessageCollectionViewCell.swift in Sources */,
 				E54457821F29EDBC00BF8E2B /* ImageUploadViewController+handlers.swift in Sources */,
 				E535A87F1F36983600E635CF /* MessageTableViewController.swift in Sources */,
-				E53FD3191F3969280094E18A /* TableViewCell.swift in Sources */,
 				E59370D21F2878C300FA1A72 /* MapViewController.swift in Sources */,
 				E5D6489E1F32FF2F0075A4BA /* CustomCalloutView.swift in Sources */,
 				E5E93DD11F2B0C2800DE01CE /* MapViewController+navigateHandler.swift in Sources */,
 				E53A7F131F374EC10022DE9A /* Usercell.swift in Sources */,
+				E52B87B71F3AD6A000361249 /* ProductPost.swift in Sources */,
 				E540D27D1F317275006523ED /* User.swift in Sources */,
 				E59370BA1F285AF500FA1A72 /* AppDelegate.swift in Sources */,
 				E52DA5421F32CFF400B1F02D /* Post.swift in Sources */,
