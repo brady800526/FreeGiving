@@ -7,15 +7,14 @@
 //
 
 import UIKit
+import SDWebImage
 
 class PostCollectionViewCell: UICollectionViewCell {
     
     var productPost: ProductPost? {
         
         didSet {
-            
-            print(productPost)
-            
+   
             setupCell()
             
         }
@@ -23,17 +22,11 @@ class PostCollectionViewCell: UICollectionViewCell {
     }
     
     func setupCell() {
-        
-        let url = URL(string: (productPost?.productImageURL)!)
-        do {
-        let data = try Data(contentsOf: url!)
-        self.productImageView.image = UIImage(data: data)
-        } catch {
-            print("error occur")
-        }
-        
+        self.productImageView.sd_setImage(with: URL(string: (productPost?.productImageURL!)!), placeholderImage: nil)
         self.productLable.text = productPost?.productName
         self.timeLable.text = productPost?.productOnShelfTime
+//        self.layer.borderWidth = 5
+//        self.layer.borderColor = UIColor.yellow.cgColor
     }
     
     var productImageView: UIImageView = {

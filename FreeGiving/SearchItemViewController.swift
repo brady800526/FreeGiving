@@ -25,6 +25,12 @@ class SearchItemCollectionViewController: UICollectionViewController, UICollecti
         self.collectionView!.register(PostCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
         observePosts()
+        
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        collectionView!.collectionViewLayout = layout
     }
 
     func handleOwnerProduct() {
@@ -36,13 +42,7 @@ class SearchItemCollectionViewController: UICollectionViewController, UICollecti
     }
     
     func observePosts() {
-        
-        guard let uid = Auth.auth().currentUser?.uid else {
-            
-            return
-            
-        }
-        
+
         let userMessageRef = Database.database().reference().child("posts")
 
         userMessageRef.observe(.childAdded, with: { (snapshot) in
@@ -60,21 +60,17 @@ class SearchItemCollectionViewController: UICollectionViewController, UICollecti
         }, withCancel: nil)
     }
 
-    
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-    
-    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
+
         return productPosts.count
+
     }
+    
+    let screenSize: CGRect = UIScreen.main.bounds
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: 115, height: 200)
+        return CGSize(width: screenSize.width/2, height: screenSize.height/2)
         
     }
     
@@ -83,9 +79,7 @@ class SearchItemCollectionViewController: UICollectionViewController, UICollecti
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PostCollectionViewCell
         
         cell.backgroundColor = UIColor.black
-        
-        let productPost = productPosts[indexPath.row]
-        
+                
         cell.productPost = productPosts[indexPath.row]
         
         return cell

@@ -13,5 +13,6 @@ target 'FreeGiving' do
   pod 'Firebase/Storage'
   pod 'IQKeyboardManagerSwift', '4.0.10'
   pod 'SwifterSwift'
+  pod 'SDWebImage', '~> 4.0'
 
 end
