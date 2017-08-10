@@ -13,33 +13,72 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class SearchItemCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class SearchItemCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
 
-    var productPosts: [ProductPost] = []
+    var productPosts: [ProductPost] = [] {
+
+        didSet {
+            
+            filteredProducts = productPosts
+            
+        }
+
+    }
+    
+    var filteredProducts: [ProductPost] = []
     
     override func viewDidLoad() {
-        super.viewDidLoad()
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Owner", style: .plain, target: self, action: #selector(handleOwnerProduct))
+        super.viewDidLoad()
+        
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Owner", style: .plain, target: self, action: #selector(handleOwnerProduct))
         
         self.collectionView!.register(PostCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
         observePosts()
         
+        setupCVLayout()
+
+        setupSearchBar()
+        
+        }
+
+    let searchBar = UISearchBar()
+    
+    func setupSearchBar() {
+        
+        searchBar.showsCancelButton = false
+        
+        searchBar.placeholder = "Enter your search here"
+        
+        searchBar.delegate = self
+        
+        navigationItem.titleView = searchBar
+        
+    }
+    
+    func setupCVLayout() {
+        
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
         layout.minimumInteritemSpacing = 0
+        
         layout.minimumLineSpacing = 0
+        
         collectionView!.collectionViewLayout = layout
-    }
-
-    func handleOwnerProduct() {
-
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "OwnerPage") as! OwnerProductTableViewController
-
-        self.present(vc, animated: true, completion: nil)
 
     }
+
+    
+//    func handleOwnerProduct() {
+//
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "OwnerPage") as! OwnerProductTableViewController
+//
+//        self.present(vc, animated: true, completion: nil)
+//
+//    }
     
     func observePosts() {
 
@@ -62,7 +101,7 @@ class SearchItemCollectionViewController: UICollectionViewController, UICollecti
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        return productPosts.count
+        return filteredProducts.count
 
     }
     
@@ -80,9 +119,29 @@ class SearchItemCollectionViewController: UICollectionViewController, UICollecti
         
         cell.backgroundColor = UIColor.black
                 
-        cell.productPost = productPosts[indexPath.row]
+        cell.productPost = filteredProducts[indexPath.row]
         
         return cell
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        filteredProducts = searchText.isEmpty ? productPosts : productPosts.filter({ (product: ProductPost) -> Bool in
+            
+            return product.productName?.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+            
+        })
+        
+        collectionView?.reloadData()
+        
+    }
+        
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+        
     }
 
 }
