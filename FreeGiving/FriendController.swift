@@ -57,7 +57,6 @@ class FriendController: UITableViewController {
     
     func handleCancel() {
         dismiss(animated: true, completion: nil)
-//        navigationController?.popViewController(animated: true)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -65,10 +64,7 @@ class FriendController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        
-//        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellid)
-     
+
         let cell = tableView.dequeueReusableCell(withIdentifier: cellid, for: indexPath)
         
         let user = users[indexPath.row]

@@ -16,14 +16,7 @@ class MessageController: UITableViewController {
 
     override func viewDidLoad() {
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "mess", style: .plain, target: self, action: #selector(handleNewMessage))
-        
-//        let button =  UIButton(type: .custom)
-//        button.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
-//        button.backgroundColor = UIColor.red
-//        button.setTitle("Button", for: .normal)
-//        button.addTarget(self, action: #selector(showChatController), for: .touchUpInside)
-//        self.navigationItem.titleView = button
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "mes", style: .plain, target: self, action: #selector(handleNewMessage))
         
         tableView.register(UserCell.self, forCellReuseIdentifier: cellId)
         
@@ -121,9 +114,7 @@ class MessageController: UITableViewController {
         let ref = Database.database().reference().child("users").child(chatPartnerId)
         
         ref.observe(.value, with: { (snapshot) in
-            
-//            print(snapshot)
-            
+                        
             guard let dictionary = snapshot.value as? [String: AnyObject]
             else {
                 return

@@ -36,6 +36,7 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
         }
         
         let userMessageRef = Database.database().reference().child("user-messages").child(uid)
+
         userMessageRef.observe(.childAdded, with: { (snapshot) in
 
             let messageId = snapshot.key
@@ -43,9 +44,7 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
             let messagesRef = Database.database().reference().child("messages").child(messageId)
 
             messagesRef.observeSingleEvent(of: .value, with: { (snapshot) in
-                
-                print(snapshot)
-                
+
                 guard let dictionary = snapshot.value as? [String: AnyObject] else {
 
                     return
@@ -73,10 +72,15 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
     }
     
     lazy var inputTextField: UITextField = {
+
         let textField = UITextField()
+
         textField.placeholder = "Enter message..."
+
         textField.translatesAutoresizingMaskIntoConstraints = false
+
         textField.delegate = self
+
         return textField
     }()
 
@@ -97,10 +101,7 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
         
         setupInputComponent()
     }
-   
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
+
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return messages.count
@@ -130,6 +131,7 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ChatMessageCollectionViewCell
         
         let message = messages[indexPath.item]
+
         cell.textView.text = message.text
 
         cell.bubbleWidthAnchor?.constant = estimateFrameForText(text: message.text!).width + 32

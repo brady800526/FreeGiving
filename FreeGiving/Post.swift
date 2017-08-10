@@ -18,7 +18,7 @@ class Post: NSObject, MKAnnotation {
     var productImageURL: String?
     var productName: String?
     var productOnShelfTime: String?
-    var timeStamp: String?
+    var timeStamp: NSNumber?
     var user: String?
     var coordinate: CLLocationCoordinate2D
 

@@ -31,8 +31,6 @@ class SearchItemController: UICollectionViewController, UICollectionViewDelegate
 
         super.viewDidLoad()
         
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Owner", style: .plain, target: self, action: #selector(handleOwnerProduct))
-        
         self.collectionView!.register(PostCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
         observePosts()
@@ -40,6 +38,8 @@ class SearchItemController: UICollectionViewController, UICollectionViewDelegate
         setupCVLayout()
 
         setupSearchBar()
+        
+        handleLatest()
         
         }
 
@@ -72,13 +72,17 @@ class SearchItemController: UICollectionViewController, UICollectionViewDelegate
     }
 
     
-//    func handleOwnerProduct() {
-//
-//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "OwnerPage") as! OwnerProductTableViewController
-//
-//        self.present(vc, animated: true, completion: nil)
-//
-//    }
+    func handleLatest() {
+        
+        filteredProducts.sort { (product1, product2) -> Bool in
+            
+            return Int(product1.timeStamp!) > Int(product2.timeStamp!)
+            
+        }
+        
+        self.collectionView?.reloadData()
+        
+    }
     
     func observePosts() {
 
@@ -145,5 +149,34 @@ class SearchItemController: UICollectionViewController, UICollectionViewDelegate
         searchBar.resignFirstResponder()
         
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
+        let user = User()
+
+        user.id = filteredProducts[indexPath.row].user
+        
+        let ref = Database.database().reference().child("users").child(user.id!)
+
+        
+        ref.observe(.value, with: { (snapshot) in
+            
+            guard let dictionary = snapshot.value as? [String: AnyObject]
+                else {
+                    return
+            }
+            user.setValuesForKeys(dictionary)
+            self.showChatControllerForUser(user: user)
+            
+        }, withCancel: nil)
+
+    }
+
+    func showChatControllerForUser(user: User) {
+        let vc = ChatLogController(collectionViewLayout: UICollectionViewFlowLayout())
+        vc.user = user
+        let nv = UINavigationController(rootViewController: vc)
+        present(nv, animated: true)
+    }
+    
 }

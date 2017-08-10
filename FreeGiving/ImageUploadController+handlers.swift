@@ -85,13 +85,7 @@ extension ImageUploadController: UIImagePickerControllerDelegate, UINavigationCo
 
         let storageRef = Storage.storage().reference().child("postsPhoto").child("\(imageName).jpg")
         
-        let date : Date = Date()
-        
-        let dateFormatter = DateFormatter()
-        
-        dateFormatter.dateFormat = "yyyy MM dd,hh mm"
-        
-        dateFormatter.string(from: date)
+        let timestamp: NSNumber = NSNumber(value: Date().timeIntervalSinceReferenceDate)
         
         guard let name = productName.text,
             let time = productOnShelfTime.text,
@@ -130,7 +124,7 @@ extension ImageUploadController: UIImagePickerControllerDelegate, UINavigationCo
                      "longtitude": longtitude,
                      "productDescription": description,
                      "productImageURL": profileImageUrl,
-                     "timeStamp": dateFormatter.string(from: date),
+                     "timeStamp": timestamp,
                      "available": String(true)]
                 
 
