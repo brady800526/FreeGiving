@@ -15,7 +15,7 @@ protocol HandleMapSearch {
 
 }
 
-class LoactionSearchTableViewController: UITableViewController {
+class LoactionSearchController: UITableViewController {
 
     var matchingItems: [MKMapItem]?
     var mapView: MKMapView?
@@ -71,7 +71,7 @@ class LoactionSearchTableViewController: UITableViewController {
     }
 }
 
-extension LoactionSearchTableViewController : UISearchResultsUpdating {
+extension LoactionSearchController : UISearchResultsUpdating {
 
     func updateSearchResults(for searchController: UISearchController) {
 
@@ -102,7 +102,7 @@ extension LoactionSearchTableViewController : UISearchResultsUpdating {
 
 }
 
-extension LoactionSearchTableViewController {
+extension LoactionSearchController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 

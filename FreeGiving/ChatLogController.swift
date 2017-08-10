@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import Firebase
 
-class ChatLogTableController: UICollectionViewController, UITextFieldDelegate, UICollectionViewDelegateFlowLayout {
+class ChatLogController: UICollectionViewController, UITextFieldDelegate, UICollectionViewDelegateFlowLayout {
     
     let cellId = "cellId"
     

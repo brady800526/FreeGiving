@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import Firebase
 
-class MessageTableViewController: UITableViewController {
+class MessageController: UITableViewController {
 
     let cellId = "cellId"
 
@@ -145,14 +145,14 @@ class MessageTableViewController: UITableViewController {
     }
     
     func handleNewMessage() {
-        let newMessage = FriendTableViewController()
+        let newMessage = FriendController()
         newMessage.messageController = self
         let nv = UINavigationController(rootViewController: newMessage)
         present(nv, animated: true)
     }
     
     func showChatControllerForUser(user: User) {
-        let vc = ChatLogTableController(collectionViewLayout: UICollectionViewFlowLayout())
+        let vc = ChatLogController(collectionViewLayout: UICollectionViewFlowLayout())
         vc.user = user
         let nv = UINavigationController(rootViewController: vc)
         present(nv, animated: true)

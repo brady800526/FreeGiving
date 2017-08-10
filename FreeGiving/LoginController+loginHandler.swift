@@ -8,7 +8,7 @@
 
 import Firebase
 
-extension LoginViewController {
+extension LoginController {
 
     // Control the loginButton based on the segmentedControl value
 

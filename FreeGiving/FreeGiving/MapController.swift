@@ -11,7 +11,7 @@ import Firebase
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController {
+class MapController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
 
@@ -147,7 +147,7 @@ class MapViewController: UIViewController {
 
     func setLocationSearchTable() {
 
-        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "searchPage") as! LoactionSearchTableViewController
+        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "searchPage") as! LoactionSearchController
 
         resultSearchController = UISearchController(searchResultsController: locationSearchTable)
 

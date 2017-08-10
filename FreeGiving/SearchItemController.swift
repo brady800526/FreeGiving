@@ -13,7 +13,7 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class SearchItemCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
+class SearchItemController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
 
     var productPosts: [ProductPost] = [] {
 
@@ -135,11 +135,13 @@ class SearchItemCollectionViewController: UICollectionViewController, UICollecti
         collectionView?.reloadData()
         
     }
-        
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         
         searchBar.showsCancelButton = false
+
         searchBar.text = ""
+
         searchBar.resignFirstResponder()
         
     }

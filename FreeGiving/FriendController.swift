@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class FriendTableViewController: UITableViewController {
+class FriendController: UITableViewController {
 
     let cellid = "cellid"
     
@@ -85,7 +85,7 @@ class FriendTableViewController: UITableViewController {
         
     }
     
-    var messageController: MessageTableViewController?
+    var messageController: MessageController?
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

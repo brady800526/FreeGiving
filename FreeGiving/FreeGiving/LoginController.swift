@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var loginNameTextField: UITextField!
     @IBOutlet weak var loginEmailTextField: UITextField!
@@ -18,7 +18,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginSegmentedControl: UISegmentedControl!
     @IBOutlet weak var loginView: UIView!
     
-    var mapViewController: MapViewController?
+    var mapViewController: MapController?
 
 //    var inputsContainerViewHeightAnchor: NSLayoutConstraint?
 //    var nameTextFieldHeightAnchor: NSLayoutConstraint?

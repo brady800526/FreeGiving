@@ -11,7 +11,7 @@ import UIKit
 import Firebase
 import CoreLocation
 
-extension ImageUploadViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension ImageUploadController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     func handleDismiss() {
 
@@ -170,7 +170,7 @@ extension ImageUploadViewController: UIImagePickerControllerDelegate, UINavigati
 
 }
 
-extension ImageUploadViewController: UITextFieldDelegate {
+extension ImageUploadController: UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 

@@ -10,7 +10,7 @@ import MapKit
 
 // Handle the behavior if status or update changed
 
-extension MapViewController : CLLocationManagerDelegate {
+extension MapController : CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
@@ -33,7 +33,7 @@ extension MapViewController : CLLocationManagerDelegate {
 
 // Return the item selected on the list we would pin the place on the map
 
-extension MapViewController: HandleMapSearch {
+extension MapController: HandleMapSearch {
 
     func dropPinZoomIn(placemark: MKPlacemark) {
         // cache the pin
@@ -64,7 +64,7 @@ extension MapViewController: HandleMapSearch {
 
 // Display the annotationView and the following handling
 
-extension MapViewController : MKMapViewDelegate {
+extension MapController : MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
