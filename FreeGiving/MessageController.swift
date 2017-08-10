@@ -121,8 +121,11 @@ class MessageController: UITableViewController {
             }
             
             let user = User()
+
             user.id = chatPartnerId
+
             user.setValuesForKeys(dictionary)
+
             self.showChatControllerForUser(user: user)
             
         }, withCancel: nil)

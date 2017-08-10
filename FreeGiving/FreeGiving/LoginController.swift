@@ -35,10 +35,6 @@ class LoginController: UIViewController, UITextFieldDelegate {
 
         super.viewDidLoad()
 
-        // FIXME: Placeholder for the backgorund
-
-        view.backgroundColor = UIColor.cyan
-
         // Default the selectedSegmented to SignIn and handle the value change
 
         loginSegmentedControl.selectedSegmentIndex = 0

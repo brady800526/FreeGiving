@@ -25,6 +25,8 @@
 		E54457801F29E22800BF8E2B /* ImageUploadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E544577F1F29E22800BF8E2B /* ImageUploadController.swift */; };
 		E54457821F29EDBC00BF8E2B /* ImageUploadController+handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54457811F29EDBC00BF8E2B /* ImageUploadController+handlers.swift */; };
 		E55F22BD1F2C7C1500C9E862 /* LoactionSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55F22BC1F2C7C1500C9E862 /* LoactionSearchController.swift */; };
+		E57EA9AA1F3C4A7E00FAE137 /* SearchItemController+searchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57EA9A91F3C4A7E00FAE137 /* SearchItemController+searchBar.swift */; };
+		E57EA9AC1F3C4B5C00FAE137 /* SearchItemController+collectiondelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57EA9AB1F3C4B5C00FAE137 /* SearchItemController+collectiondelegate.swift */; };
 		E59370BA1F285AF500FA1A72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59370B91F285AF500FA1A72 /* AppDelegate.swift */; };
 		E59370BF1F285AF500FA1A72 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E59370BD1F285AF500FA1A72 /* Main.storyboard */; };
 		E59370C11F285AF500FA1A72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E59370C01F285AF500FA1A72 /* Assets.xcassets */; };
@@ -63,6 +65,8 @@
 		E544577F1F29E22800BF8E2B /* ImageUploadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUploadController.swift; sourceTree = "<group>"; };
 		E54457811F29EDBC00BF8E2B /* ImageUploadController+handlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ImageUploadController+handlers.swift"; sourceTree = "<group>"; };
 		E55F22BC1F2C7C1500C9E862 /* LoactionSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoactionSearchController.swift; sourceTree = "<group>"; };
+		E57EA9A91F3C4A7E00FAE137 /* SearchItemController+searchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SearchItemController+searchBar.swift"; sourceTree = "<group>"; };
+		E57EA9AB1F3C4B5C00FAE137 /* SearchItemController+collectiondelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SearchItemController+collectiondelegate.swift"; sourceTree = "<group>"; };
 		E59370B61F285AF500FA1A72 /* FreeGiving.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreeGiving.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E59370B91F285AF500FA1A72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E59370BE1F285AF500FA1A72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -135,6 +139,8 @@
 			isa = PBXGroup;
 			children = (
 				E5E93D8D1F2AB81000DE01CE /* SearchItemController.swift */,
+				E57EA9AB1F3C4B5C00FAE137 /* SearchItemController+collectiondelegate.swift */,
+				E57EA9A91F3C4A7E00FAE137 /* SearchItemController+searchBar.swift */,
 			);
 			name = SearchItemController;
 			path = FreeGiving;
@@ -397,7 +403,9 @@
 				E53175FF1F38541B002D8CDF /* ChatMessageCollectionViewCell.swift in Sources */,
 				E54457821F29EDBC00BF8E2B /* ImageUploadController+handlers.swift in Sources */,
 				E535A87F1F36983600E635CF /* MessageController.swift in Sources */,
+				E57EA9AC1F3C4B5C00FAE137 /* SearchItemController+collectiondelegate.swift in Sources */,
 				E59370D21F2878C300FA1A72 /* MapController.swift in Sources */,
+				E57EA9AA1F3C4A7E00FAE137 /* SearchItemController+searchBar.swift in Sources */,
 				E5D6489E1F32FF2F0075A4BA /* CustomCalloutView.swift in Sources */,
 				E5E93DD11F2B0C2800DE01CE /* MapController+navigateHandler.swift in Sources */,
 				E53A7F131F374EC10022DE9A /* Usercell.swift in Sources */,
