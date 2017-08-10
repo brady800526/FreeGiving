@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 
+private let searchCell = "Cell"
+
 extension SearchItemController: UICollectionViewDelegateFlowLayout {
         
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
