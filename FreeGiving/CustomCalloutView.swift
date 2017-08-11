@@ -61,6 +61,21 @@ class CustomCalloutView: UIView {
 
     }
     
+    @IBAction func check(_ sender: Any) {
+    
+        print(Auth.auth().currentUser?.uid)
+        
+        print(userId)
+        
+        print(post?.key)
+        
+        let ref = Database.database().reference()
+        
+        ref.child("trackings")
+        
+    }
+    
+    
     func showChatControllerForUser(user: User) {
         
         let vc = ChatLogController(collectionViewLayout: UICollectionViewFlowLayout())

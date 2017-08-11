@@ -63,7 +63,8 @@ class MapController: UIViewController {
                 let user = dictionary["user"] as? String
                 {
                     
-                    let post = Post(Bool(available)!, Double(latitude)!, Double(longtitude)!, description, URL, title, time, timeStamp, user)
+                    
+                    let post = Post(Bool(available)!, Double(latitude)!, Double(longtitude)!, description, URL, title, time, timeStamp, user, snapshot.key)
 
                     post.coordinate = CLLocationCoordinate2D(latitude: Double(latitude)!, longitude: Double(longtitude)!)
 
