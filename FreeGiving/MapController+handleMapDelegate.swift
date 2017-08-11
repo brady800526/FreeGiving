@@ -27,6 +27,7 @@ extension MapController : MKMapViewDelegate {
             annotationView?.annotation = annotation
         }
         annotationView?.image = UIImage(named: "gift")
+        
         return annotationView
     }
     
@@ -41,10 +42,12 @@ extension MapController : MKMapViewDelegate {
         let views = Bundle.main.loadNibNamed("CustomCalloutView", owner: nil, options: nil)
         let calloutView = views?[0] as! CustomCalloutView
         calloutView.post = postsAnnotation
+        calloutView.mapVC = self
 
-        calloutView.center = CGPoint(x: view.bounds.size.width / 2, y: calloutView.bounds.size.height * 0.52)
+//        calloutView.center = CGPoint(x: view.bounds.size.width / 2, y: calloutView.bounds.size.height * 0.52)
+        //        mapView.setCenter((view.annotation?.coordinate)!, animated: true)
+
         view.addSubview(calloutView)
-        mapView.setCenter((view.annotation?.coordinate)!, animated: true)
         
     }
     
@@ -58,5 +61,6 @@ extension MapController : MKMapViewDelegate {
             }
         }
     }
+
     
 }

@@ -124,6 +124,17 @@ class MapController: UIViewController {
         self.mapView.showsCompass = true
 
     }
+    
+    func showChatControllerForUser(user: User) {
+        
+        let vc = ChatLogController(collectionViewLayout: UICollectionViewFlowLayout())
+        
+        vc.user = user
+        
+        let nv = UINavigationController(rootViewController: vc)
+        
+        present(nv, animated: true)
+    }
 
 //    private func cameraSetup() {
 //        

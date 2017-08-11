@@ -7,30 +7,70 @@
 //
 
 import UIKit
+import Firebase
 
 class CustomCalloutView: UIView {
 
-    @IBOutlet var starbucksImage: UIImageView!
-    @IBOutlet var starbucksName: UILabel!
-    @IBOutlet var starbucksAddress: UILabel!
-    @IBOutlet var starbucksPhone: UILabel!
+    @IBOutlet var postImage: UIImageView!
+    @IBOutlet var postTitle: UILabel!
+    @IBOutlet var postTime: UILabel!
+    @IBOutlet var postDescription: UILabel!
+    
+    var mapVC: MapController?
     
     var post: Post? {
 
         didSet {
             
-            starbucksName.text = post?.title
-            starbucksAddress.text = post?.productOnShelfTime
-            starbucksPhone.text = post?.productDescription
+            postTitle.text = post?.title
+            postTime.text = post?.productOnShelfTime
+            postDescription.text = post?.productDescription
             
             //
 //            let button = UIButton(frame: calloutView.starbucksPhone.frame)
             //        button.addTarget(self, action: #selector(ViewController.callPhoneNumber(sender:)), for: .touchUpInside)
 //            calloutView.addSubview(button)
             
-            starbucksImage.sd_setImage(with: URL(string: (post?.productImageURL!)!), placeholderImage: nil)
+            postImage.sd_setImage(with: URL(string: (post?.productImageURL!)!), placeholderImage: nil)
+            
+            userId = post?.user
+            
         }
 
     }
+    
+    var userId: String?
+
+    @IBAction func chat(_ sender: Any) {
+        
+        let user = User()
+        
+        let ref = Database.database().reference()
+        
+        ref.child("users").child(userId!).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String:Any] {
+                
+                user.setValuesForKeys(dictionary)
+                
+                self.showChatControllerForUser(user: user)
+                
+            }
+            
+        }, withCancel: nil)
+
+    }
+    
+    func showChatControllerForUser(user: User) {
+        
+        let vc = ChatLogController(collectionViewLayout: UICollectionViewFlowLayout())
+        
+        vc.user = user
+        
+        let nv = UINavigationController(rootViewController: vc)
+        
+        mapVC?.present(nv, animated: true)
+    }
+
 
 }
