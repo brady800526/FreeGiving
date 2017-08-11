@@ -34,7 +34,7 @@ extension SearchItemController: UISearchBarDelegate {
         
         filteredProducts = searchText.isEmpty ? productPosts : productPosts.filter({ (product: ProductPost) -> Bool in
             
-            return product.productName?.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+            return product.title?.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
             
         })
         

@@ -14,9 +14,7 @@ class PostCollectionViewCell: UICollectionViewCell {
     var productPost: ProductPost? {
         
         didSet {
-            
-            print(productPost)
-            
+                        
             setupCell()
             
         }
@@ -25,7 +23,7 @@ class PostCollectionViewCell: UICollectionViewCell {
     
     func setupCell() {
         self.productImageView.sd_setImage(with: URL(string: (productPost?.productImageURL!)!), placeholderImage: nil)
-        self.productLable.text = productPost?.productName
+        self.productLable.text = productPost?.title
         self.timeLable.text = productPost?.productOnShelfTime
 //        self.layer.borderWidth = 5
 //        self.layer.borderColor = UIColor.yellow.cgColor

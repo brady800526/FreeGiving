@@ -13,6 +13,23 @@ import SDWebImage
 
 extension MapController : MKMapViewDelegate {
     
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        if annotation is MKUserLocation
+        {
+            return nil
+        }
+        var annotationView = self.mapView.dequeueReusableAnnotationView(withIdentifier: "Pin")
+        if annotationView == nil{
+            annotationView = AnnotationView(annotation: annotation, reuseIdentifier: "Pin")
+            annotationView?.canShowCallout = false
+        }else{
+            annotationView?.annotation = annotation
+        }
+        annotationView?.image = UIImage(named: "gift")
+        return annotationView
+    }
+    
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
         if view.annotation is MKUserLocation
@@ -24,16 +41,6 @@ extension MapController : MKMapViewDelegate {
         let views = Bundle.main.loadNibNamed("CustomCalloutView", owner: nil, options: nil)
         let calloutView = views?[0] as! CustomCalloutView
         calloutView.post = postsAnnotation
-        calloutView.starbucksName.text = postsAnnotation.title
-        calloutView.starbucksAddress.text = postsAnnotation.productOnShelfTime
-        calloutView.starbucksPhone.text = postsAnnotation.productDescription
-        
-        //
-        let button = UIButton(frame: calloutView.starbucksPhone.frame)
-//        button.addTarget(self, action: #selector(ViewController.callPhoneNumber(sender:)), for: .touchUpInside)
-        calloutView.addSubview(button)
-        
-        calloutView.starbucksImage.sd_setImage(with: URL(string: postsAnnotation.productImageURL!), placeholderImage: nil)
 
         calloutView.center = CGPoint(x: view.bounds.size.width / 2, y: calloutView.bounds.size.height * 0.52)
         view.addSubview(calloutView)

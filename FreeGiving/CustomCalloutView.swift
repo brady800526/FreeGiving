@@ -19,16 +19,18 @@ class CustomCalloutView: UIView {
 
         didSet {
             
-            print("it works")
-
+            starbucksName.text = post?.title
+            starbucksAddress.text = post?.productOnShelfTime
+            starbucksPhone.text = post?.productDescription
+            
+            //
+//            let button = UIButton(frame: calloutView.starbucksPhone.frame)
+            //        button.addTarget(self, action: #selector(ViewController.callPhoneNumber(sender:)), for: .touchUpInside)
+//            calloutView.addSubview(button)
+            
+            starbucksImage.sd_setImage(with: URL(string: (post?.productImageURL!)!), placeholderImage: nil)
         }
 
     }
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
-    }
-    */
+
 }

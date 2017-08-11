@@ -13,10 +13,10 @@ class ProductPost: NSObject {
     
     var available: String?
     var latitude: String?
-    var longtitude: String?
+    var longitude: String?
     var productDescription: String?
     var productImageURL: String?
-    var productName: String?
+    var title: String?
     var productOnShelfTime: String?
     var timeStamp: NSNumber?
     var user: String?

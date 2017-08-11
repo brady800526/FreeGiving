@@ -52,20 +52,20 @@ class MapController: UIViewController {
         Database.database().reference().child("posts").observe(.childAdded, with: { (snapshot) in
             
             if let dictionary = snapshot.value as? [String: Any],
-                let available = dictionary["available"] as? Bool,
+                let available = dictionary["available"] as? String,
                 let timeStamp = dictionary["timeStamp"] as? NSNumber,
                 let description = dictionary["productDescription"] as? String,
                 let URL = dictionary["productImageURL"] as? String,
-                let name = dictionary["productName"] as? String,
-                let latitude = dictionary["latitude"] as? Double,
-                let longtitude = dictionary["longitude"] as? Double,
+                let title = dictionary["title"] as? String,
+                let latitude = dictionary["latitude"] as? String,
+                let longtitude = dictionary["longitude"] as? String,
                 let time = dictionary["productOnShelfTime"] as? String,
                 let user = dictionary["user"] as? String
                 {
                     
-                    let post = Post(available, latitude, longtitude, description, URL, name, time, timeStamp, user)
+                    let post = Post(Bool(available)!, Double(latitude)!, Double(longtitude)!, description, URL, title, time, timeStamp, user)
 
-                    post.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longtitude)
+                    post.coordinate = CLLocationCoordinate2D(latitude: Double(latitude)!, longitude: Double(longtitude)!)
 
                     self.posts.append(post)
                     
