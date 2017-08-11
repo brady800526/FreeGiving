@@ -14,7 +14,9 @@ class PostCollectionViewCell: UICollectionViewCell {
     var productPost: ProductPost? {
         
         didSet {
-   
+            
+            print(productPost)
+            
             setupCell()
             
         }

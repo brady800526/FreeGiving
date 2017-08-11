@@ -29,5 +29,52 @@ extension MapController : CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("error:: (error)")
     }
+    
+    // Set the mapView behavior when viewdidload
+    
+    func setLocationManagerBehavior() {
+        
+        locationManager.delegate = self
+        
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        locationManager.requestWhenInUseAuthorization()
+        
+        locationManager.requestLocation()
+                
+    }
+    
+    // Set the location search table
+    
+    func setLocationSearchTable() {
+        
+        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "searchPage") as! LoactionSearchController
+        
+        resultSearchController = UISearchController(searchResultsController: locationSearchTable)
+        
+        resultSearchController?.searchResultsUpdater = locationSearchTable
+        
+        locationSearchTable.mapView = mapView
+        
+        locationSearchTable.handleMapSearchDelegate = self
+        
+        let searchBar = resultSearchController!.searchBar
+        
+        searchBar.sizeToFit()
+        
+        searchBar.placeholder = "Search for places"
+        
+        searchBarView.addSubview((resultSearchController?.searchBar)!)
+        
+        //        navigationItem.titleView = resultSearchController?.searchBar
+        
+        resultSearchController?.hidesNavigationBarDuringPresentation = false
+        
+        resultSearchController?.dimsBackgroundDuringPresentation = true
+        
+        definesPresentationContext = true
+    }
+
+
 }
 

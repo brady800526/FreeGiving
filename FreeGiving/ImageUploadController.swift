@@ -23,8 +23,8 @@ class ImageUploadController: UIViewController {
     var selectedPin: MKPlacemark?
     var searchCompleter = MKLocalSearchCompleter()
     var searchResults = [MKLocalSearchCompletion]()
-    var latitude: String?
-    var longtitude: String?
+    var latitude: Double?
+    var longtitude: Double?
 
     override func viewDidLoad() {
 

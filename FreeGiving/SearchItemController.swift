@@ -9,10 +9,10 @@
 import UIKit
 import Firebase
 
+private let searchCell = "Cell"
+
 class SearchItemController: UICollectionViewController {
 
-    let searchCell = "Cell"
-    
     var productPosts: [ProductPost] = [] {
 
         didSet {

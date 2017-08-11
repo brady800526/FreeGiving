@@ -51,46 +51,29 @@ class MapController: UIViewController {
         
         Database.database().reference().child("posts").observe(.childAdded, with: { (snapshot) in
             
-            if let dictionary = snapshot.value as? [String: AnyObject],
-                let latitude = dictionary["latitude"] as? String,
-                let latitudeDouble = Double(latitude),
-                let longtitude = dictionary["longtitude"] as? String,
-                let longtitudeDouble = Double(longtitude) {
-                let post = Post(coordinate: CLLocationCoordinate2D(latitude: latitudeDouble, longitude: longtitudeDouble))
-                post.setValuesForKeys(dictionary)
-                
-                guard
-                let available = post.available,
-                let availableBool = Bool(available),
-                let latitude = post.latitude,
-                let latitudeDouble = Double(latitude),
-                let longtitude = post.longtitude,
-                let longtitudeDouble = Double(longtitude),
-                let description = post.productDescription,
-                let imageURL = post.productImageURL,
-                let name = post.productName,
-                let time = post.productOnShelfTime,
-                let timeStamp = post.timeStamp,
-                let user = post.user
-                    else {
-                        print("format invalide")
-                        return
-                }
+            if let dictionary = snapshot.value as? [String: Any],
+                let available = dictionary["available"] as? Bool,
+                let timeStamp = dictionary["timeStamp"] as? NSNumber,
+                let description = dictionary["productDescription"] as? String,
+                let URL = dictionary["productImageURL"] as? String,
+                let name = dictionary["productName"] as? String,
+                let latitude = dictionary["latitude"] as? Double,
+                let longtitude = dictionary["longitude"] as? Double,
+                let time = dictionary["productOnShelfTime"] as? String,
+                let user = dictionary["user"] as? String
+                {
+                    
+                    let post = Post(available, latitude, longtitude, description, URL, name, time, timeStamp, user)
 
-                self.posts.append(post)
-                
-//                let anno = MKPointAnnotation()
-//                anno.coordinate = CLLocationCoordinate2D(latitude: latitudeDouble, longitude: longtitudeDouble)
-//                anno.title = name
-                
-                self.mapView.addAnnotation(post)
-                
+                    post.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longtitude)
+
+                    self.posts.append(post)
+                    
+                    self.mapView.addAnnotation(post)
+
             }
             
         })
-        
-        
-
         
     }
 
@@ -105,6 +88,7 @@ class MapController: UIViewController {
         } else {
 
             fetchUserAndSetupNavBarTitle()
+
         }
     }
     
@@ -125,53 +109,6 @@ class MapController: UIViewController {
         }, withCancel: nil)
 
         
-    }
-
-    // Set the mapView behavior when viewdidload
-
-    func setLocationManagerBehavior() {
-
-        locationManager.delegate = self
-
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-
-        locationManager.requestWhenInUseAuthorization()
-
-        locationManager.requestLocation()
-
-//        locationManager.startUpdatingLocation()
-
-    }
-
-    // Set the location search table
-
-    func setLocationSearchTable() {
-
-        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "searchPage") as! LoactionSearchController
-
-        resultSearchController = UISearchController(searchResultsController: locationSearchTable)
-
-        resultSearchController?.searchResultsUpdater = locationSearchTable
-
-        locationSearchTable.mapView = mapView
-
-        locationSearchTable.handleMapSearchDelegate = self
-
-        let searchBar = resultSearchController!.searchBar
-
-        searchBar.sizeToFit()
-
-        searchBar.placeholder = "Search for places"
-
-        searchBarView.addSubview((resultSearchController?.searchBar)!)
-
-//        navigationItem.titleView = resultSearchController?.searchBar
-
-        resultSearchController?.hidesNavigationBarDuringPresentation = false
-
-        resultSearchController?.dimsBackgroundDuringPresentation = true
-
-        definesPresentationContext = true
     }
 
     // Set the mapview behavior

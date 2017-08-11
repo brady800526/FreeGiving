@@ -14,6 +14,16 @@ class CustomCalloutView: UIView {
     @IBOutlet var starbucksName: UILabel!
     @IBOutlet var starbucksAddress: UILabel!
     @IBOutlet var starbucksPhone: UILabel!
+    
+    var post: Post? {
+
+        didSet {
+            
+            print("it works")
+
+        }
+
+    }
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

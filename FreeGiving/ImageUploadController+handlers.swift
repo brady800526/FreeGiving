@@ -89,7 +89,6 @@ extension ImageUploadController: UIImagePickerControllerDelegate, UINavigationCo
         
         guard let name = productName.text,
             let time = productOnShelfTime.text,
-//            let location = productOnShelfTime.text,
             let description = productDescription.text,
             let latitude = self.latitude,
             let longtitude = self.longtitude,
@@ -103,8 +102,6 @@ extension ImageUploadController: UIImagePickerControllerDelegate, UINavigationCo
         
         if let uploadData = UIImageJPEGRepresentation(self.uploadImageView.image!, 0.1) {
         
-//        if let uploadData = UIImagePNGRepresentation(self.uploadImageView.image!) {
-
             storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
 
                 if let error = error {
@@ -112,6 +109,7 @@ extension ImageUploadController: UIImagePickerControllerDelegate, UINavigationCo
                     print(error)
 
                     return
+
                 }
 
                 if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
@@ -125,8 +123,9 @@ extension ImageUploadController: UIImagePickerControllerDelegate, UINavigationCo
                      "productDescription": description,
                      "productImageURL": profileImageUrl,
                      "timeStamp": timestamp,
-                     "available": String(true)]
-                
+                     "available": true]
+
+                    print(values)
 
                     print(profileImageUrl)
 
@@ -147,6 +146,8 @@ extension ImageUploadController: UIImagePickerControllerDelegate, UINavigationCo
         
         let usersRefernece = ref.child("posts").childByAutoId()
 
+        print(values)
+        
         usersRefernece.updateChildValues(values, withCompletionBlock: { (err, _) in
             
             if err != nil {
@@ -189,9 +190,9 @@ extension ImageUploadController: UITextFieldDelegate {
                     let lon = placemark.location?.coordinate.longitude
                     else {
                         return }
-                    print("Lat: \(lat), Lon: \(lon)")
-                self.latitude = String(lat)
-                self.longtitude = String(lon)
+                print(self.latitude, self.longtitude)
+                self.latitude = lat
+                self.longtitude = lon
                 
             })
 
