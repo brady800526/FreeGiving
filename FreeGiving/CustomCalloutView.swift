@@ -62,16 +62,34 @@ class CustomCalloutView: UIView {
     }
     
     @IBAction func check(_ sender: Any) {
-    
-        print(Auth.auth().currentUser?.uid)
-        
-        print(userId)
-        
-        print(post?.key)
         
         let ref = Database.database().reference()
         
-        ref.child("trackings")
+        ref.child("trackings").observe(.childAdded, with: { (snapshot) in
+            
+            guard let dictionary = snapshot.value as? [String: Any] else { return }
+            
+            let postStatus = PostStatus()
+            
+            postStatus.setValuesForKeys(dictionary)
+            
+            if postStatus.checked == "false" && postStatus.fromId == Auth.auth().currentUser?.uid && postStatus.toId = userId {
+                
+                postStatus.checked == nil
+                
+            } else {
+                
+                let trackingRef = ref.child("trackings").childByAutoId()
+                
+                let values = ["fromId": Auth.auth().currentUser?.uid, "toId": self.userId, "postKey": self.post?.key, "checked": "false"]
+                
+                trackingRef.updateChildValues(values)
+
+                
+            }
+            
+        })
+        
         
     }
     

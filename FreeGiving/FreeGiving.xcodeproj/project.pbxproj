@@ -24,6 +24,7 @@
 		E540D27F1F31BE3C006523ED /* ChatLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E540D27E1F31BE3C006523ED /* ChatLogController.swift */; };
 		E54457801F29E22800BF8E2B /* ImageUploadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E544577F1F29E22800BF8E2B /* ImageUploadController.swift */; };
 		E54457821F29EDBC00BF8E2B /* ImageUploadController+handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54457811F29EDBC00BF8E2B /* ImageUploadController+handlers.swift */; };
+		E54BA0B21F3F0E4100143350 /* PostStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54BA0B11F3F0E4100143350 /* PostStatus.swift */; };
 		E55F22BD1F2C7C1500C9E862 /* LoactionSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55F22BC1F2C7C1500C9E862 /* LoactionSearchController.swift */; };
 		E57EA9AA1F3C4A7E00FAE137 /* SearchItemController+searchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57EA9A91F3C4A7E00FAE137 /* SearchItemController+searchBar.swift */; };
 		E57EA9AC1F3C4B5C00FAE137 /* SearchItemController+collectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57EA9AB1F3C4B5C00FAE137 /* SearchItemController+collectionDelegate.swift */; };
@@ -66,6 +67,7 @@
 		E540D27E1F31BE3C006523ED /* ChatLogController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatLogController.swift; sourceTree = "<group>"; };
 		E544577F1F29E22800BF8E2B /* ImageUploadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUploadController.swift; sourceTree = "<group>"; };
 		E54457811F29EDBC00BF8E2B /* ImageUploadController+handlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ImageUploadController+handlers.swift"; sourceTree = "<group>"; };
+		E54BA0B11F3F0E4100143350 /* PostStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostStatus.swift; sourceTree = "<group>"; };
 		E55F22BC1F2C7C1500C9E862 /* LoactionSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoactionSearchController.swift; sourceTree = "<group>"; };
 		E57EA9A91F3C4A7E00FAE137 /* SearchItemController+searchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SearchItemController+searchBar.swift"; sourceTree = "<group>"; };
 		E57EA9AB1F3C4B5C00FAE137 /* SearchItemController+collectionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SearchItemController+collectionDelegate.swift"; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				E540D27C1F317275006523ED /* User.swift */,
+				E54BA0B11F3F0E4100143350 /* PostStatus.swift */,
 				E53A7F121F374EC10022DE9A /* Usercell.swift */,
 				E53A7F0F1F37464C0022DE9A /* Message.swift */,
 				E53175FE1F38541B002D8CDF /* ChatMessageCollectionViewCell.swift */,
@@ -403,6 +406,7 @@
 				E54457821F29EDBC00BF8E2B /* ImageUploadController+handlers.swift in Sources */,
 				E535A87F1F36983600E635CF /* MessageController.swift in Sources */,
 				E57EA9AC1F3C4B5C00FAE137 /* SearchItemController+collectionDelegate.swift in Sources */,
+				E54BA0B21F3F0E4100143350 /* PostStatus.swift in Sources */,
 				E59370D21F2878C300FA1A72 /* MapController.swift in Sources */,
 				E57EA9AA1F3C4A7E00FAE137 /* SearchItemController+searchBar.swift in Sources */,
 				E5D6489E1F32FF2F0075A4BA /* CustomCalloutView.swift in Sources */,
