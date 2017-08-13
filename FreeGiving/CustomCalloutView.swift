@@ -65,31 +65,50 @@ class CustomCalloutView: UIView {
         
         let ref = Database.database().reference()
         
-        ref.child("trackings").observe(.childAdded, with: { (snapshot) in
+        ref.child("trackings").observeSingleEvent(of: .value, with: { (snapshot) in
             
-            guard let dictionary = snapshot.value as? [String: Any] else { return }
+            var foundEvent = true
             
-            let postStatus = PostStatus()
-            
-            postStatus.setValuesForKeys(dictionary)
-            
-            if postStatus.checked == "false" && postStatus.fromId == Auth.auth().currentUser?.uid && postStatus.toId = userId {
+            for item in snapshot.children {
                 
-                postStatus.checked == nil
+                guard let itemSnapshot = item as? DataSnapshot else { return }
+
+                guard let dictionary = itemSnapshot.value as? [String: Any] else { return }
                 
-            } else {
+                let postStatus = PostStatus()
+                
+                postStatus.setValuesForKeys(dictionary)
+
+                if postStatus.fromId == Auth.auth().currentUser?.uid && postStatus.toId == self.userId && postStatus.checked == "false" {
+
+                    print(true)
+                    
+                    ref.child("trackings").child(itemSnapshot.key).removeValue()
+                    
+                    return
+
+                } else {
+
+                    print(false)
+
+                    foundEvent = false
+
+                }
+
+                
+            }
+            
+            if foundEvent == false {
                 
                 let trackingRef = ref.child("trackings").childByAutoId()
                 
                 let values = ["fromId": Auth.auth().currentUser?.uid, "toId": self.userId, "postKey": self.post?.key, "checked": "false"]
                 
                 trackingRef.updateChildValues(values)
-
                 
             }
-            
+  
         })
-        
         
     }
     

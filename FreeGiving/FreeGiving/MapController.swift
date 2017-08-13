@@ -53,14 +53,14 @@ class MapController: UIViewController {
             
             if let dictionary = snapshot.value as? [String: Any],
                 let available = dictionary["available"] as? String,
-                let timeStamp = dictionary["timeStamp"] as? NSNumber,
                 let description = dictionary["productDescription"] as? String,
                 let URL = dictionary["productImageURL"] as? String,
                 let title = dictionary["title"] as? String,
                 let latitude = dictionary["latitude"] as? String,
                 let longtitude = dictionary["longitude"] as? String,
                 let time = dictionary["productOnShelfTime"] as? String,
-                let user = dictionary["user"] as? String
+                let user = dictionary["user"] as? String,
+                let timeStamp = dictionary["timeStamp"] as? NSNumber
                 {
                     
                     

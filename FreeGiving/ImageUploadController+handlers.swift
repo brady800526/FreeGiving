@@ -116,14 +116,14 @@ extension ImageUploadController: UIImagePickerControllerDelegate, UINavigationCo
                 
                 let values: [String: Any] =
                     ["user": uid,
-                     "productName": name,
+                     "title": name,
                      "productOnShelfTime": time,
                      "latitude": latitude,
-                     "longtitude": longtitude,
+                     "longitude": longtitude,
                      "productDescription": description,
                      "productImageURL": profileImageUrl,
                      "timeStamp": timestamp,
-                     "available": true]
+                     "available": "true"]
 
                     print(values)
 
@@ -191,8 +191,8 @@ extension ImageUploadController: UITextFieldDelegate {
                     else {
                         return }
                 print(self.latitude, self.longtitude)
-                self.latitude = lat
-                self.longtitude = lon
+                self.latitude = String(lat)
+                self.longtitude = String(lon)
                 
             })
 
