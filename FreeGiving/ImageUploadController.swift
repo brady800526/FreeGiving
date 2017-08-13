@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class ImageUploadViewController: UIViewController {
+class ImageUploadController: UIViewController {
 
     @IBOutlet weak var uploadImageView: UIImageView!
     @IBOutlet weak var productName: UITextField!
@@ -53,7 +53,7 @@ class ImageUploadViewController: UIViewController {
 
     func setLocationSearchTable() {
 
-        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "searchPage") as! LoactionSearchTableViewController
+        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "searchPage") as! LoactionSearchController
 
         resultSearchController = UISearchController(searchResultsController: locationSearchTable)
 
@@ -82,7 +82,7 @@ class ImageUploadViewController: UIViewController {
 
 // Return the item selected on the list we would pin the place on the map
 
-extension ImageUploadViewController: HandleMapSearch {
+extension ImageUploadController: HandleMapSearch {
 
     func dropPinZoomIn(placemark: MKPlacemark) {
         // cache the pin

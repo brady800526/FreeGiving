@@ -10,20 +10,13 @@ import Foundation
 import UIKit
 import Firebase
 
-class MessageTableViewController: UITableViewController {
+class MessageController: UITableViewController {
 
     let cellId = "cellId"
 
     override func viewDidLoad() {
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "mess", style: .plain, target: self, action: #selector(handleNewMessage))
-        
-//        let button =  UIButton(type: .custom)
-//        button.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
-//        button.backgroundColor = UIColor.red
-//        button.setTitle("Button", for: .normal)
-//        button.addTarget(self, action: #selector(showChatController), for: .touchUpInside)
-//        self.navigationItem.titleView = button
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "mes", style: .plain, target: self, action: #selector(handleNewMessage))
         
         tableView.register(UserCell.self, forCellReuseIdentifier: cellId)
         
@@ -61,23 +54,18 @@ class MessageTableViewController: UITableViewController {
                     
                     message.setValuesForKeys(dictionary)
                     
-                    print(message.text!)
-                    
                     self.messages.append(message)
-                    
-                    print(self.messages.count)
                     
                     if let chatPartnerId = message.chatPartnerId() {
                         self.messagesDictionary[chatPartnerId] = message
                         self.messages = Array(self.messagesDictionary.values)
-                        print(self.messagesDictionary.count)
                         self.messages.sort(by: { (message1, message2) -> Bool in
                             return (message1.timestamp?.intValue)! > (message2.timestamp?.intValue)!
                         })
                     }
                     
                     self.timer?.invalidate()
-                    self.timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(self.handleReloadTable), userInfo: nil, repeats: nil)
+                    self.timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(self.handleReloadTable), userInfo: nil, repeats: false)
 
                 }
                 
@@ -126,17 +114,18 @@ class MessageTableViewController: UITableViewController {
         let ref = Database.database().reference().child("users").child(chatPartnerId)
         
         ref.observe(.value, with: { (snapshot) in
-            
-//            print(snapshot)
-            
+                        
             guard let dictionary = snapshot.value as? [String: AnyObject]
             else {
                 return
             }
             
             let user = User()
+
             user.id = chatPartnerId
+
             user.setValuesForKeys(dictionary)
+
             self.showChatControllerForUser(user: user)
             
         }, withCancel: nil)
@@ -150,14 +139,14 @@ class MessageTableViewController: UITableViewController {
     }
     
     func handleNewMessage() {
-        let newMessage = FriendTableViewController()
+        let newMessage = FriendController()
         newMessage.messageController = self
         let nv = UINavigationController(rootViewController: newMessage)
         present(nv, animated: true)
     }
     
     func showChatControllerForUser(user: User) {
-        let vc = ChatLogTableController(collectionViewLayout: UICollectionViewFlowLayout())
+        let vc = ChatLogController(collectionViewLayout: UICollectionViewFlowLayout())
         vc.user = user
         let nv = UINavigationController(rootViewController: vc)
         present(nv, animated: true)

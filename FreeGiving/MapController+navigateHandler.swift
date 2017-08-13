@@ -8,7 +8,7 @@
 
 import Firebase
 
-extension MapViewController {
+extension MapController {
 
     func handleLogout() {
 
@@ -22,7 +22,7 @@ extension MapViewController {
 
         }
 
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "loginPage") as! LoginViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "loginPage") as! LoginController
 
         vc.mapViewController = self
         

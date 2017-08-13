@@ -15,34 +15,39 @@ protocol HandleMapSearch {
 
 }
 
-class LoactionSearchTableViewController: UITableViewController {
+class LoactionSearchController: UITableViewController {
 
     var matchingItems: [MKMapItem]?
+
     var mapView: MKMapView?
+
     var handleMapSearchDelegate: HandleMapSearch?
 
     override func viewDidLoad() {
+
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
         guard let matchingItems = matchingItems else { return 0 }
+
         return matchingItems.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+
         let selectedItem = matchingItems?[indexPath.row].placemark
+
         cell.textLabel?.text = selectedItem?.name
+
         cell.detailTextLabel?.text = parseAddress(selectedItem: selectedItem!)
+
         return cell
     }
 
@@ -71,7 +76,7 @@ class LoactionSearchTableViewController: UITableViewController {
     }
 }
 
-extension LoactionSearchTableViewController : UISearchResultsUpdating {
+extension LoactionSearchController : UISearchResultsUpdating {
 
     func updateSearchResults(for searchController: UISearchController) {
 
@@ -102,7 +107,7 @@ extension LoactionSearchTableViewController : UISearchResultsUpdating {
 
 }
 
-extension LoactionSearchTableViewController {
+extension LoactionSearchController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 

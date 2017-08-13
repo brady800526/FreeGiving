@@ -11,7 +11,7 @@ import UIKit
 import Firebase
 import CoreLocation
 
-extension ImageUploadViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension ImageUploadController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     func handleDismiss() {
 
@@ -85,17 +85,10 @@ extension ImageUploadViewController: UIImagePickerControllerDelegate, UINavigati
 
         let storageRef = Storage.storage().reference().child("postsPhoto").child("\(imageName).jpg")
         
-        let date : Date = Date()
-        
-        let dateFormatter = DateFormatter()
-        
-        dateFormatter.dateFormat = "yyyy MM dd,hh mm"
-        
-        dateFormatter.string(from: date)
+        let timestamp: NSNumber = NSNumber(value: Date().timeIntervalSinceReferenceDate)
         
         guard let name = productName.text,
             let time = productOnShelfTime.text,
-//            let location = productOnShelfTime.text,
             let description = productDescription.text,
             let latitude = self.latitude,
             let longtitude = self.longtitude,
@@ -109,8 +102,6 @@ extension ImageUploadViewController: UIImagePickerControllerDelegate, UINavigati
         
         if let uploadData = UIImageJPEGRepresentation(self.uploadImageView.image!, 0.1) {
         
-//        if let uploadData = UIImagePNGRepresentation(self.uploadImageView.image!) {
-
             storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
 
                 if let error = error {
@@ -118,21 +109,23 @@ extension ImageUploadViewController: UIImagePickerControllerDelegate, UINavigati
                     print(error)
 
                     return
+
                 }
 
                 if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
                 
                 let values: [String: Any] =
                     ["user": uid,
-                     "productName": name,
+                     "title": name,
                      "productOnShelfTime": time,
                      "latitude": latitude,
-                     "longtitude": longtitude,
+                     "longitude": longtitude,
                      "productDescription": description,
                      "productImageURL": profileImageUrl,
-                     "timeStamp": dateFormatter.string(from: date),
-                     "available": String(true)]
-                
+                     "timeStamp": timestamp,
+                     "available": "true"]
+
+                    print(values)
 
                     print(profileImageUrl)
 
@@ -153,6 +146,8 @@ extension ImageUploadViewController: UIImagePickerControllerDelegate, UINavigati
         
         let usersRefernece = ref.child("posts").childByAutoId()
 
+        print(values)
+        
         usersRefernece.updateChildValues(values, withCompletionBlock: { (err, _) in
             
             if err != nil {
@@ -170,7 +165,7 @@ extension ImageUploadViewController: UIImagePickerControllerDelegate, UINavigati
 
 }
 
-extension ImageUploadViewController: UITextFieldDelegate {
+extension ImageUploadController: UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 
@@ -195,7 +190,7 @@ extension ImageUploadViewController: UITextFieldDelegate {
                     let lon = placemark.location?.coordinate.longitude
                     else {
                         return }
-                    print("Lat: \(lat), Lon: \(lon)")
+                print(self.latitude, self.longtitude)
                 self.latitude = String(lat)
                 self.longtitude = String(lon)
                 

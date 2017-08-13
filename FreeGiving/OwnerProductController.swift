@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OwnerProductTableViewController: UITableViewController {
+class OwnerProductController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

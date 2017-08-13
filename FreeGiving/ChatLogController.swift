@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import Firebase
 
-class ChatLogTableController: UICollectionViewController, UITextFieldDelegate, UICollectionViewDelegateFlowLayout {
+class ChatLogController: UICollectionViewController, UITextFieldDelegate, UICollectionViewDelegateFlowLayout {
     
     let cellId = "cellId"
     
@@ -36,6 +36,7 @@ class ChatLogTableController: UICollectionViewController, UITextFieldDelegate, U
         }
         
         let userMessageRef = Database.database().reference().child("user-messages").child(uid)
+
         userMessageRef.observe(.childAdded, with: { (snapshot) in
 
             let messageId = snapshot.key
@@ -43,9 +44,7 @@ class ChatLogTableController: UICollectionViewController, UITextFieldDelegate, U
             let messagesRef = Database.database().reference().child("messages").child(messageId)
 
             messagesRef.observeSingleEvent(of: .value, with: { (snapshot) in
-                
-                print(snapshot)
-                
+
                 guard let dictionary = snapshot.value as? [String: AnyObject] else {
 
                     return
@@ -67,22 +66,21 @@ class ChatLogTableController: UICollectionViewController, UITextFieldDelegate, U
                     }
                 }
                 
-                DispatchQueue.main.async {
-                    
-                    self.collectionView?.reloadData()
-                    
-                }
-                
             }, withCancel: nil)
             
         }, withCancel: nil)
     }
     
     lazy var inputTextField: UITextField = {
+
         let textField = UITextField()
+
         textField.placeholder = "Enter message..."
+
         textField.translatesAutoresizingMaskIntoConstraints = false
+
         textField.delegate = self
+
         return textField
     }()
 
@@ -103,10 +101,7 @@ class ChatLogTableController: UICollectionViewController, UITextFieldDelegate, U
         
         setupInputComponent()
     }
-   
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
+
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return messages.count
@@ -136,6 +131,7 @@ class ChatLogTableController: UICollectionViewController, UITextFieldDelegate, U
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ChatMessageCollectionViewCell
         
         let message = messages[indexPath.item]
+
         cell.textView.text = message.text
 
         cell.bubbleWidthAnchor?.constant = estimateFrameForText(text: message.text!).width + 32
