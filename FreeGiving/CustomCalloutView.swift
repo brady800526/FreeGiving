@@ -98,7 +98,7 @@ class CustomCalloutView: UIView {
                 
                 let trackingRef = ref.child("trackings").childByAutoId()
                 
-                let values = ["fromId": Auth.auth().currentUser?.uid, "toId": self.userId, "postKey": self.post?.key, "checked": "false"]
+                let values = ["fromId": Auth.auth().currentUser?.uid, "toId": self.userId, "postKey": self.post?.key, "checked": "false", "timeStamp": NSNumber(value: Date().timeIntervalSinceReferenceDate)] as [String : Any]
                 
                 trackingRef.updateChildValues(values)
                 

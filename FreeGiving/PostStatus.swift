@@ -13,4 +13,5 @@ class PostStatus: NSObject {
     var fromId: String?
     var postKey: String?
     var toId: String?
+    var timeStamp: NSNumber?
 }

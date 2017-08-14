@@ -46,18 +46,16 @@ class MapController: UIViewController {
         
         fetchAnnotations()
         
-        self.reloadInputViews()
-        
-        let content = UNMutableNotificationContent()
-        content.title = "體驗過了，才是你的。"
-        content.subtitle = "米花兒"
-        content.body = "不要追問為什麼，就笨拙地走入未知。感受眼前的怦然與顫抖，聽聽左邊的碎裂和跳動。不管好的壞的，只有體驗過了，才是你的。"
-        content.badge = 1
-        content.sound = UNNotificationSound.default()
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
-        let request = UNNotificationRequest(identifier: "notification1", content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+//        let content = UNMutableNotificationContent()
+//        content.title = "體驗過了，才是你的。"
+//        content.subtitle = "米花兒"
+//        content.body = "不要追問為什麼，就笨拙地走入未知。感受眼前的怦然與顫抖，聽聽左邊的碎裂和跳動。不管好的壞的，只有體驗過了，才是你的。"
+//        content.badge = 1
+//        content.sound = UNNotificationSound.default()
+//        
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+//        let request = UNNotificationRequest(identifier: "notification1", content: content, trigger: trigger)
+//        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         
     }
     

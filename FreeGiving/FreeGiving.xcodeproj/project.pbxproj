@@ -13,6 +13,7 @@
 		E52D35CF1F2894C90030B08F /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52D35CE1F2894C90030B08F /* extension.swift */; };
 		E52DA5421F32CFF400B1F02D /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52DA5411F32CFF400B1F02D /* Post.swift */; };
 		E52E1A951F2E1B4500C07A50 /* MapController+handlerLocatoinHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52E1A941F2E1B4500C07A50 /* MapController+handlerLocatoinHandler.swift */; };
+		E52ED45E1F414C2900C9D17E /* OwnerPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52ED45D1F414C2900C9D17E /* OwnerPostCell.swift */; };
 		E53175FF1F38541B002D8CDF /* ChatMessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53175FE1F38541B002D8CDF /* ChatMessageCollectionViewCell.swift */; };
 		E535A87F1F36983600E635CF /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E535A87E1F36983600E635CF /* MessageController.swift */; };
 		E53A7F101F37464C0022DE9A /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53A7F0F1F37464C0022DE9A /* Message.swift */; };
@@ -55,6 +56,7 @@
 		E52D35CE1F2894C90030B08F /* extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
 		E52DA5411F32CFF400B1F02D /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		E52E1A941F2E1B4500C07A50 /* MapController+handlerLocatoinHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MapController+handlerLocatoinHandler.swift"; sourceTree = "<group>"; };
+		E52ED45D1F414C2900C9D17E /* OwnerPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerPostCell.swift; sourceTree = "<group>"; };
 		E53175FE1F38541B002D8CDF /* ChatMessageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessageCollectionViewCell.swift; sourceTree = "<group>"; };
 		E535A87E1F36983600E635CF /* MessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
 		E53A7F0F1F37464C0022DE9A /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				E52DA5411F32CFF400B1F02D /* Post.swift */,
 				E52B87B61F3AD6A000361249 /* ProductPost.swift */,
 				E5D648951F32F9A70075A4BA /* PostsAnnotation.swift */,
+				E52ED45D1F414C2900C9D17E /* OwnerPostCell.swift */,
 			);
 			name = View;
 			path = ..;
@@ -409,6 +412,7 @@
 				E53175FF1F38541B002D8CDF /* ChatMessageCollectionViewCell.swift in Sources */,
 				E54457821F29EDBC00BF8E2B /* ImageUploadController+handlers.swift in Sources */,
 				E535A87F1F36983600E635CF /* MessageController.swift in Sources */,
+				E52ED45E1F414C2900C9D17E /* OwnerPostCell.swift in Sources */,
 				E57EA9AC1F3C4B5C00FAE137 /* SearchItemController+collectionDelegate.swift in Sources */,
 				E54BA0B21F3F0E4100143350 /* PostStatus.swift in Sources */,
 				E59370D21F2878C300FA1A72 /* MapController.swift in Sources */,

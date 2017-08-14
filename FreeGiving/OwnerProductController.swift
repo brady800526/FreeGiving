@@ -9,16 +9,15 @@
 import Foundation
 import UIKit
 import Firebase
-
-private let cellId = "cellId"
+import SDWebImage
 
 class OwnerController: UITableViewController {
     
     override func viewDidLoad() {
-        
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
 
         observeUserTrackings()
+        
+//        observeUserChangings()
         
     }
     
@@ -26,13 +25,15 @@ class OwnerController: UITableViewController {
     
     var posts = [ProductPost]()
     
-//    var messagesDictionary = [String: Message]()
-    
-    func observeUserTrackings() {
-        
-        guard let uid = Auth.auth().currentUser?.uid else { return }
+    var trackers = [String]()
 
-        print(uid)
+    func observeUserTrackings() {
+
+        trackings = [PostStatus]()
+        
+        posts = [ProductPost]()
+        
+        trackers = [String]()
         
         let trackingRef = Database.database().reference().child("trackings")
         
@@ -44,9 +45,29 @@ class OwnerController: UITableViewController {
                 
                 tracking.setValuesForKeys(dictionary)
                 
-                if tracking.toId == Auth.auth().currentUser?.uid {
+                if tracking.toId == Auth.auth().currentUser?.uid && tracking.checked == "false" {
                     
                     self.trackings.append(tracking)
+                    
+                    let userRef = Database.database().reference().child("users")
+                    
+                    userRef.child(tracking.fromId!).observeSingleEvent(of: .value, with: { (snapshot) in
+                        
+                        guard let dictionary = snapshot.value as? [String: Any] else { return }
+                        
+                        let user = User()
+                        
+                        user.setValuesForKeys(dictionary)
+                        
+                        self.trackers.append(user.name!)
+                        
+                        DispatchQueue.main.async {
+                            
+                            self.tableView.reloadData()
+                            
+                        }
+                        
+                    })
                     
                     let postRef = Database.database().reference().child("posts")
                     
@@ -75,46 +96,155 @@ class OwnerController: UITableViewController {
         })
         
     }
+    
+//    func observeUserChangings() {
+//        
+//        var filtertrackings = [PostStatus]()
+//        
+//        var filterposts = [ProductPost]()
+//        
+//        var filtertrackers = [String]()
+//        
+//        let ref = Database.database().reference()
+//        
+//        let trackRef = ref
+//        
+//        trackRef.observe(.childChanged, with: { (snapshot) in
+//
+//            guard let dictionary = snapshot.value as? [String: Any] else { return }
+//            
+//            for item in dictionary as [String: Any] {
+//            
+//                let tracking = PostStatus()
+//                
+//                tracking.setValuesForKeys(item.value as! [String: Any])
+//                
+//                if tracking.checked == "false" && tracking.toId == Auth.auth().currentUser?.uid {
+//                    
+//                    filtertrackings.append(tracking)
+//                    
+//                    self.trackings = filtertrackings
+//                    
+//                    let userRef = Database.database().reference().child("users")
+//                    
+//                    userRef.child(tracking.fromId!).observeSingleEvent(of: .value, with: { (snapshot) in
+//                        
+//                        guard let dictionary = snapshot.value as? [String: Any] else { return }
+//                        
+//                        let user = User()
+//                        
+//                        user.setValuesForKeys(dictionary)
+//                        
+//                        filtertrackers.append(user.name!)
+//                        
+//                        self.trackers = filtertrackers
+//                        
+//                        DispatchQueue.main.async {
+//                            
+//                            self.tableView.reloadData()
+//                            
+//                        }
+//                        
+//                    })
+//                    
+//                    let postRef = Database.database().reference().child("posts")
+//                    
+//                    postRef.child(tracking.postKey!).observeSingleEvent(of: .value, with: { (snapshot) in
+//                        
+//                        guard let dictionary = snapshot.value as? [String: Any] else { return }
+//                        
+//                        let post = ProductPost()
+//                        
+//                        post.setValuesForKeys(dictionary)
+//                        
+//                        filterposts.append(post)
+//                        
+//                        self.posts = filterposts
+//                        
+//                    })
+//                    
+//                }
+//                
+//            }
+////                        
+//        })
+//
+//                    let postRef = Database.database().reference().child("posts")
+//                    
+//                    postRef.child(tracking.postKey!).observeSingleEvent(of: .value, with: { (snapshot) in
+//                        
+//                        guard let dictionary = snapshot.value as? [String: Any] else { return }
+//                        
+//                        let post = ProductPost()
+//                        
+//                        post.setValuesForKeys(dictionary)
+//                        
+//                        self.posts.append(post)
+//                        
+//                        
+//                    })
+//                    
+//                }
+//                
+//            }
+//
+//            
+//        })  
+//        
+//    }
 
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return posts.count
+        return posts.count > trackers.count ? posts.count : trackers.count
         
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! OwnerPostCell
+        
+        cell.postImage.sd_setImage(with: URL(string: posts[indexPath.row].productImageURL!), placeholderImage: nil)
+        
+//        cell.trackerNameLabel.text = trackers[indexPath.row]
+        
+        cell.trackerNameLabel.textColor = UIColor.white
+        
+        cell.tracking = trackings[indexPath.row]
+        
+        cell.post = posts[indexPath.row]
 
         cell.backgroundColor = UIColor.black
         
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 200
+        
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-//        let message = messages[indexPath.row]
-//        
-//        guard let chatPartnerId = message.chatPartnerId() else { return }
-//        
-//        let ref = Database.database().reference().child("users").child(chatPartnerId)
-//        
-//        ref.observe(.value, with: { (snapshot) in
-//            
-//            guard let dictionary = snapshot.value as? [String: AnyObject]
-//                else {
-//                    return
-//            }
-//            
-//            let user = User()
-//            
-//            user.id = chatPartnerId
-//            
-//            user.setValuesForKeys(dictionary)
-//
-//        }, withCancel: nil)
+        let trackingRef = Database.database().reference().child("trackings")
+
+        trackingRef.observe(.childAdded, with: {(snapshot) in
         
+            guard let dictionary = snapshot.value as? [String: Any] else { return }
+            
+            let postStatus = PostStatus()
+            
+            postStatus.setValuesForKeys(dictionary)
+
+            if postStatus.postKey == self.trackings[indexPath.row].postKey && postStatus.fromId == self.trackings[indexPath.row].fromId {
+
+                trackingRef.child(snapshot.key).updateChildValues(["checked": "true"])
+
+            }
+
+        })
+
     }
 
 }
