@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import IQKeyboardManagerSwift
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         IQKeyboardManager.sharedManager().enable = true
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .alert]) { (granted, error) in
+            
+            if granted {
+
+                print("permit")
+
+            } else {
+
+                print("deny")
+
+            }
+            
+        }
         return true
     }
 

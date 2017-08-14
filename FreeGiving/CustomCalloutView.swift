@@ -79,17 +79,13 @@ class CustomCalloutView: UIView {
                 
                 postStatus.setValuesForKeys(dictionary)
 
-                if postStatus.fromId == Auth.auth().currentUser?.uid && postStatus.toId == self.userId && postStatus.checked == "false" {
-
-                    print(true)
+                if postStatus.fromId == Auth.auth().currentUser?.uid && postStatus.toId == self.userId && postStatus.checked == "false" && postStatus.postKey == self.post?.key {
                     
                     ref.child("trackings").child(itemSnapshot.key).removeValue()
                     
                     return
 
                 } else {
-
-                    print(false)
 
                     foundEvent = false
 

@@ -145,8 +145,6 @@ extension ImageUploadController: UIImagePickerControllerDelegate, UINavigationCo
         let ref = Database.database().reference()
         
         let usersRefernece = ref.child("posts").childByAutoId()
-
-        print(values)
         
         usersRefernece.updateChildValues(values, withCompletionBlock: { (err, _) in
             

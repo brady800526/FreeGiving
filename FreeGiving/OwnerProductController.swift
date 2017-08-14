@@ -1,90 +1,121 @@
 //
-//  OwnerProductTableViewController.swift
+//  newMessageTableViewController.swift
 //  FreeGiving
 //
-//  Created by Brady Huang on 2017/7/28.
+//  Created by Brady Huang on 2017/8/6.
 //  Copyright © 2017年 AppWorks. All rights reserved.
 //
 
+import Foundation
 import UIKit
+import Firebase
 
-class OwnerProductController: UITableViewController {
+private let cellId = "cellId"
 
+class OwnerController: UITableViewController {
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
+        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        observeUserTrackings()
+        
+    }
+    
+    var trackings = [PostStatus]()
+    
+    var posts = [ProductPost]()
+    
+//    var messagesDictionary = [String: Message]()
+    
+    func observeUserTrackings() {
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        print(uid)
+        
+        let trackingRef = Database.database().reference().child("trackings")
+        
+        trackingRef.observe(.childAdded, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String: Any] {
+                
+                let tracking = PostStatus()
+                
+                tracking.setValuesForKeys(dictionary)
+                
+                if tracking.toId == Auth.auth().currentUser?.uid {
+                    
+                    self.trackings.append(tracking)
+                    
+                    let postRef = Database.database().reference().child("posts")
+                    
+                    postRef.child(tracking.postKey!).observeSingleEvent(of: .value, with: { (snapshot) in
+                        
+                        guard let dictionary = snapshot.value as? [String: Any] else { return }
+                        
+                        let post = ProductPost()
+                        
+                        post.setValuesForKeys(dictionary)
+                        
+                        self.posts.append(post)
+                        
+                        DispatchQueue.main.async {
+                            
+                            self.tableView.reloadData()
+                            
+                        }
+
+                    })
+                    
+                }
+                
+            }
+            
+        })
+        
     }
 
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        
+        return posts.count
+        
     }
-
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
 
-        // Configure the cell...
-
+        cell.backgroundColor = UIColor.black
+        
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+//        let message = messages[indexPath.row]
+//        
+//        guard let chatPartnerId = message.chatPartnerId() else { return }
+//        
+//        let ref = Database.database().reference().child("users").child(chatPartnerId)
+//        
+//        ref.observe(.value, with: { (snapshot) in
+//            
+//            guard let dictionary = snapshot.value as? [String: AnyObject]
+//                else {
+//                    return
+//            }
+//            
+//            let user = User()
+//            
+//            user.id = chatPartnerId
+//            
+//            user.setValuesForKeys(dictionary)
+//
+//        }, withCancel: nil)
+        
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
+

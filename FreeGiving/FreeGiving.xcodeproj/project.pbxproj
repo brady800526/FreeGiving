@@ -17,7 +17,6 @@
 		E535A87F1F36983600E635CF /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E535A87E1F36983600E635CF /* MessageController.swift */; };
 		E53A7F101F37464C0022DE9A /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53A7F0F1F37464C0022DE9A /* Message.swift */; };
 		E53A7F131F374EC10022DE9A /* Usercell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53A7F121F374EC10022DE9A /* Usercell.swift */; };
-		E53D861E1F3A2FA20034131B /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53D861D1F3A2FA20034131B /* CollectionViewController.swift */; };
 		E53D86201F3A30FC0034131B /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53D861F1F3A30FC0034131B /* PostCollectionViewCell.swift */; };
 		E540D27A1F316FEB006523ED /* FriendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E540D2791F316FEB006523ED /* FriendController.swift */; };
 		E540D27D1F317275006523ED /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E540D27C1F317275006523ED /* User.swift */; };
@@ -60,7 +59,7 @@
 		E535A87E1F36983600E635CF /* MessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
 		E53A7F0F1F37464C0022DE9A /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		E53A7F121F374EC10022DE9A /* Usercell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usercell.swift; sourceTree = "<group>"; };
-		E53D861D1F3A2FA20034131B /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		E53B49A41F4086590062F0C3 /* FreeGiving.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FreeGiving.entitlements; sourceTree = "<group>"; };
 		E53D861F1F3A30FC0034131B /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
 		E540D2791F316FEB006523ED /* FriendController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendController.swift; sourceTree = "<group>"; };
 		E540D27C1F317275006523ED /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -166,6 +165,9 @@
 				E5D648A01F3308F40075A4BA /* AnnotationView.swift */,
 				E5D6489B1F32FF2F0075A4BA /* CustomCalloutView.xib */,
 				E5D6489C1F32FF2F0075A4BA /* CustomCalloutView.swift */,
+				E52DA5411F32CFF400B1F02D /* Post.swift */,
+				E52B87B61F3AD6A000361249 /* ProductPost.swift */,
+				E5D648951F32F9A70075A4BA /* PostsAnnotation.swift */,
 			);
 			name = View;
 			path = ..;
@@ -174,9 +176,6 @@
 		E540D27B1F317256006523ED /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E52DA5411F32CFF400B1F02D /* Post.swift */,
-				E52B87B61F3AD6A000361249 /* ProductPost.swift */,
-				E5D648951F32F9A70075A4BA /* PostsAnnotation.swift */,
 			);
 			name = Model;
 			path = ..;
@@ -220,6 +219,7 @@
 		E59370B81F285AF500FA1A72 /* FreeGiving */ = {
 			isa = PBXGroup;
 			children = (
+				E53B49A41F4086590062F0C3 /* FreeGiving.entitlements */,
 				E53A7F111F374EB10022DE9A /* View */,
 				E540D27B1F317256006523ED /* Model */,
 				E59370CE1F28730400FA1A72 /* Controller */,
@@ -230,7 +230,6 @@
 				E59370C51F285AF500FA1A72 /* Info.plist */,
 				E59370CB1F28642D00FA1A72 /* GoogleService-Info.plist */,
 				E52D35CE1F2894C90030B08F /* extension.swift */,
-				E53D861D1F3A2FA20034131B /* CollectionViewController.swift */,
 			);
 			path = FreeGiving;
 			sourceTree = "<group>";
@@ -306,6 +305,11 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 9Y4D3HN9L5;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -418,7 +422,6 @@
 				E52DA5421F32CFF400B1F02D /* Post.swift in Sources */,
 				E5E93D8E1F2AB81000DE01CE /* SearchItemController.swift in Sources */,
 				E53A7F101F37464C0022DE9A /* Message.swift in Sources */,
-				E53D861E1F3A2FA20034131B /* CollectionViewController.swift in Sources */,
 				E52E1A951F2E1B4500C07A50 /* MapController+handlerLocatoinHandler.swift in Sources */,
 				E52D35CF1F2894C90030B08F /* extension.swift in Sources */,
 				E57EA9B01F3C98BB00FAE137 /* MapController+handleMapDelegate.swift in Sources */,
@@ -550,6 +553,7 @@
 			baseConfigurationReference = 86315F7C05B604C783DE93DA /* Pods-FreeGiving.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FreeGiving/FreeGiving.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 9Y4D3HN9L5;
 				INFOPLIST_FILE = FreeGiving/Info.plist;
@@ -566,6 +570,7 @@
 			baseConfigurationReference = C26005079E9120F8E6245187 /* Pods-FreeGiving.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FreeGiving/FreeGiving.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 9Y4D3HN9L5;
 				INFOPLIST_FILE = FreeGiving/Info.plist;
