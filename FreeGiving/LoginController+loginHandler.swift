@@ -18,6 +18,10 @@ extension LoginController {
 
         loginSubmitButton.setTitle(title, for: .normal)
 
+        inputsContainerViewHeightAnchor?.constant = loginSegmentedControl.selectedSegmentIndex == 0 ? 80 : 120
+        
+        nameContainerViewHeightAnchor?.constant = loginSegmentedControl.selectedSegmentIndex == 0 ? 0 : 40
+
     }
 
     // Sign in with email and password
@@ -113,7 +117,7 @@ extension LoginController {
                 
                 self.mapViewController?.fetchUserAndSetupNavBarTitle()
 
-                self.mapViewController?.navigationItem.title = values["name"] as?  String
+                self.mapViewController?.navigationItem.title = values["name"]
                 
                 self.dismiss(animated: true, completion: nil)
 

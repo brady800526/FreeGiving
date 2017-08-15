@@ -184,6 +184,13 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		E55F04121F42C5FE00A0DB92 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = resources;
+			sourceTree = "<group>";
+		};
 		E55F22BE1F2C7F6500C9E862 /* LoginController */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +234,7 @@
 				E540D27B1F317256006523ED /* Model */,
 				E59370CE1F28730400FA1A72 /* Controller */,
 				E59370B91F285AF500FA1A72 /* AppDelegate.swift */,
+				E55F04121F42C5FE00A0DB92 /* resources */,
 				E59370BD1F285AF500FA1A72 /* Main.storyboard */,
 				E59370C01F285AF500FA1A72 /* Assets.xcassets */,
 				E59370C21F285AF500FA1A72 /* LaunchScreen.storyboard */,

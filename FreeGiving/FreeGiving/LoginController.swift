@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SDWebImage
 
 class LoginController: UIViewController, UITextFieldDelegate {
 
@@ -17,11 +18,14 @@ class LoginController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginSubmitButton: UIButton!
     @IBOutlet weak var loginSegmentedControl: UISegmentedControl!
     @IBOutlet weak var loginView: UIView!
+    @IBOutlet weak var loginImageView: UIImageView!
     
     var mapViewController: MapController?
+    var inputsContainerViewHeightAnchor: NSLayoutConstraint?
+    var nameContainerViewHeightAnchor: NSLayoutConstraint?
+    var emailContainerViewHeightAnchor: NSLayoutConstraint?
+    var passwordContainerViewHeightAnchor: NSLayoutConstraint?
 
-//    var inputsContainerViewHeightAnchor: NSLayoutConstraint?
-//    var nameTextFieldHeightAnchor: NSLayoutConstraint?
 
     // Set the style of status bar
 
@@ -34,7 +38,11 @@ class LoginController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
 
         super.viewDidLoad()
-
+        
+        backgroundImageSetup()
+        
+        inputViewSetup()
+        
         // Default the selectedSegmented to SignIn and handle the value change
 
         loginSegmentedControl.selectedSegmentIndex = 0
@@ -48,7 +56,33 @@ class LoginController: UIViewController, UITextFieldDelegate {
         view.addGestureRecognizer(tap)
 
     }
+    
+    func backgroundImageSetup() {
+        
+        loginImageView.image = UIImage(named: "loginImage")
+        
+        loginImageView.alpha = 0.9
+        
+        
+    }
 
+    func inputViewSetup() {
+        
+        inputsContainerViewHeightAnchor = loginView.heightAnchor.constraint(equalToConstant: 80)
+        
+        inputsContainerViewHeightAnchor?.isActive = true
+        
+        nameContainerViewHeightAnchor = loginNameTextField.heightAnchor.constraint(equalToConstant: 0)
+        nameContainerViewHeightAnchor?.isActive = true
+        
+        emailContainerViewHeightAnchor = loginNameTextField.heightAnchor.constraint(equalToConstant: 40)
+        emailContainerViewHeightAnchor?.isActive = true
+        
+        passwordContainerViewHeightAnchor = loginNameTextField.heightAnchor.constraint(equalToConstant: 40)
+        passwordContainerViewHeightAnchor?.isActive = true
+        
+    }
+    
     // Causes the view (or one of its embedded text fields) to resign the first responder status.
 
     func dismissKeyboard() {
