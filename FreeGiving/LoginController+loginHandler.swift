@@ -51,15 +51,13 @@ extension LoginController {
 
             }
             
-            self.mapViewController?.fetchUserAndSetupNavBarTitle()
+//            self.mapViewController?.fetchUserAndSetupNavBarTitle()
             
             self.dismiss(animated: true, completion: nil)
 
         }
 
     }
-
-    // Register with name, email and password
 
     func handleRegister() {
 
@@ -115,7 +113,7 @@ extension LoginController {
 
                 print("Saved user successfully into Firebase db")
                 
-                self.mapViewController?.fetchUserAndSetupNavBarTitle()
+//                self.mapViewController?.fetchUserAndSetupNavBarTitle()
 
                 self.mapViewController?.navigationItem.title = values["name"]
                 

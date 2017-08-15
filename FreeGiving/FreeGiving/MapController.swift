@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import MapKit
 import CoreLocation
-import UserNotifications
+import Floaty
 
 class MapController: UIViewController {
     
@@ -23,6 +23,10 @@ class MapController: UIViewController {
     var selectedPin: MKPlacemark?
     
     var posts = [Post]()
+    
+    var float = FloatyItem()
+    
+    var floaty = Floaty()
 
     @IBOutlet weak var searchBarView: UIView!
 
@@ -35,8 +39,6 @@ class MapController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
 
         // HandleUpload
-
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Upload", style: .plain, target: self, action: #selector(handleUpload))
         
         checkedIfUserLoggedIn()
 
@@ -46,16 +48,27 @@ class MapController: UIViewController {
         
         fetchAnnotations()
         
-//        let content = UNMutableNotificationContent()
-//        content.title = "體驗過了，才是你的。"
-//        content.subtitle = "米花兒"
-//        content.body = "不要追問為什麼，就笨拙地走入未知。感受眼前的怦然與顫抖，聽聽左邊的碎裂和跳動。不管好的壞的，只有體驗過了，才是你的。"
-//        content.badge = 1
-//        content.sound = UNNotificationSound.default()
-//        
-//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
-//        let request = UNNotificationRequest(identifier: "notification1", content: content, trigger: trigger)
-//        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        
+        
+        
+        
+        float.titleColor = UIColor(red: 1, green: 0.8, blue: 0, alpha: 1)
+        
+        float.title = "Record"
+        
+        float.size = 28
+        
+        float.handler = { item in
+         
+            self.handleUpload()
+            
+        }
+        
+        floaty.addItem(item: float)
+        
+        floaty.addItem(title: "Hello")
+        
+        self.mapView.addSubview(floaty)
         
     }
     
@@ -98,31 +111,33 @@ class MapController: UIViewController {
 
             perform(#selector(handleLogout), with: nil, afterDelay: 0)
 
-        } else {
-
-            fetchUserAndSetupNavBarTitle()
-
         }
+        
+//        else {
+//
+//            fetchUserAndSetupNavBarTitle()
+//
+//        }
     }
     
-    func fetchUserAndSetupNavBarTitle() {
-        
-        let ref = Database.database().reference()
-        
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        
-        ref.child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            if let dictionary = snapshot.value as? [String:Any] {
-                
-                self.navigationItem.title = dictionary["name"] as? String
-                
-            }
-            
-        }, withCancel: nil)
-
-        
-    }
+//    func fetchUserAndSetupNavBarTitle() {
+//        
+//        let ref = Database.database().reference()
+//        
+//        guard let uid = Auth.auth().currentUser?.uid else { return }
+//        
+//        ref.child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+//            
+//            if let dictionary = snapshot.value as? [String:Any] {
+//                
+//                self.navigationItem.title = dictionary["name"] as? String
+//                
+//            }
+//            
+//        }, withCancel: nil)
+//
+//        
+//    }
 
     // Set the mapview behavior
 
@@ -156,5 +171,32 @@ class MapController: UIViewController {
 //        mapView.camera.heading = 180
 //        
 //    }
+    
+    func handleLogout() {
+        
+        do {
+            
+            try Auth.auth().signOut()
+            
+        } catch let logoutError {
+            
+            print(logoutError)
+            
+        }
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "loginPage") as! LoginController
+        
+        vc.mapViewController = self
+        
+        self.present(vc, animated: true, completion: nil)
+        
+    }
+    
+    func handleUpload() {
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "uploadPage") as! UINavigationController
+        
+        self.present(vc, animated: true, completion: nil)
+    }
 
 }

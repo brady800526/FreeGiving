@@ -15,5 +15,6 @@ target 'FreeGiving' do
   pod 'IQKeyboardManagerSwift', '4.0.10'
   pod 'SwifterSwift'
   pod 'SDWebImage', '~> 4.0'
+  pod 'Floaty', '~> 3.0'
 
 end

@@ -42,7 +42,6 @@
 		E5D648A11F3308F40075A4BA /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D648A01F3308F40075A4BA /* AnnotationView.swift */; };
 		E5E93D8C1F2AB75B00DE01CE /* OwnerProductController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E93D8B1F2AB75B00DE01CE /* OwnerProductController.swift */; };
 		E5E93D8E1F2AB81000DE01CE /* SearchItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E93D8D1F2AB81000DE01CE /* SearchItemController.swift */; };
-		E5E93DD11F2B0C2800DE01CE /* MapController+navigateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E93DD01F2B0C2800DE01CE /* MapController+navigateHandler.swift */; };
 		E5E93DD71F2B17ED00DE01CE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5E93DD61F2B17ED00DE01CE /* CoreLocation.framework */; };
 		E5E93DD91F2B39F400DE01CE /* LoginController+loginHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E93DD81F2B39F400DE01CE /* LoginController+loginHandler.swift */; };
 /* End PBXBuildFile section */
@@ -88,7 +87,6 @@
 		E5D648A01F3308F40075A4BA /* AnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		E5E93D8B1F2AB75B00DE01CE /* OwnerProductController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerProductController.swift; sourceTree = "<group>"; };
 		E5E93D8D1F2AB81000DE01CE /* SearchItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchItemController.swift; path = ../SearchItemController.swift; sourceTree = "<group>"; };
-		E5E93DD01F2B0C2800DE01CE /* MapController+navigateHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MapController+navigateHandler.swift"; sourceTree = "<group>"; };
 		E5E93DD61F2B17ED00DE01CE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E5E93DD81F2B39F400DE01CE /* LoginController+loginHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoginController+loginHandler.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,7 +120,6 @@
 				E52E1A941F2E1B4500C07A50 /* MapController+handlerLocatoinHandler.swift */,
 				E57EA9AD1F3C983A00FAE137 /* MapController+handleMapSearch.swift */,
 				E57EA9AF1F3C98BB00FAE137 /* MapController+handleMapDelegate.swift */,
-				E5E93DD01F2B0C2800DE01CE /* MapController+navigateHandler.swift */,
 			);
 			name = MapController;
 			sourceTree = "<group>";
@@ -426,7 +423,6 @@
 				E59370D21F2878C300FA1A72 /* MapController.swift in Sources */,
 				E57EA9AA1F3C4A7E00FAE137 /* SearchItemController+searchBar.swift in Sources */,
 				E5D6489E1F32FF2F0075A4BA /* CustomCalloutView.swift in Sources */,
-				E5E93DD11F2B0C2800DE01CE /* MapController+navigateHandler.swift in Sources */,
 				E53A7F131F374EC10022DE9A /* Usercell.swift in Sources */,
 				E52B87B71F3AD6A000361249 /* ProductPost.swift in Sources */,
 				E540D27D1F317275006523ED /* User.swift in Sources */,
