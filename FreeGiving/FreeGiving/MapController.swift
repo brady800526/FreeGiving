@@ -12,7 +12,7 @@ import MapKit
 import CoreLocation
 import Floaty
 
-class MapController: UIViewController {
+class MapController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
 
@@ -28,17 +28,17 @@ class MapController: UIViewController {
     
     var floaty = Floaty()
 
-    @IBOutlet weak var searchBarView: UIView!
-
     override func viewDidLoad() {
 
         super.viewDidLoad()
 
         // HandleLogout
 
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "more"), style: .plain, target: self, action: #selector(handleLogout))
 
         // HandleUpload
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(handleSearch))
         
         checkedIfUserLoggedIn()
 
@@ -47,8 +47,6 @@ class MapController: UIViewController {
         setLocationSearchTable()
         
         fetchAnnotations()
-        
-        
         
         
         
@@ -197,6 +195,13 @@ class MapController: UIViewController {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "uploadPage") as! UINavigationController
         
         self.present(vc, animated: true, completion: nil)
+    }
+    
+    func handleSearch() {
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "searchPage") as! SearchItemController
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
 
 }

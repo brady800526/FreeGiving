@@ -48,7 +48,7 @@ extension MapController : CLLocationManagerDelegate {
     
     func setLocationSearchTable() {
         
-        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "searchPage") as! LoactionSearchController
+        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "locationSearchPage") as! LoactionSearchController
         
         resultSearchController = UISearchController(searchResultsController: locationSearchTable)
         
@@ -63,10 +63,10 @@ extension MapController : CLLocationManagerDelegate {
         searchBar.sizeToFit()
         
         searchBar.placeholder = "Search for places"
+
+        navigationItem.titleView = resultSearchController?.searchBar
         
-        searchBarView.addSubview((resultSearchController?.searchBar)!)
-        
-        //        navigationItem.titleView = resultSearchController?.searchBar
+        searchBar.showsCancelButton = false
         
         resultSearchController?.hidesNavigationBarDuringPresentation = false
         

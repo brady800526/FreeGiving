@@ -53,7 +53,7 @@ class ImageUploadController: UIViewController {
 
     func setLocationSearchTable() {
 
-        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "searchPage") as! LoactionSearchController
+        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "loacationSearchPage") as! LoactionSearchController
 
         resultSearchController = UISearchController(searchResultsController: locationSearchTable)
 
