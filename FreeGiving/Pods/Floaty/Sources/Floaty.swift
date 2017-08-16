@@ -61,7 +61,7 @@ open class Floaty: UIView {
 	/**
 		Degrees to rotate image
 	*/
-	@IBInspectable open var rotationDegrees: CGFloat = -90
+	@IBInspectable open var rotationDegrees: CGFloat = -45
 
     /**
      Animation speed of buttons

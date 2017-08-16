@@ -6,6 +6,7 @@
 //  Copyright © 2017年 AppWorks. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import Firebase
 import MapKit
@@ -48,9 +49,9 @@ class MapController: UIViewController, UISearchBarDelegate {
     
     override func viewDidLoad() {
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         
-        mapView.addGestureRecognizer(tap)
+//        mapView.addGestureRecognizer(tap)
 
         super.viewDidLoad()
 
@@ -68,9 +69,17 @@ class MapController: UIViewController, UISearchBarDelegate {
         
         float.titleColor = UIColor(red: 1, green: 0.8, blue: 0, alpha: 1)
         
-        float.title = "Record"
+        float.title = "photo"
         
-        float.size = 28
+        float.imageSize = CGSize(width: 28, height: 28)
+        
+        float.imageOffset = CGPoint(x: -6, y: 0)
+        
+        float.icon = UIImage(named: "camera")
+        
+        float.tintColor = UIColor.white
+        
+        float.buttonColor = UIColor.clear
         
         float.handler = { item in
          
@@ -79,18 +88,16 @@ class MapController: UIViewController, UISearchBarDelegate {
         }
         
         floaty.addItem(item: float)
-        
-        floaty.addItem(title: "Hello")
-        
+
         self.mapView.addSubview(floaty)
         
     }
-    
+
     func dismissKeyboard() {
 
         if menuShowing == true {
         
-        handleMenu()
+            handleMenu()
             
         }
         
@@ -99,11 +106,15 @@ class MapController: UIViewController, UISearchBarDelegate {
     
     func slideMenuSetup() {
         
+        slideMenuView.layer.shadowOpacity = 1
+        
+        slideMenuView.layer.shadowRadius = 3
+        
         // HandleMenu
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "menu"), style: .plain, target: self, action: #selector(handleMenu))
         
-        leadingConstraint.constant = self.view.bounds.width * -2/5
+        leadingConstraint.constant = self.view.bounds.width * -2/5 - 10
         
         // HandleSearch
         
@@ -244,7 +255,7 @@ class MapController: UIViewController, UISearchBarDelegate {
     func handleMenu() {
 
         if (menuShowing) {
-            leadingConstraint.constant = self.view.bounds.width * -2/5
+            leadingConstraint.constant = self.view.bounds.width * -2/5 - 10
             
             self.mapView.backgroundColor = UIColor.black
             
@@ -264,7 +275,7 @@ class MapController: UIViewController, UISearchBarDelegate {
             
             self.view.backgroundColor = UIColor.clear
             
-            self.mapView.alpha = 0.4
+            self.mapView.alpha = 0.5
 
             UIView.animate(withDuration: 0.3, animations: { 
                 self.view.layoutIfNeeded()
