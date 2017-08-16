@@ -47,6 +47,10 @@ class MapController: UIViewController, UISearchBarDelegate {
     var menuShowing = false
     
     override func viewDidLoad() {
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        
+        mapView.addGestureRecognizer(tap)
 
         super.viewDidLoad()
 
@@ -82,11 +86,22 @@ class MapController: UIViewController, UISearchBarDelegate {
         
     }
     
+    func dismissKeyboard() {
+
+        if menuShowing == true {
+        
+        handleMenu()
+            
+        }
+        
+    }
+
+    
     func slideMenuSetup() {
         
         // HandleMenu
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "more"), style: .plain, target: self, action: #selector(handleMenu))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "menu"), style: .plain, target: self, action: #selector(handleMenu))
         
         leadingConstraint.constant = self.view.bounds.width * -2/5
         
@@ -240,6 +255,7 @@ class MapController: UIViewController, UISearchBarDelegate {
                 UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
             })
+            
             
         } else {
             leadingConstraint.constant = 0
