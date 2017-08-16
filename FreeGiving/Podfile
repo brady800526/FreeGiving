@@ -16,5 +16,5 @@ target 'FreeGiving' do
   pod 'SwifterSwift'
   pod 'SDWebImage', '~> 4.0'
   pod 'Floaty', '~> 3.0'
-
+  pod 'SlideMenuControllerSwift'
 end

@@ -57,6 +57,7 @@ PODS:
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
+  - SlideMenuControllerSwift (3.0.1)
   - SwifterSwift (1.6.4)
 
 DEPENDENCIES:
@@ -68,6 +69,7 @@ DEPENDENCIES:
   - Floaty (~> 3.0)
   - IQKeyboardManagerSwift (= 4.0.10)
   - SDWebImage (~> 4.0)
+  - SlideMenuControllerSwift
   - SwifterSwift
 
 SPEC CHECKSUMS:
@@ -85,8 +87,9 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: 75ba21a23794a1e6b6fe6d9a267ea17f80e06771
   Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  SlideMenuControllerSwift: 9a163b16d54afab734add42858cba7ef7c307755
   SwifterSwift: 92c73c47c3cbf7d5f788adf6459bf07b5d23d3fb
 
-PODFILE CHECKSUM: a4850bb0f53c39e587d02c23bc4aeb29f6f900cc
+PODFILE CHECKSUM: 977609ab31211f77421ab5b1e08a37c0e033ed07
 
 COCOAPODS: 1.2.1

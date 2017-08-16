@@ -28,18 +28,30 @@ class MapController: UIViewController, UISearchBarDelegate {
     
     var floaty = Floaty()
 
+    @IBOutlet weak var messageLink: UIView!
+    
+    @IBOutlet weak var messageIcon: UIImageView!
+    
+    @IBOutlet weak var ownerLink: UIView!
+
+    @IBOutlet weak var ownerIcon: UIImageView!
+
+    @IBOutlet weak var logoutLink: UIView!
+
+    @IBOutlet weak var logoutIcon: UIImageView!
+
+    @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
+
+    @IBOutlet weak var slideMenuView: UIView!
+
+    var menuShowing = false
+    
     override func viewDidLoad() {
 
         super.viewDidLoad()
 
-        // HandleLogout
+        slideMenuSetup()
 
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "more"), style: .plain, target: self, action: #selector(handleLogout))
-
-        // HandleUpload
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(handleSearch))
-        
         checkedIfUserLoggedIn()
 
         setLocationManagerBehavior()
@@ -70,11 +82,53 @@ class MapController: UIViewController, UISearchBarDelegate {
         
     }
     
+    func slideMenuSetup() {
+        
+        // HandleMenu
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "more"), style: .plain, target: self, action: #selector(handleMenu))
+        
+        leadingConstraint.constant = self.view.bounds.width * -2/5
+        
+        // HandleSearch
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(handleSearch))
+        
+        // HandleLogout
+        
+        let logoutGesture = UITapGestureRecognizer(target: self, action: #selector(handleLogout))
+        
+        logoutLink.addGestureRecognizer(logoutGesture)
+        
+        logoutIcon.tintColor = UIColor.white
+        // HandleMessage
+        
+        let messageGesture = UITapGestureRecognizer(target: self, action: #selector(handleMessage))
+        
+        messageLink.addGestureRecognizer(messageGesture)
+        
+        messageIcon.tintColor = UIColor.white
+        
+        // HandleOwner
+        
+        let ownerGesture = UITapGestureRecognizer(target: self, action: #selector(handleOwner))
+        
+        ownerLink.addGestureRecognizer(ownerGesture)
+        
+        ownerIcon.tintColor = UIColor.white
+
+        
+    }
+    
     func fetchAnnotations() {
         
-        Database.database().reference().child("posts").observe(.childAdded, with: { (snapshot) in
+        Database.database().reference().child("posts").observe(.value, with: { (snapshot) in
             
-            if let dictionary = snapshot.value as? [String: Any],
+            for item in snapshot.children {
+                
+                guard let itemsnapshot = item as? DataSnapshot else { return }
+            
+            if let dictionary = itemsnapshot.value as? [String: Any],
                 let available = dictionary["available"] as? String,
                 let description = dictionary["productDescription"] as? String,
                 let URL = dictionary["productImageURL"] as? String,
@@ -95,6 +149,8 @@ class MapController: UIViewController, UISearchBarDelegate {
                     
                     self.mapView.addAnnotation(post)
 
+            }
+                
             }
             
         })
@@ -169,6 +225,66 @@ class MapController: UIViewController, UISearchBarDelegate {
 //        mapView.camera.heading = 180
 //        
 //    }
+        
+    func handleMenu() {
+
+        if (menuShowing) {
+            leadingConstraint.constant = self.view.bounds.width * -2/5
+            
+            self.mapView.backgroundColor = UIColor.black
+            
+            self.view.backgroundColor = UIColor.clear
+            
+            self.mapView.alpha = 1
+            
+                UIView.animate(withDuration: 0.3, animations: {
+                self.view.layoutIfNeeded()
+            })
+            
+        } else {
+            leadingConstraint.constant = 0
+            
+            self.mapView.backgroundColor = UIColor.black
+            
+            self.view.backgroundColor = UIColor.clear
+            
+            self.mapView.alpha = 0.4
+
+            UIView.animate(withDuration: 0.3, animations: { 
+                self.view.layoutIfNeeded()
+            })
+        }
+        
+        menuShowing = !menuShowing
+    }
+    
+    func handleUpload() {
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "uploadPage") as! UINavigationController
+        
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    func handleSearch() {
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "searchPage") as! SearchItemController
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func handleMessage() {
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "messagePage") as! MessageController
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func handleOwner() {
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ownerPage") as! OwnerController
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
     func handleLogout() {
         
@@ -189,19 +305,6 @@ class MapController: UIViewController, UISearchBarDelegate {
         self.present(vc, animated: true, completion: nil)
         
     }
-    
-    func handleUpload() {
-        
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "uploadPage") as! UINavigationController
-        
-        self.present(vc, animated: true, completion: nil)
-    }
-    
-    func handleSearch() {
-        
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "searchPage") as! SearchItemController
-        
-        navigationController?.pushViewController(vc, animated: true)
-    }
+
 
 }
