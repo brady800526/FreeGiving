@@ -39,6 +39,13 @@ PODS:
     - FirebaseCore (~> 4.0)
     - GTMSessionFetcher/Core (~> 1.1)
   - Floaty (3.0.0)
+  - GoogleMaps (2.3.1):
+    - GoogleMaps/Maps (= 2.3.1)
+  - GoogleMaps/Base (2.3.1)
+  - GoogleMaps/Maps (2.3.1):
+    - GoogleMaps/Base
+  - GooglePlaces (2.3.1):
+    - GoogleMaps/Base (= 2.3.1)
   - GoogleToolboxForMac/DebugUtils (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
   - GoogleToolboxForMac/Defines (2.1.1)
@@ -57,7 +64,6 @@ PODS:
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
-  - SlideMenuControllerSwift (3.0.1)
   - SwifterSwift (1.6.4)
 
 DEPENDENCIES:
@@ -67,9 +73,10 @@ DEPENDENCIES:
   - Firebase/Messaging
   - Firebase/Storage
   - Floaty (~> 3.0)
+  - GoogleMaps
+  - GooglePlaces
   - IQKeyboardManagerSwift (= 4.0.10)
   - SDWebImage (~> 4.0)
-  - SlideMenuControllerSwift
   - SwifterSwift
 
 SPEC CHECKSUMS:
@@ -82,14 +89,15 @@ SPEC CHECKSUMS:
   FirebaseMessaging: 227406c05b0dc9290702d2e9f18ab5528f0c2cf2
   FirebaseStorage: 8110a1ed2034c8fbfd83890d2acc9cdbbd99afec
   Floaty: d1be5d323094f0de422bb615452d00ba26ac74dd
+  GoogleMaps: c66a71058b9b1294bcdd5463a68e357fa50c079f
+  GooglePlaces: 4a7b22debfa1af65017b82943431822607e45201
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
   IQKeyboardManagerSwift: 75ba21a23794a1e6b6fe6d9a267ea17f80e06771
   Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
-  SlideMenuControllerSwift: 9a163b16d54afab734add42858cba7ef7c307755
   SwifterSwift: 92c73c47c3cbf7d5f788adf6459bf07b5d23d3fb
 
-PODFILE CHECKSUM: 977609ab31211f77421ab5b1e08a37c0e033ed07
+PODFILE CHECKSUM: 97315e25bcb9a450e59e91ed58bc48a0d59f250c
 
 COCOAPODS: 1.2.1

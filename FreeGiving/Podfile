@@ -16,5 +16,7 @@ target 'FreeGiving' do
   pod 'SwifterSwift'
   pod 'SDWebImage', '~> 4.0'
   pod 'Floaty', '~> 3.0'
-  pod 'SlideMenuControllerSwift'
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
+
 end

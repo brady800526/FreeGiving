@@ -7,109 +7,126 @@
 //
 
 import UIKit
-import MapKit
-import CoreLocation
+import GooglePlaces
 
-class ImageUploadController: UIViewController, UIGestureRecognizerDelegate {
-
+class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDelegate, UITextViewDelegate {
+    
     @IBOutlet weak var uploadImageView: UIImageView!
-    @IBOutlet weak var productName: UITextField!
-    @IBOutlet weak var productOnShelfTime: UITextField!
-    @IBOutlet weak var productLocation: UITextField!
-    @IBOutlet weak var productDescription: UITextField!
+    @IBOutlet weak var productName: UITextView!
+    @IBOutlet weak var productLocation: UITextView!
+    @IBOutlet weak var productDescription: UITextView!
 
-    var resultSearchController: UISearchController?
-    let mapView = MKMapView()
-    var selectedPin: MKPlacemark?
-    var searchCompleter = MKLocalSearchCompleter()
-    var searchResults = [MKLocalSearchCompletion]()
     var latitude: String?
     var longtitude: String?
-
+    
+    
     override func viewDidLoad() {
-
+        
+        productName.text = "Product Name"
+        productName.textColor = UIColor.lightGray
+        
+        productLocation.text = "Product Location"
+        productLocation.textColor = UIColor.lightGray
+        
+        productDescription.text = "Product Description"
+        productDescription.textColor = UIColor.lightGray
+        
         super.viewDidLoad()
-
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "cancel", style: .plain, target: self, action: #selector(handleDismiss))
-
+        
         // Tap the button to upload the data to firebase
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "upload", style: .plain, target: self, action: #selector(handleUploadProduct))
-
+        //        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "upload", style: .plain, target: self, action: #selector(handleUploadProduct))
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "upload", style: .plain, target: self, action: #selector(openSearchAddress))
+        
         // User can tap the imageView to select the photo
         uploadImageView.isUserInteractionEnabled = true
         
         uploadImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectUploadImageView)))
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-
-//         Tap outside the screen to dismiss the keyboard
+        
+        //         Tap outside the screen to dismiss the keyboard
         view.addGestureRecognizer(tap)
-
-//        setLocationSearchTable()
+        
+        //        setLocationSearchTable()
         
     }
-
+    
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
-
-    func setLocationSearchTable() {
-
-        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "loacationSearchPage") as! LoactionSearchController
-
-        resultSearchController = UISearchController(searchResultsController: locationSearchTable)
-
-        resultSearchController?.searchResultsUpdater = locationSearchTable
-
-        locationSearchTable.mapView = mapView
-
-        locationSearchTable.handleMapSearchDelegate = self
-
-        let searchBar = resultSearchController!.searchBar
-
-        searchBar.sizeToFit()
-
-        searchBar.placeholder = "Search for places"
-
-        navigationItem.titleView = resultSearchController?.searchBar
-
-        resultSearchController?.hidesNavigationBarDuringPresentation = false
-
-        resultSearchController?.dimsBackgroundDuringPresentation = true
-
-        definesPresentationContext = true
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+        
+        print(place)
+        
+        self.productLocation.text = place.formattedAddress
+        
+        self.dismiss(animated: true, completion: nil) // dismiss after select place
     }
-
-}
-
-// Return the item selected on the list we would pin the place on the map
-
-extension ImageUploadController: HandleMapSearch {
-
-    func dropPinZoomIn(placemark: MKPlacemark) {
-        // cache the pin
-        selectedPin = placemark
-        // clear existing pins
-        mapView.removeAnnotations(mapView.annotations)
-
-        let annotation = MKPointAnnotation()
-
-        annotation.coordinate = placemark.coordinate
-
-        annotation.title = placemark.name
-
-        if let city = placemark.locality,
-            let state = placemark.administrativeArea {
-            annotation.subtitle = "\(city) \(state)"
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
+        
+        print("ERROR AUTO COMPLETE \(error)")
+        
+    }
+    
+    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+        self.dismiss(animated: true, completion: nil) // when cancel search
+    }
+    
+    func openSearchAddress(_ sender: UIBarButtonItem) {
+        let autoCompleteController = GMSAutocompleteViewController()
+        autoCompleteController.delegate = self
+        
+        self.present(autoCompleteController, animated: true, completion: nil)
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        
+        print(123)
+        
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
         }
-
-        mapView.addAnnotation(annotation)
-
-        let span = MKCoordinateSpanMake(0.05, 0.05)
-
-        let region = MKCoordinateRegionMake(placemark.coordinate, span)
-
-        mapView.setRegion(region, animated: true)
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        
+        print(123)
+        
+        switch textView {
+            
+        case productName:
+            
+            if productName.text.isEmpty {
+                productName.text = "Placeholder"
+                productName.textColor = UIColor.lightGray
+            }
+            
+        case productLocation:
+            
+            if productLocation.text.isEmpty {
+                
+                productLocation.text = "Placeholder"
+                productLocation.textColor = UIColor.lightGray
+            }
+            
+        case productDescription:
+            
+            if productDescription.text.isEmpty {
+                
+                productDescription.text = "Placeholder"
+                productDescription.textColor = UIColor.lightGray
+                
+            }
+         
+        default: break
+            
+        }
     }
 }

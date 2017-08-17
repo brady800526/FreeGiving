@@ -88,7 +88,6 @@ extension ImageUploadController: UIImagePickerControllerDelegate, UINavigationCo
         let timestamp: NSNumber = NSNumber(value: Date().timeIntervalSinceReferenceDate)
         
         guard let name = productName.text,
-            let time = productOnShelfTime.text,
             let description = productDescription.text,
             let latitude = self.latitude,
             let longtitude = self.longtitude,
