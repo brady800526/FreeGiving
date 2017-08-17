@@ -50,15 +50,15 @@ class OwnerController: UITableViewController {
         
         trackingRef.observe(.value, with: { (snapshot) in
             
-            if self.reload == true {
-                
-                self.trackings = [PostStatus]()
-                
-                self.posts = [ProductPost]()
-                
-                self.trackers = [String]()
-                
-            }
+//            if self.reload == true {
+//                
+//                self.trackings = [PostStatus]()
+//                
+//                self.posts = [ProductPost]()
+//                
+//                self.trackers = [String]()
+//                
+//            }
             
             for item in snapshot.children {
                 
@@ -69,6 +69,12 @@ class OwnerController: UITableViewController {
                     let tracking = PostStatus()
                     
                     tracking.setValuesForKeys(dictionary)
+                    
+                    print(tracking.toId, Auth.auth().currentUser?.uid)
+                    
+                    print(tracking.checked, "false")
+                    
+                    print(tracking.postKey!, self.postBeGiven)
                     
                     if tracking.toId == Auth.auth().currentUser?.uid && tracking.checked == "false" && !self.postBeGiven.contains(tracking.postKey!) {
                         

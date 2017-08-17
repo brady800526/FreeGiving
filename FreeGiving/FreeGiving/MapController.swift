@@ -50,7 +50,7 @@ class MapController: UIViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         
 //        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        
+//        
 //        mapView.addGestureRecognizer(tap)
 
         super.viewDidLoad()
@@ -66,10 +66,9 @@ class MapController: UIViewController, UISearchBarDelegate {
         fetchAnnotations()
         
         
-        
-        float.titleColor = UIColor(red: 1, green: 0.8, blue: 0, alpha: 1)
-        
         float.title = "photo"
+        
+        float.titleLabel.font = UIFont(name: "Marker Felt", size: 18)
         
         float.imageSize = CGSize(width: 28, height: 28)
         
@@ -275,7 +274,7 @@ class MapController: UIViewController, UISearchBarDelegate {
             
             self.view.backgroundColor = UIColor.clear
             
-            self.mapView.alpha = 0.5
+            self.mapView.alpha = 0.7
 
             UIView.animate(withDuration: 0.3, animations: { 
                 self.view.layoutIfNeeded()

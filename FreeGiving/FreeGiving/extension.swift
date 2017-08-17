@@ -168,6 +168,11 @@ extension UIColor {
     class var black25: UIColor {
         return UIColor(white: 0.0, alpha: 0.25)
     }
+    
+    class var standardOrange: UIColor {
+        return UIColor(red: 247/255.0, green: 207/255.0, blue: 54/255.0, alpha: 1)
+
+    }
 }
 
 // Text styles

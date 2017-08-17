@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class ImageUploadController: UIViewController {
+class ImageUploadController: UIViewController, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var uploadImageView: UIImageView!
     @IBOutlet weak var productName: UITextField!
@@ -36,10 +36,13 @@ class ImageUploadController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "upload", style: .plain, target: self, action: #selector(handleUploadProduct))
 
         // User can tap the imageView to select the photo
+        uploadImageView.isUserInteractionEnabled = true
+        
         uploadImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectUploadImageView)))
-
+        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        // Tap outside the screen to dismiss the keyboard
+
+//         Tap outside the screen to dismiss the keyboard
         view.addGestureRecognizer(tap)
 
 //        setLocationSearchTable()
