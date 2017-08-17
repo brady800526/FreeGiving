@@ -73,11 +73,6 @@
                         <action selector="check:" destination="iN0-l3-epB" eventType="touchUpInside" id="dyG-6f-t0Z"/>
                     </connections>
                 </button>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sr9-NC-IYy" customClass="BEMCheckBox">
-                    <rect key="frame" x="140" y="40" width="20" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
             <constraints>
@@ -101,7 +96,6 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="chat" destination="Nal-E4-286" id="58b-XR-vuw"/>
-                <outlet property="checkbox" destination="Sr9-NC-IYy" id="AAx-RP-iGV"/>
                 <outlet property="postDescription" destination="Jix-yG-UqL" id="z9E-GK-Dtn"/>
                 <outlet property="postImage" destination="08t-aW-Ig0" id="BTf-wu-VeK"/>
                 <outlet property="postTime" destination="vbz-X3-0mT" id="JGp-3S-kIE"/>

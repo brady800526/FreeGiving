@@ -168,7 +168,7 @@ class MapController: UIViewController, UISearchBarDelegate {
                     
                     print(snapshot.key)
                     
-                    let post = Post(Bool(available)!, Double(latitude)!, Double(longtitude)!, description, URL, title, timeStamp, user, snapshot.key)
+                    let post = Post(Bool(available)!, Double(latitude)!, Double(longtitude)!, description, URL, title, timeStamp, user, itemsnapshot.key)
 
                     post.coordinate = CLLocationCoordinate2D(latitude: Double(latitude)!, longitude: Double(longtitude)!)
 
