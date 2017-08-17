@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "ligature-symbols_2-11-0_gift_30_0_c0392b_ecf0f1.png",
+      "filename" : "font-awesome_4-7-0_hand-o-down_30_0_c0392b_none.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "ligature-symbols_2-11-0_gift_60_0_c0392b_ecf0f1.png",
+      "filename" : "font-awesome_4-7-0_hand-o-down_60_0_c0392b_none.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "ligature-symbols_2-11-0_gift_90_0_c0392b_ecf0f1.png",
+      "filename" : "font-awesome_4-7-0_hand-o-down_90_0_c0392b_none.png",
       "scale" : "3x"
     }
   ],

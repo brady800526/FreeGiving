@@ -1,4 +1,5 @@
 PODS:
+  - BEMCheckBox (1.4.1)
   - Firebase/Auth (4.0.2):
     - Firebase/Core
     - FirebaseAuth (= 4.0.0)
@@ -67,6 +68,7 @@ PODS:
   - SwifterSwift (1.6.4)
 
 DEPENDENCIES:
+  - BEMCheckBox
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -80,6 +82,7 @@ DEPENDENCIES:
   - SwifterSwift
 
 SPEC CHECKSUMS:
+  BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
   Firebase: c7ad0731eab26d18a3fc547dd048b0f7cd9c63ae
   FirebaseAnalytics: 4d7040fefc3cd8b291cde35f12cf063d7963f15d
   FirebaseAuth: ebb6abcbabae00fc47446d690c19ce68d8484fde
@@ -98,6 +101,6 @@ SPEC CHECKSUMS:
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SwifterSwift: 92c73c47c3cbf7d5f788adf6459bf07b5d23d3fb
 
-PODFILE CHECKSUM: 97315e25bcb9a450e59e91ed58bc48a0d59f250c
+PODFILE CHECKSUM: cfbf5a31b9ab725877938b00a89ff69dd1b93606
 
 COCOAPODS: 1.2.1

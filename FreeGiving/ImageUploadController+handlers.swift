@@ -152,8 +152,10 @@ extension ImageUploadController: UIImagePickerControllerDelegate, UINavigationCo
                 return
             }
             
-            print("Saved product detail successfully into Firebase db")
+            self.dismiss(animated: true, completion: nil)
             
+            print("Saved product detail successfully into Firebase db")
+
         })
         
     }

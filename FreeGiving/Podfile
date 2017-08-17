@@ -18,5 +18,6 @@ target 'FreeGiving' do
   pod 'Floaty', '~> 3.0'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  pod 'BEMCheckBox'
 
 end

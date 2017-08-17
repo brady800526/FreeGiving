@@ -160,13 +160,15 @@ class MapController: UIViewController, UISearchBarDelegate {
                 let title = dictionary["title"] as? String,
                 let latitude = dictionary["latitude"] as? String,
                 let longtitude = dictionary["longitude"] as? String,
-                let time = dictionary["productOnShelfTime"] as? String,
                 let user = dictionary["user"] as? String,
                 let timeStamp = dictionary["timeStamp"] as? NSNumber
                 {
                     
+                    print(itemsnapshot.key)
                     
-                    let post = Post(Bool(available)!, Double(latitude)!, Double(longtitude)!, description, URL, title, time, timeStamp, user, snapshot.key)
+                    print(snapshot.key)
+                    
+                    let post = Post(Bool(available)!, Double(latitude)!, Double(longtitude)!, description, URL, title, timeStamp, user, snapshot.key)
 
                     post.coordinate = CLLocationCoordinate2D(latitude: Double(latitude)!, longitude: Double(longtitude)!)
 

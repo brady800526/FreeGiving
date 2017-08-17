@@ -17,20 +17,18 @@ class Post: NSObject, MKAnnotation {
     var productDescription: String?
     var productImageURL: String?
     var title: String?
-    var productOnShelfTime: String?
     var timeStamp: NSNumber?
     var user: String?
     var key: String?
     var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
 
-    init(_ available: Bool, _ longtitude: Double, _ latitude: Double, _ description: String, _ URL: String, _ name: String, _ shelf: String, _ timestamp: NSNumber, _ user: String, _ key: String) {
+    init(_ available: Bool, _ longtitude: Double, _ latitude: Double, _ description: String, _ URL: String, _ name: String, _ timestamp: NSNumber, _ user: String, _ key: String) {
         self.available = available
         self.longtitude = longtitude
         self.latitude = latitude
         self.productDescription = description
         self.productImageURL = URL
         self.title = name
-        self.productOnShelfTime = shelf
         self.timeStamp = timestamp
         self.user = user
         self.key = key

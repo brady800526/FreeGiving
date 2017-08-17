@@ -15,16 +15,28 @@ class CustomCalloutView: UIView {
     @IBOutlet var postTitle: UILabel!
     @IBOutlet var postTime: UILabel!
     @IBOutlet var postDescription: UILabel!
+    @IBOutlet weak var chat: UIButton!
     
     var mapVC: MapController?
     
+    var userId: String?
+
     var post: Post? {
 
         didSet {
             
+            chat.tintColor = UIColor.orange
             postTitle.text = post?.title
-            postTime.text = post?.productOnShelfTime
             postDescription.text = post?.productDescription
+            
+            if let seconds = post?.timeStamp?.doubleValue {
+                let timestampDate = NSDate(timeIntervalSince1970: seconds)
+                
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "hh:mm:ss a"
+                postTime.text = dateFormatter.string(from: timestampDate as Date)
+                postTime.textColor = UIColor.lightGray
+            }
             
             //
 //            let button = UIButton(frame: calloutView.starbucksPhone.frame)
@@ -35,14 +47,13 @@ class CustomCalloutView: UIView {
             
             userId = post?.user
             
+            
         }
 
     }
     
-    var userId: String?
-
     @IBAction func chat(_ sender: Any) {
-        
+                
         let user = User()
         
         let ref = Database.database().reference()
@@ -62,7 +73,7 @@ class CustomCalloutView: UIView {
     }
     
     @IBAction func check(_ sender: Any) {
-        
+
         let ref = Database.database().reference()
         
         ref.child("trackings").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -78,7 +89,7 @@ class CustomCalloutView: UIView {
                 let postStatus = PostStatus()
                 
                 postStatus.setValuesForKeys(dictionary)
-
+                
                 if postStatus.fromId == Auth.auth().currentUser?.uid && postStatus.toId == self.userId && postStatus.checked == "false" && postStatus.postKey == self.post?.key {
                     
                     ref.child("trackings").child(itemSnapshot.key).removeValue()

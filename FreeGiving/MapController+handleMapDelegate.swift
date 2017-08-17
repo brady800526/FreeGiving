@@ -20,13 +20,14 @@ extension MapController : MKMapViewDelegate {
             return nil
         }
         var annotationView = self.mapView.dequeueReusableAnnotationView(withIdentifier: "Pin")
+
         if annotationView == nil{
             annotationView = AnnotationView(annotation: annotation, reuseIdentifier: "Pin")
             annotationView?.canShowCallout = false
         }else{
             annotationView?.annotation = annotation
         }
-        annotationView?.image = UIImage(named: "gift")
+        annotationView?.image = UIImage(named: "here")
         
         return annotationView
     }
@@ -44,10 +45,9 @@ extension MapController : MKMapViewDelegate {
         calloutView.post = postsAnnotation
         calloutView.mapVC = self
 
-//        calloutView.center = CGPoint(x: view.bounds.size.width / 2, y: calloutView.bounds.size.height * 0.52)
-        //        mapView.setCenter((view.annotation?.coordinate)!, animated: true)
-
+        calloutView.center = CGPoint(x: view.bounds.size.width / 2, y: -calloutView.bounds.size.height*0.52)
         view.addSubview(calloutView)
+        mapView.setCenter((view.annotation?.coordinate)!, animated: true)
         
     }
     
