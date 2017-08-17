@@ -51,7 +51,6 @@ extension MapController : MKMapViewDelegate {
         
     }
     
-    
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         if view.isKind(of: AnnotationView.self)
         {

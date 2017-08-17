@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CustomCalloutView.swift"
-            timestampString = "524675639.480533"
+            timestampString = "524686896.179434"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "check(_:)"
             landmarkType = "7">
          </BreakpointContent>

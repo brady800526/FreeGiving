@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import BEMCheckBox
 
 class CustomCalloutView: UIView {
 
@@ -16,6 +17,7 @@ class CustomCalloutView: UIView {
     @IBOutlet var postTime: UILabel!
     @IBOutlet var postDescription: UILabel!
     @IBOutlet weak var chat: UIButton!
+    @IBOutlet weak var checkBox: BEMCheckBox!
     
     var mapVC: MapController?
     
@@ -94,6 +96,10 @@ class CustomCalloutView: UIView {
                     
                     ref.child("trackings").child(itemSnapshot.key).removeValue()
                     
+                    self.checkBox.offAnimationType = .stroke
+                    
+                    self.checkBox.on = false
+                    
                     return
 
                 } else {
@@ -112,6 +118,10 @@ class CustomCalloutView: UIView {
                 let values = ["fromId": Auth.auth().currentUser?.uid, "toId": self.userId, "postKey": self.post?.key, "checked": "false", "timeStamp": NSNumber(value: Date().timeIntervalSinceReferenceDate)] as [String : Any]
                 
                 trackingRef.updateChildValues(values)
+                
+                self.checkBox.onAnimationType = .stroke
+                
+                self.checkBox.on = true
                 
             }
   
