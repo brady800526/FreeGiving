@@ -15,30 +15,39 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
     @IBOutlet weak var productName: UITextView!
     @IBOutlet weak var productLocation: UITextView!
     @IBOutlet weak var productDescription: UITextView!
+    @IBOutlet weak var uploadButton: UIButton!
+    
+    // Tap the button to upload the data to firebase
+
+    @IBAction func upload(_ sender: Any) {
+        handleUploadPhoto()
+    }
 
     var latitude: String?
     var longtitude: String?
-    
+    let textViewPlaceHolder = ["Product Name", "Product Location", "Product Description"]
     
     override func viewDidLoad() {
         
-        productName.text = "Product Name"
-        productName.textColor = UIColor.lightGray
-        
-        productLocation.text = "Product Location"
-        productLocation.textColor = UIColor.lightGray
-        
-        productDescription.text = "Product Description"
-        productDescription.textColor = UIColor.lightGray
-        
         super.viewDidLoad()
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "cancel", style: .plain, target: self, action: #selector(handleDismiss))
+        let textViews: [UITextView] = [productName, productLocation, productDescription]
         
-        // Tap the button to upload the data to firebase
-        //        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "upload", style: .plain, target: self, action: #selector(handleUploadProduct))
+        for index in 0 ..< textViews.count {
+            
+            textViews[index].text = textViewPlaceHolder[index]
+
+            textViews[index].textColor = UIColor.lightGray
+            
+        }
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "upload", style: .plain, target: self, action: #selector(openSearchAddress))
+        uploadButton.layer.shadowOffset = CGSize(width: 3, height: 3)
+        uploadButton.layer.shadowColor = UIColor.black.cgColor
+        uploadButton.layer.shadowRadius = 5
+        uploadButton.layer.shadowOpacity = 1
+        uploadButton.clipsToBounds = false
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: #selector(handleDismiss))
         
         // User can tap the imageView to select the photo
         uploadImageView.isUserInteractionEnabled = true
@@ -65,6 +74,12 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
         
         self.productLocation.text = place.formattedAddress
         
+        self.productLocation.textColor = UIColor.black
+
+        self.latitude = String(place.coordinate.latitude)
+
+        self.longtitude = String(place.coordinate.longitude)
+        
         self.dismiss(animated: true, completion: nil) // dismiss after select place
     }
     
@@ -78,7 +93,7 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
         self.dismiss(animated: true, completion: nil) // when cancel search
     }
     
-    func openSearchAddress(_ sender: UIBarButtonItem) {
+    func openSearchAddress() {
         let autoCompleteController = GMSAutocompleteViewController()
         autoCompleteController.delegate = self
         
@@ -87,24 +102,28 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         
-        print(123)
-        
         if textView.textColor == UIColor.lightGray {
+
             textView.text = nil
+
             textView.textColor = UIColor.black
+        }
+        
+        if textView == productLocation {
+            
+            openSearchAddress()
+            
         }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        
-        print(123)
         
         switch textView {
             
         case productName:
             
             if productName.text.isEmpty {
-                productName.text = "Placeholder"
+                productName.text = textViewPlaceHolder[0]
                 productName.textColor = UIColor.lightGray
             }
             
@@ -112,7 +131,7 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
             
             if productLocation.text.isEmpty {
                 
-                productLocation.text = "Placeholder"
+                productLocation.text = textViewPlaceHolder[1]
                 productLocation.textColor = UIColor.lightGray
             }
             
@@ -120,7 +139,7 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
             
             if productDescription.text.isEmpty {
                 
-                productDescription.text = "Placeholder"
+                productDescription.text = textViewPlaceHolder[2]
                 productDescription.textColor = UIColor.lightGray
                 
             }

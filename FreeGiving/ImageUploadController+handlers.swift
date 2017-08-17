@@ -9,80 +9,79 @@
 import Foundation
 import UIKit
 import Firebase
-import CoreLocation
 
 extension ImageUploadController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     func handleDismiss() {
-
+        
         self.dismiss(animated: true, completion: nil)
-
+        
     }
-
+    
     // Handle imageview when selected
-
+    
     func handleSelectUploadImageView() {
-
+        
         let picker = UIImagePickerController()
-
+        
         picker.delegate = self
-
+        
         picker.allowsEditing = true
-
+        
         present(picker, animated: true, completion: nil)
     }
-
+    
     // Optional crop the image if user wanted
-
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-
+        
         var selectedImageFromPicker: UIImage?
-
+        
         if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
-
+            
             selectedImageFromPicker = editedImage
-
+            
         } else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
-
+            
             selectedImageFromPicker = originalImage
-
+            
         }
-
+        
         if let selectedImage = selectedImageFromPicker {
-
+            
             uploadImageView.image = selectedImage
-
+            
         }
-
+        
         self.dismiss(animated: true, completion: nil)
-
+        
     }
-
+    
     // Handle if picker is cancel
-
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-
+        
         print("image cacnel")
-
+        
         dismiss(animated: true, completion: nil)
-
+        
     }
-
+    
     func handleUploadProduct() {
-
+        
         handleUploadPhoto()
-
+        
         self.dismiss(animated: true, completion: nil)
-
+        
     }
-
+    
     
     // Save the photo to storage and take the imageURL to handleUploadText
-
+    
     func handleUploadPhoto() {
-
+        
         let imageName = NSUUID().uuidString
-
+        
         let storageRef = Storage.storage().reference().child("postsPhoto").child("\(imageName).jpg")
         
         let timestamp: NSNumber = NSNumber(value: Date().timeIntervalSinceReferenceDate)
@@ -100,40 +99,39 @@ extension ImageUploadController: UIImagePickerControllerDelegate, UINavigationCo
         }
         
         if let uploadData = UIImageJPEGRepresentation(self.uploadImageView.image!, 0.1) {
-        
+            
             storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
-
-                if let error = error {
-
-                    print(error)
-
-                    return
-
-                }
-
-                if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
                 
-                let values: [String: Any] =
-                    ["user": uid,
-                     "title": name,
-                     "productOnShelfTime": time,
-                     "latitude": latitude,
-                     "longitude": longtitude,
-                     "productDescription": description,
-                     "productImageURL": profileImageUrl,
-                     "timeStamp": timestamp,
-                     "available": "true"]
-
-                    print(values)
-
-                    print(profileImageUrl)
-
-                    self.handleUploadText(values: values)
-
+                if let error = error {
+                    
+                    print(error)
+                    
+                    return
+                    
                 }
-
+                
+                if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
+                    
+                    let values: [String: Any] =
+                        ["user": uid,
+                         "title": name,
+                         "latitude": latitude,
+                         "longitude": longtitude,
+                         "productDescription": description,
+                         "productImageURL": profileImageUrl,
+                         "timeStamp": timestamp,
+                         "available": "true"]
+                    
+                    print(values)
+                    
+                    print(profileImageUrl)
+                    
+                    self.handleUploadText(values: values)
+                    
+                }
+                
             })
-
+            
         }
     }
     
@@ -159,48 +157,10 @@ extension ImageUploadController: UIImagePickerControllerDelegate, UINavigationCo
         })
         
     }
-
+    
 }
 
 extension ImageUploadController: UITextFieldDelegate {
 
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-
-        let geoCoder = CLGeocoder()
-
-        switch textField {
-
-        case productLocation:
-
-            guard let address = productLocation.text else { return true }
-
-            geoCoder.geocodeAddressString(address, completionHandler: { (placemarks, error) in
-                if let error = error {
-                    
-                    print(error)
-                    
-                    return
-                }
-                
-                guard let placemark = placemarks?.first,
-                    let lat = placemark.location?.coordinate.latitude,
-                    let lon = placemark.location?.coordinate.longitude
-                    else {
-                        return }
-                print(self.latitude, self.longtitude)
-                self.latitude = String(lat)
-                self.longtitude = String(lon)
-                
-            })
-
-        return true
-
-        default: print("nothing return")
-
-        return true
-
-        }
-
-    }
-
+    
 }
