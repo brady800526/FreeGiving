@@ -47,6 +47,19 @@ class MapController: UIViewController, UISearchBarDelegate {
 
     var menuShowing = false
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        leadingConstraint.constant = self.view.bounds.width * -2/5 - 10
+        
+        self.mapView.backgroundColor = UIColor.black
+        
+        self.view.backgroundColor = UIColor.clear
+        
+        self.mapView.alpha = 1
+
+        
+    }
+    
     override func viewDidLoad() {
         
 //        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -64,7 +77,6 @@ class MapController: UIViewController, UISearchBarDelegate {
         setLocationSearchTable()
         
         fetchAnnotations()
-
         
         self.navigationController?.navigationBar.barTintColor = UIColor.orange
         
@@ -273,6 +285,7 @@ class MapController: UIViewController, UISearchBarDelegate {
             
             
         } else {
+
             leadingConstraint.constant = 0
             
             self.mapView.backgroundColor = UIColor.black

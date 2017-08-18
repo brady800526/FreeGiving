@@ -29,6 +29,8 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
     
     override func viewDidLoad() {
         
+        self.navigationController?.navigationBar.tintColor = UIColor.orange
+        
         super.viewDidLoad()
         
         let textViews: [UITextView] = [productName, productLocation, productDescription]
