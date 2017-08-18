@@ -51,6 +51,16 @@ class OwnerController: UITableViewController {
         
         trackingRef.observe(.value, with: { (snapshot) in
             
+            if self.reload == true {
+                
+                self.trackings = [PostStatus]()
+                
+                self.trackers = [String]()
+                
+                self.posts = [ProductPost]()
+                
+            }
+            
             for item in snapshot.children {
                 
                 guard let itemSnapshot = item as? DataSnapshot else { return }
@@ -149,6 +159,8 @@ class OwnerController: UITableViewController {
         cell.trackerNameLabel.textColor = UIColor.orange
         
         cell.backgroundColor = UIColor.white
+        
+        cell.postMessage.text = trackings[indexPath.row].attention
         
         return cell
     }

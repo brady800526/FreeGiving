@@ -411,7 +411,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DvS-83-Lnm" id="eZD-I3-s0n">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="149.66666666666666"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jja-Xy-EG4">
@@ -426,7 +426,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsVerticalScrollIndicator="NO" text="lkdmsfkldsmflksdmclksdmklmfklsdmclsdmlk;mfkl;dsmcl;kdmsl;kfml;kdsmcl;kdsmlkcmdlsk;mfl;dsmcl;dmslmcldskml;d" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GAs-ne-KV4">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsVerticalScrollIndicator="NO" editable="NO" text="lkdmsfkldsmflksdmclksdmklmfklsdmclsdmlk;mfkl;dsmcl;kdmsl;kfml;kdsmcl;kdsmlkcmdlsk;mfl;dsmcl;dmslmcldskml;d" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAs-ne-KV4">
                                             <rect key="frame" x="172" y="34" width="234" height="99"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -441,6 +441,9 @@
                                                 <constraint firstAttribute="width" secondItem="JXW-3g-UCb" secondAttribute="height" multiplier="1:1" id="HCU-VO-G9D"/>
                                             </constraints>
                                             <state key="normal" image="deal"/>
+                                            <connections>
+                                                <action selector="deal:" destination="DvS-83-Lnm" eventType="touchUpInside" id="V2Q-Ur-vRz"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -461,7 +464,9 @@
                                     <constraint firstItem="Jja-Xy-EG4" firstAttribute="top" secondItem="DvS-83-Lnm" secondAttribute="top" constant="8" id="opi-ZW-r0y"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="deal" destination="JXW-3g-UCb" id="dpY-Ku-nf0"/>
                                     <outlet property="postImage" destination="Jja-Xy-EG4" id="9qM-fv-UEo"/>
+                                    <outlet property="postMessage" destination="GAs-ne-KV4" id="876-4B-WeX"/>
                                     <outlet property="trackerNameLabel" destination="chE-kr-bV0" id="uSI-to-ZMl"/>
                                 </connections>
                             </tableViewCell>

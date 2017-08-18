@@ -135,7 +135,7 @@ class CustomCalloutView: UIView {
                     
                     let appearance = SCLAlertView.SCLAppearance()
                     
-                    _ = SCLAlertView(appearance: appearance).showSuccess("Cacnel Subscription", subTitle: "You just cancel your subscription to \(String(describing: (self.post?.title)!)), wait notification if giver choose you")
+                    _ = SCLAlertView(appearance: appearance).showSuccess("Cacnel Subscription", subTitle: "You just cancel your subscription to \(String(describing: (self.post?.title)!))")
                     
                     self.checkBox.offAnimationType = .stroke
                     
@@ -156,13 +156,30 @@ class CustomCalloutView: UIView {
                 
                 let trackingRef = ref.child("trackings").childByAutoId()
                 
-                let values = ["fromId": Auth.auth().currentUser?.uid, "toId": self.userId, "postKey": self.post?.key, "checked": "false", "timeStamp": NSNumber(value: Date().timeIntervalSinceReferenceDate)] as [String : Any]
+//                let values = ["fromId": Auth.auth().currentUser?.uid, "toId": self.userId, "postKey": self.post?.key, "checked": "false", "timeStamp": NSNumber(value: Date().timeIntervalSinceReferenceDate)] as [String : Any]
                 
-                trackingRef.updateChildValues(values)
+//                trackingRef.updateChildValues(values)
 
-                let appearance = SCLAlertView.SCLAppearance()
+//                let appearance = SCLAlertView.SCLAppearance(
+//                    showCloseButton: false
+//                )
+
+                let appearance = SCLAlertView.SCLAppearance(
+                    showCloseButton: false
+                )
                 
-                _ = SCLAlertView(appearance: appearance).showSuccess("Success Subscription", subTitle: "You just subscribe to \(String(describing: (self.post?.title)!))")
+                let alert = SCLAlertView(appearance: appearance)
+                let txt = alert.addTextField("Say something to giver")
+                _ = alert.addButton("Send") {
+                    print("Text value: \(txt.text ?? "NA")")
+                    
+                    let values = ["fromId": Auth.auth().currentUser?.uid, "toId": self.userId, "postKey": self.post?.key, "checked": "false", "timeStamp": NSNumber(value: Date().timeIntervalSinceReferenceDate), "attention": txt.text ?? "NA"] as [String : Any]
+                    
+                    trackingRef.updateChildValues(values)
+
+                }
+                _ = alert.showSuccess("Success Subscription", subTitle:"After subscribe to \(String(describing: (self.post?.title)!)), wait notification from giver")
+                
                 
                 self.checkBox.onAnimationType = .stroke
                 
