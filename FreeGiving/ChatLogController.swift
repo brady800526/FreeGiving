@@ -20,6 +20,8 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
 
             navigationItem.title = user?.name
             
+            print(user?.id)
+            
             observeMessage()
         }
 

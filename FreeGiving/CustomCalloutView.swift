@@ -103,6 +103,12 @@ class CustomCalloutView: UIView {
                 
                 user.setValuesForKeys(dictionary)
                 
+                print(self.userId!)
+                
+                print(snapshot.value!)
+                
+                user.id = snapshot.key
+                
                 self.showChatControllerForUser(user: user)
                 
             }
