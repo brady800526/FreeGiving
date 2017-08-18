@@ -23,12 +23,13 @@ class OwnerController: UITableViewController {
     
     var postBeGiven = [String]()
     
-    
     override func viewDidLoad() {
         
         observeUserGiven()
         
         observeUserTrackings()
+        
+        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
         
     }
     
@@ -49,16 +50,6 @@ class OwnerController: UITableViewController {
         let trackingRef = Database.database().reference().child("trackings")
         
         trackingRef.observe(.value, with: { (snapshot) in
-            
-//            if self.reload == true {
-//                
-//                self.trackings = [PostStatus]()
-//                
-//                self.posts = [ProductPost]()
-//                
-//                self.trackers = [String]()
-//                
-//            }
             
             for item in snapshot.children {
                 
@@ -145,18 +136,26 @@ class OwnerController: UITableViewController {
         
         cell.postImage.sd_setImage(with: URL(string: posts[indexPath.row].productImageURL!), placeholderImage: nil)
         
+        cell.postImage.layer.shadowColor = UIColor.black.cgColor
+        
+        cell.postImage.layer.shadowOpacity = 0.5
+        
+        cell.postImage.layer.shadowRadius = 3
+        
+        cell.postImage.layer.shadowOffset = CGSize(width: 1, height: 1)
+        
         cell.trackerNameLabel.text = trackers[indexPath.row]
         
-        cell.trackerNameLabel.textColor = UIColor.white
+        cell.trackerNameLabel.textColor = UIColor.orange
         
-        cell.backgroundColor = UIColor.black
+        cell.backgroundColor = UIColor.white
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 200
+        return 150
         
     }
     

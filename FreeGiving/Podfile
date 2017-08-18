@@ -19,5 +19,6 @@ target 'FreeGiving' do
   pod 'GoogleMaps'
   pod 'GooglePlaces'
   pod 'BEMCheckBox'
+  pod 'SCLAlertView'
 
 end

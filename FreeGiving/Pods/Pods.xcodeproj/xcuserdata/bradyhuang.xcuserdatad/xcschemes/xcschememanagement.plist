@@ -39,6 +39,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SCLAlertView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -52,12 +57,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>480505226E78C29B2C73D80D17D5C30B</key>
+		<key>03825E4EC9EE36E629754A814A1D030C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>492815F8D428F343D08652FCF2081D01</key>
+		<key>06FB649FF0205E50FDF7F2B2E3C995C5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -72,17 +77,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>70716CED0DEF91212FB90B52891B6728</key>
+		<key>7BA52501EFD76432CFCFBD3880A5B080</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>97B721049BCE30729EDECD215852075B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>BC19A72FB7D1DB0B2CC5F6C5CF2400F4</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BCEEB475D2ACBE6FF9E47F47E90FB451</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -93,6 +98,11 @@
 			<true/>
 		</dict>
 		<key>C235F77E101E742652CCF98FFDFA5182</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FCEB663F98E29B3FA67D988EDD62E181</key>
 		<dict>
 			<key>primary</key>
 			<true/>

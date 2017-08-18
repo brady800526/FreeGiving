@@ -62,6 +62,7 @@ PODS:
   - GTMSessionFetcher/Core (1.1.10)
   - IQKeyboardManagerSwift (4.0.10)
   - Protobuf (3.3.0)
+  - SCLAlertView (0.7.0)
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
@@ -78,6 +79,7 @@ DEPENDENCIES:
   - GoogleMaps
   - GooglePlaces
   - IQKeyboardManagerSwift (= 4.0.10)
+  - SCLAlertView
   - SDWebImage (~> 4.0)
   - SwifterSwift
 
@@ -98,9 +100,10 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
   IQKeyboardManagerSwift: 75ba21a23794a1e6b6fe6d9a267ea17f80e06771
   Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
+  SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SwifterSwift: 92c73c47c3cbf7d5f788adf6459bf07b5d23d3fb
 
-PODFILE CHECKSUM: cfbf5a31b9ab725877938b00a89ff69dd1b93606
+PODFILE CHECKSUM: fbba102473b46896319aa702ddfd7720f70499e8
 
 COCOAPODS: 1.2.1

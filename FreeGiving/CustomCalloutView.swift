@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import BEMCheckBox
+import SCLAlertView
 
 class CustomCalloutView: UIView {
 
@@ -49,6 +50,42 @@ class CustomCalloutView: UIView {
             
             userId = post?.user
             
+            let ref = Database.database().reference()
+            
+            ref.child("trackings").observeSingleEvent(of: .value, with: { (snapshot) in
+
+                for item in snapshot.children {
+                    
+                    guard let itemSnapshot = item as? DataSnapshot else { return }
+                    
+                    guard let dictionary = itemSnapshot.value as? [String: Any] else { return }
+                    
+                    let postStatus = PostStatus()
+                    
+                    postStatus.setValuesForKeys(dictionary)
+                    
+                    if postStatus.fromId == Auth.auth().currentUser?.uid && postStatus.toId == self.userId && postStatus.checked == "false" && postStatus.postKey == self.post?.key {
+                        
+                        self.checkBox.onAnimationType = .stroke
+                        
+                        self.checkBox.on = true
+                        
+                        return
+                        
+                    } else {
+                        
+                        self.checkBox.offAnimationType = .stroke
+                        
+                        self.checkBox.on = false
+                        
+                    }
+                    
+                    
+                }
+                
+
+            })
+
             
         }
 
@@ -96,6 +133,10 @@ class CustomCalloutView: UIView {
                     
                     ref.child("trackings").child(itemSnapshot.key).removeValue()
                     
+                    let appearance = SCLAlertView.SCLAppearance()
+                    
+                    _ = SCLAlertView(appearance: appearance).showSuccess("Cacnel Subscription", subTitle: "You just cancel your subscription to \(String(describing: (self.post?.title)!)), wait notification if giver choose you")
+                    
                     self.checkBox.offAnimationType = .stroke
                     
                     self.checkBox.on = false
@@ -118,6 +159,10 @@ class CustomCalloutView: UIView {
                 let values = ["fromId": Auth.auth().currentUser?.uid, "toId": self.userId, "postKey": self.post?.key, "checked": "false", "timeStamp": NSNumber(value: Date().timeIntervalSinceReferenceDate)] as [String : Any]
                 
                 trackingRef.updateChildValues(values)
+
+                let appearance = SCLAlertView.SCLAppearance()
+                
+                _ = SCLAlertView(appearance: appearance).showSuccess("Success Subscription", subTitle: "You just subscribe to \(String(describing: (self.post?.title)!))")
                 
                 self.checkBox.onAnimationType = .stroke
                 

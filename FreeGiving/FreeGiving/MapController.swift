@@ -54,7 +54,7 @@ class MapController: UIViewController, UISearchBarDelegate {
 //        mapView.addGestureRecognizer(tap)
 
         super.viewDidLoad()
-
+        
         slideMenuSetup()
 
         checkedIfUserLoggedIn()
@@ -64,6 +64,13 @@ class MapController: UIViewController, UISearchBarDelegate {
         setLocationSearchTable()
         
         fetchAnnotations()
+
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor.orange
+        
+        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
+        
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
         
         
         float.title = "photo"
@@ -163,10 +170,6 @@ class MapController: UIViewController, UISearchBarDelegate {
                 let user = dictionary["user"] as? String,
                 let timeStamp = dictionary["timeStamp"] as? NSNumber
                 {
-                    
-                    print(itemsnapshot.key)
-                    
-                    print(snapshot.key)
                     
                     let post = Post(Bool(available)!, Double(latitude)!, Double(longtitude)!, description, URL, title, timeStamp, user, itemsnapshot.key)
 

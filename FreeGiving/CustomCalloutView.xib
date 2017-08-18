@@ -15,9 +15,8 @@
             <rect key="frame" x="0.0" y="0.0" width="250" height="100"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jix-yG-UqL">
-                    <rect key="frame" x="104" y="31" width="92" height="11"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jix-yG-UqL">
+                    <rect key="frame" x="104" y="34" width="142" height="11"/>
                     <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="10"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -92,6 +91,11 @@
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="Jix-yG-UqL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="34" id="dAu-O3-vnn"/>
+                <constraint firstItem="Jix-yG-UqL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="104" id="hWk-E5-NT9"/>
+                <constraint firstAttribute="trailing" secondItem="Jix-yG-UqL" secondAttribute="trailing" constant="4" id="xAj-8e-ipk"/>
+            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
