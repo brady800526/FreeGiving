@@ -49,6 +49,8 @@ class MapController: UIViewController, UISearchBarDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         
+        fetchAnnotations()
+        
         leadingConstraint.constant = self.view.bounds.width * -2/5 - 10
         
         self.mapView.backgroundColor = UIColor.black

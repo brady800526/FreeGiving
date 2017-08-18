@@ -28,7 +28,7 @@ class OwnerController: UITableViewController {
         observeUserGiven()
         
         observeUserTrackings()
-        
+
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
         
     }

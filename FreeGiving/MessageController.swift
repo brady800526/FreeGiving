@@ -16,6 +16,8 @@ class MessageController: UITableViewController {
 
     override func viewDidLoad() {
         
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "mes", style: .plain, target: self, action: #selector(handleNewMessage))
         
         tableView.register(UserCell.self, forCellReuseIdentifier: cellId)

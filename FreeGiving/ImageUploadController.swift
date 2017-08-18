@@ -29,7 +29,9 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
     
     override func viewDidLoad() {
         
-        self.navigationController?.navigationBar.tintColor = UIColor.orange
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor.orange
         
         super.viewDidLoad()
         
