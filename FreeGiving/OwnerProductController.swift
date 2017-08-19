@@ -27,8 +27,6 @@ class OwnerController: UITableViewController {
         
         observeUserGiven()
         
-        observeUserTrackings()
-
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
         
     }
@@ -37,9 +35,25 @@ class OwnerController: UITableViewController {
         
         let givenRef = Database.database().reference().child("givens")
         
-        givenRef.observe( .childAdded, with: { (snapshot) in
+        givenRef.observe(.value, with: { (snapshot) in
             
-        self.postBeGiven.append(snapshot.key)
+            self.postBeGiven = [String]()
+            
+            self.trackers = [String]()
+            
+            self.trackings = [PostStatus]()
+            
+            self.posts = [ProductPost]()
+            
+            guard let datasnapshot = snapshot.value as? [String: Any] else { return }
+            
+            for data in datasnapshot {
+                
+                self.postBeGiven.append(data.key)
+                
+            }
+            
+            self.observeUserTrackings()
             
         })
         
@@ -49,17 +63,7 @@ class OwnerController: UITableViewController {
         
         let trackingRef = Database.database().reference().child("trackings")
         
-        trackingRef.observe(.value, with: { (snapshot) in
-            
-            if self.reload == true {
-                
-                self.trackings = [PostStatus]()
-                
-                self.trackers = [String]()
-                
-                self.posts = [ProductPost]()
-                
-            }
+        trackingRef.observeSingleEvent(of: .value, with: { (snapshot) in
             
             for item in snapshot.children {
                 
@@ -71,15 +75,31 @@ class OwnerController: UITableViewController {
                     
                     tracking.setValuesForKeys(dictionary)
                     
-                    print(tracking.toId, Auth.auth().currentUser?.uid)
-                    
-                    print(tracking.checked, "false")
-                    
-                    print(tracking.postKey!, self.postBeGiven)
+                    if tracking.toId == Auth.auth().currentUser?.uid && tracking.checked == "true" && !self.postBeGiven.contains(tracking.postKey!) {
+                        
+                        self.trackings.append(tracking)
+                        
+                        print(self.trackings.count)
+
+                        trackingRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                            
+                            trackingRef.child(itemSnapshot.key).updateChildValues(["checked": "false"])
+                            
+                            DispatchQueue.main.async {
+                                
+                                self.tableView.reloadData()
+                                
+                                return
+                            }
+                            
+                        })
+                    }
                     
                     if tracking.toId == Auth.auth().currentUser?.uid && tracking.checked == "false" && !self.postBeGiven.contains(tracking.postKey!) {
                         
                         self.trackings.append(tracking)
+                        
+                        print(self.trackings.count)
                         
                         let userRef = Database.database().reference().child("users")
                         
@@ -89,27 +109,33 @@ class OwnerController: UITableViewController {
                             
                             self.trackers.append(dictionary["name"] as! String)
                             
-                            let postRef = Database.database().reference().child("posts")
+                            DispatchQueue.main.async {
+                                
+                                self.tableView.reloadData()
+                                
+                                return
+                            }
                             
-                            postRef.child(tracking.postKey!).observeSingleEvent(of: .value, with: { (snapshot) in
+                        })
+                        
+                        let postRef = Database.database().reference().child("posts")
+                        
+                        postRef.child(tracking.postKey!).observeSingleEvent(of: .value, with: { (snapshot) in
+                            
+                            guard let dictionary = snapshot.value as? [String: Any] else { return }
+                            
+                            let post = ProductPost()
+                            
+                            post.setValuesForKeys(dictionary)
+                            
+                            self.posts.append(post)
+                            
+                            DispatchQueue.main.async {
                                 
-                                guard let dictionary = snapshot.value as? [String: Any] else { return }
+                                self.tableView.reloadData()
                                 
-                                let post = ProductPost()
-                                
-                                post.setValuesForKeys(dictionary)
-                                
-                                self.posts.append(post)
-                                
-                                DispatchQueue.main.async {
-                                    
-                                    self.tableView.reloadData()
-                                    
-                                    return
-                                    
-                                }
-                                
-                            })
+                                return
+                            }
                             
                         })
                         
@@ -117,13 +143,6 @@ class OwnerController: UITableViewController {
                     
                 }
                 
-            }
-            
-            DispatchQueue.main.async {
-                
-                self.tableView.reloadData()
-                
-                return
             }
             
         })
@@ -134,9 +153,7 @@ class OwnerController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        print(posts.count)
-        
-        return posts.count
+        return trackers.count > posts.count ? posts.count : trackers.count
         
     }
     
@@ -180,8 +197,6 @@ class OwnerController: UITableViewController {
             guard let value = snapshot.value as? [String: Any] else { return }
             
             for item in value {
-                
-                print(item.value)
                 
                 let postStatus = PostStatus()
                 

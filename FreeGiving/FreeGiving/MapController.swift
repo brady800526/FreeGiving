@@ -48,9 +48,7 @@ class MapController: UIViewController, UISearchBarDelegate {
     var menuShowing = false
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        fetchAnnotations()
-        
+
         leadingConstraint.constant = self.view.bounds.width * -2/5 - 10
         
         self.mapView.backgroundColor = UIColor.black
@@ -169,6 +167,8 @@ class MapController: UIViewController, UISearchBarDelegate {
     func fetchAnnotations() {
         
         Database.database().reference().child("posts").observe(.value, with: { (snapshot) in
+            
+            print(snapshot.value)
             
             for item in snapshot.children {
                 
