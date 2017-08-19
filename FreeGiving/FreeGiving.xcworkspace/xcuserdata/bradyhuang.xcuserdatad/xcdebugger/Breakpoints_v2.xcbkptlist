@@ -90,13 +90,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OwnerProductController.swift"
-            timestampString = "524847116.356614"
+            timestampString = "524848461.763416"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "observeUserTrackings()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FreeGiving.OwnerController.(observeUserTrackings () -&gt; ()).(closure #1)"
+                  moduleName = "FreeGiving"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bradyhuang/Desktop/OneDrive/105-2/Appworks/FreeGiving/FreeGiving/OwnerProductController.swift"
+                  timestampString = "524848462.082137"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "110"
+                  endingLineNumber = "110"
+                  offsetFromSymbolStart = "4427">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FreeGiving.OwnerController.(observeUserTrackings () -&gt; ()).(closure #1).(closure #2)"
+                  moduleName = "FreeGiving"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bradyhuang/Desktop/OneDrive/105-2/Appworks/FreeGiving/FreeGiving/OwnerProductController.swift"
+                  timestampString = "524848462.085867"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "110"
+                  endingLineNumber = "110"
+                  offsetFromSymbolStart = "1046">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

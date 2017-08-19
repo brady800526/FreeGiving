@@ -61,6 +61,10 @@ class OwnerController: UITableViewController {
         
         let trackingRef = Database.database().reference().child("trackings")
         
+        trackings = [PostStatus]()
+        
+        self.tableView.reloadData()
+        
         trackingRef.observeSingleEvent(of: .value, with: { (snapshot) in
             
             for item in snapshot.children {
@@ -224,9 +228,7 @@ class OwnerController: UITableViewController {
             let givenRef = Database.database().reference().child("givens")
             
             givenRef.updateChildValues([self.trackings[indexPath.row].postKey!: 1])
-            
-            self.postBeGiven.append(self.trackings[indexPath.row].postKey!)
-            
+
         })
         
     }

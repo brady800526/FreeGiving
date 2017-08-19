@@ -173,14 +173,6 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		E540D27B1F317256006523ED /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Model;
-			path = ..;
-			sourceTree = "<group>";
-		};
 		E55F04121F42C5FE00A0DB92 /* resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,7 +220,6 @@
 			children = (
 				E53B49A41F4086590062F0C3 /* FreeGiving.entitlements */,
 				E53A7F111F374EB10022DE9A /* View */,
-				E540D27B1F317256006523ED /* Model */,
 				E59370CE1F28730400FA1A72 /* Controller */,
 				E59370B91F285AF500FA1A72 /* AppDelegate.swift */,
 				E55F04121F42C5FE00A0DB92 /* resources */,
