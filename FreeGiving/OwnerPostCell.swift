@@ -25,7 +25,35 @@ class OwnerPostCell: UITableViewCell {
         let trackingRef = Database.database().reference().child("trackings")
         
         trackingRef.observeSingleEvent(of: .value, with: {(snapshot) in
-//            
+            
+            guard let value = snapshot.value as? [String: Any] else { return }
+            
+            for item in value {
+                
+                let postStatus = PostStatus()
+                
+                postStatus.setValuesForKeys(item.value as! [String : Any])
+                
+                if postStatus.postKey == self.tracking?.postKey && postStatus.fromId == self.tracking?.fromId {
+                    
+                    trackingRef.child(item.key).updateChildValues(["checked": "true"])
+                    
+                }
+                
+            }
+            
+            let givenRef = Database.database().reference().child("givens")
+            
+            givenRef.updateChildValues([(self.tracking?.postKey)!: 1])
+            
+        })
+        
+        
+        
+//        let trackingRef = Database.database().reference().child("trackings")
+//        
+//        trackingRef.observeSingleEvent(of: .value, with: {(snapshot) in
+//
 //            guard let value = snapshot.value as? [String: Any] else { return }
 //            
 //            for item in value {
@@ -49,8 +77,8 @@ class OwnerPostCell: UITableViewCell {
 //            givenRef.updateChildValues([(self.tracking?.postKey)!: 1])
 //            
 ////            self.postBeGiven.append(self.tracking.postKey!)
-            
-        })
+//            
+//        })
 
     }
 }

@@ -25,7 +25,7 @@ class OwnerController: UITableViewController {
         
         observeUserGiven()
         
-        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         
     }
     
@@ -194,6 +194,8 @@ class OwnerController: UITableViewController {
         
         cell.postMessage.text = trackings[indexPath.row].attention
         
+        cell.tracking = trackings[indexPath.row]
+        
         return cell
     }
     
@@ -205,31 +207,31 @@ class OwnerController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let trackingRef = Database.database().reference().child("trackings")
-        
-        trackingRef.observeSingleEvent(of: .value, with: {(snapshot) in
-            
-            guard let value = snapshot.value as? [String: Any] else { return }
-            
-            for item in value {
-                
-                let postStatus = PostStatus()
-                
-                postStatus.setValuesForKeys(item.value as! [String : Any])
-                
-                if postStatus.postKey == self.trackings[indexPath.row].postKey && postStatus.fromId == self.trackings[indexPath.row].fromId {
-                    
-                    trackingRef.child(item.key).updateChildValues(["checked": "true"])
-                    
-                }
-                
-            }
-            
-            let givenRef = Database.database().reference().child("givens")
-            
-            givenRef.updateChildValues([self.trackings[indexPath.row].postKey!: 1])
-
-        })
+//        let trackingRef = Database.database().reference().child("trackings")
+//        
+//        trackingRef.observeSingleEvent(of: .value, with: {(snapshot) in
+//            
+//            guard let value = snapshot.value as? [String: Any] else { return }
+//            
+//            for item in value {
+//                
+//                let postStatus = PostStatus()
+//                
+//                postStatus.setValuesForKeys(item.value as! [String : Any])
+//                
+//                if postStatus.postKey == self.trackings[indexPath.row].postKey && postStatus.fromId == self.trackings[indexPath.row].fromId {
+//                    
+//                    trackingRef.child(item.key).updateChildValues(["checked": "true"])
+//                    
+//                }
+//                
+//            }
+//            
+//            let givenRef = Database.database().reference().child("givens")
+//            
+//            givenRef.updateChildValues([self.trackings[indexPath.row].postKey!: 1])
+//
+//        })
         
     }
     
