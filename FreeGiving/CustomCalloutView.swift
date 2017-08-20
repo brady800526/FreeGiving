@@ -89,6 +89,8 @@ class CustomCalloutView: UIView {
     }
 
     @IBAction func chat(_ sender: Any) {
+        
+        Analytics.logEvent("chat_giver", parameters: nil)
 
         let user = User()
 
@@ -140,6 +142,8 @@ class CustomCalloutView: UIView {
 
                     _ = SCLAlertView(appearance: appearance).showSuccess("Cacnel Subscription", subTitle: "You just cancel your subscription to \(String(describing: (self.post?.title)!))")
 
+                    Analytics.logEvent("desubscribe_giverItem", parameters: nil)
+                    
                     self.checkBox.offAnimationType = .stroke
 
                     self.checkBox.on = false
@@ -158,14 +162,6 @@ class CustomCalloutView: UIView {
 
                 let trackingRef = ref.child("trackings").childByAutoId()
 
-//                let values = ["fromId": Auth.auth().currentUser?.uid, "toId": self.userId, "postKey": self.post?.key, "checked": "false", "timeStamp": NSNumber(value: Date().timeIntervalSinceReferenceDate)] as [String : Any]
-
-//                trackingRef.updateChildValues(values)
-
-//                let appearance = SCLAlertView.SCLAppearance(
-//                    showCloseButton: false
-//                )
-
                 let appearance = SCLAlertView.SCLAppearance(
                     showCloseButton: false
                 )
@@ -173,14 +169,19 @@ class CustomCalloutView: UIView {
                 let alert = SCLAlertView(appearance: appearance)
                 let txt = alert.addTextField("Say something to giver")
                 _ = alert.addButton("Send") {
-                    print("Text value: \(txt.text ?? "NA")")
 
-                    let values = ["fromId": Auth.auth().currentUser?.uid, "toId": self.userId, "postKey": self.post?.key, "checked": "false", "timeStamp": NSNumber(value: Date().timeIntervalSinceReferenceDate), "attention": txt.text ?? "NA"] as [String : Any]
+                    guard let uid = Auth.auth().currentUser?.uid,
+                        let userId = self.userId,
+                        let key = self.post?.key else { return }
+
+                    let values = ["fromId": uid, "toId": userId, "postKey": key, "checked": "false", "timeStamp": NSNumber(value: Date().timeIntervalSinceReferenceDate), "attention": txt.text ?? "NA"] as [String : Any]
 
                     trackingRef.updateChildValues(values)
 
                 }
                 _ = alert.showSuccess("Success Subscription", subTitle:"After subscribe to \(String(describing: (self.post?.title)!)), wait notification from giver")
+                
+                Analytics.logEvent("subscribe_giverItem", parameters: nil)
 
                 self.checkBox.onAnimationType = .stroke
 

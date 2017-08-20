@@ -221,8 +221,8 @@
 				E53B49A41F4086590062F0C3 /* FreeGiving.entitlements */,
 				E53A7F111F374EB10022DE9A /* View */,
 				E59370CE1F28730400FA1A72 /* Controller */,
-				E59370B91F285AF500FA1A72 /* AppDelegate.swift */,
 				E55F04121F42C5FE00A0DB92 /* resources */,
+				E59370B91F285AF500FA1A72 /* AppDelegate.swift */,
 				E59370BD1F285AF500FA1A72 /* Main.storyboard */,
 				E59370C01F285AF500FA1A72 /* Assets.xcassets */,
 				E59370C21F285AF500FA1A72 /* LaunchScreen.storyboard */,
@@ -280,6 +280,8 @@
 				E59370B41F285AF500FA1A72 /* Resources */,
 				A911B31F0D24E08AD65AD234 /* [CP] Embed Pods Frameworks */,
 				875DAB96059AC764D6FD22A3 /* [CP] Copy Pods Resources */,
+				E576CF5E1F498EC000842CB5 /* Swiftlint */,
+				E576CF5F1F498F3D00842CB5 /* Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -358,7 +360,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FreeGiving/Pods-FreeGiving-resources.sh\"\n";
 		};
 		A911B31F0D24E08AD65AD234 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -374,6 +376,34 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FreeGiving/Pods-FreeGiving-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		E576CF5E1F498EC000842CB5 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+		E576CF5F1F498F3D00842CB5 /* Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Crashlytics;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 94f3ad8c397e4b498f0a5e8a445dfe61a89d9c49 6312ecabf76ac8c9d15df7c4689fcbc139eeb6b2065392b16387448faa908868";
 		};
 		E8F3D5A4BF147CBA7C08674F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -476,7 +506,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

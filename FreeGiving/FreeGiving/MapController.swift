@@ -12,6 +12,7 @@ import Firebase
 import MapKit
 import CoreLocation
 import Floaty
+import Crashlytics
 
 class MapController: UIViewController, UISearchBarDelegate {
 
@@ -63,9 +64,7 @@ class MapController: UIViewController, UISearchBarDelegate {
 
     override func viewDidLoad() {
 
-        //        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        //
-        //        mapView.addGestureRecognizer(tap)
+//        Crashlytics.sharedInstance().crash()
 
         super.viewDidLoad()
 
@@ -111,16 +110,6 @@ class MapController: UIViewController, UISearchBarDelegate {
 
     }
 
-    func dismissKeyboard() {
-
-        if menuShowing == true {
-
-            handleMenu()
-
-        }
-
-    }
-
     func slideMenuSetup() {
 
         slideMenuView.layer.shadowOpacity = 1
@@ -135,7 +124,7 @@ class MapController: UIViewController, UISearchBarDelegate {
 
         // HandleSearch
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(handleSearch))
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(handleSearch))
 
         // HandleLogout
 
@@ -225,8 +214,6 @@ class MapController: UIViewController, UISearchBarDelegate {
     // Set the mapview behavior
 
     func setMapViewBehavior() {
-
-        // FIXME: Mapview doesn't conform to following behavior
 
         self.mapView.showsUserLocation = true
 
