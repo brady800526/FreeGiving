@@ -25,6 +25,8 @@ class OwnerController: UITableViewController {
         
         observeUserGiven()
         
+        self.tableView.allowsSelection = false
+        
         self.navigationController?.navigationBar.tintColor = UIColor.white
         
     }
@@ -102,9 +104,7 @@ class OwnerController: UITableViewController {
                     if tracking.toId == Auth.auth().currentUser?.uid && tracking.checked == "false" && !self.postBeGiven.contains(tracking.postKey!) {
                         
                         self.trackings.append(tracking)
-                        
-                        print(self.trackings.count)
-                        
+
                         self.handleTrackers(tracking: tracking)
                         
                         self.handlePost(tracking: tracking)
@@ -204,36 +204,6 @@ class OwnerController: UITableViewController {
         return 150
         
     }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-//        let trackingRef = Database.database().reference().child("trackings")
-//        
-//        trackingRef.observeSingleEvent(of: .value, with: {(snapshot) in
-//            
-//            guard let value = snapshot.value as? [String: Any] else { return }
-//            
-//            for item in value {
-//                
-//                let postStatus = PostStatus()
-//                
-//                postStatus.setValuesForKeys(item.value as! [String : Any])
-//                
-//                if postStatus.postKey == self.trackings[indexPath.row].postKey && postStatus.fromId == self.trackings[indexPath.row].fromId {
-//                    
-//                    trackingRef.child(item.key).updateChildValues(["checked": "true"])
-//                    
-//                }
-//                
-//            }
-//            
-//            let givenRef = Database.database().reference().child("givens")
-//            
-//            givenRef.updateChildValues([self.trackings[indexPath.row].postKey!: 1])
-//
-//        })
-        
-    }
-    
+
 }
 

@@ -16,11 +16,11 @@ import Floaty
 class MapController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
-
+    
     let locationManager = CLLocationManager()
-
+    
     var resultSearchController: UISearchController?
-
+    
     var selectedPin: MKPlacemark?
     
     var posts = [Post]()
@@ -28,27 +28,27 @@ class MapController: UIViewController, UISearchBarDelegate {
     var float = FloatyItem()
     
     var floaty = Floaty()
-
+    
     @IBOutlet weak var messageLink: UIView!
     
     @IBOutlet weak var messageIcon: UIImageView!
     
     @IBOutlet weak var ownerLink: UIView!
-
+    
     @IBOutlet weak var ownerIcon: UIImageView!
-
+    
     @IBOutlet weak var logoutLink: UIView!
-
+    
     @IBOutlet weak var logoutIcon: UIImageView!
-
+    
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
-
+    
     @IBOutlet weak var slideMenuView: UIView!
-
+    
     var menuShowing = false
     
     override func viewWillAppear(_ animated: Bool) {
-
+        
         leadingConstraint.constant = self.view.bounds.width * -2/5 - 10
         
         self.mapView.backgroundColor = UIColor.black
@@ -56,24 +56,25 @@ class MapController: UIViewController, UISearchBarDelegate {
         self.view.backgroundColor = UIColor.clear
         
         self.mapView.alpha = 1
-
+        
+        fetchAnnotations()
         
     }
     
     override func viewDidLoad() {
         
-//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-//        
-//        mapView.addGestureRecognizer(tap)
-
+        //        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        //
+        //        mapView.addGestureRecognizer(tap)
+        
         super.viewDidLoad()
         
         slideMenuSetup()
-
+        
         checkedIfUserLoggedIn()
-
+        
         setLocationManagerBehavior()
-
+        
         setLocationSearchTable()
         
         fetchAnnotations()
@@ -100,27 +101,27 @@ class MapController: UIViewController, UISearchBarDelegate {
         float.buttonColor = UIColor.clear
         
         float.handler = { item in
-         
+            
             self.handleUpload()
             
         }
         
         floaty.addItem(item: float)
-
+        
         self.mapView.addSubview(floaty)
         
     }
-
+    
     func dismissKeyboard() {
-
-        if menuShowing == true {
         
+        if menuShowing == true {
+            
             handleMenu()
             
         }
         
     }
-
+    
     
     func slideMenuSetup() {
         
@@ -160,7 +161,7 @@ class MapController: UIViewController, UISearchBarDelegate {
         ownerLink.addGestureRecognizer(ownerGesture)
         
         ownerIcon.tintColor = UIColor.white
-
+        
         
     }
     
@@ -168,87 +169,75 @@ class MapController: UIViewController, UISearchBarDelegate {
         
         Database.database().reference().child("posts").observe(.value, with: { (snapshot) in
             
-            print(snapshot.value)
+            self.posts = [Post]()
+            
+            for annotation in self.mapView.annotations {
+                self.mapView.removeAnnotation(annotation)
+            }
             
             for item in snapshot.children {
                 
                 guard let itemsnapshot = item as? DataSnapshot else { return }
-            
-            if let dictionary = itemsnapshot.value as? [String: Any],
-                let available = dictionary["available"] as? String,
-                let description = dictionary["productDescription"] as? String,
-                let URL = dictionary["productImageURL"] as? String,
-                let title = dictionary["title"] as? String,
-                let latitude = dictionary["latitude"] as? String,
-                let longtitude = dictionary["longitude"] as? String,
-                let user = dictionary["user"] as? String,
-                let timeStamp = dictionary["timeStamp"] as? NSNumber
+                
+                if let dictionary = itemsnapshot.value as? [String: Any],
+                    let available = dictionary["available"] as? String,
+                    let description = dictionary["productDescription"] as? String,
+                    let URL = dictionary["productImageURL"] as? String,
+                    let title = dictionary["title"] as? String,
+                    let latitude = dictionary["latitude"] as? String,
+                    let longtitude = dictionary["longitude"] as? String,
+                    let user = dictionary["user"] as? String,
+                    let timeStamp = dictionary["timeStamp"] as? NSNumber
                 {
                     
                     let post = Post(Bool(available)!, Double(latitude)!, Double(longtitude)!, description, URL, title, timeStamp, user, itemsnapshot.key)
-
-                    post.coordinate = CLLocationCoordinate2D(latitude: Double(latitude)!, longitude: Double(longtitude)!)
-
-                    self.posts.append(post)
                     
-                    self.mapView.addAnnotation(post)
-
-            }
+                    post.coordinate = CLLocationCoordinate2D(latitude: Double(latitude)!, longitude: Double(longtitude)!)
+                    
+                    if post.available == true {
+                        
+                        self.posts.append(post)
+                        
+                        self.mapView.addAnnotation(post)
+                        
+                    } else {
+                        
+//                        Database.database().reference().child("givens").child(itemsnapshot.key).setValue(nil)
+                        
+                    }
+                    
+                }
                 
             }
             
         })
         
     }
-
+    
     // CheckIfUserLoggin before by checking uuid, if not send the user to login page
-
+    
     func checkedIfUserLoggedIn() {
-
+        
         if Auth.auth().currentUser?.uid == nil {
-
+            
             perform(#selector(handleLogout), with: nil, afterDelay: 0)
-
+            
         }
         
-//        else {
-//
-//            fetchUserAndSetupNavBarTitle()
-//
-//        }
     }
     
-//    func fetchUserAndSetupNavBarTitle() {
-//        
-//        let ref = Database.database().reference()
-//        
-//        guard let uid = Auth.auth().currentUser?.uid else { return }
-//        
-//        ref.child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
-//            
-//            if let dictionary = snapshot.value as? [String:Any] {
-//                
-//                self.navigationItem.title = dictionary["name"] as? String
-//                
-//            }
-//            
-//        }, withCancel: nil)
-//
-//        
-//    }
-
     // Set the mapview behavior
-
+    
     func setMapViewBehavior() {
-
+        
         // FIXME: Mapview doesn't conform to following behavior
-
+        
         self.mapView.showsUserLocation = true
-
+        
         self.mapView.showsScale = true
-
+        
         self.mapView.showsCompass = true
-
+        
     }
     
     func showChatControllerForUser(user: User) {
@@ -261,17 +250,17 @@ class MapController: UIViewController, UISearchBarDelegate {
         
         present(nv, animated: true)
     }
-
-//    private func cameraSetup() {
-//        
-//        mapView.camera.altitude = 1400
-//        mapView.camera.pitch = 50
-//        mapView.camera.heading = 180
-//        
-//    }
-        
+    
+    //    private func cameraSetup() {
+    //
+    //        mapView.camera.altitude = 1400
+    //        mapView.camera.pitch = 50
+    //        mapView.camera.heading = 180
+    //
+    //    }
+    
     func handleMenu() {
-
+        
         if (menuShowing) {
             leadingConstraint.constant = self.view.bounds.width * -2/5 - 10
             
@@ -281,13 +270,13 @@ class MapController: UIViewController, UISearchBarDelegate {
             
             self.mapView.alpha = 1
             
-                UIView.animate(withDuration: 0.3, animations: {
+            UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
             })
             
             
         } else {
-
+            
             leadingConstraint.constant = 0
             
             self.mapView.backgroundColor = UIColor.black
@@ -295,8 +284,8 @@ class MapController: UIViewController, UISearchBarDelegate {
             self.view.backgroundColor = UIColor.clear
             
             self.mapView.alpha = 0.7
-
-            UIView.animate(withDuration: 0.3, animations: { 
+            
+            UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
             })
         }
@@ -351,6 +340,6 @@ class MapController: UIViewController, UISearchBarDelegate {
         self.present(vc, animated: true, completion: nil)
         
     }
-
-
+    
+    
 }
