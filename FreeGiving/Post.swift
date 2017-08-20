@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 
 class Post: NSObject, MKAnnotation {
-    
+
     var available: Bool?
     var longtitude: Double?
     var latitude: Double?

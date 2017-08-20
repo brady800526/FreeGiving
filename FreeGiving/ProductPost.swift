@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 
 class ProductPost: NSObject {
-    
+
     var available: String?
     var latitude: String?
     var longitude: String?
@@ -20,5 +20,5 @@ class ProductPost: NSObject {
     var productOnShelfTime: String?
     var timeStamp: NSNumber?
     var user: String?
-    
+
 }

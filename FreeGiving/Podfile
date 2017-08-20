@@ -7,6 +7,7 @@ target 'FreeGiving' do
 
   # Pods for FreeGiving
 
+  pod 'SwiftLint'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'

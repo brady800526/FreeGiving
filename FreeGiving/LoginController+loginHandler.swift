@@ -19,7 +19,7 @@ extension LoginController {
         loginSubmitButton.setTitle(title, for: .normal)
 
         inputsContainerViewHeightAnchor?.constant = loginSegmentedControl.selectedSegmentIndex == 0 ? 80 : 120
-        
+
         nameContainerViewHeightAnchor?.constant = loginSegmentedControl.selectedSegmentIndex == 0 ? 0 : 40
 
     }
@@ -50,9 +50,9 @@ extension LoginController {
                 return
 
             }
-            
+
 //            self.mapViewController?.fetchUserAndSetupNavBarTitle()
-            
+
             self.dismiss(animated: true, completion: nil)
 
         }
@@ -112,11 +112,11 @@ extension LoginController {
                 }
 
                 print("Saved user successfully into Firebase db")
-                
+
 //                self.mapViewController?.fetchUserAndSetupNavBarTitle()
 
                 self.mapViewController?.navigationItem.title = values["name"]
-                
+
                 self.dismiss(animated: true, completion: nil)
 
             })

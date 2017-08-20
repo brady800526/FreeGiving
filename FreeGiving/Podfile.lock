@@ -67,6 +67,7 @@ PODS:
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
   - SwifterSwift (1.6.4)
+  - SwiftLint (0.20.0)
 
 DEPENDENCIES:
   - BEMCheckBox
@@ -82,6 +83,7 @@ DEPENDENCIES:
   - SCLAlertView
   - SDWebImage (~> 4.0)
   - SwifterSwift
+  - SwiftLint
 
 SPEC CHECKSUMS:
   BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
@@ -103,7 +105,8 @@ SPEC CHECKSUMS:
   SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SwifterSwift: 92c73c47c3cbf7d5f788adf6459bf07b5d23d3fb
+  SwiftLint: 3f7543509c931d1291395335f34e245d3919b7f2
 
-PODFILE CHECKSUM: fbba102473b46896319aa702ddfd7720f70499e8
+PODFILE CHECKSUM: 442a4cb32e8d52b338927645e4a93f06a07988c9
 
 COCOAPODS: 1.2.1

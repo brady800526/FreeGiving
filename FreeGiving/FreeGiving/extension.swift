@@ -31,7 +31,6 @@ extension String {
     }
 }
 
-
 extension UIColor {
     class var sandBrown: UIColor {
         return UIColor(red: 211.0 / 255.0, green: 150.0 / 255.0, blue: 104.0 / 255.0, alpha: 1.0)
@@ -168,7 +167,7 @@ extension UIColor {
     class var black25: UIColor {
         return UIColor(white: 0.0, alpha: 0.25)
     }
-    
+
     class var standardOrange: UIColor {
         return UIColor(red: 247/255.0, green: 207/255.0, blue: 54/255.0, alpha: 1)
 

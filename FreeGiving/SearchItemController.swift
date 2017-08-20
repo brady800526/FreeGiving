@@ -16,64 +16,64 @@ class SearchItemController: UICollectionViewController {
     var productPosts: [ProductPost] = [] {
 
         didSet {
-            
+
             filteredProducts = productPosts
-            
+
         }
 
     }
-    
+
     var filteredProducts: [ProductPost] = []
-    
+
     let searchBar = UISearchBar()
-    
+
     let screenSize: CGRect = UIScreen.main.bounds
-    
+
     override func viewDidLoad() {
 
         super.viewDidLoad()
-        
+
         self.collectionView!.register(PostCollectionViewCell.self, forCellWithReuseIdentifier: searchCell)
-        
+
         observePosts()
-        
+
         handleLatest()
-        
+
         setupCVLayout()
 
         setupSearchBar()
-        
+
         }
-    
+
     func handleLatest() {
-        
+
         filteredProducts.sort { (product1, product2) -> Bool in
-            
+
             return Int(product1.timeStamp!) > Int(product2.timeStamp!)
-            
+
         }
-        
+
         self.collectionView?.reloadData()
-        
+
     }
-    
+
     func observePosts() {
 
         let userMessageRef = Database.database().reference().child("posts")
 
         userMessageRef.observe(.childAdded, with: { (snapshot) in
-            
+
             guard let dictionary = snapshot.value as? [String: Any] else { return }
-            
+
             let productPost = ProductPost()
-            
+
             productPost.setValuesForKeys(dictionary)
-            
+
             self.productPosts.append(productPost)
-            
+
             self.collectionView?.reloadData()
-            
+
         }, withCancel: nil)
     }
-    
+
 }

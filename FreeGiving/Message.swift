@@ -15,9 +15,9 @@ class Message: NSObject {
     var toId: String?
     var timestamp: NSNumber?
     var text: String?
-    
+
     func chatPartnerId() -> String? {
-        
+
         return fromId == Auth.auth().currentUser?.uid ? toId : fromId
 
     }
