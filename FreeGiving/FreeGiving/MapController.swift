@@ -298,10 +298,11 @@ class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDe
     func handleUpload() {
 
         // swiftlint:disable force_cast
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "uploadPage") as! UINavigationController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "uploadPage") as! ImageUploadController
+        let nv = UINavigationController(rootViewController: vc)
         // swiftlint:enable force_cast
 
-        self.present(vc, animated: true, completion: nil)
+        self.present(nv, animated: true, completion: nil)
     }
 
     func handleSearch() {
@@ -316,7 +317,7 @@ class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDe
     func handleMessage() {
 
         // swiftlint:disable force_cast
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "messagePage") as! MessageController
+        let vc = MessageController()
         // swiftlint:enable force_cast
 
         navigationController?.pushViewController(vc, animated: true)

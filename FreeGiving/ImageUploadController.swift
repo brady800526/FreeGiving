@@ -74,8 +74,6 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
 
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
 
-        print(place)
-
         self.productLocation.text = place.formattedAddress
 
         self.productLocation.textColor = UIColor.black
