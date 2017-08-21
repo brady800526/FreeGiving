@@ -89,7 +89,7 @@ class CustomCalloutView: UIView {
     }
 
     @IBAction func chat(_ sender: Any) {
-        
+
         Analytics.logEvent("chat_giver", parameters: nil)
 
         let user = User()
@@ -143,7 +143,7 @@ class CustomCalloutView: UIView {
                     _ = SCLAlertView(appearance: appearance).showSuccess("Cacnel Subscription", subTitle: "You just cancel your subscription to \(String(describing: (self.post?.title)!))")
 
                     Analytics.logEvent("desubscribe_giverItem", parameters: nil)
-                    
+
                     self.checkBox.offAnimationType = .stroke
 
                     self.checkBox.on = false
@@ -180,7 +180,7 @@ class CustomCalloutView: UIView {
 
                 }
                 _ = alert.showSuccess("Success Subscription", subTitle:"After subscribe to \(String(describing: (self.post?.title)!)), wait notification from giver")
-                
+
                 Analytics.logEvent("subscribe_giverItem", parameters: nil)
 
                 self.checkBox.onAnimationType = .stroke

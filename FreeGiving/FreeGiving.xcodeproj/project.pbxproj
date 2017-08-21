@@ -173,13 +173,6 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		E55F04121F42C5FE00A0DB92 /* resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = resources;
-			sourceTree = "<group>";
-		};
 		E55F22BE1F2C7F6500C9E862 /* LoginController */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,7 +214,6 @@
 				E53B49A41F4086590062F0C3 /* FreeGiving.entitlements */,
 				E53A7F111F374EB10022DE9A /* View */,
 				E59370CE1F28730400FA1A72 /* Controller */,
-				E55F04121F42C5FE00A0DB92 /* resources */,
 				E59370B91F285AF500FA1A72 /* AppDelegate.swift */,
 				E59370BD1F285AF500FA1A72 /* Main.storyboard */,
 				E59370C01F285AF500FA1A72 /* Assets.xcassets */,
@@ -590,6 +582,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -607,6 +600,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

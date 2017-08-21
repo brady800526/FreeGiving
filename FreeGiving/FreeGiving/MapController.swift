@@ -48,6 +48,8 @@ class MapController: UIViewController, UISearchBarDelegate {
 
     var menuShowing = false
 
+    var postBeGiven = [String]()
+
     override func viewWillAppear(_ animated: Bool) {
 
         leadingConstraint.constant = self.view.bounds.width * -2/5 - 10
@@ -58,7 +60,7 @@ class MapController: UIViewController, UISearchBarDelegate {
 
         self.mapView.alpha = 1
 
-        fetchAnnotations()
+        fetchPostsBeGiven()
 
     }
 
@@ -76,7 +78,7 @@ class MapController: UIViewController, UISearchBarDelegate {
 
         setLocationSearchTable()
 
-        fetchAnnotations()
+        fetchPostsBeGiven()
 
         self.navigationController?.navigationBar.barTintColor = UIColor.orange
 
@@ -151,7 +153,7 @@ class MapController: UIViewController, UISearchBarDelegate {
 
     }
 
-    func fetchAnnotations() {
+    func fetchPostannotations() {
 
         Database.database().reference().child("posts").observe(.value, with: { (snapshot) in
 
@@ -179,22 +181,34 @@ class MapController: UIViewController, UISearchBarDelegate {
 
                     post.coordinate = CLLocationCoordinate2D(latitude: Double(latitude)!, longitude: Double(longtitude)!)
 
-                    if post.available == true {
+                    if !self.postBeGiven.contains(itemsnapshot.key) == true {
 
                         self.posts.append(post)
 
                         self.mapView.addAnnotation(post)
 
-                    } else {
-
-//                        Database.database().reference().child("givens").child(itemsnapshot.key).setValue(nil)
-
-                    }
-
                 }
 
             }
 
+        })
+    }
+
+    func fetchPostsBeGiven() {
+
+        Database.database().reference().child("givens").observe(.value, with: { (snapshot) in
+
+            guard let datasnapshot = snapshot as? DataSnapshot else { return }
+
+            guard let data = datasnapshot.value as? [String: Any] else { return }
+
+            for postBeGiven in data {
+
+                self.postBeGiven.append(postBeGiven.key)
+
+            }
+
+            self.fetchPostannotations()
         })
 
     }
@@ -244,7 +258,7 @@ class MapController: UIViewController, UISearchBarDelegate {
 
     func handleMenu() {
 
-        if (menuShowing) {
+        if menuShowing {
             leadingConstraint.constant = self.view.bounds.width * -2/5 - 10
 
             self.mapView.backgroundColor = UIColor.black
@@ -287,7 +301,8 @@ class MapController: UIViewController, UISearchBarDelegate {
     func handleSearch() {
 
         // swiftlint:disable force_cast
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "searchPage") as! SearchItemController
+        let vc = SearchItemController(collectionViewLayout: UICollectionViewFlowLayout())
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "searchPage") as! SearchItemController
         // swiftlint:enable force_cast
 
         navigationController?.pushViewController(vc, animated: true)
