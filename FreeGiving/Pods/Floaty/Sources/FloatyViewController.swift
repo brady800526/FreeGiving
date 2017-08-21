@@ -20,9 +20,9 @@ open class FloatyViewController: UIViewController {
         view.addSubview(floaty)
     }
     
-    override open var preferredStatusBarStyle: UIStatusBarStyle {
-        get {
-            return statusBarStyle
-        }
-    }
+//    override open var preferredStatusBarStyle: UIStatusBarStyle {
+//        get {
+//            return statusBarStyle
+//        }
+//    }
 }

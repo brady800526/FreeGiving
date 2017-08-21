@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey("AIzaSyAKYy2EjtJfJFI2RgRFLwa0Q-OwDHjVr4M")
         GMSPlacesClient.provideAPIKey("AIzaSyAKYy2EjtJfJFI2RgRFLwa0Q-OwDHjVr4M")
         Fabric.with([Crashlytics.self])
+        UIApplication.shared.statusBarStyle = .lightContent
 
         return true
     }

@@ -26,14 +26,6 @@ class LoginController: UIViewController, UITextFieldDelegate {
     var emailContainerViewHeightAnchor: NSLayoutConstraint?
     var passwordContainerViewHeightAnchor: NSLayoutConstraint?
 
-    // Set the style of status bar
-
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-
-        return .lightContent
-
-    }
-
     override func viewDidLoad() {
 
         super.viewDidLoad()

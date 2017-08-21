@@ -60,7 +60,11 @@ extension MapController : CLLocationManagerDelegate {
 
         locationSearchTable.handleMapSearchDelegate = self
 
+//        let searchBar = UISearchBar()
+        
         let searchBar = resultSearchController!.searchBar
+        
+        //        searchBar.delegate = self
 
         searchBar.sizeToFit()
 
@@ -68,6 +72,8 @@ extension MapController : CLLocationManagerDelegate {
 
         navigationItem.titleView = resultSearchController?.searchBar
 
+        navigationItem.titleView = searchBar
+        
         searchBar.showsCancelButton = false
 
         resultSearchController?.hidesNavigationBarDuringPresentation = false

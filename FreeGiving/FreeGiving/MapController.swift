@@ -14,7 +14,7 @@ import CoreLocation
 import Floaty
 import Crashlytics
 
-class MapController: UIViewController, UISearchBarDelegate {
+class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
 
@@ -111,6 +111,13 @@ class MapController: UIViewController, UISearchBarDelegate {
         self.mapView.addSubview(floaty)
 
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        
+        return .lightContent
+        
+    }
+
 
     func slideMenuSetup() {
 
@@ -301,7 +308,6 @@ class MapController: UIViewController, UISearchBarDelegate {
 
         // swiftlint:disable force_cast
         let vc = SearchItemController(collectionViewLayout: UICollectionViewFlowLayout())
-        //        let vc = self.storyboard?.instantiateViewController(withIdentifier: "searchPage") as! SearchItemController
         // swiftlint:enable force_cast
 
         navigationController?.pushViewController(vc, animated: true)
@@ -345,6 +351,14 @@ class MapController: UIViewController, UISearchBarDelegate {
 
         self.present(vc, animated: true, completion: nil)
 
+    }
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        
+        print(123)
+        
+        return true
+        
     }
 
 }
