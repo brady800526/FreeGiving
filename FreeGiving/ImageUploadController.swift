@@ -51,7 +51,7 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
         uploadButton.layer.shadowOpacity = 1
         uploadButton.clipsToBounds = false
 
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: #selector(handleDismiss))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(handleDismiss))
 
         // User can tap the imageView to select the photo
         uploadImageView.isUserInteractionEnabled = true
