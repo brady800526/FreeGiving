@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MapController+handleMapDelegate.swift"
-            timestampString = "524683197.910467"
+            filePath = "OwnerProductController.swift"
+            timestampString = "524998452.83374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "mapView(_:didSelect:)"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "observeUserGiven()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,12 +26,108 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OwnerProductController.swift"
-            timestampString = "524907783.076077"
+            timestampString = "524998671.626315"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "observeUserTrackings()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OwnerProductController.swift"
+            timestampString = "524998768.489729"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "observeUserTrackings()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FreeGiving.OwnerController.(observeUserTrackings () -&gt; ()).(closure #1).(closure #1)"
+                  moduleName = "FreeGiving"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bradyhuang/Desktop/OneDrive/105-2/Appworks/FreeGiving/FreeGiving/OwnerProductController.swift"
+                  timestampString = "525019839.642954"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "90"
+                  endingLineNumber = "90"
+                  offsetFromSymbolStart = "555">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FreeGiving.OwnerController.(observeUserTrackings () -&gt; ()).(closure #1).(closure #1).(closure #1)"
+                  moduleName = "FreeGiving"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bradyhuang/Desktop/OneDrive/105-2/Appworks/FreeGiving/FreeGiving/OwnerProductController.swift"
+                  timestampString = "525019839.64622"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OwnerProductController.swift"
+            timestampString = "524998898.323262"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "observeUserTrackings()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OwnerProductController.swift"
+            timestampString = "524999164.121427"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "handleTrackers(tracking:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OwnerProductController.swift"
+            timestampString = "524999166.502006"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "handlePost(tracking:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

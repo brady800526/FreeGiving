@@ -7,6 +7,7 @@
 //
 
 import MapKit
+import GooglePlaces
 
 // Handle the behavior if status or update changed
 
@@ -48,29 +49,13 @@ extension MapController : CLLocationManagerDelegate {
 
     func setLocationSearchTable() {
 
-        // swiftlint:disable force_cast
-        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "locationSearchPage") as! LoactionSearchController
-        // swiftlint:enable force_cast
-
-        resultSearchController = UISearchController(searchResultsController: locationSearchTable)
-
-        resultSearchController?.searchResultsUpdater = locationSearchTable
-
-        locationSearchTable.mapView = mapView
-
-        locationSearchTable.handleMapSearchDelegate = self
-
-//        let searchBar = UISearchBar()
+        let searchBar = UISearchBar()
         
-        let searchBar = resultSearchController!.searchBar
-        
-        //        searchBar.delegate = self
+        searchBar.delegate = self
 
         searchBar.sizeToFit()
 
         searchBar.placeholder = "Search for places"
-
-        navigationItem.titleView = resultSearchController?.searchBar
 
         navigationItem.titleView = searchBar
         
@@ -81,6 +66,16 @@ extension MapController : CLLocationManagerDelegate {
         resultSearchController?.dimsBackgroundDuringPresentation = true
 
         definesPresentationContext = true
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        
+        let autoCompleteController = GMSAutocompleteViewController()
+
+        autoCompleteController.delegate = self
+
+        self.present(autoCompleteController, animated: true, completion: nil)
+        
     }
 
 }

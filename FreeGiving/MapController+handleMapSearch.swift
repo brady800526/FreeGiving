@@ -9,32 +9,26 @@
 // Return the item selected on the list we would pin the place on the map
 
 import MapKit
+import GooglePlaces
 
-extension MapController: HandleMapSearch {
-
-    func dropPinZoomIn(placemark: MKPlacemark) {
-        // cache the pin
-        selectedPin = placemark
-        // clear existing pins
-        mapView.removeAnnotations(mapView.annotations)
-
-        let annotation = MKPointAnnotation()
-
-        annotation.coordinate = placemark.coordinate
-
-        annotation.title = placemark.name
-
-        if let city = placemark.locality,
-            let state = placemark.administrativeArea {
-            annotation.subtitle = "\(city) \(state)"
-        }
-
-        mapView.addAnnotation(annotation)
-
+extension MapController: GMSAutocompleteViewControllerDelegate {
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+        
         let span = MKCoordinateSpanMake(0.05, 0.05)
-
-        let region = MKCoordinateRegionMake(placemark.coordinate, span)
-
+        let region = MKCoordinateRegionMake(place.coordinate, span)
         mapView.setRegion(region, animated: true)
+        self.dismiss(animated: true, completion: nil) // dismiss after select place
+        
+    }
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
+        
+        print("ERROR AUTO COMPLETE \(error)")
+        
+    }
+    
+    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+        self.dismiss(animated: true, completion: nil) // when cancel search
     }
 }
