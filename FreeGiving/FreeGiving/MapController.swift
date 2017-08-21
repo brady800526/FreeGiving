@@ -66,7 +66,7 @@ class MapController: UIViewController, UISearchBarDelegate {
 
     override func viewDidLoad() {
 
-//        Crashlytics.sharedInstance().crash()
+        //        Crashlytics.sharedInstance().crash()
 
         super.viewDidLoad()
 
@@ -126,7 +126,7 @@ class MapController: UIViewController, UISearchBarDelegate {
 
         // HandleSearch
 
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(handleSearch))
+        //        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(handleSearch))
 
         // HandleLogout
 
@@ -168,7 +168,6 @@ class MapController: UIViewController, UISearchBarDelegate {
                 guard let itemsnapshot = item as? DataSnapshot else { return }
 
                 if let dictionary = itemsnapshot.value as? [String: Any],
-                    let available = dictionary["available"] as? String,
                     let description = dictionary["productDescription"] as? String,
                     let URL = dictionary["productImageURL"] as? String,
                     let title = dictionary["title"] as? String,
@@ -177,7 +176,7 @@ class MapController: UIViewController, UISearchBarDelegate {
                     let user = dictionary["user"] as? String,
                     let timeStamp = dictionary["timeStamp"] as? NSNumber {
 
-                    let post = Post(Bool(available)!, Double(latitude)!, Double(longtitude)!, description, URL, title, timeStamp, user, itemsnapshot.key)
+                    let post = Post(Double(latitude)!, Double(longtitude)!, description, URL, title, timeStamp, user, itemsnapshot.key)
 
                     post.coordinate = CLLocationCoordinate2D(latitude: Double(latitude)!, longitude: Double(longtitude)!)
 
@@ -187,10 +186,10 @@ class MapController: UIViewController, UISearchBarDelegate {
 
                         self.mapView.addAnnotation(post)
 
+                    }
+
                 }
-
             }
-
         })
     }
 
@@ -198,9 +197,9 @@ class MapController: UIViewController, UISearchBarDelegate {
 
         Database.database().reference().child("givens").observe(.value, with: { (snapshot) in
 
-            guard let datasnapshot = snapshot as? DataSnapshot else { return }
-
-            guard let data = datasnapshot.value as? [String: Any] else { return }
+            self.postBeGiven = [String]()
+            
+            guard let data = snapshot.value as? [String: Any] else { return }
 
             for postBeGiven in data {
 
@@ -302,7 +301,7 @@ class MapController: UIViewController, UISearchBarDelegate {
 
         // swiftlint:disable force_cast
         let vc = SearchItemController(collectionViewLayout: UICollectionViewFlowLayout())
-//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "searchPage") as! SearchItemController
+        //        let vc = self.storyboard?.instantiateViewController(withIdentifier: "searchPage") as! SearchItemController
         // swiftlint:enable force_cast
 
         navigationController?.pushViewController(vc, animated: true)

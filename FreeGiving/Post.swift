@@ -11,7 +11,6 @@ import MapKit
 
 class Post: NSObject, MKAnnotation {
 
-    var available: Bool?
     var longtitude: Double?
     var latitude: Double?
     var productDescription: String?
@@ -22,8 +21,7 @@ class Post: NSObject, MKAnnotation {
     var key: String?
     var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
 
-    init(_ available: Bool, _ longtitude: Double, _ latitude: Double, _ description: String, _ URL: String, _ name: String, _ timestamp: NSNumber, _ user: String, _ key: String) {
-        self.available = available
+    init(_ longtitude: Double, _ latitude: Double, _ description: String, _ URL: String, _ name: String, _ timestamp: NSNumber, _ user: String, _ key: String) {
         self.longtitude = longtitude
         self.latitude = latitude
         self.productDescription = description
