@@ -21,6 +21,8 @@ class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDe
 
     let locationManager = CLLocationManager()
 
+    let clusterManager = ClusterManager()
+
     var posts = [Post]()
 
     var float = FloatyItem()
@@ -106,13 +108,12 @@ class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDe
         self.mapView.addSubview(floaty)
 
     }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        
-        return .lightContent
-        
-    }
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+
+        return .lightContent
+
+    }
 
     func slideMenuSetup() {
 
@@ -200,7 +201,7 @@ class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDe
         Database.database().reference().child("givens").observe(.value, with: { (snapshot) in
 
             self.postBeGiven = [String]()
-            
+
             guard let data = snapshot.value as? [String: Any] else { return }
 
             for postBeGiven in data {
@@ -302,7 +303,7 @@ class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDe
         // swiftlint:enable force_cast
 
         vc.mapView = self.mapView
-        
+
         self.present(nv, animated: true, completion: nil)
     }
 
@@ -354,6 +355,5 @@ class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDe
         self.present(vc, animated: true, completion: nil)
 
     }
-    
 
 }

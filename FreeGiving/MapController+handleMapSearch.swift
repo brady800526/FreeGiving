@@ -12,22 +12,22 @@ import MapKit
 import GooglePlaces
 
 extension MapController: GMSAutocompleteViewControllerDelegate {
-    
+
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        
+
         let span = MKCoordinateSpanMake(0.05, 0.05)
         let region = MKCoordinateRegionMake(place.coordinate, span)
         mapView.setRegion(region, animated: true)
         self.dismiss(animated: true, completion: nil) // dismiss after select place
-        
+
     }
-    
+
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
-        
+
         print("ERROR AUTO COMPLETE \(error)")
-        
+
     }
-    
+
     func wasCancelled(_ viewController: GMSAutocompleteViewController) {
         self.dismiss(animated: true, completion: nil) // when cancel search
     }

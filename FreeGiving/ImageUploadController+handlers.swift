@@ -148,7 +148,7 @@ extension ImageUploadController: UIImagePickerControllerDelegate, UINavigationCo
 
                 return
             }
-            
+
             let span = MKCoordinateSpanMake(0.05, 0.05)
 
             guard let latitude = self.latitude,
@@ -156,13 +156,13 @@ extension ImageUploadController: UIImagePickerControllerDelegate, UINavigationCo
             let lat = Double(latitude),
             let lon = Double(longtitude)
                 else { return }
-            
+
             let region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(lat, lon), span)
 
             self.mapView?.setRegion(region, animated: true)
 
             self.dismiss(animated: true, completion: nil) // dismiss after select place
-            
+
             print("Saved product detail successfully into Firebase db")
 
         })

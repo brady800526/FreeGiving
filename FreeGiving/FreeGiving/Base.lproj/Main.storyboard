@@ -63,7 +63,7 @@
                                             <outlet property="delegate" destination="kr0-x8-bVK" id="M0O-mf-tOK"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CHg-fe-AHF">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CHg-fe-AHF">
                                         <rect key="frame" x="0.0" y="51" width="333.33333333333337" height="51"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="CHg-fe-AHF" secondAttribute="height" multiplier="334:51" id="1Lg-Yi-624"/>

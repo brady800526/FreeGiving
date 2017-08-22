@@ -42,7 +42,6 @@ extension LoginController {
 
         }
 
-
         Auth.auth().signIn(withEmail: email, password: password) { (_, error) in
 
             if let error = error {

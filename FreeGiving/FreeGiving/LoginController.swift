@@ -49,10 +49,14 @@ class LoginController: UIViewController, UITextFieldDelegate {
     }
 
     func backgroundImageSetup() {
+        
+        self.view.backgroundColor = UIColor.black
 
         loginImageView.image = UIImage(named: "loginImage")
 
-        loginImageView.alpha = 0.9
+        loginImageView.backgroundColor = UIColor.black
+        
+        loginImageView.alpha = 0.7
 
     }
 
@@ -105,3 +109,5 @@ class LoginController: UIViewController, UITextFieldDelegate {
         }
 
     }}
+
+

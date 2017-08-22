@@ -52,7 +52,7 @@ extension MapController : CLLocationManagerDelegate {
     func setLocationSearchTable() {
 
         let searchBar = UISearchBar()
-        
+
         searchBar.delegate = self
 
         searchBar.sizeToFit()
@@ -60,22 +60,22 @@ extension MapController : CLLocationManagerDelegate {
         searchBar.placeholder = "Search for places"
 
         navigationItem.titleView = searchBar
-        
+
         searchBar.showsCancelButton = false
 
         definesPresentationContext = true
     }
-    
+
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        
+
         let autoCompleteController = GMSAutocompleteViewController()
-        
+
         autoCompleteController.delegate = self
-        
+
         self.present(autoCompleteController, animated: true, completion: nil)
-        
+
         return true
-        
+
     }
 
 }
