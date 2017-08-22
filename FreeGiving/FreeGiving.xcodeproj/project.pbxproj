@@ -43,6 +43,7 @@
 		E5E93DD71F2B17ED00DE01CE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5E93DD61F2B17ED00DE01CE /* CoreLocation.framework */; };
 		E5E93DD91F2B39F400DE01CE /* LoginController+loginHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E93DD81F2B39F400DE01CE /* LoginController+loginHandler.swift */; };
 		E5EA3A7F1F4BBCAF00401F15 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EA3A7E1F4BBCAF00401F15 /* LoginController.swift */; };
+		E5EA3A831F4C7D7000401F15 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EA3A821F4C7D7000401F15 /* MainTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +88,7 @@
 		E5E93DD61F2B17ED00DE01CE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E5E93DD81F2B39F400DE01CE /* LoginController+loginHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoginController+loginHandler.swift"; sourceTree = "<group>"; };
 		E5EA3A7E1F4BBCAF00401F15 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		E5EA3A821F4C7D7000401F15 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +226,7 @@
 				E55F22BE1F2C7F6500C9E862 /* LoginController */,
 				E52E8DD01F2F5C7900B2EB73 /* ImageUploadController */,
 				E5D648941F32EAA50075A4BA /* FriendTableController */,
+				E5EA3A821F4C7D7000401F15 /* MainTabBarController.swift */,
 			);
 			name = Controller;
 			path = ..;
@@ -410,6 +413,7 @@
 			files = (
 				E540D27A1F316FEB006523ED /* FriendController.swift in Sources */,
 				E5D648961F32F9A70075A4BA /* PostsAnnotation.swift in Sources */,
+				E5EA3A831F4C7D7000401F15 /* MainTabBarController.swift in Sources */,
 				E54457801F29E22800BF8E2B /* ImageUploadController.swift in Sources */,
 				E57EA9AE1F3C983A00FAE137 /* MapController+handleMapSearch.swift in Sources */,
 				E540D27F1F31BE3C006523ED /* ChatLogController.swift in Sources */,

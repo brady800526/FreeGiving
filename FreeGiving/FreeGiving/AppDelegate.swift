@@ -20,11 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        FirebaseApp.configure()
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        let vc = MapController()
+        let vc = MainTabBarController()
+        let nc = UINavigationController(rootViewController: MapController())
         window?.rootViewController = vc
-        FirebaseApp.configure()
         IQKeyboardManager.sharedManager().enable = true
         GMSServices.provideAPIKey("AIzaSyAKYy2EjtJfJFI2RgRFLwa0Q-OwDHjVr4M")
         GMSPlacesClient.provideAPIKey("AIzaSyAKYy2EjtJfJFI2RgRFLwa0Q-OwDHjVr4M")

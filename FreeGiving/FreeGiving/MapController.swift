@@ -17,8 +17,6 @@ import Cluster
 
 class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDelegate {
 
-    @IBOutlet weak var mapView: MKMapView!
-
     let locationManager = CLLocationManager()
 
     let clusterManager = ClusterManager()
@@ -29,33 +27,39 @@ class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDe
 
     var floaty = Floaty()
 
-    @IBOutlet weak var messageLink: UIView!
-
-    @IBOutlet weak var messageIcon: UIImageView!
-
-    @IBOutlet weak var ownerLink: UIView!
-
-    @IBOutlet weak var ownerIcon: UIImageView!
-
-    @IBOutlet weak var logoutLink: UIView!
-
-    @IBOutlet weak var logoutIcon: UIImageView!
-
-    @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
-
-    @IBOutlet weak var slideMenuView: UIView!
+//    @IBOutlet weak var messageLink: UIView!
+//
+//    @IBOutlet weak var messageIcon: UIImageView!
+//
+//    @IBOutlet weak var ownerLink: UIView!
+//
+//    @IBOutlet weak var ownerIcon: UIImageView!
+//
+//    @IBOutlet weak var logoutLink: UIView!
+//
+//    @IBOutlet weak var logoutIcon: UIImageView!
+//
+//    @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
+//
+//    @IBOutlet weak var slideMenuView: UIView!
 
     var menuShowing = false
 
     var postBeGiven = [String]()
+    
+    let mapView: MKMapView = {
+        let mapview = MKMapView()
+        mapview.translatesAutoresizingMaskIntoConstraints = false
+        return mapview
+    }()
 
     override func viewWillAppear(_ animated: Bool) {
 
-        leadingConstraint.constant = self.view.bounds.width * -2/5 - 10
+//        leadingConstraint.constant = self.view.bounds.width * -2/5 - 10
 
-        self.mapView.backgroundColor = UIColor.black
+//        self.mapView.backgroundColor = UIColor.black
 
-        self.view.backgroundColor = UIColor.clear
+//        self.view.backgroundColor = UIColor.clear
 
         self.mapView.alpha = 1
 
@@ -67,6 +71,10 @@ class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDe
 
         super.viewDidLoad()
 
+        self.view.backgroundColor = UIColor.white
+        
+        self.view.addSubview(mapView)
+        
         slideMenuSetup()
 
         checkedIfUserLoggedIn()
@@ -95,7 +103,7 @@ class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDe
 
         float.tintColor = UIColor.white
 
-        float.buttonColor = UIColor.clear
+//        float.buttonColor = UIColor.clear
 
         float.handler = { item in
 
@@ -106,7 +114,18 @@ class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDe
         floaty.addItem(item: float)
 
         self.mapView.addSubview(floaty)
+        
+        setupMapView()
 
+    }
+    
+    func setupMapView() {
+        
+        mapView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        mapView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+        mapView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+        mapView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -117,15 +136,15 @@ class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDe
 
     func slideMenuSetup() {
 
-        slideMenuView.layer.shadowOpacity = 1
+//        slideMenuView.layer.shadowOpacity = 1
 
-        slideMenuView.layer.shadowRadius = 3
+//        slideMenuView.layer.shadowRadius = 3
 
         // HandleMenu
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "menu"), style: .plain, target: self, action: #selector(handleMenu))
 
-        leadingConstraint.constant = self.view.bounds.width * -2/5 - 10
+//        leadingConstraint.constant = self.view.bounds.width * -2/5 - 10
 
         // HandleSearch
 
@@ -135,24 +154,24 @@ class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDe
 
         let logoutGesture = UITapGestureRecognizer(target: self, action: #selector(handleLogout))
 
-        logoutLink.addGestureRecognizer(logoutGesture)
-
-        logoutIcon.tintColor = UIColor.white
+//        logoutLink.addGestureRecognizer(logoutGesture)
+//
+//        logoutIcon.tintColor = UIColor.white
         // HandleMessage
 
         let messageGesture = UITapGestureRecognizer(target: self, action: #selector(handleMessage))
 
-        messageLink.addGestureRecognizer(messageGesture)
-
-        messageIcon.tintColor = UIColor.white
+//        messageLink.addGestureRecognizer(messageGesture)
+//
+//        messageIcon.tintColor = UIColor.white
 
         // HandleOwner
 
         let ownerGesture = UITapGestureRecognizer(target: self, action: #selector(handleOwner))
 
-        ownerLink.addGestureRecognizer(ownerGesture)
-
-        ownerIcon.tintColor = UIColor.white
+//        ownerLink.addGestureRecognizer(ownerGesture)
+//
+//        ownerIcon.tintColor = UIColor.white
 
     }
 
@@ -261,11 +280,11 @@ class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDe
     func handleMenu() {
 
         if menuShowing {
-            leadingConstraint.constant = self.view.bounds.width * -2/5 - 10
+//            leadingConstraint.constant = self.view.bounds.width * -2/5 - 10
 
-            self.mapView.backgroundColor = UIColor.black
+//            self.mapView.backgroundColor = UIColor.black
 
-            self.view.backgroundColor = UIColor.clear
+//            self.view.backgroundColor = UIColor.clear
 
             self.mapView.alpha = 1
 
@@ -277,9 +296,9 @@ class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDe
 
         } else {
 
-            leadingConstraint.constant = 0
+//            leadingConstraint.constant = 0
 
-            self.mapView.backgroundColor = UIColor.black
+//            self.mapView.backgroundColor = UIColor.black
 
             self.view.backgroundColor = UIColor.clear
 
