@@ -20,17 +20,16 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         super.viewWillAppear(animated)
         
         // Create Tab one
-        let tabOne = UINavigationController(rootViewController: MapController())
+        let mapNC = UINavigationController(rootViewController: MapController())
         let tabOneBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 0)
         
-        tabOne.tabBarItem = tabOneBarItem
-        
+        mapNC.tabBarItem = tabOneBarItem
         
         // Create Tab two
-        let tabTwo = UINavigationController(rootViewController: MessageController())
+        let mesNC = UINavigationController(rootViewController: MessageController())
         let tabTwoBarItem2 = UITabBarItem(tabBarSystemItem: .mostRecent, tag: 1)
         
-        tabTwo.tabBarItem = tabTwoBarItem2
-        self.viewControllers = [tabOne, tabTwo]
+        mesNC.tabBarItem = tabTwoBarItem2
+        self.viewControllers = [mapNC, mesNC]
     }
 }

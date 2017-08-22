@@ -14,8 +14,9 @@ import CoreLocation
 import Floaty
 import Crashlytics
 import Cluster
+import GooglePlaces
 
-class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDelegate {
+class MapController: UIViewController, UISearchBarDelegate {
 
     let locationManager = CLLocationManager()
 
@@ -42,11 +43,10 @@ class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDe
 //    @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
 //
 //    @IBOutlet weak var slideMenuView: UIView!
-
-    var menuShowing = false
+//
+//    var menuShowing = false
 
     var postBeGiven = [String]()
-    
     let mapView: MKMapView = {
         let mapview = MKMapView()
         mapview.translatesAutoresizingMaskIntoConstraints = false
@@ -60,8 +60,8 @@ class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDe
 //        self.mapView.backgroundColor = UIColor.black
 
 //        self.view.backgroundColor = UIColor.clear
-
-        self.mapView.alpha = 1
+//
+//        self.mapView.alpha = 1
 
         fetchPostsBeGiven()
 
@@ -75,13 +75,17 @@ class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDe
         
         self.view.addSubview(mapView)
         
-        slideMenuSetup()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(handleSearch))
+        
+        mapView.delegate = self
+        
+//        slideMenuSetup()
 
         checkedIfUserLoggedIn()
 
         setLocationManagerBehavior()
 
-        setLocationSearchTable()
+//        setLocationSearchTable()
 
         fetchPostsBeGiven()
 
@@ -119,6 +123,16 @@ class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDe
 
     }
     
+    func handleSearch() {
+        
+        let autoCompleteController = GMSAutocompleteViewController()
+        
+        autoCompleteController.delegate = self
+        
+        self.present(autoCompleteController, animated: true, completion: nil)
+        
+    }
+    
     func setupMapView() {
         
         mapView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
@@ -142,7 +156,7 @@ class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDe
 
         // HandleMenu
 
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "menu"), style: .plain, target: self, action: #selector(handleMenu))
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "menu"), style: .plain, target: self, action: #selector(handleMenu))
 
 //        leadingConstraint.constant = self.view.bounds.width * -2/5 - 10
 
@@ -152,14 +166,14 @@ class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDe
 
         // HandleLogout
 
-        let logoutGesture = UITapGestureRecognizer(target: self, action: #selector(handleLogout))
+//        let logoutGesture = UITapGestureRecognizer(target: self, action: #selector(handleLogout))
 
 //        logoutLink.addGestureRecognizer(logoutGesture)
 //
 //        logoutIcon.tintColor = UIColor.white
         // HandleMessage
 
-        let messageGesture = UITapGestureRecognizer(target: self, action: #selector(handleMessage))
+//        let messageGesture = UITapGestureRecognizer(target: self, action: #selector(handleMessage))
 
 //        messageLink.addGestureRecognizer(messageGesture)
 //
@@ -167,7 +181,7 @@ class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDe
 
         // HandleOwner
 
-        let ownerGesture = UITapGestureRecognizer(target: self, action: #selector(handleOwner))
+//        let ownerGesture = UITapGestureRecognizer(target: self, action: #selector(handleOwner))
 
 //        ownerLink.addGestureRecognizer(ownerGesture)
 //
@@ -277,42 +291,42 @@ class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDe
     //
     //    }
 
-    func handleMenu() {
-
-        if menuShowing {
+//    func handleMenu() {
+//
+//        if menuShowing {
 //            leadingConstraint.constant = self.view.bounds.width * -2/5 - 10
-
+//
 //            self.mapView.backgroundColor = UIColor.black
-
+//
 //            self.view.backgroundColor = UIColor.clear
-
-            self.mapView.alpha = 1
-
-            UIView.animate(withDuration: 0.3, animations: {
-
-                self.view.layoutIfNeeded()
-
-            })
-
-        } else {
-
+//
+//            self.mapView.alpha = 1
+//
+//            UIView.animate(withDuration: 0.3, animations: {
+//
+//                self.view.layoutIfNeeded()
+//
+//            })
+//
+//        } else {
+//
 //            leadingConstraint.constant = 0
-
+//
 //            self.mapView.backgroundColor = UIColor.black
-
-            self.view.backgroundColor = UIColor.clear
-
-            self.mapView.alpha = 0.7
-
-            UIView.animate(withDuration: 0.3, animations: {
-
-                self.view.layoutIfNeeded()
-
-            })
-        }
-
-        menuShowing = !menuShowing
-    }
+//
+//            self.view.backgroundColor = UIColor.clear
+//
+//            self.mapView.alpha = 0.7
+//
+//            UIView.animate(withDuration: 0.3, animations: {
+//
+//                self.view.layoutIfNeeded()
+//
+//            })
+//        }
+//
+//        menuShowing = !menuShowing
+//    }
 
     func handleUpload() {
 
@@ -326,14 +340,14 @@ class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDe
         self.present(nv, animated: true, completion: nil)
     }
 
-    func handleSearch() {
-
-        // swiftlint:disable force_cast
-        let vc = SearchItemController(collectionViewLayout: UICollectionViewFlowLayout())
-        // swiftlint:enable force_cast
-
-        navigationController?.pushViewController(vc, animated: true)
-    }
+//    func handleSearch() {
+//
+//        // swiftlint:disable force_cast
+//        let vc = SearchItemController(collectionViewLayout: UICollectionViewFlowLayout())
+//        // swiftlint:enable force_cast
+//
+//        navigationController?.pushViewController(vc, animated: true)
+//    }
 
     func handleMessage() {
 

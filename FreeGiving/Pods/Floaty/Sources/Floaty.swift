@@ -47,7 +47,7 @@ open class Floaty: UIView {
             self.setNeedsDisplay()
         }
     }
-    open var paddingY: CGFloat = 14 {
+    open var paddingY: CGFloat = 42 {
         didSet {
             self.setNeedsDisplay()
         }
