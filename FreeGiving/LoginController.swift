@@ -48,6 +48,7 @@ class LoginController: UIViewController {
         tv.placeholder = "Name"
         tv.textAlignment = .center
         tv.font = UIFont(name: "Marker Felt", size: 24)
+        tv.autocapitalizationType = .none
         return tv
     }()
 
@@ -57,6 +58,7 @@ class LoginController: UIViewController {
         tv.placeholder = "Email address"
         tv.textAlignment = .center
         tv.font = UIFont(name: "Marker Felt", size: 24)
+        tv.autocapitalizationType = .none
         return tv
     }()
 
@@ -66,6 +68,7 @@ class LoginController: UIViewController {
         tv.placeholder = "Password"
         tv.textAlignment = .center
         tv.font = UIFont(name: "Marker Felt", size: 24)
+        tv.autocapitalizationType = .none
         return tv
     }()
 
