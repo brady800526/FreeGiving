@@ -13,14 +13,13 @@ import MapKit
 import CoreLocation
 import Floaty
 import Crashlytics
+import Cluster
 
 class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
 
     let locationManager = CLLocationManager()
-
-    var selectedPin: MKPlacemark?
 
     var posts = [Post]()
 
