@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '50665785E14C049E0430FAC126E8B147'
-               BlueprintName = 'FBAnnotationClusteringSwift'
+               BlueprintIdentifier = '8CF763AF743225C5812E7F495B76A06A'
+               BlueprintName = 'Cluster'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'FBAnnotationClusteringSwift.framework'>
+               BuildableName = 'Cluster.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

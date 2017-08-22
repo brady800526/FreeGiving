@@ -1,9 +1,9 @@
 PODS:
   - BEMCheckBox (1.4.1)
+  - Cluster (1.0.7)
   - Crashlytics (3.8.4):
     - Fabric (~> 1.6.3)
   - Fabric (1.6.11)
-  - FBAnnotationClusteringSwift (1.0.1)
   - Firebase/Auth (4.0.2):
     - Firebase/Core
     - FirebaseAuth (= 4.0.0)
@@ -75,9 +75,9 @@ PODS:
 
 DEPENDENCIES:
   - BEMCheckBox
+  - Cluster
   - Crashlytics
   - Fabric
-  - FBAnnotationClusteringSwift
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -94,9 +94,9 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
+  Cluster: 7a15791640cc44cde312be37ff18b918fc3c2367
   Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
-  FBAnnotationClusteringSwift: a1f4c07f5472b13acd69de04c61e68e2d7daaad3
   Firebase: c7ad0731eab26d18a3fc547dd048b0f7cd9c63ae
   FirebaseAnalytics: 4d7040fefc3cd8b291cde35f12cf063d7963f15d
   FirebaseAuth: ebb6abcbabae00fc47446d690c19ce68d8484fde
@@ -117,6 +117,6 @@ SPEC CHECKSUMS:
   SwifterSwift: 92c73c47c3cbf7d5f788adf6459bf07b5d23d3fb
   SwiftLint: 3f7543509c931d1291395335f34e245d3919b7f2
 
-PODFILE CHECKSUM: df2b06c2a82160aa2b13fc9a4a98f58cdf5d9dde
+PODFILE CHECKSUM: 4c7ebc43ed9806bc9bf4e8b46c04178b89c69396
 
 COCOAPODS: 1.2.1

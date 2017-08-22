@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double FBAnnotationClusteringSwiftVersionNumber;
-FOUNDATION_EXPORT const unsigned char FBAnnotationClusteringSwiftVersionString[];
+FOUNDATION_EXPORT double ClusterVersionNumber;
+FOUNDATION_EXPORT const unsigned char ClusterVersionString[];
 
