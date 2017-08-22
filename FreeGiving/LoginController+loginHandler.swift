@@ -11,28 +11,14 @@ import SCLAlertView
 
 extension LoginController {
 
-    // Control the loginButton based on the segmentedControl value
-
-    func handleLoginRegisterChange() {
-
-        let title = loginSegmentedControl.titleForSegment(at: loginSegmentedControl.selectedSegmentIndex)
-
-        loginSubmitButton.setTitle(title, for: .normal)
-
-        inputsContainerViewHeightAnchor?.constant = loginSegmentedControl.selectedSegmentIndex == 0 ? 80 : 120
-
-        nameContainerViewHeightAnchor?.constant = loginSegmentedControl.selectedSegmentIndex == 0 ? 0 : 40
-
-    }
-
     // Sign in with email and password
 
     func handleLogin() {
 
         guard
-            let email = loginEmailTextField.text,
+            let email = emailTextField.text,
 
-            let password = loginPasswordTextField.text
+            let password = passwordTextField.text
 
             else {
 
@@ -64,11 +50,11 @@ extension LoginController {
 
         guard
 
-            let name = loginNameTextField.text,
+            let name = nameTextField.text,
 
-            let email = loginEmailTextField.text,
+            let email = emailTextField.text,
 
-            let password = loginPasswordTextField.text
+            let password = passwordTextField.text
 
             else {
 

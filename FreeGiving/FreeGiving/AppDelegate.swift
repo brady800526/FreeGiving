@@ -24,8 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         let sb = UIStoryboard.init(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "mapPage")
-        let lg = LoginViewController()
-        window?.rootViewController = UINavigationController(rootViewController: vc)
+        let lg = LoginController()
+        window?.rootViewController = lg
         FirebaseApp.configure()
         IQKeyboardManager.sharedManager().enable = true
         GMSServices.provideAPIKey("AIzaSyAKYy2EjtJfJFI2RgRFLwa0Q-OwDHjVr4M")
