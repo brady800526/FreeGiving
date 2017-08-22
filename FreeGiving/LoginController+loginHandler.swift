@@ -7,6 +7,7 @@
 //
 
 import Firebase
+import SCLAlertView
 
 extension LoginController {
 
@@ -41,11 +42,12 @@ extension LoginController {
 
         }
 
+
         Auth.auth().signIn(withEmail: email, password: password) { (_, error) in
 
-            if error != nil {
+            if let error = error {
 
-                print(error!)
+                SCLAlertView().showWarning("Hold On...", subTitle:error.localizedDescription, closeButtonTitle:"OK")
 
                 return
 
@@ -79,10 +81,9 @@ extension LoginController {
 
         Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
 
-            if error != nil {
+            if let error = error {
 
-                print(error!)
-
+                SCLAlertView().showWarning("Hold On...", subTitle:error.localizedDescription, closeButtonTitle:"OK")
                 return
             }
 

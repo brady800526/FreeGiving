@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import Firebase
+import MapKit
+import SCLAlertView
 
 extension ImageUploadController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -92,7 +94,7 @@ extension ImageUploadController: UIImagePickerControllerDelegate, UINavigationCo
             let uid = Auth.auth().currentUser?.uid
             else {
 
-                print("format error")
+                SCLAlertView().showWarning("Hold On", subTitle: "Make sure you enter all the info!", closeButtonTitle:"OK")
 
                 return
         }
@@ -121,10 +123,6 @@ extension ImageUploadController: UIImagePickerControllerDelegate, UINavigationCo
                          "timeStamp": timestamp,
                          "available": "true"]
 
-                    print(values)
-
-                    print(profileImageUrl)
-
                     self.handleUploadText(values: values)
 
                 }
@@ -150,9 +148,21 @@ extension ImageUploadController: UIImagePickerControllerDelegate, UINavigationCo
 
                 return
             }
+            
+            let span = MKCoordinateSpanMake(0.05, 0.05)
 
-            self.dismiss(animated: true, completion: nil)
+            guard let latitude = self.latitude,
+                let longtitude = self.longtitude,
+            let lat = Double(latitude),
+            let lon = Double(longtitude)
+                else { return }
+            
+            let region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(lat, lon), span)
 
+            self.mapView?.setRegion(region, animated: true)
+
+            self.dismiss(animated: true, completion: nil) // dismiss after select place
+            
             print("Saved product detail successfully into Firebase db")
 
         })

@@ -20,8 +20,6 @@ class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDe
 
     let locationManager = CLLocationManager()
 
-    var resultSearchController: UISearchController?
-
     var selectedPin: MKPlacemark?
 
     var posts = [Post]()
@@ -65,8 +63,6 @@ class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDe
     }
 
     override func viewDidLoad() {
-
-        //        Crashlytics.sharedInstance().crash()
 
         super.viewDidLoad()
 
@@ -274,7 +270,9 @@ class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDe
             self.mapView.alpha = 1
 
             UIView.animate(withDuration: 0.3, animations: {
+
                 self.view.layoutIfNeeded()
+
             })
 
         } else {
@@ -288,7 +286,9 @@ class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDe
             self.mapView.alpha = 0.7
 
             UIView.animate(withDuration: 0.3, animations: {
+
                 self.view.layoutIfNeeded()
+
             })
         }
 
@@ -302,6 +302,8 @@ class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDe
         let nv = UINavigationController(rootViewController: vc)
         // swiftlint:enable force_cast
 
+        vc.mapView = self.mapView
+        
         self.present(nv, animated: true, completion: nil)
     }
 
@@ -354,12 +356,5 @@ class MapController: UIViewController, UISearchBarDelegate, UISearchControllerDe
 
     }
     
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        
-        print(123)
-        
-        return true
-        
-    }
 
 }

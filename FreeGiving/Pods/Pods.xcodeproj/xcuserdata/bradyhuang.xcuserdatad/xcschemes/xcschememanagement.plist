@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>FBAnnotationClusteringSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Floaty.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -57,12 +62,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>03825E4EC9EE36E629754A814A1D030C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>06FB649FF0205E50FDF7F2B2E3C995C5</key>
+		<key>50665785E14C049E0430FAC126E8B147</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -72,17 +72,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>5EADD47292FD8A47A3D9543EF9A86B65</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>6D5CEDECD3D8DC52EA507E0431BDA8A0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7BA52501EFD76432CFCFBD3880A5B080</key>
+		<key>92A4B99BB3E1DFACDB14CC0656327B7D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>97B721049BCE30729EDECD215852075B</key>
+		<key>ACF7B77664ED17F146A3E8AB5CE82888</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -102,7 +107,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FCEB663F98E29B3FA67D988EDD62E181</key>
+		<key>E419E9B08F69C614FD3E283AED0B4075</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F0E739F9DDD2E3313C7BD135A5C7C660</key>
 		<dict>
 			<key>primary</key>
 			<true/>

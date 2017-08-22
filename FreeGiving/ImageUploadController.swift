@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 import GooglePlaces
 
 class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDelegate, UITextViewDelegate {
@@ -25,6 +26,7 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
 
     var latitude: String?
     var longtitude: String?
+    var mapView: MKMapView?
     let textViewPlaceHolder = ["Product Name", "Product Location", "Product Description"]
 
     override func viewDidLoad() {

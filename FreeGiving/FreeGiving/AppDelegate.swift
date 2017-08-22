@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         let sb = UIStoryboard.init(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "mapPage")
+        let lg = LoginViewController()
         window?.rootViewController = UINavigationController(rootViewController: vc)
         FirebaseApp.configure()
         IQKeyboardManager.sharedManager().enable = true

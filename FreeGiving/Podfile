@@ -23,5 +23,6 @@ target 'FreeGiving' do
   pod 'SCLAlertView'
   pod 'Fabric'
   pod 'Crashlytics'
+  pod 'FBAnnotationClusteringSwift'
 
 end

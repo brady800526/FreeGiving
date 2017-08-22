@@ -6,6 +6,8 @@
 //  Copyright © 2017年 AppWorks. All rights reserved.
 //
 
+import Foundation
+import UIKit
 import MapKit
 import GooglePlaces
 
@@ -61,20 +63,18 @@ extension MapController : CLLocationManagerDelegate {
         
         searchBar.showsCancelButton = false
 
-        resultSearchController?.hidesNavigationBarDuringPresentation = false
-
-        resultSearchController?.dimsBackgroundDuringPresentation = true
-
         definesPresentationContext = true
     }
     
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         
         let autoCompleteController = GMSAutocompleteViewController()
-
+        
         autoCompleteController.delegate = self
-
+        
         self.present(autoCompleteController, animated: true, completion: nil)
+        
+        return true
         
     }
 
