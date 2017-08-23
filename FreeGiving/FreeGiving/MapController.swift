@@ -255,6 +255,7 @@ class MapController: UIViewController, UISearchBarDelegate {
             perform(#selector(handleLogout), with: nil, afterDelay: 0)
 
         } else {
+
             fetchUserAndSetupNavBarTitle()
         }
 
@@ -262,6 +263,7 @@ class MapController: UIViewController, UISearchBarDelegate {
     
     func fetchUserAndSetupNavBarTitle() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
+        print(uid)
         Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
             
             if let dictionary = snapshot.value as? [String: Any]

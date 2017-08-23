@@ -99,9 +99,9 @@ extension LoginController {
 
                 print("Saved user successfully into Firebase db")
 
-//                self.mapViewController?.fetchUserAndSetupNavBarTitle()
+                self.mapViewController?.fetchUserAndSetupNavBarTitle()
 
-                self.mapViewController?.navigationItem.title = values["name"]
+//                self.mapViewController?.navigationItem.title = values["name"]
                 
                 self.dismiss(animated: true, completion: nil)
 

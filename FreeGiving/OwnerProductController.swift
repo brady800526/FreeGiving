@@ -71,11 +71,15 @@ class OwnerController: UITableViewController {
 
         let trackingRef = Database.database().reference().child("trackings")
 
-        trackings = [PostStatus]()
-
         self.tableView.reloadData()
 
-        trackingRef.observeSingleEvent(of: .value, with: { (snapshot) in
+        trackingRef.observe( .value, with: { (snapshot) in
+            
+            self.trackings = [PostStatus]()
+            
+            self.trackers = [String]()
+            
+            self.posts = [ProductPost]()
 
             for item in snapshot.children {
 
@@ -87,27 +91,27 @@ class OwnerController: UITableViewController {
 
                     tracking.setValuesForKeys(dictionary)
 
-                    if tracking.toId == Auth.auth().currentUser?.uid && tracking.checked == "true" && !self.postBeGiven.contains(tracking.postKey!) {
-
-                        self.trackings.append(tracking)
-
-                        trackingRef.observeSingleEvent(of: .value, with: { (_) in
-
-                            trackingRef.child(itemSnapshot.key).updateChildValues(["checked": "false"])
-
-                            DispatchQueue.main.async {
-
-                                self.tableView.reloadData()
-
-                            }
-
-                        })
-
-                        self.handleTrackers(tracking: tracking)
-
-                        self.handlePost(tracking: tracking)
-
-                    }
+//                    if tracking.toId == Auth.auth().currentUser?.uid && tracking.checked == "true" && !self.postBeGiven.contains(tracking.postKey!) {
+//
+//                        self.trackings.append(tracking)
+//
+//                        trackingRef.observeSingleEvent(of: .value, with: { (_) in
+//
+//                            trackingRef.child(itemSnapshot.key).updateChildValues(["checked": "false"])
+//
+//                            DispatchQueue.main.async {
+//
+//                                self.tableView.reloadData()
+//
+//                            }
+//
+//                        })
+//
+//                        self.handleTrackers(tracking: tracking)
+//
+//                        self.handlePost(tracking: tracking)
+//
+//                    }
 
                     if tracking.toId == Auth.auth().currentUser?.uid && tracking.checked == "false" && !self.postBeGiven.contains(tracking.postKey!) {
 
@@ -175,6 +179,8 @@ class OwnerController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
+        print(trackers.count > posts.count ? posts.count : trackers.count)
+        
         return trackers.count > posts.count ? posts.count : trackers.count
 
     }
