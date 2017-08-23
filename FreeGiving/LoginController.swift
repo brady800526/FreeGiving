@@ -48,7 +48,6 @@ class LoginController: UIViewController {
         tv.placeholder = "Name"
         tv.textAlignment = .center
         tv.font = UIFont(name: "Marker Felt", size: 24)
-        tv.autocapitalizationType = .none
         return tv
     }()
 
@@ -131,7 +130,8 @@ class LoginController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.black
+        self.navigationItem.titleView?.tintColor = UIColor.white
+        
         self.view.addSubview(loginBackgroundImageView)
         self.view.addSubview(loginTitleLabel)
         self.view.addSubview(inputsContainerView)

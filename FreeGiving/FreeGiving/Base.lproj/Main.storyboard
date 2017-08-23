@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -125,7 +126,7 @@
                                                 <rect key="frame" x="20" y="611" width="374" height="40"/>
                                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="24"/>
-                                                <state key="normal" title="upload">
+                                                <state key="normal" title="Upload Product">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -205,43 +206,43 @@
         <scene sceneID="aXD-Yd-cvh">
             <objects>
                 <tableViewController storyboardIdentifier="ownerPage" id="KfD-T6-aue" customClass="OwnerController" customModule="FreeGiving" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="EU6-IT-Jt5">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" delaysContentTouches="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="EU6-IT-Jt5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="150" id="DvS-83-Lnm" customClass="OwnerPostCell" customModule="FreeGiving" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="150"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="250" id="DvS-83-Lnm" customClass="OwnerPostCell" customModule="FreeGiving" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="250"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DvS-83-Lnm" id="eZD-I3-s0n">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="149.66666666666666"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="249.66666666666666"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jja-Xy-EG4">
-                                            <rect key="frame" x="8" y="8" width="134" height="134"/>
+                                            <rect key="frame" x="8" y="8" width="207" height="207"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="Jja-Xy-EG4" secondAttribute="height" multiplier="1:1" id="h3s-Kw-Ioq"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chE-kr-bV0">
-                                            <rect key="frame" x="150" y="8" width="256" height="27"/>
+                                            <rect key="frame" x="223" y="8" width="183" height="27"/>
                                             <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="24"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsVerticalScrollIndicator="NO" editable="NO" text="lkdmsfkldsmflksdmclksdmklmfklsdmclsdmlk;mfkl;dsmcl;kdmsl;kfml;kdsmcl;kdsmlkcmdlsk;mfl;dsmcl;dmslmcldskml;d" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAs-ne-KV4">
-                                            <rect key="frame" x="150" y="35" width="256" height="60"/>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsVerticalScrollIndicator="NO" editable="NO" text="lkdmsfkldsmflksdmclksdmklmfklsdmclsdmlk;mfkl;dsmcl;kdmsl;kfml;kdsmcl;kdsmlkcmdlsk;mfl;dsmcl;dmslmcldskml;d" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAs-ne-KV4">
+                                            <rect key="frame" x="223" y="35" width="183" height="35.666666666666671"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="60" id="xWM-Ta-twT"/>
-                                            </constraints>
                                             <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="18"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXW-3g-UCb">
-                                            <rect key="frame" x="266" y="103" width="30" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXW-3g-UCb">
+                                            <rect key="frame" x="356" y="165" width="50" height="50"/>
                                             <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="kBn-sP-Zlh"/>
+                                                <constraint firstAttribute="width" secondItem="JXW-3g-UCb" secondAttribute="height" multiplier="1:1" id="zb8-yo-YO0"/>
+                                            </constraints>
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <state key="normal" image="deal"/>
                                             <connections>
@@ -251,18 +252,19 @@
                                     </subviews>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
-                                        <constraint firstItem="chE-kr-bV0" firstAttribute="top" secondItem="Jja-Xy-EG4" secondAttribute="top" id="BVx-ZW-bPu"/>
-                                        <constraint firstItem="chE-kr-bV0" firstAttribute="leading" secondItem="Jja-Xy-EG4" secondAttribute="trailing" constant="8" id="If6-qT-Geh"/>
-                                        <constraint firstItem="GAs-ne-KV4" firstAttribute="trailing" secondItem="chE-kr-bV0" secondAttribute="trailing" id="QrJ-5z-ZaJ"/>
-                                        <constraint firstItem="GAs-ne-KV4" firstAttribute="top" secondItem="chE-kr-bV0" secondAttribute="bottom" id="Sj7-p5-pOv"/>
-                                        <constraint firstItem="GAs-ne-KV4" firstAttribute="leading" secondItem="chE-kr-bV0" secondAttribute="leading" id="eWh-96-gnn"/>
-                                        <constraint firstItem="GAs-ne-KV4" firstAttribute="centerX" secondItem="chE-kr-bV0" secondAttribute="centerX" id="wUH-da-JL4"/>
+                                        <constraint firstItem="JXW-3g-UCb" firstAttribute="bottom" secondItem="Jja-Xy-EG4" secondAttribute="bottom" id="918-mR-ufF"/>
+                                        <constraint firstItem="chE-kr-bV0" firstAttribute="leading" secondItem="Jja-Xy-EG4" secondAttribute="trailing" constant="8" id="DfI-5e-LOo"/>
+                                        <constraint firstAttribute="topMargin" secondItem="chE-kr-bV0" secondAttribute="top" id="TP2-yO-QEs"/>
+                                        <constraint firstItem="Jja-Xy-EG4" firstAttribute="width" secondItem="eZD-I3-s0n" secondAttribute="width" multiplier="1/2" id="U6N-d4-t1o"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="JXW-3g-UCb" secondAttribute="trailing" id="WPD-YL-Lbw"/>
+                                        <constraint firstItem="GAs-ne-KV4" firstAttribute="leading" secondItem="Jja-Xy-EG4" secondAttribute="trailing" constant="8" id="YLc-Hf-oId"/>
+                                        <constraint firstItem="GAs-ne-KV4" firstAttribute="top" secondItem="chE-kr-bV0" secondAttribute="bottom" id="Z7g-Hl-AXc"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="chE-kr-bV0" secondAttribute="trailing" id="ZwG-n7-YdL"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="GAs-ne-KV4" secondAttribute="trailing" id="aAu-6o-T5k"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="chE-kr-bV0" secondAttribute="trailing" constant="8" id="KG0-if-zwl"/>
                                     <constraint firstItem="Jja-Xy-EG4" firstAttribute="leading" secondItem="DvS-83-Lnm" secondAttribute="leading" constant="8" id="etc-Gz-yFn"/>
-                                    <constraint firstAttribute="bottom" secondItem="Jja-Xy-EG4" secondAttribute="bottom" constant="8" id="oYb-ys-Oey"/>
                                     <constraint firstItem="Jja-Xy-EG4" firstAttribute="top" secondItem="DvS-83-Lnm" secondAttribute="top" constant="8" id="opi-ZW-r0y"/>
                                 </constraints>
                                 <connections>
@@ -284,7 +286,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d4z-og-u1d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="719" y="-43"/>
+            <point key="canvasLocation" x="718.84057971014499" y="-43.206521739130437"/>
         </scene>
         <!--Map Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -318,13 +320,13 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tAX-wC-TcO">
-                                                <rect key="frame" x="56" y="6" width="65" height="29"/>
+                                                <rect key="frame" x="50" y="6" width="65" height="29"/>
                                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="18"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="message" translatesAutoresizingMaskIntoConstraints="NO" id="Gy3-1Z-GtI">
-                                                <rect key="frame" x="8" y="8" width="36" height="24"/>
+                                                <rect key="frame" x="8" y="8" width="30" height="24"/>
                                                 <color key="tintColor" red="0.97647058819999999" green="0.87450980389999999" blue="0.090196078430000007" alpha="1" colorSpace="calibratedRGB"/>
                                             </imageView>
                                         </subviews>
@@ -460,6 +462,6 @@
         <image name="deal" width="30" height="30"/>
         <image name="garage" width="30" height="30"/>
         <image name="logout" width="30" height="30"/>
-        <image name="message" width="36" height="36"/>
+        <image name="message" width="30" height="30"/>
     </resources>
 </document>

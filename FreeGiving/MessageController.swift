@@ -20,6 +20,8 @@ class MessageController: UITableViewController {
 
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "mes", style: .plain, target: self, action: #selector(handleNewMessage))
 
+        fetchUserAndSetupNavBarTitle()
+        
         tableView.register(UserCell.self, forCellReuseIdentifier: cellId)
 
         messages.removeAll()
@@ -151,5 +153,17 @@ class MessageController: UITableViewController {
         vc.user = user
         let nv = UINavigationController(rootViewController: vc)
         present(nv, animated: true)
+    }
+    
+    func fetchUserAndSetupNavBarTitle() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String: Any]
+            {
+                self.navigationItem.title = dictionary["name"] as? String
+            }
+            
+        }, withCancel: nil)
     }
 }

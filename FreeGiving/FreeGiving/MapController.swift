@@ -71,8 +71,6 @@ class MapController: UIViewController, UISearchBarDelegate {
 
         super.viewDidLoad()
 
-        self.view.backgroundColor = UIColor.white
-
         self.view.addSubview(mapView)
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(handleSearch))
@@ -86,8 +84,6 @@ class MapController: UIViewController, UISearchBarDelegate {
         checkedIfUserLoggedIn()
 
         setLocationManagerBehavior()
-
-//        setLocationSearchTable()
 
         fetchPostsBeGiven()
 
@@ -258,8 +254,22 @@ class MapController: UIViewController, UISearchBarDelegate {
 
             perform(#selector(handleLogout), with: nil, afterDelay: 0)
 
+        } else {
+            fetchUserAndSetupNavBarTitle()
         }
 
+    }
+    
+    func fetchUserAndSetupNavBarTitle() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String: Any]
+            {
+                self.navigationItem.title = dictionary["name"] as? String
+            }
+            
+        }, withCancel: nil)
     }
 
     // Set the mapview behavior

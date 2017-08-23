@@ -24,12 +24,18 @@ class OwnerController: UITableViewController {
     override func viewDidLoad() {
 
         observeUserGiven()
+        
+        fetchUserAndSetupNavBarTitle()
 
         self.navigationController?.navigationBar.barTintColor = UIColor.orange
 
         self.tableView.allowsSelection = false
 
         self.navigationController?.navigationBar.tintColor = UIColor.white
+        
+        self.tableView.separatorStyle = .none
+        
+        self.tableView.rowHeight = UITableViewAutomaticDimension
 
     }
 
@@ -196,6 +202,12 @@ class OwnerController: UITableViewController {
         cell.backgroundColor = UIColor.white
 
         cell.postMessage.text = trackings[indexPath.row].attention
+        
+        cell.deal.layer.cornerRadius = cell.deal.frame.width/2
+        
+        cell.deal.layer.shadowOpacity = 1
+        
+        cell.deal.layer.shadowOffset = CGSize(width: 3, height: 3)
 
         cell.tracking = trackings[indexPath.row]
 
@@ -204,8 +216,20 @@ class OwnerController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
-        return 150
+        return self.view.bounds.height/3
 
+    }
+    
+    func fetchUserAndSetupNavBarTitle() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String: Any]
+            {
+                self.navigationItem.title = dictionary["name"] as? String
+            }
+            
+        }, withCancel: nil)
     }
 
 }

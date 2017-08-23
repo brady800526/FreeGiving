@@ -204,11 +204,11 @@
 			isa = PBXGroup;
 			children = (
 				E5EA3A821F4C7D7000401F15 /* MainTabBarController.swift */,
-				E57EA9A81F3C227E00FAE137 /* OwnerProductController */,
-				E52E8DCF1F2F5C1700B2EB73 /* MapController */,
 				E55F22BE1F2C7F6500C9E862 /* LoginController */,
+				E52E8DCF1F2F5C1700B2EB73 /* MapController */,
 				E52E8DD01F2F5C7900B2EB73 /* ImageUploadController */,
 				E5D648941F32EAA50075A4BA /* FriendTableController */,
+				E57EA9A81F3C227E00FAE137 /* OwnerProductController */,
 			);
 			name = Controller;
 			path = ..;

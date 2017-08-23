@@ -55,10 +55,6 @@ class OwnerPostCell: UITableViewCell {
 
                 givenRef.updateChildValues([(self.tracking?.postKey)!: 1])
 
-//                let postsRef = Database.database().reference().child("posts")
-//
-//                postsRef.child((self.tracking?.postKey)!).updateChildValues(["available": "false"])
-//
             })
 
         }
