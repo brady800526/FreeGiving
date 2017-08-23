@@ -6,6 +6,7 @@
 //  Copyright © 2017年 AppWorks. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
 class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
@@ -15,21 +16,30 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
 
         self.delegate = self
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         // Create Tab one
         let mapNC = UINavigationController(rootViewController: MapController())
-        let tabOneBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 0)
-        
+        let tabOneBarItem = UITabBarItem(title: "Map", image: UIImage(named: "map"), selectedImage: nil)
+
         mapNC.tabBarItem = tabOneBarItem
-        
+
         // Create Tab two
         let mesNC = UINavigationController(rootViewController: MessageController())
-        let tabTwoBarItem2 = UITabBarItem(tabBarSystemItem: .mostRecent, tag: 1)
-        
+        let tabTwoBarItem2 = UITabBarItem(title: "Message", image: UIImage(named: "message"), selectedImage: nil)
+
         mesNC.tabBarItem = tabTwoBarItem2
-        self.viewControllers = [mapNC, mesNC]
+
+        // Create Tab three
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        //swiftlint:disable force_cast
+        let vc = sb.instantiateViewController(withIdentifier: "ownerPage") as! OwnerController
+        let ownNC = UINavigationController(rootViewController: vc)
+        let tabTwoBarItem3 = UITabBarItem(title: "Deal", image: UIImage(named: "deal"), selectedImage: nil)
+
+        ownNC.tabBarItem = tabTwoBarItem3
+        self.viewControllers = [mapNC, mesNC, ownNC]
     }
 }

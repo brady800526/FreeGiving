@@ -24,8 +24,6 @@
 		E54457801F29E22800BF8E2B /* ImageUploadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E544577F1F29E22800BF8E2B /* ImageUploadController.swift */; };
 		E54457821F29EDBC00BF8E2B /* ImageUploadController+handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54457811F29EDBC00BF8E2B /* ImageUploadController+handlers.swift */; };
 		E54BA0B21F3F0E4100143350 /* PostStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54BA0B11F3F0E4100143350 /* PostStatus.swift */; };
-		E57EA9AA1F3C4A7E00FAE137 /* SearchItemController+searchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57EA9A91F3C4A7E00FAE137 /* SearchItemController+searchBar.swift */; };
-		E57EA9AC1F3C4B5C00FAE137 /* SearchItemController+collectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57EA9AB1F3C4B5C00FAE137 /* SearchItemController+collectionDelegate.swift */; };
 		E57EA9AE1F3C983A00FAE137 /* MapController+handleMapSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57EA9AD1F3C983A00FAE137 /* MapController+handleMapSearch.swift */; };
 		E57EA9B01F3C98BB00FAE137 /* MapController+handleMapDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57EA9AF1F3C98BB00FAE137 /* MapController+handleMapDelegate.swift */; };
 		E59370BA1F285AF500FA1A72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59370B91F285AF500FA1A72 /* AppDelegate.swift */; };
@@ -39,7 +37,6 @@
 		E5D6489E1F32FF2F0075A4BA /* CustomCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D6489C1F32FF2F0075A4BA /* CustomCalloutView.swift */; };
 		E5D648A11F3308F40075A4BA /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D648A01F3308F40075A4BA /* AnnotationView.swift */; };
 		E5E93D8C1F2AB75B00DE01CE /* OwnerProductController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E93D8B1F2AB75B00DE01CE /* OwnerProductController.swift */; };
-		E5E93D8E1F2AB81000DE01CE /* SearchItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E93D8D1F2AB81000DE01CE /* SearchItemController.swift */; };
 		E5E93DD71F2B17ED00DE01CE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5E93DD61F2B17ED00DE01CE /* CoreLocation.framework */; };
 		E5E93DD91F2B39F400DE01CE /* LoginController+loginHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E93DD81F2B39F400DE01CE /* LoginController+loginHandler.swift */; };
 		E5EA3A7F1F4BBCAF00401F15 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EA3A7E1F4BBCAF00401F15 /* LoginController.swift */; };
@@ -67,8 +64,6 @@
 		E544577F1F29E22800BF8E2B /* ImageUploadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUploadController.swift; sourceTree = "<group>"; };
 		E54457811F29EDBC00BF8E2B /* ImageUploadController+handlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ImageUploadController+handlers.swift"; sourceTree = "<group>"; };
 		E54BA0B11F3F0E4100143350 /* PostStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostStatus.swift; sourceTree = "<group>"; };
-		E57EA9A91F3C4A7E00FAE137 /* SearchItemController+searchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SearchItemController+searchBar.swift"; sourceTree = "<group>"; };
-		E57EA9AB1F3C4B5C00FAE137 /* SearchItemController+collectionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SearchItemController+collectionDelegate.swift"; sourceTree = "<group>"; };
 		E57EA9AD1F3C983A00FAE137 /* MapController+handleMapSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MapController+handleMapSearch.swift"; sourceTree = "<group>"; };
 		E57EA9AF1F3C98BB00FAE137 /* MapController+handleMapDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MapController+handleMapDelegate.swift"; sourceTree = "<group>"; };
 		E59370B61F285AF500FA1A72 /* FreeGiving.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreeGiving.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,7 +79,6 @@
 		E5D6489C1F32FF2F0075A4BA /* CustomCalloutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCalloutView.swift; sourceTree = "<group>"; };
 		E5D648A01F3308F40075A4BA /* AnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		E5E93D8B1F2AB75B00DE01CE /* OwnerProductController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerProductController.swift; sourceTree = "<group>"; };
-		E5E93D8D1F2AB81000DE01CE /* SearchItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchItemController.swift; path = ../SearchItemController.swift; sourceTree = "<group>"; };
 		E5E93DD61F2B17ED00DE01CE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E5E93DD81F2B39F400DE01CE /* LoginController+loginHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoginController+loginHandler.swift"; sourceTree = "<group>"; };
 		E5EA3A7E1F4BBCAF00401F15 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -131,17 +125,6 @@
 				E54457811F29EDBC00BF8E2B /* ImageUploadController+handlers.swift */,
 			);
 			name = ImageUploadController;
-			sourceTree = "<group>";
-		};
-		E53176221F389838002D8CDF /* SearchItemController */ = {
-			isa = PBXGroup;
-			children = (
-				E5E93D8D1F2AB81000DE01CE /* SearchItemController.swift */,
-				E57EA9AB1F3C4B5C00FAE137 /* SearchItemController+collectionDelegate.swift */,
-				E57EA9A91F3C4A7E00FAE137 /* SearchItemController+searchBar.swift */,
-			);
-			name = SearchItemController;
-			path = FreeGiving;
 			sourceTree = "<group>";
 		};
 		E53A7F111F374EB10022DE9A /* View */ = {
@@ -220,13 +203,12 @@
 		E59370CE1F28730400FA1A72 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E5EA3A821F4C7D7000401F15 /* MainTabBarController.swift */,
 				E57EA9A81F3C227E00FAE137 /* OwnerProductController */,
-				E53176221F389838002D8CDF /* SearchItemController */,
 				E52E8DCF1F2F5C1700B2EB73 /* MapController */,
 				E55F22BE1F2C7F6500C9E862 /* LoginController */,
 				E52E8DD01F2F5C7900B2EB73 /* ImageUploadController */,
 				E5D648941F32EAA50075A4BA /* FriendTableController */,
-				E5EA3A821F4C7D7000401F15 /* MainTabBarController.swift */,
 			);
 			name = Controller;
 			path = ..;
@@ -421,10 +403,8 @@
 				E54457821F29EDBC00BF8E2B /* ImageUploadController+handlers.swift in Sources */,
 				E535A87F1F36983600E635CF /* MessageController.swift in Sources */,
 				E52ED45E1F414C2900C9D17E /* OwnerPostCell.swift in Sources */,
-				E57EA9AC1F3C4B5C00FAE137 /* SearchItemController+collectionDelegate.swift in Sources */,
 				E54BA0B21F3F0E4100143350 /* PostStatus.swift in Sources */,
 				E59370D21F2878C300FA1A72 /* MapController.swift in Sources */,
-				E57EA9AA1F3C4A7E00FAE137 /* SearchItemController+searchBar.swift in Sources */,
 				E5D6489E1F32FF2F0075A4BA /* CustomCalloutView.swift in Sources */,
 				E53A7F131F374EC10022DE9A /* Usercell.swift in Sources */,
 				E52B87B71F3AD6A000361249 /* ProductPost.swift in Sources */,
@@ -432,7 +412,6 @@
 				E5EA3A7F1F4BBCAF00401F15 /* LoginController.swift in Sources */,
 				E59370BA1F285AF500FA1A72 /* AppDelegate.swift in Sources */,
 				E52DA5421F32CFF400B1F02D /* Post.swift in Sources */,
-				E5E93D8E1F2AB81000DE01CE /* SearchItemController.swift in Sources */,
 				E53A7F101F37464C0022DE9A /* Message.swift in Sources */,
 				E52E1A951F2E1B4500C07A50 /* MapController+handlerLocatoinHandler.swift in Sources */,
 				E52D35CF1F2894C90030B08F /* extension.swift in Sources */,

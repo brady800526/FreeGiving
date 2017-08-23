@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 
 class LoginController: UIViewController {
-    
+
     var mapViewController: MapController?
 
     let loginBackgroundImageView: UIImageView = {
@@ -21,7 +21,7 @@ class LoginController: UIViewController {
         imageView.alpha = 0.7
         return imageView
     }()
-    
+
     let loginTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -31,7 +31,7 @@ class LoginController: UIViewController {
         label.textAlignment = .center
         return label
     }()
-    
+
     let inputsContainerView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(red: 230, green: 230, blue: 230)
@@ -69,6 +69,7 @@ class LoginController: UIViewController {
         tv.textAlignment = .center
         tv.font = UIFont(name: "Marker Felt", size: 24)
         tv.autocapitalizationType = .none
+        tv.isSecureTextEntry = true
         return tv
     }()
 
@@ -142,26 +143,26 @@ class LoginController: UIViewController {
         setupLoginTitleLabel()
         setupLoginRegisterButton()
         setupLoginRegisterSegmentedControl()
-        
+
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        
+
         view.addGestureRecognizer(tap)
     }
-    
+
     // Causes the view (or one of its embedded text fields) to resign the first responder status.
-    
+
     func dismissKeyboard() {
-        
+
         view.endEditing(true)
-        
+
     }
-    
+
     // Disable keyboard when return
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
+
         textField.resignFirstResponder()
-        
+
         return true
     }
 
@@ -176,19 +177,19 @@ class LoginController: UIViewController {
         loginBackgroundImageView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
         loginBackgroundImageView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
     }
-    
+
     func setupLoginTitleLabel() {
         loginTitleLabel.centerXAnchor.constraint(equalTo: loginRegisterSegmentedControl.centerXAnchor).isActive = true
         loginTitleLabel.bottomAnchor.constraint(equalTo: loginRegisterSegmentedControl.topAnchor).isActive = true
         loginTitleLabel.widthAnchor.constraint(equalTo: loginRegisterSegmentedControl.widthAnchor).isActive = true
         loginTitleLabel.heightAnchor.constraint(equalToConstant: 100).isActive = true
     }
-    
+
     func setupInputsContainerView() {
 
         inputsContainerView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         inputsContainerView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        inputsContainerView.widthAnchor.constraint(equalTo: self.view.widthAnchor, constant: -36).isActive = true
+        inputsContainerView.widthAnchor.constraint(greaterThanOrEqualTo: self.view.widthAnchor, multiplier: 0.7).isActive = true
         inputsContainerViewHeightAnchor = inputsContainerView.heightAnchor.constraint(equalToConstant: 100)
         inputsContainerViewHeightAnchor?.isActive = true
 
@@ -242,19 +243,19 @@ class LoginController: UIViewController {
         loginRegisterSegmentedControl.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
         loginRegisterSegmentedControl.heightAnchor.constraint(equalToConstant: 36).isActive = true
     }
-    
+
     func setupLoginRegister() {
-        
+
         if loginRegisterSegmentedControl.selectedSegmentIndex == 0 {
-            
+
             handleLogin()
-            
+
         } else {
-            
+
             handleRegister()
-            
+
         }
-        
+
     }
 }
 

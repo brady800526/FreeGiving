@@ -25,7 +25,7 @@ public enum ClusterAnnotationType {
 }
 
 open class ClusterAnnotationView: MKAnnotationView {
-    
+
     open lazy var countLabel: UILabel = {
         let label = UILabel()
         label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -39,15 +39,15 @@ open class ClusterAnnotationView: MKAnnotationView {
         self.addSubview(label)
         return label
     }()
-    
+
     override open var annotation: MKAnnotation? {
         didSet {
             configure()
         }
     }
-    
+
     open let type: ClusterAnnotationType
-    
+
     /**
      Initializes and returns a new cluster annotation view.
      
@@ -63,14 +63,14 @@ open class ClusterAnnotationView: MKAnnotationView {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         configure()
     }
-    
+
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     open func configure() {
         guard let annotation = annotation as? ClusterAnnotation else { return }
-        
+
         switch type {
         case let .image(image):
             backgroundColor = .clear
@@ -90,15 +90,15 @@ open class ClusterAnnotationView: MKAnnotationView {
             countLabel.text = "\(count)"
         }
     }
-    
+
     override open func layoutSubviews() {
         super.layoutSubviews()
-        
+
         if case .color = type {
             layer.masksToBounds = true
             layer.cornerRadius = image == nil ? bounds.width / 2 : 0
             countLabel.frame = bounds
         }
     }
-    
+
 }

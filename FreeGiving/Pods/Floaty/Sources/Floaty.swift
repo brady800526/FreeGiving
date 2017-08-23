@@ -47,7 +47,7 @@ open class Floaty: UIView {
             self.setNeedsDisplay()
         }
     }
-    open var paddingY: CGFloat = 42 {
+    open var paddingY: CGFloat = 56 {
         didSet {
             self.setNeedsDisplay()
         }
@@ -122,7 +122,7 @@ open class Floaty: UIView {
 	/**
 		Child item's image color
 	*/
-	@IBInspectable open var itemImageColor: UIColor? = nil
+	@IBInspectable open var itemImageColor: UIColor?
 
     /**
         Child item's default shadow color.
@@ -137,15 +137,15 @@ open class Floaty: UIView {
     open var openAnimationType: FloatyOpenAnimationType = .slideLeft
 
     open var friendlyTap: Bool = true
-    
+
     open var sticky: Bool = false
-    
+
     open static var global: FloatyManager {
         get {
             return FloatyManager.defaultInstance()
         }
     }
-    
+
     /**
      Delegate that can be used to learn more about the behavior of the FAB widget.
     */
@@ -176,7 +176,7 @@ open class Floaty: UIView {
     */
 //    private var overlayLayer: CAShapeLayer = CAShapeLayer()
 
-    fileprivate var overlayView : UIControl = UIControl()
+    fileprivate var overlayView: UIControl = UIControl()
 
     /**
         Keep track of whether overlay open animation completes, to avoid animation conflicts.
@@ -261,7 +261,7 @@ open class Floaty: UIView {
         Items open.
     */
     open func open() {
-        if(items.count > 0){
+        if(items.count > 0) {
 
             setOverlayView()
             self.superview?.insertSubview(overlayView, aboveSubview: self)
@@ -276,10 +276,9 @@ open class Floaty: UIView {
                     self.plusLayer.transform = CATransform3DMakeRotation(self.degreesToRadians(self.rotationDegrees), 0.0, 0.0, 1.0)
                     self.buttonImageView.transform = CGAffineTransform(rotationAngle: self.degreesToRadians(self.rotationDegrees))
                     self.overlayView.alpha = 1
-                }, completion: {(f) -> Void in
+                }, completion: {(_) -> Void in
                     self.overlayViewDidCompleteOpenAnimation = true
             })
-
 
             switch openAnimationType {
             case .pop:
@@ -305,7 +304,7 @@ open class Floaty: UIView {
         Items close.
     */
     open func close() {
-        if(items.count > 0){
+        if(items.count > 0) {
             self.overlayView.removeTarget(self, action: #selector(close), for: UIControlEvents.touchUpInside)
             UIView.animate(withDuration: 0.3, delay: 0,
                 usingSpringWithDamping: 0.6,
@@ -314,7 +313,7 @@ open class Floaty: UIView {
                     self.plusLayer.transform = CATransform3DMakeRotation(self.degreesToRadians(0), 0.0, 0.0, 1.0)
                     self.buttonImageView.transform = CGAffineTransform(rotationAngle: self.degreesToRadians(0))
                     self.overlayView.alpha = 0
-                }, completion: {(f) -> Void in
+                }, completion: {(_) -> Void in
                     if self.overlayViewDidCompleteOpenAnimation {
                         self.overlayView.removeFromSuperview()
                     }
@@ -479,8 +478,8 @@ open class Floaty: UIView {
         return super.hitTest(point, with: event)
     }
 
-    fileprivate func determineTapArea(item : FloatyItem) -> CGRect {
-        let tappableMargin : CGFloat = 30.0
+    fileprivate func determineTapArea(item: FloatyItem) -> CGRect {
+        let tappableMargin: CGFloat = 30.0
         let x = item.titleLabel.frame.origin.x + item.bounds.origin.x
         let y = item.bounds.origin.y
 
@@ -543,7 +542,7 @@ open class Floaty: UIView {
     }
 	fileprivate func setOverlayFrame() {
 		overlayView.frame = CGRect(
-			x: 0,y: 0,
+			x: 0, y: 0,
 			width: UIScreen.main.bounds.width,
 			height: UIScreen.main.bounds.height
 		)
@@ -701,7 +700,7 @@ open class Floaty: UIView {
         guard let keyboardSize: CGFloat = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size.height else {
             return
         }
-        
+
         if sticky == true {
             return
         }
@@ -723,11 +722,11 @@ open class Floaty: UIView {
     }
 
     internal func keyboardWillHide(_ notification: Notification) {
-        
+
         if sticky == true {
             return
         }
-        
+
         UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions(), animations: {
             if self.isCustomFrame == false {
                 self.setRightBottomFrame()
@@ -938,14 +937,14 @@ extension UIView {
         if (self.superview == nil) {
             return nil
         }
-        
+
         var superviews: [UIView] = []
-        
+
         superviews.append(self.superview!)
         if let allSuperviews = self.superview!.getAllSuperviews() {
             superviews.append(contentsOf: allSuperviews)
         }
-        
+
         return superviews
     }
 }

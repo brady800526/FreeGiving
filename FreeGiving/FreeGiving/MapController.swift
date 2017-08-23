@@ -72,13 +72,15 @@ class MapController: UIViewController, UISearchBarDelegate {
         super.viewDidLoad()
 
         self.view.backgroundColor = UIColor.white
-        
+
         self.view.addSubview(mapView)
-        
+
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(handleSearch))
-        
+
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(handleLogout))
+
         mapView.delegate = self
-        
+
 //        slideMenuSetup()
 
         checkedIfUserLoggedIn()
@@ -107,7 +109,7 @@ class MapController: UIViewController, UISearchBarDelegate {
 
         float.tintColor = UIColor.white
 
-//        float.buttonColor = UIColor.clear
+        float.buttonColor = UIColor.clear
 
         float.handler = { item in
 
@@ -118,28 +120,28 @@ class MapController: UIViewController, UISearchBarDelegate {
         floaty.addItem(item: float)
 
         self.mapView.addSubview(floaty)
-        
+
         setupMapView()
 
     }
-    
+
     func handleSearch() {
-        
+
         let autoCompleteController = GMSAutocompleteViewController()
-        
+
         autoCompleteController.delegate = self
-        
+
         self.present(autoCompleteController, animated: true, completion: nil)
-        
+
     }
-    
+
     func setupMapView() {
-        
+
         mapView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         mapView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         mapView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
         mapView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-        
+
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -331,7 +333,8 @@ class MapController: UIViewController, UISearchBarDelegate {
     func handleUpload() {
 
         // swiftlint:disable force_cast
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "uploadPage") as! ImageUploadController
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "uploadPage") as! ImageUploadController
         let nv = UINavigationController(rootViewController: vc)
         // swiftlint:enable force_cast
 
@@ -380,7 +383,7 @@ class MapController: UIViewController, UISearchBarDelegate {
         }
 
         // swiftlint:disable force_cast
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "loginPage") as! LoginController
+        let vc = LoginController()
         // swiftlint:enable force_cast
 
         vc.mapViewController = self

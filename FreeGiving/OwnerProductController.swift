@@ -25,6 +25,8 @@ class OwnerController: UITableViewController {
 
         observeUserGiven()
 
+        self.navigationController?.navigationBar.barTintColor = UIColor.orange
+
         self.tableView.allowsSelection = false
 
         self.navigationController?.navigationBar.tintColor = UIColor.white

@@ -10,16 +10,16 @@ import CoreLocation
 import MapKit
 
 open class ClusterManager {
-    
+
     var tree = QuadTree(rect: MKMapRectWorld)
-    
+
     let queue: OperationQueue = {
         let queue = OperationQueue()
         queue.maxConcurrentOperationCount = 1
         queue.qualityOfService = .userInitiated
         return queue
     }()
-    
+
     /**
      Controls the level from which clustering will be enabled. Min value is 2 (max zoom out), max is 20 (max zoom in).
      */
@@ -28,9 +28,9 @@ open class ClusterManager {
             zoomLevel = zoomLevel.clamped(to: 2...20)
         }
     }
-    
+
     public init() {}
-    
+
     /**
      Adds an annotation object to the cluster manager.
      
@@ -40,7 +40,7 @@ open class ClusterManager {
     open func add(_ annotation: MKAnnotation) {
         tree.add(annotation)
     }
-    
+
     /**
      Adds an array of annotation objects to the cluster manager.
      
@@ -52,7 +52,7 @@ open class ClusterManager {
             add(annotation)
         }
     }
-    
+
     /**
      Removes an annotation object from the cluster manager.
      
@@ -62,7 +62,7 @@ open class ClusterManager {
     open func remove(_ annotation: MKAnnotation) {
         tree.remove(annotation)
     }
-    
+
     /**
      Removes an array of annotation objects from the cluster manager.
      
@@ -74,14 +74,14 @@ open class ClusterManager {
             remove(annotation)
         }
     }
-    
+
     /**
      Removes all the annotation objects from the cluster manager.
      */
     open func removeAll() {
         tree = QuadTree(rect: MKMapRectWorld)
     }
-    
+
     /**
      The complete list of annotations associated.
      
@@ -90,7 +90,7 @@ open class ClusterManager {
     open var annotations: [MKAnnotation] {
         return tree.annotations(in: MKMapRectWorld)
     }
-    
+
     /**
      Reload the annotations on the map view.
      
@@ -113,40 +113,40 @@ open class ClusterManager {
         queue.cancelAllOperations()
         queue.addOperation(operation)
     }
-    
+
     func clusteredAnnotations(_ mapView: MKMapView, visibleMapRect: MKMapRect, operation: Operation) -> (toAdd: [MKAnnotation], toRemove: [MKAnnotation]) {
         let zoomScale = ZoomScale(mapView.bounds.width) / visibleMapRect.size.width
-        
+
         guard !zoomScale.isInfinite else { return (toAdd: [], toRemove: []) }
-        
+
         let zoomLevel = zoomScale.zoomLevel()
         let cellSize = zoomLevel.cellSize()
         let scaleFactor = zoomScale / cellSize
-        
+
         let minX = Int(floor(visibleMapRect.minX * scaleFactor))
         let maxX = Int(floor(visibleMapRect.maxX * scaleFactor))
         let minY = Int(floor(visibleMapRect.minY * scaleFactor))
         let maxY = Int(floor(visibleMapRect.maxY * scaleFactor))
-        
+
         var clusteredAnnotations = [MKAnnotation]()
-        
+
         for x in minX...maxX where !operation.isCancelled {
             for y in minY...maxY where !operation.isCancelled {
                 var mapRect = MKMapRect(x: Double(x) / scaleFactor, y: Double(y) / scaleFactor, width: 1 / scaleFactor, height: 1 / scaleFactor)
                 if mapRect.origin.x > MKMapPointMax.x {
                     mapRect.origin.x -= MKMapPointMax.x
                 }
-                
+
                 var totalLatitude: Double = 0
                 var totalLongitude: Double = 0
                 var annotations = [MKAnnotation]()
-                
+
                 for node in tree.annotations(in: mapRect) {
                     totalLatitude += node.coordinate.latitude
                     totalLongitude += node.coordinate.longitude
                     annotations.append(node)
                 }
-                
+
                 let count = annotations.count
                 if count > 1, Int(zoomLevel) <= self.zoomLevel {
                     let coordinate = CLLocationCoordinate2D(
@@ -162,24 +162,24 @@ open class ClusterManager {
                 }
             }
         }
-        
+
         if operation.isCancelled { return (toAdd: [], toRemove: []) }
-        
+
         let before = NSMutableSet(array: mapView.annotations)
         before.remove(mapView.userLocation)
-        
+
         let after = NSSet(array: clusteredAnnotations)
-        
+
         let toKeep = NSMutableSet(set: before)
         toKeep.intersect(after as Set<NSObject>)
-        
+
         let toAdd = NSMutableSet(set: after)
         toAdd.minus(toKeep as Set<NSObject>)
-        
+
         let toRemove = NSMutableSet(set: before)
         toRemove.minus(after as Set<NSObject>)
-        
+
         return (toAdd: toAdd.allObjects as? [MKAnnotation] ?? [], toRemove: toRemove.allObjects as? [MKAnnotation] ?? [])
     }
-    
+
 }
