@@ -346,7 +346,8 @@ class MapController: UIViewController, UISearchBarDelegate {
         // swiftlint:disable force_cast
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "uploadPage") as! ImageUploadController
-        let nv = UINavigationController(rootViewController: vc)
+        let vc2 = ImageController()
+        let nv = UINavigationController(rootViewController: vc2)
         // swiftlint:enable force_cast
 
         vc.mapView = self.mapView

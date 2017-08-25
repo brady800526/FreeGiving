@@ -7,9 +7,15 @@
 //
 
 import UIKit
+import MapKit
+import GooglePlaces
 
-class ImageController: UIViewController {
+class ImageController: UIViewController, GMSAutocompleteViewControllerDelegate, UITextViewDelegate {
 
+    var latitude: String?
+    var longtitude: String?
+    var mapView: MKMapView?
+    
     let uploadBackgroundScrollView: UIScrollView = {
         let sv = UIScrollView()
         sv.translatesAutoresizingMaskIntoConstraints = false
@@ -33,7 +39,7 @@ class ImageController: UIViewController {
         iv.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectUploadImageView)))
         return iv
     }()
-    
+
     let uplaodDescriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -43,32 +49,58 @@ class ImageController: UIViewController {
         label.textColor = UIColor.orange
         return label
     }()
-    
+
     let uploadInputsContainerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.white
         return view
     }()
-    
+
     let uploadProductName: UITextView = {
         let tv = UITextView()
+        tv.text = "Product Name"
+        tv.textColor = UIColor.lightGray
         tv.translatesAutoresizingMaskIntoConstraints = false
+        tv.textAlignment = .center
+        tv.font = UIFont(name: "Marker Felt", size: 20)
         return tv
     }()
     
+    let uploadNameSeperatorView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(red: 220, green: 220, blue: 220)
+        return view
+    }()
+
     let uploadProductLocation: UITextView = {
         let tv = UITextView()
+        tv.text = "Product Location"
+        tv.textColor = UIColor.lightGray
         tv.translatesAutoresizingMaskIntoConstraints = false
+        tv.textAlignment = .center
+        tv.font = UIFont(name: "Marker Felt", size: 20)
         return tv
     }()
     
+    let uploadLocationSeperatorView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(red: 220, green: 220, blue: 220)
+        return view
+    }()
+
     let uploadProductDescription: UITextView = {
         let tv = UITextView()
+        tv.text = "Product Description"
+        tv.textColor = UIColor.lightGray
         tv.translatesAutoresizingMaskIntoConstraints = false
+        tv.textAlignment = .center
+        tv.font = UIFont(name: "Marker Felt", size: 20)
         return tv
     }()
-    
+
     let uploadButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -78,31 +110,123 @@ class ImageController: UIViewController {
         button.layer.shadowRadius = 5
         button.layer.shadowOpacity = 1
         button.clipsToBounds = false
-        button.titleLabel?.text = "Upload Prooduct"
-        button.titleLabel?.textColor = UIColor.orange
+        button.setTitle("Upload Product", for: .normal)
+        button.titleLabel?.textColor = UIColor.white
         button.titleLabel?.font = UIFont(name: "Marker Felt", size: 24)
+        button.addTarget(self, action: #selector(handleUploadPhoto), for: .touchUpInside)
         return button
     }()
 
-
-    func handleSelectUploadImageView() {
-        let picker = UIImagePickerController()
-        picker.delegate = self
-        picker.allowsEditing = true
-        present(picker, animated: true, completion: nil)
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
- 
-        self.uploadBackgroundScrollView.alwaysBounceVertical = true
-        
-        
 
+        self.uploadBackgroundScrollView.alwaysBounceVertical = true
+
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor.orange
+        
+        self.navigationItem.title = "Product"
+        
+        uploadProductName.delegate = self
+        uploadProductDescription.delegate = self
+        uploadProductLocation.delegate = self
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(handleDismiss))
+        
         self.view.addSubview(uploadBackgroundScrollView)
 
         setupUploadBackgroundScrollView()
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+
+        view.addGestureRecognizer(tap)
     }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+        
+        self.uploadProductLocation.text = place.formattedAddress
+        
+        self.uploadProductLocation.textColor = UIColor.black
+        
+        self.latitude = String(place.coordinate.latitude)
+        
+        self.longtitude = String(place.coordinate.longitude)
+        
+        self.dismiss(animated: true, completion: nil) // dismiss after select place
+    }
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
+        
+        print("ERROR AUTO COMPLETE \(error)")
+        
+    }
+    
+    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+        self.dismiss(animated: true, completion: nil) // when cancel search
+    }
+    
+    func openSearchAddress() {
+        let autoCompleteController = GMSAutocompleteViewController()
+        autoCompleteController.delegate = self
+        
+        self.present(autoCompleteController, animated: true, completion: nil)
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        
+        if textView.textColor == UIColor.lightGray {
+            
+            textView.text = nil
+            
+            textView.textColor = UIColor.black
+        }
+        
+        if textView == uploadProductLocation {
+            
+            openSearchAddress()
+            
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        
+        switch textView {
+            
+        case uploadProductName:
+            
+            if uploadProductName.text.isEmpty {
+                uploadProductName.text = "Descrition"
+                uploadProductName.textColor = UIColor.lightGray
+            }
+            
+        case uploadProductLocation:
+            
+            if uploadProductLocation.text.isEmpty {
+                
+                uploadProductLocation.text = "Product Name"
+                uploadProductLocation.textColor = UIColor.lightGray
+            }
+            
+        case uploadProductDescription:
+            
+            if uploadProductDescription.text.isEmpty {
+                
+                uploadProductDescription.text = "Product Location"
+                uploadProductDescription.textColor = UIColor.lightGray
+                
+            }
+            
+        default: break
+            
+        }
+    }
+
 
     func setupUploadBackgroundScrollView() {
         uploadBackgroundScrollView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
@@ -146,20 +270,68 @@ class ImageController: UIViewController {
         uplaodDescriptionLabel.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.9).isActive = true
         uplaodDescriptionLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
-    
+
     func setupUploadInputsConstraintView() {
         uploadInputsContainerView.topAnchor.constraint(equalTo: self.uplaodDescriptionLabel.bottomAnchor).isActive = true
         uploadInputsContainerView.heightAnchor.constraint(equalToConstant: 150).isActive = true
         uploadInputsContainerView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         uploadInputsContainerView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.9).isActive = true
+        
+        uploadInputsContainerView.addSubview(uploadProductName)
+        uploadInputsContainerView.addSubview(uploadProductLocation)
+        uploadInputsContainerView.addSubview(uploadProductDescription)
+        uploadInputsContainerView.addSubview(uploadNameSeperatorView)
+        uploadInputsContainerView.addSubview(uploadLocationSeperatorView)
+        
+        setupUploadProductName()
+        setupUploadNameSeperatorView()
+        setupUploadProductLocation()
+        setupUploadLocationSeperatorView()
+        setupUploadProductDescription()
     }
     
+    func setupUploadProductName() {
+        uploadProductName.topAnchor.constraint(equalTo: uploadInputsContainerView.topAnchor).isActive = true
+        uploadProductName.leftAnchor.constraint(equalTo: uploadInputsContainerView.leftAnchor).isActive = true
+        uploadProductName.rightAnchor.constraint(equalTo: uploadInputsContainerView.rightAnchor).isActive = true
+        uploadProductName.heightAnchor.constraint(equalTo: uploadInputsContainerView.heightAnchor, multiplier: 1/3).isActive = true
+    }
+    
+    func setupUploadNameSeperatorView() {
+        uploadNameSeperatorView.topAnchor.constraint(equalTo: uploadProductName.bottomAnchor).isActive = true
+        uploadNameSeperatorView.leftAnchor.constraint(equalTo: uploadInputsContainerView.leftAnchor).isActive = true
+        uploadNameSeperatorView.rightAnchor.constraint(equalTo: uploadInputsContainerView.rightAnchor).isActive = true
+        uploadNameSeperatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+    }
+    
+    func setupUploadProductLocation() {
+        uploadProductLocation.topAnchor.constraint(equalTo: uploadProductName.bottomAnchor).isActive = true
+        uploadProductLocation.leftAnchor.constraint(equalTo: uploadInputsContainerView.leftAnchor).isActive = true
+        uploadProductLocation.rightAnchor.constraint(equalTo: uploadInputsContainerView.rightAnchor).isActive = true
+        uploadProductLocation.heightAnchor.constraint(equalTo: uploadInputsContainerView.heightAnchor, multiplier: 1/3).isActive = true
+    }
+    
+    func setupUploadLocationSeperatorView() {
+        uploadLocationSeperatorView.topAnchor.constraint(equalTo: uploadProductLocation.bottomAnchor).isActive = true
+        uploadLocationSeperatorView.leftAnchor.constraint(equalTo: uploadInputsContainerView.leftAnchor).isActive = true
+        uploadLocationSeperatorView.rightAnchor.constraint(equalTo: uploadInputsContainerView.rightAnchor).isActive = true
+        uploadLocationSeperatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+
+    }
+    
+    func setupUploadProductDescription() {
+        uploadProductDescription.topAnchor.constraint(equalTo: uploadProductLocation.bottomAnchor).isActive = true
+        uploadProductDescription.leftAnchor.constraint(equalTo: uploadInputsContainerView.leftAnchor).isActive = true
+        uploadProductDescription.rightAnchor.constraint(equalTo: uploadInputsContainerView.rightAnchor).isActive = true
+        uploadProductDescription.heightAnchor.constraint(equalTo: uploadInputsContainerView.heightAnchor, multiplier: 1/3).isActive = true
+    }
+
     func setupUploadButton() {
         uploadButton.topAnchor.constraint(equalTo: self.uploadInputsContainerView.bottomAnchor, constant: 12).isActive = true
         uploadButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         uploadButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         uploadButton.widthAnchor.constraint(equalTo: self.uploadInputsContainerView.widthAnchor).isActive = true
-        uploadButton.bottomAnchor.constraint(equalTo: self.uploadBackgroundView.bottomAnchor, constant: -12).isActive = true
+        uploadButton.bottomAnchor.constraint(equalTo: self.uploadBackgroundView.bottomAnchor, constant: -50).isActive = true
     }
 
 }
