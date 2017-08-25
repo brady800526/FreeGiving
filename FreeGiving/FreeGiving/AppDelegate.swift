@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         let vc = MainTabBarController()
+        let tempvc = ImageController()
         UITabBar.appearance().tintColor = UIColor.orange
         if let font = UIFont(name: "Marker Felt", size: 20) {
             UINavigationBar.appearance().titleTextAttributes = [
@@ -31,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 NSFontAttributeName: font
             ]
         }
-        window?.rootViewController = vc
+        window?.rootViewController = UINavigationController(rootViewController:tempvc)
         IQKeyboardManager.sharedManager().enable = true
         GMSServices.provideAPIKey("AIzaSyAKYy2EjtJfJFI2RgRFLwa0Q-OwDHjVr4M")
         GMSPlacesClient.provideAPIKey("AIzaSyAKYy2EjtJfJFI2RgRFLwa0Q-OwDHjVr4M")

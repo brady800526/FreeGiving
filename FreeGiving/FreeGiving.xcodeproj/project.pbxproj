@@ -32,6 +32,7 @@
 		E59370C41F285AF500FA1A72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E59370C21F285AF500FA1A72 /* LaunchScreen.storyboard */; };
 		E59370CC1F28642D00FA1A72 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E59370CB1F28642D00FA1A72 /* GoogleService-Info.plist */; };
 		E59370D21F2878C300FA1A72 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59370D11F2878C300FA1A72 /* MapController.swift */; };
+		E5A5FF701F4E9D5000E7B65B /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A5FF6F1F4E9D5000E7B65B /* ImageController.swift */; };
 		E5D648961F32F9A70075A4BA /* PostsAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D648951F32F9A70075A4BA /* PostsAnnotation.swift */; };
 		E5D6489D1F32FF2F0075A4BA /* CustomCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5D6489B1F32FF2F0075A4BA /* CustomCalloutView.xib */; };
 		E5D6489E1F32FF2F0075A4BA /* CustomCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D6489C1F32FF2F0075A4BA /* CustomCalloutView.swift */; };
@@ -74,6 +75,7 @@
 		E59370C51F285AF500FA1A72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E59370CB1F28642D00FA1A72 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E59370D11F2878C300FA1A72 /* MapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapController.swift; path = FreeGiving/MapController.swift; sourceTree = "<group>"; };
+		E5A5FF6F1F4E9D5000E7B65B /* ImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
 		E5D648951F32F9A70075A4BA /* PostsAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsAnnotation.swift; sourceTree = "<group>"; };
 		E5D6489B1F32FF2F0075A4BA /* CustomCalloutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCalloutView.xib; sourceTree = "<group>"; };
 		E5D6489C1F32FF2F0075A4BA /* CustomCalloutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCalloutView.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			children = (
 				E544577F1F29E22800BF8E2B /* ImageUploadController.swift */,
 				E54457811F29EDBC00BF8E2B /* ImageUploadController+handlers.swift */,
+				E5A5FF6F1F4E9D5000E7B65B /* ImageController.swift */,
 			);
 			name = ImageUploadController;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 				E57EA9AE1F3C983A00FAE137 /* MapController+handleMapSearch.swift in Sources */,
 				E540D27F1F31BE3C006523ED /* ChatLogController.swift in Sources */,
 				E53175FF1F38541B002D8CDF /* ChatMessageCollectionViewCell.swift in Sources */,
+				E5A5FF701F4E9D5000E7B65B /* ImageController.swift in Sources */,
 				E54457821F29EDBC00BF8E2B /* ImageUploadController+handlers.swift in Sources */,
 				E535A87F1F36983600E635CF /* MessageController.swift in Sources */,
 				E52ED45E1F414C2900C9D17E /* OwnerPostCell.swift in Sources */,
@@ -548,7 +552,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 9Y4D3HN9L5;
 				INFOPLIST_FILE = FreeGiving/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tw.bradyhuang.FreeGiving;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -567,7 +571,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 9Y4D3HN9L5;
 				INFOPLIST_FILE = FreeGiving/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tw.bradyhuang.FreeGiving;
 				PRODUCT_NAME = "$(TARGET_NAME)";

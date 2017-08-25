@@ -131,7 +131,7 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.titleView?.tintColor = UIColor.white
-        
+
         self.view.addSubview(loginBackgroundImageView)
         self.view.addSubview(loginTitleLabel)
         self.view.addSubview(inputsContainerView)

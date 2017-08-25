@@ -13,9 +13,9 @@ import GooglePlaces
 class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDelegate, UITextViewDelegate {
 
     @IBOutlet weak var uploadImageView: UIImageView!
-    @IBOutlet weak var productName: UITextView!
-    @IBOutlet weak var productLocation: UITextView!
-    @IBOutlet weak var productDescription: UITextView!
+    @IBOutlet weak var uploadProductName: UITextView!
+    @IBOutlet weak var uploadProductLocation: UITextView!
+    @IBOutlet weak var uploadProductDescription: UITextView!
     @IBOutlet weak var uploadButton: UIButton!
 
     // Tap the button to upload the data to firebase
@@ -36,10 +36,10 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
         self.navigationController?.navigationBar.barTintColor = UIColor.orange
 
         self.navigationItem.title = "Product"
-        
+
         super.viewDidLoad()
 
-        let textViews: [UITextView] = [productName, productLocation, productDescription]
+        let textViews: [UITextView] = [uploadProductName, uploadProductLocation, uploadProductDescription]
 
         for index in 0 ..< textViews.count {
 
@@ -78,9 +78,9 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
 
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
 
-        self.productLocation.text = place.formattedAddress
+        self.uploadProductLocation.text = place.formattedAddress
 
-        self.productLocation.textColor = UIColor.black
+        self.uploadProductLocation.textColor = UIColor.black
 
         self.latitude = String(place.coordinate.latitude)
 
@@ -115,7 +115,7 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
             textView.textColor = UIColor.black
         }
 
-        if textView == productLocation {
+        if textView == uploadProductLocation {
 
             openSearchAddress()
 
@@ -126,27 +126,27 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
 
         switch textView {
 
-        case productName:
+        case uploadProductName:
 
-            if productName.text.isEmpty {
-                productName.text = textViewPlaceHolder[0]
-                productName.textColor = UIColor.lightGray
+            if uploadProductName.text.isEmpty {
+                uploadProductName.text = textViewPlaceHolder[0]
+                uploadProductName.textColor = UIColor.lightGray
             }
 
-        case productLocation:
+        case uploadProductLocation:
 
-            if productLocation.text.isEmpty {
+            if uploadProductLocation.text.isEmpty {
 
-                productLocation.text = textViewPlaceHolder[1]
-                productLocation.textColor = UIColor.lightGray
+                uploadProductLocation.text = textViewPlaceHolder[1]
+                uploadProductLocation.textColor = UIColor.lightGray
             }
 
-        case productDescription:
+        case uploadProductDescription:
 
-            if productDescription.text.isEmpty {
+            if uploadProductDescription.text.isEmpty {
 
-                productDescription.text = textViewPlaceHolder[2]
-                productDescription.textColor = UIColor.lightGray
+                uploadProductDescription.text = textViewPlaceHolder[2]
+                uploadProductDescription.textColor = UIColor.lightGray
 
             }
 
