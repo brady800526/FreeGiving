@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import GooglePlaces
 
-class ImageController: UIViewController, GMSAutocompleteViewControllerDelegate, UITextViewDelegate {
+class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDelegate, UITextViewDelegate {
 
     var latitude: String?
     var longtitude: String?

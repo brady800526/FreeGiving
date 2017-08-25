@@ -21,7 +21,6 @@
 		E540D27A1F316FEB006523ED /* FriendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E540D2791F316FEB006523ED /* FriendController.swift */; };
 		E540D27D1F317275006523ED /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E540D27C1F317275006523ED /* User.swift */; };
 		E540D27F1F31BE3C006523ED /* ChatLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E540D27E1F31BE3C006523ED /* ChatLogController.swift */; };
-		E54457801F29E22800BF8E2B /* ImageUploadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E544577F1F29E22800BF8E2B /* ImageUploadController.swift */; };
 		E54457821F29EDBC00BF8E2B /* ImageUploadController+handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54457811F29EDBC00BF8E2B /* ImageUploadController+handlers.swift */; };
 		E54BA0B21F3F0E4100143350 /* PostStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54BA0B11F3F0E4100143350 /* PostStatus.swift */; };
 		E57EA9AE1F3C983A00FAE137 /* MapController+handleMapSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57EA9AD1F3C983A00FAE137 /* MapController+handleMapSearch.swift */; };
@@ -62,7 +61,6 @@
 		E540D2791F316FEB006523ED /* FriendController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendController.swift; sourceTree = "<group>"; };
 		E540D27C1F317275006523ED /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E540D27E1F31BE3C006523ED /* ChatLogController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatLogController.swift; sourceTree = "<group>"; };
-		E544577F1F29E22800BF8E2B /* ImageUploadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUploadController.swift; sourceTree = "<group>"; };
 		E54457811F29EDBC00BF8E2B /* ImageUploadController+handlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ImageUploadController+handlers.swift"; sourceTree = "<group>"; };
 		E54BA0B11F3F0E4100143350 /* PostStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostStatus.swift; sourceTree = "<group>"; };
 		E57EA9AD1F3C983A00FAE137 /* MapController+handleMapSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MapController+handleMapSearch.swift"; sourceTree = "<group>"; };
@@ -123,7 +121,6 @@
 		E52E8DD01F2F5C7900B2EB73 /* ImageUploadController */ = {
 			isa = PBXGroup;
 			children = (
-				E544577F1F29E22800BF8E2B /* ImageUploadController.swift */,
 				E54457811F29EDBC00BF8E2B /* ImageUploadController+handlers.swift */,
 				E5A5FF6F1F4E9D5000E7B65B /* ImageController.swift */,
 			);
@@ -399,7 +396,6 @@
 				E540D27A1F316FEB006523ED /* FriendController.swift in Sources */,
 				E5D648961F32F9A70075A4BA /* PostsAnnotation.swift in Sources */,
 				E5EA3A831F4C7D7000401F15 /* MainTabBarController.swift in Sources */,
-				E54457801F29E22800BF8E2B /* ImageUploadController.swift in Sources */,
 				E57EA9AE1F3C983A00FAE137 /* MapController+handleMapSearch.swift in Sources */,
 				E540D27F1F31BE3C006523ED /* ChatLogController.swift in Sources */,
 				E53175FF1F38541B002D8CDF /* ChatMessageCollectionViewCell.swift in Sources */,
