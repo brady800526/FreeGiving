@@ -36,7 +36,7 @@ class CustomCalloutView: UIView {
                 let timestampDate = NSDate(timeIntervalSince1970: seconds)
 
                 let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "hh:mm:ss a"
+                dateFormatter.dateFormat = "MMMM dd, yyyy"
                 postTime.text = dateFormatter.string(from: timestampDate as Date)
                 postTime.textColor = UIColor.lightGray
             }

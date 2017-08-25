@@ -11,7 +11,7 @@ import MapKit
 import GooglePlaces
 
 class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDelegate, UITextViewDelegate {
-
+    
     var latitude: String?
     var longtitude: String?
     var mapView: MKMapView?
@@ -19,16 +19,17 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
     let uploadBackgroundScrollView: UIScrollView = {
         let sv = UIScrollView()
         sv.translatesAutoresizingMaskIntoConstraints = false
+        sv.bounces = false
         return sv
     }()
-
+    
     let uploadBackgroundView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.lightGray
+        view.backgroundColor = UIColor(red: 230, green: 230, blue: 230)
         return view
     }()
-
+    
     lazy var uploadImageView: UIImageView = {
         let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
@@ -36,34 +37,43 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
         iv.clipsToBounds = true
         iv.isUserInteractionEnabled = true
         iv.image = UIImage(named: "album-placeholder")
+        iv.layer.cornerRadius = 40
+        iv.layer.borderWidth = 5
+        iv.layer.borderColor = UIColor.white.cgColor
+        iv.layer.shadowOffset = CGSize(width: 3, height: 3)
+        iv.layer.shadowColor = UIColor.black.cgColor
+        iv.layer.shadowRadius = 5
+        iv.layer.shadowOpacity = 1
         iv.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectUploadImageView)))
         return iv
     }()
-
+    
     let uplaodDescriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "Marker Felt", size: 24)
-        label.text = "Description"
+        label.font = UIFont(name: "Marker Felt", size: 32)
+        label.text = "Product Description"
         label.textAlignment = .center
         label.textColor = UIColor.orange
         return label
     }()
-
+    
     let uploadInputsContainerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.white
+        view.layer.cornerRadius = 20
+        view.layer.masksToBounds = true
         return view
     }()
-
+    
     let uploadProductName: UITextView = {
         let tv = UITextView()
         tv.text = "Product Name"
         tv.textColor = UIColor.lightGray
         tv.translatesAutoresizingMaskIntoConstraints = false
         tv.textAlignment = .center
-        tv.font = UIFont(name: "Marker Felt", size: 20)
+        tv.font = UIFont(name: "Marker Felt", size: 28)
         return tv
     }()
     
@@ -73,14 +83,14 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
         view.backgroundColor = UIColor(red: 220, green: 220, blue: 220)
         return view
     }()
-
+    
     let uploadProductLocation: UITextView = {
         let tv = UITextView()
         tv.text = "Product Location"
         tv.textColor = UIColor.lightGray
         tv.translatesAutoresizingMaskIntoConstraints = false
         tv.textAlignment = .center
-        tv.font = UIFont(name: "Marker Felt", size: 20)
+        tv.font = UIFont(name: "Marker Felt", size: 28)
         return tv
     }()
     
@@ -90,17 +100,17 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
         view.backgroundColor = UIColor(red: 220, green: 220, blue: 220)
         return view
     }()
-
+    
     let uploadProductDescription: UITextView = {
         let tv = UITextView()
         tv.text = "Product Description"
         tv.textColor = UIColor.lightGray
         tv.translatesAutoresizingMaskIntoConstraints = false
         tv.textAlignment = .center
-        tv.font = UIFont(name: "Marker Felt", size: 20)
+        tv.font = UIFont(name: "Marker Felt", size: 28)
         return tv
     }()
-
+    
     let uploadButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -109,19 +119,18 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowRadius = 5
         button.layer.shadowOpacity = 1
+        button.layer.cornerRadius = 20
         button.clipsToBounds = false
-        button.setTitle("Upload Product", for: .normal)
+        button.setTitle("Upload", for: .normal)
         button.titleLabel?.textColor = UIColor.white
         button.titleLabel?.font = UIFont(name: "Marker Felt", size: 24)
         button.addTarget(self, action: #selector(handleUploadPhoto), for: .touchUpInside)
         return button
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.uploadBackgroundScrollView.alwaysBounceVertical = true
-
+        
         self.navigationController?.navigationBar.tintColor = UIColor.white
         
         self.navigationController?.navigationBar.barTintColor = UIColor.orange
@@ -135,11 +144,11 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(handleDismiss))
         
         self.view.addSubview(uploadBackgroundScrollView)
-
+        
         setupUploadBackgroundScrollView()
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-
+        
         view.addGestureRecognizer(tap)
     }
     
@@ -226,51 +235,65 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
             
         }
     }
-
-
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if textView == uploadProductName {
+        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        let numberOfChars = newText.characters.count // for Swift use count(newText)
+        return numberOfChars < 20
+        }
+        else if textView == uploadProductDescription {
+            let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+            let numberOfChars = newText.characters.count // for Swift use count(newText)
+            return numberOfChars < 100
+        } else {
+            return true
+        }
+    }
+    
     func setupUploadBackgroundScrollView() {
         uploadBackgroundScrollView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         uploadBackgroundScrollView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         uploadBackgroundScrollView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
         uploadBackgroundScrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-
+        
         self.uploadBackgroundScrollView.addSubview(uploadBackgroundView)
-
+        
         setupUploadBackgroundView()
     }
-
+    
     func setupUploadBackgroundView() {
         uploadBackgroundView.topAnchor.constraint(equalTo: self.uploadBackgroundScrollView.topAnchor).isActive = true
-        uploadBackgroundView.leftAnchor.constraint(equalTo: self.uploadBackgroundScrollView.leftAnchor).isActive = true
-        uploadBackgroundView.rightAnchor.constraint(equalTo: self.uploadBackgroundScrollView.rightAnchor).isActive = true
-        uploadBackgroundView.bottomAnchor.constraint(equalTo: self.uploadBackgroundScrollView.bottomAnchor, constant: 12).isActive = true
+        uploadBackgroundView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         uploadBackgroundView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
-
+        
+        uploadBackgroundView.bottomAnchor.constraint(equalTo: self.uploadBackgroundScrollView.bottomAnchor, constant: 12).isActive = true
+        
         self.uploadBackgroundView.addSubview(uploadImageView)
         self.uploadBackgroundView.addSubview(uplaodDescriptionLabel)
         self.uploadBackgroundView.addSubview(uploadInputsContainerView)
         self.uploadBackgroundView.addSubview(uploadButton)
-
+        
         setupUploadImageView()
         setupUploadDescriptionLabel()
         setupUploadInputsConstraintView()
         setupUploadButton()
     }
-
+    
     func setupUploadImageView() {
         uploadImageView.topAnchor.constraint(equalTo: self.uploadBackgroundView.topAnchor).isActive = true
-        uploadImageView.leftAnchor.constraint(equalTo: self.uploadBackgroundView.leftAnchor).isActive = true
-        uploadImageView.widthAnchor.constraint(equalTo: self.uploadBackgroundView.widthAnchor).isActive = true
+        uploadImageView.leftAnchor.constraint(equalTo: self.uploadBackgroundView.leftAnchor, constant: 40).isActive = true
+        uploadImageView.rightAnchor.constraint(equalTo: self.uploadBackgroundView.rightAnchor, constant: -40).isActive = true
         uploadImageView.heightAnchor.constraint(equalTo: self.uploadImageView.widthAnchor, multiplier: 1).isActive = true
     }
-
+    
     func setupUploadDescriptionLabel() {
         uplaodDescriptionLabel.topAnchor.constraint(equalTo: self.uploadImageView.bottomAnchor).isActive = true
         uplaodDescriptionLabel.centerXAnchor.constraint(equalTo: self.uploadImageView.centerXAnchor).isActive = true
         uplaodDescriptionLabel.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.9).isActive = true
         uplaodDescriptionLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
-
+    
     func setupUploadInputsConstraintView() {
         uploadInputsContainerView.topAnchor.constraint(equalTo: self.uplaodDescriptionLabel.bottomAnchor).isActive = true
         uploadInputsContainerView.heightAnchor.constraint(equalToConstant: 150).isActive = true
@@ -294,7 +317,7 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
         uploadProductName.topAnchor.constraint(equalTo: uploadInputsContainerView.topAnchor).isActive = true
         uploadProductName.leftAnchor.constraint(equalTo: uploadInputsContainerView.leftAnchor).isActive = true
         uploadProductName.rightAnchor.constraint(equalTo: uploadInputsContainerView.rightAnchor).isActive = true
-        uploadProductName.heightAnchor.constraint(equalTo: uploadInputsContainerView.heightAnchor, multiplier: 1/3).isActive = true
+//        uploadProductName.heightAnchor.constraint(equalTo: uploadInputsContainerView.heightAnchor, multiplier: 1/3).isActive = true
     }
     
     func setupUploadNameSeperatorView() {
@@ -316,7 +339,7 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
         uploadLocationSeperatorView.leftAnchor.constraint(equalTo: uploadInputsContainerView.leftAnchor).isActive = true
         uploadLocationSeperatorView.rightAnchor.constraint(equalTo: uploadInputsContainerView.rightAnchor).isActive = true
         uploadLocationSeperatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
-
+        
     }
     
     func setupUploadProductDescription() {
@@ -325,7 +348,7 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
         uploadProductDescription.rightAnchor.constraint(equalTo: uploadInputsContainerView.rightAnchor).isActive = true
         uploadProductDescription.heightAnchor.constraint(equalTo: uploadInputsContainerView.heightAnchor, multiplier: 1/3).isActive = true
     }
-
+    
     func setupUploadButton() {
         uploadButton.topAnchor.constraint(equalTo: self.uploadInputsContainerView.bottomAnchor, constant: 12).isActive = true
         uploadButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -333,5 +356,5 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
         uploadButton.widthAnchor.constraint(equalTo: self.uploadInputsContainerView.widthAnchor).isActive = true
         uploadButton.bottomAnchor.constraint(equalTo: self.uploadBackgroundView.bottomAnchor, constant: -50).isActive = true
     }
-
+    
 }

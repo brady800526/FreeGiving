@@ -32,7 +32,7 @@ extension LoginController {
 
             if let error = error {
 
-                SCLAlertView().showWarning("Hold On...", subTitle:error.localizedDescription, closeButtonTitle:"OK")
+                SCLAlertView().showWarning("Hold On", subTitle:error.localizedDescription, closeButtonTitle:"OK")
 
                 return
 
@@ -68,7 +68,7 @@ extension LoginController {
 
             if let error = error {
 
-                SCLAlertView().showWarning("Hold On...", subTitle:error.localizedDescription, closeButtonTitle:"OK")
+                SCLAlertView().showWarning("Hold On", subTitle:error.localizedDescription, closeButtonTitle:"OK")
                 return
             }
 
@@ -100,8 +100,6 @@ extension LoginController {
                 print("Saved user successfully into Firebase db")
 
                 self.mapViewController?.fetchUserAndSetupNavBarTitle()
-
-//                self.mapViewController?.navigationItem.title = values["name"]
 
                 self.dismiss(animated: true, completion: nil)
 

@@ -121,8 +121,8 @@
 		E52E8DD01F2F5C7900B2EB73 /* ImageUploadController */ = {
 			isa = PBXGroup;
 			children = (
-				E54457811F29EDBC00BF8E2B /* ImageUploadController+handlers.swift */,
 				E5A5FF6F1F4E9D5000E7B65B /* ImageController.swift */,
+				E54457811F29EDBC00BF8E2B /* ImageUploadController+handlers.swift */,
 			);
 			name = ImageUploadController;
 			sourceTree = "<group>";
