@@ -119,7 +119,6 @@ class MapController: UIViewController, UISearchBarDelegate {
 
     }
 
-
     func fetchPostsBeGiven() {
 
         Database.database().reference().child("givens").observe(.value, with: { (snapshot) in
@@ -138,21 +137,21 @@ class MapController: UIViewController, UISearchBarDelegate {
         })
 
     }
-    
+
     func fetchPostannotations() {
-        
+
         Database.database().reference().child("posts").observe(.value, with: { (snapshot) in
-            
+
             self.posts = [Post]()
-            
+
             for annotation in self.mapView.annotations {
                 self.mapView.removeAnnotation(annotation)
             }
-            
+
             for item in snapshot.children {
-                
+
                 guard let itemsnapshot = item as? DataSnapshot else { return }
-                
+
                 if let dictionary = itemsnapshot.value as? [String: Any],
                     let description = dictionary["productDescription"] as? String,
                     let URL = dictionary["productImageURL"] as? String,
@@ -161,19 +160,19 @@ class MapController: UIViewController, UISearchBarDelegate {
                     let longtitude = dictionary["longitude"] as? String,
                     let user = dictionary["user"] as? String,
                     let timeStamp = dictionary["timeStamp"] as? NSNumber {
-                    
+
                     let post = Post(Double(latitude)!, Double(longtitude)!, description, URL, title, timeStamp, user, itemsnapshot.key)
-                    
+
                     post.coordinate = CLLocationCoordinate2D(latitude: Double(latitude)!, longitude: Double(longtitude)!)
-                    
+
                     if !self.postBeGiven.contains(itemsnapshot.key) == true && post.user != Auth.auth().currentUser?.uid {
-                        
+
                         self.posts.append(post)
-                        
+
                         self.mapView.addAnnotation(post)
-                        
+
                     }
-                    
+
                 }
             }
         })
