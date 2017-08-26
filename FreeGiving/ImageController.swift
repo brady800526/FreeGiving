@@ -346,9 +346,9 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
         uploadInputsContainerView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         uploadInputsContainerView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.9).isActive = true
 
-        uploadProductName.addSubview(uploadProductNameDotLabel)
-        uploadProductLocation.addSubview(uploadProductLocationDotLabel)
-        uploadProductDescription.addSubview(uploadProductDescriptionDotLabel)
+        uploadInputsContainerView.addSubview(uploadProductNameDotLabel)
+        uploadInputsContainerView.addSubview(uploadProductLocationDotLabel)
+        uploadInputsContainerView.addSubview(uploadProductDescriptionDotLabel)
         
         uploadInputsContainerView.addSubview(uploadProductName)
         uploadInputsContainerView.addSubview(uploadProductLocation)
@@ -374,7 +374,7 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
 
     func setupUploadProductName() {
         uploadProductName.topAnchor.constraint(equalTo: uploadInputsContainerView.topAnchor).isActive = true
-        uploadProductName.leftAnchor.constraint(equalTo: uploadProductNameDotLabel.leftAnchor).isActive = true
+        uploadProductName.leftAnchor.constraint(equalTo: uploadProductNameDotLabel.rightAnchor).isActive = true
         uploadProductName.rightAnchor.constraint(equalTo: uploadInputsContainerView.rightAnchor).isActive = true
         uploadProductName.bottomAnchor.constraint(equalTo: uploadProductLocation.topAnchor).isActive = true
     }
@@ -396,7 +396,7 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
 
     func setupUploadProductLocation() {
         uploadProductLocation.topAnchor.constraint(equalTo: uploadProductName.bottomAnchor).isActive = true
-        uploadProductLocation.leftAnchor.constraint(equalTo: uploadProductLocationDotLabel.leftAnchor).isActive = true
+        uploadProductLocation.leftAnchor.constraint(equalTo: uploadProductLocationDotLabel.rightAnchor).isActive = true
         uploadProductLocation.rightAnchor.constraint(equalTo: uploadInputsContainerView.rightAnchor).isActive = true
         uploadProductLocation.bottomAnchor.constraint(equalTo: uploadProductDescription.topAnchor).isActive = true
     }
@@ -418,7 +418,7 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
 
     func setupUploadProductDescription() {
         uploadProductDescription.topAnchor.constraint(equalTo: uploadProductLocation.bottomAnchor).isActive = true
-        uploadProductDescription.leftAnchor.constraint(equalTo: uploadProductDescriptionDotLabel.leftAnchor).isActive = true
+        uploadProductDescription.leftAnchor.constraint(equalTo: uploadProductDescriptionDotLabel.rightAnchor).isActive = true
         uploadProductDescription.rightAnchor.constraint(equalTo: uploadInputsContainerView.rightAnchor).isActive = true
         uploadProductDescription.bottomAnchor.constraint(equalTo: uploadInputsContainerView.bottomAnchor).isActive = true
     }
