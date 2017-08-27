@@ -98,30 +98,6 @@
             </objects>
             <point key="canvasLocation" x="718.84057971014499" y="-43.206521739130437"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="dhT-uU-wdh">
-            <objects>
-                <viewController id="Fin-Nd-AUa" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ppv-mh-bXy"/>
-                        <viewControllerLayoutGuide type="bottom" id="Sew-2v-zUP"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Cef-UG-cdA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RPc-Kp-zgz">
-                                <rect key="frame" x="145" y="323" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nh2-TC-pzk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1546" y="135"/>
-        </scene>
     </scenes>
     <resources>
         <image name="deal" width="30" height="30"/>

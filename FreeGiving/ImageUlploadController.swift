@@ -147,7 +147,7 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
         button.addTarget(self, action: #selector(handleUploadPhoto), for: .touchUpInside)
         return button
     }()
-    
+
     let uploadProductNameDotLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -156,7 +156,7 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
         label.textColor = UIColor.orange
         return label
     }()
-    
+
     let uploadProductLocationDotLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -165,7 +165,7 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
         label.textColor = UIColor.orange
         return label
     }()
-    
+
     let uploadProductDescriptionDotLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -349,16 +349,13 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
         uploadInputsContainerView.addSubview(uploadProductNameDotLabel)
         uploadInputsContainerView.addSubview(uploadProductLocationDotLabel)
         uploadInputsContainerView.addSubview(uploadProductDescriptionDotLabel)
-        
+
         uploadInputsContainerView.addSubview(uploadProductName)
         uploadInputsContainerView.addSubview(uploadProductLocation)
         uploadInputsContainerView.addSubview(uploadProductDescription)
         uploadInputsContainerView.addSubview(uploadNameSeperatorView)
         uploadInputsContainerView.addSubview(uploadLocationSeperatorView)
 
-        
-
-        
         setupUploadProductNameDotLabel()
         setupUploadProductName()
         setupUploadProductLocationDotLabel()
@@ -368,8 +365,7 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
 
         setupUploadNameSeperatorView()
         setupUploadLocationSeperatorView()
-        
-        
+
     }
 
     func setupUploadProductName() {
@@ -378,7 +374,7 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
         uploadProductName.rightAnchor.constraint(equalTo: uploadInputsContainerView.rightAnchor).isActive = true
         uploadProductName.bottomAnchor.constraint(equalTo: uploadProductLocation.topAnchor).isActive = true
     }
-    
+
     func setupUploadProductNameDotLabel() {
         uploadProductNameDotLabel.leftAnchor.constraint(equalTo: self.uploadInputsContainerView.leftAnchor).isActive = true
         uploadProductNameDotLabel.widthAnchor.constraint(equalToConstant: 40).isActive = true
@@ -400,7 +396,7 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
         uploadProductLocation.rightAnchor.constraint(equalTo: uploadInputsContainerView.rightAnchor).isActive = true
         uploadProductLocation.bottomAnchor.constraint(equalTo: uploadProductDescription.topAnchor).isActive = true
     }
-    
+
     func setupUploadProductLocationDotLabel() {
         uploadProductLocationDotLabel.leftAnchor.constraint(equalTo: self.uploadInputsContainerView.leftAnchor).isActive = true
         uploadProductLocationDotLabel.widthAnchor.constraint(equalToConstant: 40).isActive = true
@@ -422,7 +418,7 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
         uploadProductDescription.rightAnchor.constraint(equalTo: uploadInputsContainerView.rightAnchor).isActive = true
         uploadProductDescription.bottomAnchor.constraint(equalTo: uploadInputsContainerView.bottomAnchor).isActive = true
     }
-    
+
     func setupUploadProductDescriptionDotLabel() {
         uploadProductDescriptionDotLabel.leftAnchor.constraint(equalTo: self.uploadInputsContainerView.leftAnchor).isActive = true
         uploadProductDescriptionDotLabel.widthAnchor.constraint(equalToConstant: 40).isActive = true
