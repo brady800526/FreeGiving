@@ -34,9 +34,8 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         mesNC.tabBarItem = tabTwoBarItem2
 
         // Create Tab three
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        //swiftlint:disable force_cast
-        let vc = sb.instantiateViewController(withIdentifier: "ownerPage") as! OwnerController
+        let vc = DealController()
+
         let ownNC = UINavigationController(rootViewController: vc)
         let tabTwoBarItem3 = UITabBarItem(title: "Deal", image: UIImage(named: "deal"), selectedImage: nil)
 
