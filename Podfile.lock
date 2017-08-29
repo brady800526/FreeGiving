@@ -1,0 +1,122 @@
+PODS:
+  - BEMCheckBox (1.4.1)
+  - Cluster (1.0.7)
+  - Crashlytics (3.8.4):
+    - Fabric (~> 1.6.3)
+  - Fabric (1.6.11)
+  - Firebase/Auth (4.0.2):
+    - Firebase/Core
+    - FirebaseAuth (= 4.0.0)
+  - Firebase/Core (4.0.2):
+    - FirebaseAnalytics (= 4.0.1)
+    - FirebaseCore (= 4.0.2)
+  - Firebase/Database (4.0.2):
+    - Firebase/Core
+    - FirebaseDatabase (= 4.0.0)
+  - Firebase/Messaging (4.0.2):
+    - Firebase/Core
+    - FirebaseMessaging (= 2.0.0)
+  - Firebase/Storage (4.0.2):
+    - Firebase/Core
+    - FirebaseStorage (= 2.0.0)
+  - FirebaseAnalytics (4.0.1):
+    - FirebaseCore (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseAuth (4.0.0):
+    - FirebaseAnalytics (~> 4.0)
+    - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - FirebaseCore (4.0.2):
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseDatabase (4.0.0):
+    - FirebaseAnalytics (~> 4.0)
+  - FirebaseInstanceID (2.0.0):
+    - FirebaseCore (~> 4.0)
+  - FirebaseMessaging (2.0.0):
+    - FirebaseAnalytics (~> 4.0)
+    - FirebaseCore (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
+    - GoogleToolboxForMac/Logger (~> 2.1)
+    - Protobuf (~> 3.1)
+  - FirebaseStorage (2.0.0):
+    - FirebaseAnalytics (~> 4.0)
+    - FirebaseCore (~> 4.0)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - Floaty (3.0.0)
+  - GoogleMaps (2.3.1):
+    - GoogleMaps/Maps (= 2.3.1)
+  - GoogleMaps/Base (2.3.1)
+  - GoogleMaps/Maps (2.3.1):
+    - GoogleMaps/Base
+  - GooglePlaces (2.3.1):
+    - GoogleMaps/Base (= 2.3.1)
+  - GoogleToolboxForMac/DebugUtils (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/Defines (2.1.1)
+  - GoogleToolboxForMac/Logger (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/NSData+zlib (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/NSDictionary+URLArguments (2.1.1):
+    - GoogleToolboxForMac/DebugUtils (= 2.1.1)
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+    - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
+  - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
+  - GTMSessionFetcher/Core (1.1.10)
+  - IQKeyboardManagerSwift (4.0.10)
+  - Protobuf (3.3.0)
+  - SCLAlertView (0.7.0)
+  - SDWebImage (4.0.0):
+    - SDWebImage/Core (= 4.0.0)
+  - SDWebImage/Core (4.0.0)
+  - SwifterSwift (1.6.4)
+  - SwiftLint (0.20.0)
+
+DEPENDENCIES:
+  - BEMCheckBox
+  - Cluster
+  - Crashlytics
+  - Fabric
+  - Firebase/Auth
+  - Firebase/Core
+  - Firebase/Database
+  - Firebase/Messaging
+  - Firebase/Storage
+  - Floaty (~> 3.0)
+  - GoogleMaps
+  - GooglePlaces
+  - IQKeyboardManagerSwift (= 4.0.10)
+  - SCLAlertView
+  - SDWebImage (~> 4.0)
+  - SwifterSwift
+  - SwiftLint
+
+SPEC CHECKSUMS:
+  BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
+  Cluster: 7a15791640cc44cde312be37ff18b918fc3c2367
+  Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
+  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
+  Firebase: c7ad0731eab26d18a3fc547dd048b0f7cd9c63ae
+  FirebaseAnalytics: 4d7040fefc3cd8b291cde35f12cf063d7963f15d
+  FirebaseAuth: ebb6abcbabae00fc47446d690c19ce68d8484fde
+  FirebaseCore: 1a8bf6c795ad07d2918278657954ffd2552e9c17
+  FirebaseDatabase: d829b3a8c3e2ac7a16773c5df226966b0805dfc2
+  FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
+  FirebaseMessaging: 227406c05b0dc9290702d2e9f18ab5528f0c2cf2
+  FirebaseStorage: 8110a1ed2034c8fbfd83890d2acc9cdbbd99afec
+  Floaty: d1be5d323094f0de422bb615452d00ba26ac74dd
+  GoogleMaps: c66a71058b9b1294bcdd5463a68e357fa50c079f
+  GooglePlaces: 4a7b22debfa1af65017b82943431822607e45201
+  GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
+  GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
+  IQKeyboardManagerSwift: 75ba21a23794a1e6b6fe6d9a267ea17f80e06771
+  Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
+  SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
+  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  SwifterSwift: 92c73c47c3cbf7d5f788adf6459bf07b5d23d3fb
+  SwiftLint: 3f7543509c931d1291395335f34e245d3919b7f2
+
+PODFILE CHECKSUM: 8a3e797639a4f0bfd9feafc1478b8b37cde13ef9
+
+COCOAPODS: 1.2.1
