@@ -19,6 +19,8 @@ class CustomCalloutView: UIView {
     @IBOutlet var postDescription: UILabel!
     @IBOutlet weak var chat: UIButton!
     @IBOutlet weak var checkBox: BEMCheckBox!
+    @IBOutlet weak var flagImageView: UIImageView!
+    
 
     var mapVC: MapController?
 
@@ -84,6 +86,12 @@ class CustomCalloutView: UIView {
 
             })
 
+            flagImageView.image = flagImageView.image?.withRenderingMode(.alwaysTemplate)
+            flagImageView.tintColor = UIColor.white
+            flagImageView.layer.shadowOpacity = 1
+            flagImageView.layer.shadowOffset = CGSize(width: 1, height: 1)
+            flagImageView.clipsToBounds = false
+            flagImageView.layer.shadowColor = UIColor.black.cgColor
         }
 
     }
@@ -204,4 +212,33 @@ class CustomCalloutView: UIView {
         mapVC?.present(nv, animated: true)
     }
 
+    @IBAction func flag(_ sender: Any) {
+        
+        let optionMenu = UIAlertController(title: nil, message: "Flag this post because objectionable content", preferredStyle: .alert)
+
+        let flagAction = UIAlertAction(title: "Yes", style: .destructive, handler: {
+            (alert: UIAlertAction!) -> Void in
+            
+            let warningMenu = UIAlertController(title: nil, message: "This post content will be proccessed within 24 hour", preferredStyle: .alert)
+            
+            let OKAction = UIAlertAction(title: "OK", style: .cancel, handler: {
+                (alert: UIAlertAction!) -> Void in
+            })
+            
+            warningMenu.addAction(OKAction)
+            
+            self.mapVC?.present(warningMenu, animated: true, completion: nil)
+            
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
+            (alert: UIAlertAction!) -> Void in
+        })
+        
+        optionMenu.addAction(flagAction)
+        optionMenu.addAction(cancelAction)
+        
+        mapVC?.present(optionMenu, animated: true, completion: nil)
+        
+    }
 }

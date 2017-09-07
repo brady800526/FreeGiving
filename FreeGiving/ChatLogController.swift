@@ -86,7 +86,13 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
         super.viewDidLoad()
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "back", style: .plain, target: self, action: #selector(handleDismiss))
-
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "more"), style: .plain, target: self, action: #selector(flagUser))
+        
+        navigationController?.navigationBar.barTintColor = UIColor.orange
+        
+        navigationController?.navigationBar.tintColor = UIColor.white
+        
         collectionView?.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 58, right: 0)
 
         collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
@@ -168,6 +174,37 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
         dismiss(animated: true, completion: nil)
 
      }
+    
+    func flagUser() {
+        
+        let optionMenu = UIAlertController(title: nil, message: "Block this user because abusive content", preferredStyle: .alert)
+        
+        let flagAction = UIAlertAction(title: "Yes", style: .destructive, handler: {
+            (alert: UIAlertAction!) -> Void in
+            
+            let warningMenu = UIAlertController(title: nil, message: "The user is successfully blocked", preferredStyle: .alert)
+            
+            let OKAction = UIAlertAction(title: "OK", style: .cancel, handler: {
+                (alert: UIAlertAction!) -> Void in
+            })
+            
+            warningMenu.addAction(OKAction)
+            
+            self.present(warningMenu, animated: true, completion: nil)
+            
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
+            (alert: UIAlertAction!) -> Void in
+        })
+        
+        optionMenu.addAction(flagAction)
+        optionMenu.addAction(cancelAction)
+        
+        self.present(optionMenu, animated: true, completion: nil)
+
+        
+    }
 
     func setupInputComponent() {
 

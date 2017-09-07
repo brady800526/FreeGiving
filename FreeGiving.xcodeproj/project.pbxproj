@@ -40,6 +40,7 @@
 		E53F16B51F559B17008504E3 /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53F16B41F559B17008504E3 /* extension.swift */; };
 		E53F16B81F559B49008504E3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E53F16B61F559B49008504E3 /* Info.plist */; };
 		E53F16B91F559B49008504E3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E53F16B71F559B49008504E3 /* GoogleService-Info.plist */; };
+		E58C40C71F583D7900676C74 /* DisclaimerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58C40C61F583D7900676C74 /* DisclaimerController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,7 @@
 		E53F16B41F559B17008504E3 /* extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
 		E53F16B61F559B49008504E3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E53F16B71F559B49008504E3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E58C40C61F583D7900676C74 /* DisclaimerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisclaimerController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 				E53F16921F5599BF008504E3 /* FriendController.swift */,
 				E53F16931F5599BF008504E3 /* ChatLogController.swift */,
 				E53F16971F5599C8008504E3 /* DealController.swift */,
+				E58C40C61F583D7900676C74 /* DisclaimerController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				E53F168F1F5599B8008504E3 /* ImageUlploadController.swift in Sources */,
 				E53F16AA1F5599D9008504E3 /* Message.swift in Sources */,
 				E53F16AB1F5599D9008504E3 /* ChatMessageCollectionViewCell.swift in Sources */,
+				E58C40C71F583D7900676C74 /* DisclaimerController.swift in Sources */,
 				E53F16901F5599B8008504E3 /* ImageUploadController+handlers.swift in Sources */,
 				E53F16841F5599A9008504E3 /* LoginController+loginHandler.swift in Sources */,
 				E53F16AF1F5599D9008504E3 /* CustomCalloutView.swift in Sources */,
@@ -513,7 +517,7 @@
 				);
 				INFOPLIST_FILE = FreeGiving/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tw.appworks.FreeGiving;
+				PRODUCT_BUNDLE_IDENTIFIER = tw.bradyhuang.FreeGiving;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -545,7 +549,7 @@
 				);
 				INFOPLIST_FILE = FreeGiving/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tw.appworks.FreeGiving;
+				PRODUCT_BUNDLE_IDENTIFIER = tw.bradyhuang.FreeGiving;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

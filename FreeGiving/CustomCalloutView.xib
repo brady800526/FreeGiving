@@ -48,8 +48,22 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z3U-FV-MjJ" customClass="BEMCheckBox">
-                    <rect key="frame" x="211" y="2" width="27" height="27"/>
+                    <rect key="frame" x="219" y="2" width="27" height="27"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JrX-sK-bUo">
+                            <rect key="frame" x="-7" y="-5" width="40" height="37"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <state key="normal" title="check">
+                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="check:" destination="iN0-l3-epB" eventType="touchUpInside" id="dyG-6f-t0Z"/>
+                            </connections>
+                        </button>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -63,20 +77,8 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JrX-sK-bUo">
-                    <rect key="frame" x="204" y="0.0" width="40" height="37"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <state key="normal" title="check">
-                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="check:" destination="iN0-l3-epB" eventType="touchUpInside" id="dyG-6f-t0Z"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nal-E4-286">
-                    <rect key="frame" x="166" y="2" width="30" height="30"/>
+                    <rect key="frame" x="181" y="2" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" image="message"/>
                     <connections>
@@ -90,6 +92,18 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GN2-Xo-cOX">
+                    <rect key="frame" x="5" y="5" width="20" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <connections>
+                        <action selector="flag:" destination="iN0-l3-epB" eventType="touchUpInside" id="3KJ-cE-gfr"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="more" translatesAutoresizingMaskIntoConstraints="NO" id="Qja-78-rUX">
+                    <rect key="frame" x="5" y="5" width="20" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
             <constraints>
@@ -102,6 +116,7 @@
             <connections>
                 <outlet property="chat" destination="Nal-E4-286" id="58b-XR-vuw"/>
                 <outlet property="checkBox" destination="Z3U-FV-MjJ" id="6eM-xx-pDM"/>
+                <outlet property="flagImageView" destination="Qja-78-rUX" id="Qn5-xq-pB2"/>
                 <outlet property="postDescription" destination="Jix-yG-UqL" id="z9E-GK-Dtn"/>
                 <outlet property="postImage" destination="08t-aW-Ig0" id="BTf-wu-VeK"/>
                 <outlet property="postTime" destination="vbz-X3-0mT" id="JGp-3S-kIE"/>
@@ -112,5 +127,6 @@
     </objects>
     <resources>
         <image name="message" width="30" height="30"/>
+        <image name="more" width="30" height="30"/>
     </resources>
 </document>
