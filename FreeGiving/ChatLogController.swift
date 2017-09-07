@@ -32,7 +32,7 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
             return
 
         }
-
+        
         let userMessageRef = Database.database().reference().child("user-messages").child(uid)
 
         userMessageRef.observe(.childAdded, with: { (snapshot) in
@@ -177,15 +177,23 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
     
     func flagUser() {
         
-        let optionMenu = UIAlertController(title: nil, message: "Block this user because abusive content", preferredStyle: .alert)
+        let optionMenu = UIAlertController(title: nil, message: "Block this user because inappropriate content", preferredStyle: .alert)
         
         let flagAction = UIAlertAction(title: "Yes", style: .destructive, handler: {
             (alert: UIAlertAction!) -> Void in
+            
+            let reference = Database.database().reference()
+            
+            let blackListRef = reference.child("blackList").child((Auth.auth().currentUser?.uid)!)
+            
+            blackListRef.updateChildValues([(self.user?.id)!:1])
             
             let warningMenu = UIAlertController(title: nil, message: "The user is successfully blocked", preferredStyle: .alert)
             
             let OKAction = UIAlertAction(title: "OK", style: .cancel, handler: {
                 (alert: UIAlertAction!) -> Void in
+                
+                self.dismiss(animated: true, completion: nil)
             })
             
             warningMenu.addAction(OKAction)
