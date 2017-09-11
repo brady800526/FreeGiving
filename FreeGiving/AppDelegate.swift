@@ -20,22 +20,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
         FirebaseApp.configure()
+        
         window = UIWindow(frame: UIScreen.main.bounds)
+        
         window?.makeKeyAndVisible()
+        
         let vc = MainTabBarController()
+        
         UITabBar.appearance().tintColor = UIColor.orange
+        
         if let font = UIFont(name: "Marker Felt", size: 20) {
+            
             UINavigationBar.appearance().titleTextAttributes = [
                 NSForegroundColorAttributeName: UIColor.white,
                 NSFontAttributeName: font
             ]
+            
         }
+        
         window?.rootViewController = vc
+        
         IQKeyboardManager.sharedManager().enable = true
+        
         GMSServices.provideAPIKey("AIzaSyAKYy2EjtJfJFI2RgRFLwa0Q-OwDHjVr4M")
+        
         GMSPlacesClient.provideAPIKey("AIzaSyAKYy2EjtJfJFI2RgRFLwa0Q-OwDHjVr4M")
+        
         Fabric.with([Crashlytics.self])
+        
         UIApplication.shared.statusBarStyle = .lightContent
         
         return true

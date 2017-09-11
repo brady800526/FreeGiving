@@ -16,7 +16,7 @@ class LoginController: UIViewController {
     let loginBackgroundImageView: UIImageView = {
        let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "loginImage")
+        imageView.image = #imageLiteral(resourceName: "loginImage")
         imageView.backgroundColor = UIColor.black
         imageView.alpha = 0.7
         return imageView
@@ -27,14 +27,14 @@ class LoginController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Free Giving"
         label.font = UIFont(name: "Marker Felt", size: 56)
-        label.textColor = UIColor(red: 247, green: 207, blue: 54)
+        label.textColor = UIColor.titleYellow()
         label.textAlignment = .center
         return label
     }()
 
     let inputsContainerView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(red: 230, green: 230, blue: 230)
+        view.backgroundColor = UIColor.backgroundGray()
         view.alpha = 0.6
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 5
@@ -74,14 +74,14 @@ class LoginController: UIViewController {
 
     let nameSeparatorView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(red: 220, green: 220, blue: 220)
+        view.backgroundColor = UIColor.separatorColor()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
     let emailSeparatorView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(red: 220, green: 220, blue: 220)
+        view.backgroundColor = UIColor.separatorColor()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -102,17 +102,30 @@ class LoginController: UIViewController {
         inputsContainerViewHeightAnchor?.constant = loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 100 : 150
 
         nameTextFieldHeightAnchor?.isActive = false
-        nameTextFieldHeightAnchor = nameTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 0 : 1/3)
+        
+        nameTextFieldHeightAnchor = nameTextField.heightAnchor.constraint(
+            equalTo: inputsContainerView.heightAnchor,
+            multiplier: loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 0 : 1/3
+        )
+        
         nameTextFieldHeightAnchor?.isActive = true
         nameTextField.isHidden = loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? true : false
         nameSeparatorView.isHidden = loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? true : false
 
         emailTextFieldHeightAnchor?.isActive = false
-        emailTextFieldHeightAnchor = emailTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 1/2 : 1/3)
+        emailTextFieldHeightAnchor = emailTextField.heightAnchor.constraint(
+            equalTo: inputsContainerView.heightAnchor,
+            multiplier: loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 1/2 : 1/3
+        )
+        
         emailTextFieldHeightAnchor?.isActive = true
 
         passwordTextFieldViewHeightAnchor?.isActive = false
-        passwordTextFieldViewHeightAnchor = passwordTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 1/2 : 1/3)
+        passwordTextFieldViewHeightAnchor = passwordTextField.heightAnchor.constraint(equalTo:
+            inputsContainerView.heightAnchor,
+            multiplier: loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 1/2 : 1/3
+        )
+        
         passwordTextFieldViewHeightAnchor?.isActive = true
     }
 
@@ -264,5 +277,16 @@ extension UIColor {
     convenience init(red: CGFloat, green: CGFloat, blue: CGFloat) {
         self.init(red: red/255, green: green/255, blue: blue/255, alpha: 1)
     }
+    
+    class func titleYellow() -> UIColor {
+        return UIColor(red: 247, green: 207, blue: 54)
+    }
 
+    class func backgroundGray() -> UIColor {
+        return UIColor(red: 230, green: 230, blue: 230)
+    }
+    
+    class func separatorColor() -> UIColor {
+        return UIColor(red: 220, green: 220, blue: 220)
+    }
 }
