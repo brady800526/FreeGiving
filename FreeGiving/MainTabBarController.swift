@@ -23,13 +23,13 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
 
         // Create Tab one
         let mapNC = UINavigationController(rootViewController: MapController())
-        let tabOneBarItem = UITabBarItem(title: "Map", image: UIImage(named: "map"), selectedImage: nil)
+        let tabOneBarItem = UITabBarItem(title: NSLocalizedString("Map", comment: ""), image: #imageLiteral(resourceName: "map"), selectedImage: nil)
 
         mapNC.tabBarItem = tabOneBarItem
 
         // Create Tab two
         let mesNC = UINavigationController(rootViewController: MessageController())
-        let tabTwoBarItem2 = UITabBarItem(title: "Message", image: UIImage(named: "message"), selectedImage: nil)
+        let tabTwoBarItem2 = UITabBarItem(title: NSLocalizedString("Message", comment: ""), image: #imageLiteral(resourceName: "message"), selectedImage: nil)
 
         mesNC.tabBarItem = tabTwoBarItem2
 
@@ -37,7 +37,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         let vc = DealController()
 
         let ownNC = UINavigationController(rootViewController: vc)
-        let tabTwoBarItem3 = UITabBarItem(title: "Deal", image: UIImage(named: "deal"), selectedImage: nil)
+        let tabTwoBarItem3 = UITabBarItem(title: NSLocalizedString("Deal", comment: ""), image: #imageLiteral(resourceName: "deal"), selectedImage: nil)
 
         ownNC.tabBarItem = tabTwoBarItem3
         self.viewControllers = [mapNC, mesNC, ownNC]

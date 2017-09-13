@@ -133,7 +133,7 @@
 		E53F0D311F559802008504E3 /* FreeGiving */ = {
 			isa = PBXGroup;
 			children = (
-				E53F16991F5599CB008504E3 /* View */,
+				E53F16991F5599CB008504E3 /* Model */,
 				E53F167E1F55998F008504E3 /* Controller */,
 				E53F0D321F559802008504E3 /* AppDelegate.swift */,
 				E53F16B41F559B17008504E3 /* extension.swift */,
@@ -166,7 +166,7 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
-		E53F16991F5599CB008504E3 /* View */ = {
+		E53F16991F5599CB008504E3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				E53F169A1F5599D9008504E3 /* User.swift */,
@@ -183,7 +183,7 @@
 				E53F16A51F5599D9008504E3 /* PostsAnnotation.swift */,
 				E53F16A61F5599D9008504E3 /* DealCell.swift */,
 			);
-			name = View;
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

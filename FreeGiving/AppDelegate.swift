@@ -27,20 +27,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.makeKeyAndVisible()
         
-        let vc = MainTabBarController()
+        let mainTabBatController = MainTabBarController()
         
         UITabBar.appearance().tintColor = UIColor.orange
         
         if let font = UIFont(name: "Marker Felt", size: 20) {
             
             UINavigationBar.appearance().titleTextAttributes = [
+
                 NSForegroundColorAttributeName: UIColor.white,
+
                 NSFontAttributeName: font
             ]
             
         }
         
-        window?.rootViewController = vc
+        window?.rootViewController = mainTabBatController
         
         IQKeyboardManager.sharedManager().enable = true
         
