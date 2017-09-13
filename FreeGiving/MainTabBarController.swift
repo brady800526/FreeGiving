@@ -23,23 +23,22 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
 
         // Create Tab one
         let mapNC = UINavigationController(rootViewController: MapController())
-        let tabOneBarItem = UITabBarItem(title: NSLocalizedString("Map", comment: ""), image: #imageLiteral(resourceName: "map"), selectedImage: nil)
+        let mapBarItem = UITabBarItem(title: NSLocalizedString("Map", comment: ""), image: #imageLiteral(resourceName: "map"), selectedImage: nil)
 
-        mapNC.tabBarItem = tabOneBarItem
+        mapNC.tabBarItem = mapBarItem
 
         // Create Tab two
         let mesNC = UINavigationController(rootViewController: MessageController())
-        let tabTwoBarItem2 = UITabBarItem(title: NSLocalizedString("Message", comment: ""), image: #imageLiteral(resourceName: "message"), selectedImage: nil)
+        let mesBarItem = UITabBarItem(title: NSLocalizedString("Message", comment: ""), image: #imageLiteral(resourceName: "message"), selectedImage: nil)
 
-        mesNC.tabBarItem = tabTwoBarItem2
+        mesNC.tabBarItem = mesBarItem
 
         // Create Tab three
-        let vc = DealController()
 
-        let ownNC = UINavigationController(rootViewController: vc)
-        let tabTwoBarItem3 = UITabBarItem(title: NSLocalizedString("Deal", comment: ""), image: #imageLiteral(resourceName: "deal"), selectedImage: nil)
+        let dealNC = UINavigationController(rootViewController: DealController())
+        let dealBarItem = UITabBarItem(title: NSLocalizedString("Deal", comment: ""), image: #imageLiteral(resourceName: "deal"), selectedImage: nil)
 
-        ownNC.tabBarItem = tabTwoBarItem3
-        self.viewControllers = [mapNC, mesNC, ownNC]
+        dealNC.tabBarItem = dealBarItem
+        self.viewControllers = [mapNC, mesNC, dealNC]
     }
 }
