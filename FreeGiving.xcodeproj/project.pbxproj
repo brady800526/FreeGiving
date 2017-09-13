@@ -112,6 +112,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E52E872D1F69909800D2FA7A /* Appdelegate */ = {
+			isa = PBXGroup;
+			children = (
+				E53F0D321F559802008504E3 /* AppDelegate.swift */,
+			);
+			name = Appdelegate;
+			sourceTree = "<group>";
+		};
 		E53F0D261F559802008504E3 = {
 			isa = PBXGroup;
 			children = (
@@ -135,7 +143,6 @@
 			children = (
 				E53F16991F5599CB008504E3 /* Model */,
 				E53F167E1F55998F008504E3 /* Controller */,
-				E53F0D321F559802008504E3 /* AppDelegate.swift */,
 				E53F16B41F559B17008504E3 /* extension.swift */,
 				E53F0D391F559802008504E3 /* Assets.xcassets */,
 				E53F0D3B1F559803008504E3 /* LaunchScreen.storyboard */,
@@ -148,6 +155,7 @@
 		E53F167E1F55998F008504E3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E52E872D1F69909800D2FA7A /* Appdelegate */,
 				E56E92731F6980B0007D99B3 /* MainTabBarController */,
 				E53F16811F5599A9008504E3 /* LoginController.swift */,
 				E53F16821F5599A9008504E3 /* LoginController+loginHandler.swift */,

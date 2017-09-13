@@ -130,7 +130,7 @@ class LoginController: UIViewController {
     }
 
     let loginRegisterButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.setTitle("Login", for: .normal)
         button.backgroundColor = UIColor.clear
         button.translatesAutoresizingMaskIntoConstraints = false
