@@ -27,8 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.makeKeyAndVisible()
         
-        let mainTabBatController = MainTabBarController()
-        
         UITabBar.appearance().tintColor = UIColor.orange
         
         if let font = UIFont(name: "Marker Felt", size: 20) {
@@ -42,8 +40,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         }
         
-        window?.rootViewController = mainTabBatController
-        
         IQKeyboardManager.sharedManager().enable = true
         
         GMSServices.provideAPIKey("AIzaSyAKYy2EjtJfJFI2RgRFLwa0Q-OwDHjVr4M")
@@ -53,6 +49,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.with([Crashlytics.self])
         
         UIApplication.shared.statusBarStyle = .lightContent
+        
+        let userDefaults = UserDefaults.standard
+
+        if userDefaults.value(forKey: "appFirstTimeOpend") == nil {
+            //if app is first time opened then it will be nil
+            userDefaults.setValue(true, forKey: "appFirstTimeOpend")
+            // signOut from FIRAuth
+            do {
+                
+                try Auth.auth().signOut()
+                
+            } catch let logoutError {
+                
+                print(logoutError)
+                
+            }
+            
+        }
+        
+        window?.rootViewController = MainTabBarController()
         
         return true
     }

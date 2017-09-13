@@ -188,6 +188,8 @@ class MapController: UIViewController, UISearchBarDelegate {
 
         } else {
 
+            print(Auth.auth().currentUser?.uid)
+            
             fetchUserAndSetupNavBarTitle()
         }
 
