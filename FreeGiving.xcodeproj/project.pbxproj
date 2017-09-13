@@ -148,7 +148,7 @@
 		E53F167E1F55998F008504E3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E53F167F1F55999F008504E3 /* MainTabBarController.swift */,
+				E56E92731F6980B0007D99B3 /* MainTabBarController */,
 				E53F16811F5599A9008504E3 /* LoginController.swift */,
 				E53F16821F5599A9008504E3 /* LoginController+loginHandler.swift */,
 				E53F16851F5599B2008504E3 /* MapController.swift */,
@@ -184,6 +184,14 @@
 				E53F16A61F5599D9008504E3 /* DealCell.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		E56E92731F6980B0007D99B3 /* MainTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				E53F167F1F55999F008504E3 /* MainTabBarController.swift */,
+			);
+			name = MainTabBarController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
