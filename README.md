@@ -30,8 +30,7 @@
 <img src="https://github.com/brady800526/FreeGiving/blob/master/Resources/Simulator%20Screen%20Shot%202017年9月14日%20上午1.37.56.png?raw=true" width="33%" height="33%"> <img src="https://github.com/brady800526/FreeGiving/blob/master/Resources/Simulator%20Screen%20Shot%202017年9月14日%20上午1.39.34.png?raw=true" width="33%" height="33%"> <img src="https://github.com/brady800526/FreeGiving/blob/master/Resources/Simulator%20Screen%20Shot%202017年9月14日%20上午1.43.24.png?raw=true" width="33%" height="33%">
 ## Taker
 ##### Select the item and send the request
-<br><img src="https://github.com/brady800526/FreeGiving/blob/master/Resources/Simulator%20Screen%20Shot%202017年9月14日%20上午1.44.49.png?raw=true" width="33%" height="33%"> <img src="https://github.com/brady800526/FreeGiving/blob/master/Resources/Simulator%20Screen%20Shot%202017年9月14日%20上午1.45.11.png?raw=true" width="33%" height="33%"> <img src="https://github.com/brady800526/FreeGiving/blob/master/Resources/Simulator%20Screen%20Shot%202017年9月14日%20上午1.45.35.png?raw=true" width="33%" height="33%">
-
+<img src="https://github.com/brady800526/FreeGiving/blob/master/Resources/Simulator%20Screen%20Shot%202017年9月14日%20上午1.44.49.png?raw=true" width="33%" height="33%"> <img src="https://github.com/brady800526/FreeGiving/blob/master/Resources/Simulator%20Screen%20Shot%202017年9月14日%20上午1.45.11.png?raw=true" width="33%" height="33%"> <img src="https://github.com/brady800526/FreeGiving/blob/master/Resources/Simulator%20Screen%20Shot%202017年9月14日%20上午1.45.35.png?raw=true" width="33%" height="33%">
 # Requirement
 * iOS 10.0+
 * Xcode 8.3+
