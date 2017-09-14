@@ -27,10 +27,10 @@
 # ScreenShot
 ## Giver
 ##### Upload item and specify the location
-<img src="https://github.com/brady800526/FreeGiving/blob/master/Resources/Simulator%20Screen%20Shot%202017年9月14日%20上午1.37.56.png?raw=true" width="33%" height="33%"> <img src="https://github.com/brady800526/FreeGiving/blob/master/Resources/Simulator%20Screen%20Shot%202017年9月14日%20上午1.39.34.png?raw=true" width="33%" height="33%"> <img src="https://github.com/brady800526/FreeGiving/blob/master/Resources/Simulator%20Screen%20Shot%202017年9月14日%20上午1.43.24.png?raw=true" width="33%" height="33%">
+<img src="https://github.com/brady800526/FreeGiving/blob/master/Resources/Simulator%20Screen%20Shot%202017年9月14日%20上午1.37.56.png?raw=true" width="32%" height="32%"> <img src="https://github.com/brady800526/FreeGiving/blob/master/Resources/Simulator%20Screen%20Shot%202017年9月14日%20上午1.39.34.png?raw=true" width="32%" height="32%"> <img src="https://github.com/brady800526/FreeGiving/blob/master/Resources/Simulator%20Screen%20Shot%202017年9月14日%20上午1.43.24.png?raw=true" width="32%" height="32%">
 ## Taker
 ##### Select the item and send the request
-<img src="https://github.com/brady800526/FreeGiving/blob/master/Resources/Simulator%20Screen%20Shot%202017年9月14日%20上午1.44.49.png?raw=true" width="33%" height="33%"> <img src="https://github.com/brady800526/FreeGiving/blob/master/Resources/Simulator%20Screen%20Shot%202017年9月14日%20上午1.45.11.png?raw=true" width="33%" height="33%"> <img src="https://github.com/brady800526/FreeGiving/blob/master/Resources/Simulator%20Screen%20Shot%202017年9月14日%20上午1.45.35.png?raw=true" width="33%" height="33%">
+<img src="https://github.com/brady800526/FreeGiving/blob/master/Resources/Simulator%20Screen%20Shot%202017年9月14日%20上午1.44.49.png?raw=true" width="32%" height="32%"> <img src="https://github.com/brady800526/FreeGiving/blob/master/Resources/Simulator%20Screen%20Shot%202017年9月14日%20上午1.45.11.png?raw=true" width="32%" height="32%"> <img src="https://github.com/brady800526/FreeGiving/blob/master/Resources/Simulator%20Screen%20Shot%202017年9月14日%20上午1.45.35.png?raw=true" width="32%" height="32%">
 # Requirement
 * iOS 10.0+
 * Xcode 8.3+
