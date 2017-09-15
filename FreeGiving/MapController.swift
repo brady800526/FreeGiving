@@ -260,7 +260,7 @@ class MapController: UIViewController, UISearchBarDelegate {
 
         vc.mapViewController = self
 
-        self.present(vc, animated: true, completion: nil)
+        self.present(vc, animated: false, completion: nil)
 
     }
 
