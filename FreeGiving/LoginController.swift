@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class LoginController: UIViewController {
+class LoginController: UIViewController, UITextViewDelegate {
 
     var mapViewController: MapController?
 
@@ -86,50 +86,43 @@ class LoginController: UIViewController {
         return view
     }()
     
-    let EULALabel: UITextView = {
+    lazy var EULALabel: UITextView = {
         let tv = UITextView()
         tv.translatesAutoresizingMaskIntoConstraints = false
 
         let style = NSMutableParagraphStyle()
         style.alignment = .center
-
-        let textAttributes: [String: Any] = [
-            NSFontAttributeName: UIFont(name: "Marker Felt", size: 15.0) as Any,
+        let myAttributes = [
+            NSFontAttributeName: UIFont(name: "Marker Felt", size: 15.0),
             NSForegroundColorAttributeName: UIColor.white,
             NSParagraphStyleAttributeName: style
         ]
-        
-        let superlinkAttributes: [String: Any] = [
-            NSFontAttributeName: UIFont(name: "Marker Felt", size: 15.0) as Any,
-            NSForegroundColorAttributeName: UIColor.hyperlinkColor(),
-            NSParagraphStyleAttributeName: style,
-        ]
 
-        let prefixTermsOfService = "By using the application, you agree to the "
-        let myMutableString = NSMutableAttributedString(string: prefixTermsOfService, attributes: textAttributes)
-        
-        let termsOfService = NSMutableAttributedString(string: "Terms of Service", attributes: superlinkAttributes)
-        termsOfService.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleSingle.rawValue, range: NSMakeRange(0, termsOfService.length))
-        termsOfService.addAttribute(NSLinkAttributeName, value: "signin", range: NSMakeRange(0,termsOfService.length))
-
-        let andWords = NSMutableAttributedString(string: ", and ", attributes: textAttributes)
-        
-        let privacyPolicy = NSMutableAttributedString(string: "privacy Policy", attributes: superlinkAttributes)
-        privacyPolicy.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleSingle.rawValue, range: NSMakeRange(0, privacyPolicy.length))
-        privacyPolicy.addAttribute(NSLinkAttributeName, value: "signin", range: NSMakeRange(0,privacyPolicy.length))
-        
-        myMutableString.append(termsOfService)
-        myMutableString.append(andWords)
-        myMutableString.append(privacyPolicy)
+        let termsOfService = "By using the application, you agree to the Terms of Service, and privacy Policy"
+        let myMutableString = NSMutableAttributedString(string: termsOfService, attributes: myAttributes)
+        myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.hyperlinkColor(), range: (termsOfService as NSString).range(of: "Terms of Service"))
+        myMutableString.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleSingle.rawValue, range: (termsOfService as NSString).range(of: "Terms of Service"))
+        myMutableString.addAttribute(NSLinkAttributeName, value: "termsOfService", range: (termsOfService as NSString).range(of: "Terms of Service"))
+        myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.hyperlinkColor(), range: (termsOfService as NSString).range(of: "privacy Policy"))
+        myMutableString.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleSingle.rawValue, range: (termsOfService as NSString).range(of: "privacy Policy"))
+        myMutableString.addAttribute(NSLinkAttributeName, value: "privacyPolicy", range: (termsOfService as NSString).range(of: "privacy Policy"))
         
         tv.backgroundColor = UIColor.clear
         tv.isScrollEnabled = false
         tv.textContainerInset = UIEdgeInsetsMake(0, 0, 0, 0)
         tv.isEditable = false
-        tv.isSelectable = false
+        tv.isSelectable = true
         tv.attributedText = myMutableString
+        tv.delegate = self
         return tv
     }()
+    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        
+        print(URL)
+        
+        return true
+    }
 
     let loginRegisterSegmentedControl: UISegmentedControl = {
         let sc = UISegmentedControl(items: ["Login", "Register"])
