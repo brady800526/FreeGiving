@@ -150,7 +150,6 @@ class LoginController: UIViewController {
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.titleLabel?.font = UIFont(name: "Marker Felt", size: 24)
-        button.layer.borderWidth = 2.0
         return button
     }()
 
