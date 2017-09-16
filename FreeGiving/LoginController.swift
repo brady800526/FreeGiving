@@ -10,9 +10,17 @@ import UIKit
 import MapKit
 
 class LoginController: UIViewController, UITextViewDelegate {
-
+    
     var mapViewController: MapController?
 
+    enum Declaim : String {
+        
+        case termsOfService = "termsOfService"
+        
+        case privacyPolicy = "privacyPolicy"
+        
+    }
+    
     let loginBackgroundImageView: UIImageView = {
        let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -86,7 +94,7 @@ class LoginController: UIViewController, UITextViewDelegate {
         return view
     }()
     
-    lazy var EULALabel: UITextView = {
+    lazy var EULATextView: UITextView = {
         let tv = UITextView()
         tv.translatesAutoresizingMaskIntoConstraints = false
 
@@ -99,27 +107,41 @@ class LoginController: UIViewController, UITextViewDelegate {
         ]
 
         let termsOfService = "By using the application, you agree to the Terms of Service, and privacy Policy"
-        let myMutableString = NSMutableAttributedString(string: termsOfService, attributes: myAttributes)
-        myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.hyperlinkColor(), range: (termsOfService as NSString).range(of: "Terms of Service"))
-        myMutableString.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleSingle.rawValue, range: (termsOfService as NSString).range(of: "Terms of Service"))
-        myMutableString.addAttribute(NSLinkAttributeName, value: "termsOfService", range: (termsOfService as NSString).range(of: "Terms of Service"))
-        myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.hyperlinkColor(), range: (termsOfService as NSString).range(of: "privacy Policy"))
-        myMutableString.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleSingle.rawValue, range: (termsOfService as NSString).range(of: "privacy Policy"))
-        myMutableString.addAttribute(NSLinkAttributeName, value: "privacyPolicy", range: (termsOfService as NSString).range(of: "privacy Policy"))
+        let DeclaimationOfAppString = NSMutableAttributedString(string: termsOfService, attributes: myAttributes)
+        DeclaimationOfAppString.addAttribute(NSForegroundColorAttributeName, value: UIColor.hyperlinkColor(), range: (termsOfService as NSString).range(of: "Terms of Service"))
+        DeclaimationOfAppString.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleSingle.rawValue, range: (termsOfService as NSString).range(of: "Terms of Service"))
+        DeclaimationOfAppString.addAttribute(NSLinkAttributeName, value: "termsOfService", range: (termsOfService as NSString).range(of: "Terms of Service"))
+        DeclaimationOfAppString.addAttribute(NSForegroundColorAttributeName, value: UIColor.hyperlinkColor(), range: (termsOfService as NSString).range(of: "privacy Policy"))
+        DeclaimationOfAppString.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleSingle.rawValue, range: (termsOfService as NSString).range(of: "privacy Policy"))
+        DeclaimationOfAppString.addAttribute(NSLinkAttributeName, value: "privacyPolicy", range: (termsOfService as NSString).range(of: "privacy Policy"))
         
         tv.backgroundColor = UIColor.clear
         tv.isScrollEnabled = false
         tv.textContainerInset = UIEdgeInsetsMake(0, 0, 0, 0)
         tv.isEditable = false
         tv.isSelectable = true
-        tv.attributedText = myMutableString
+        tv.attributedText = DeclaimationOfAppString
         tv.delegate = self
         return tv
     }()
     
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         
-        print(URL)
+        switch URL.absoluteString {
+            
+        case Declaim.termsOfService.rawValue:
+            
+            print("I am in")
+            
+        case Declaim.privacyPolicy.rawValue:
+            
+            print("Here I am")
+            
+        default: break
+            
+            
+            
+        }
         
         return true
     }
@@ -187,7 +209,7 @@ class LoginController: UIViewController, UITextViewDelegate {
         self.view.addSubview(inputsContainerView)
         self.view.addSubview(loginRegisterButton)
         self.view.addSubview(loginRegisterSegmentedControl)
-        self.view.addSubview(EULALabel)
+        self.view.addSubview(EULATextView)
 
         setupLoginBackgroundImageView()
         setupInputsContainerView()
@@ -284,7 +306,7 @@ class LoginController: UIViewController, UITextViewDelegate {
 
     func setupLoginRegisterButton() {
         loginRegisterButton.centerXAnchor.constraint(equalTo: inputsContainerView.centerXAnchor).isActive = true
-        loginRegisterButton.topAnchor.constraint(equalTo: EULALabel.bottomAnchor).isActive = true
+        loginRegisterButton.topAnchor.constraint(equalTo: EULATextView.bottomAnchor).isActive = true
         loginRegisterButton.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
         loginRegisterButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
@@ -297,9 +319,9 @@ class LoginController: UIViewController, UITextViewDelegate {
     }
     
     func setupEULALabel() {
-        EULALabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        EULALabel.widthAnchor.constraint(equalTo: self.inputsContainerView.widthAnchor).isActive = true
-        EULALabel.topAnchor.constraint(equalTo: self.inputsContainerView.bottomAnchor, constant: 8).isActive = true
+        EULATextView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        EULATextView.widthAnchor.constraint(equalTo: self.inputsContainerView.widthAnchor).isActive = true
+        EULATextView.topAnchor.constraint(equalTo: self.inputsContainerView.bottomAnchor, constant: 8).isActive = true
         
     }
 
