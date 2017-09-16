@@ -86,15 +86,17 @@ class LoginController: UIViewController {
         return view
     }()
     
-    let EULALabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "By using the application, you agree to the Terms of Service, and privacy Policy"
-        label.numberOfLines = 0
-        label.font = UIFont(name: "Marker Felt", size: 16)
-        label.textColor = UIColor.white
-        label.textAlignment = .center
-        return label
+    let EULALabel: UITextView = {
+        let tv = UITextView()
+        tv.translatesAutoresizingMaskIntoConstraints = false
+        tv.text = "By using the application, you agree to the Terms of Service, and privacy Policy"
+        tv.font = UIFont(name: "Marker Felt", size: 15)
+        tv.backgroundColor = UIColor.clear
+        tv.textColor = UIColor.white
+        tv.textAlignment = .center
+        tv.isScrollEnabled = false
+        tv.textContainerInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        return tv
     }()
 
     let loginRegisterSegmentedControl: UISegmentedControl = {
@@ -148,7 +150,7 @@ class LoginController: UIViewController {
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.titleLabel?.font = UIFont(name: "Marker Felt", size: 24)
-        button.addTarget(self, action: #selector(setupLoginRegister), for: .touchUpInside)
+        button.layer.borderWidth = 2.0
         return button
     }()
 
@@ -258,7 +260,7 @@ class LoginController: UIViewController {
 
     func setupLoginRegisterButton() {
         loginRegisterButton.centerXAnchor.constraint(equalTo: inputsContainerView.centerXAnchor).isActive = true
-        loginRegisterButton.topAnchor.constraint(equalTo: EULALabel.bottomAnchor, constant: 12).isActive = true
+        loginRegisterButton.topAnchor.constraint(equalTo: EULALabel.bottomAnchor).isActive = true
         loginRegisterButton.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
         loginRegisterButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
@@ -271,11 +273,9 @@ class LoginController: UIViewController {
     }
     
     func setupEULALabel() {
-        
         EULALabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         EULALabel.widthAnchor.constraint(equalTo: self.inputsContainerView.widthAnchor).isActive = true
-        EULALabel.topAnchor.constraint(equalTo: self.inputsContainerView.bottomAnchor).isActive = true
-        EULALabel.bottomAnchor.constraint(equalTo: self.loginRegisterButton.topAnchor).isActive = true
+        EULALabel.topAnchor.constraint(equalTo: self.inputsContainerView.bottomAnchor, constant: 8).isActive = true
         
     }
 
