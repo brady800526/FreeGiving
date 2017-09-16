@@ -89,17 +89,39 @@ class LoginController: UIViewController {
     let EULALabel: UITextView = {
         let tv = UITextView()
         tv.translatesAutoresizingMaskIntoConstraints = false
+
         let style = NSMutableParagraphStyle()
         style.alignment = .center
-        let myAttributes = [
-            NSFontAttributeName: UIFont(name: "Marker Felt", size: 15.0),
+
+        let textAttributes: [String: Any] = [
+            NSFontAttributeName: UIFont(name: "Marker Felt", size: 15.0) as Any,
             NSForegroundColorAttributeName: UIColor.white,
             NSParagraphStyleAttributeName: style
         ]
-        let termsOfService = "By using the application, you agree to the Terms of Service, and privacy Policy"
-        let myMutableString = NSMutableAttributedString(string: termsOfService, attributes: myAttributes)
-        myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.red, range: (termsOfService as NSString).range(of: "Terms of Service"))
-        myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.red, range: (termsOfService as NSString).range(of: "privacy Policy"))
+        
+        let superlinkAttributes: [String: Any] = [
+            NSFontAttributeName: UIFont(name: "Marker Felt", size: 15.0) as Any,
+            NSForegroundColorAttributeName: UIColor.hyperlinkColor(),
+            NSParagraphStyleAttributeName: style,
+        ]
+
+        let prefixTermsOfService = "By using the application, you agree to the "
+        let myMutableString = NSMutableAttributedString(string: prefixTermsOfService, attributes: textAttributes)
+        
+        let termsOfService = NSMutableAttributedString(string: "Terms of Service", attributes: superlinkAttributes)
+        termsOfService.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleSingle.rawValue, range: NSMakeRange(0, termsOfService.length))
+        termsOfService.addAttribute(NSLinkAttributeName, value: "signin", range: NSMakeRange(0,termsOfService.length))
+
+        let andWords = NSMutableAttributedString(string: ", and ", attributes: textAttributes)
+        
+        let privacyPolicy = NSMutableAttributedString(string: "privacy Policy", attributes: superlinkAttributes)
+        privacyPolicy.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleSingle.rawValue, range: NSMakeRange(0, privacyPolicy.length))
+        privacyPolicy.addAttribute(NSLinkAttributeName, value: "signin", range: NSMakeRange(0,privacyPolicy.length))
+        
+        myMutableString.append(termsOfService)
+        myMutableString.append(andWords)
+        myMutableString.append(privacyPolicy)
+        
         tv.backgroundColor = UIColor.clear
         tv.isScrollEnabled = false
         tv.textContainerInset = UIEdgeInsetsMake(0, 0, 0, 0)
@@ -319,5 +341,9 @@ extension UIColor {
     
     class func separatorColor() -> UIColor {
         return UIColor(red: 220, green: 220, blue: 220)
+    }
+    
+    class func hyperlinkColor() -> UIColor {
+        return UIColor(red: 55, green: 184, blue: 235)
     }
 }
