@@ -89,13 +89,23 @@ class LoginController: UIViewController {
     let EULALabel: UITextView = {
         let tv = UITextView()
         tv.translatesAutoresizingMaskIntoConstraints = false
-        tv.text = "By using the application, you agree to the Terms of Service, and privacy Policy"
-        tv.font = UIFont(name: "Marker Felt", size: 15)
+        let style = NSMutableParagraphStyle()
+        style.alignment = .center
+        let myAttributes = [
+            NSFontAttributeName: UIFont(name: "Marker Felt", size: 15.0),
+            NSForegroundColorAttributeName: UIColor.white,
+            NSParagraphStyleAttributeName: style
+        ]
+        let termsOfService = "By using the application, you agree to the Terms of Service, and privacy Policy"
+        let myMutableString = NSMutableAttributedString(string: termsOfService, attributes: myAttributes)
+        myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.red, range: (termsOfService as NSString).range(of: "Terms of Service"))
+        myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.red, range: (termsOfService as NSString).range(of: "privacy Policy"))
         tv.backgroundColor = UIColor.clear
-        tv.textColor = UIColor.white
-        tv.textAlignment = .center
         tv.isScrollEnabled = false
         tv.textContainerInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        tv.isEditable = false
+        tv.isSelectable = false
+        tv.attributedText = myMutableString
         return tv
     }()
 
