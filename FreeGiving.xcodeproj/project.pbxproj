@@ -41,6 +41,9 @@
 		E53F16B81F559B49008504E3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E53F16B61F559B49008504E3 /* Info.plist */; };
 		E53F16B91F559B49008504E3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E53F16B71F559B49008504E3 /* GoogleService-Info.plist */; };
 		E58C40C71F583D7900676C74 /* DisclaimerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58C40C61F583D7900676C74 /* DisclaimerController.swift */; };
+		E5C301151F6E75C300F96B59 /* termsOfService.rtf in Resources */ = {isa = PBXBuildFile; fileRef = E5C301141F6E75C300F96B59 /* termsOfService.rtf */; };
+		E5C301171F6E769200F96B59 /* privacyPolicy.rtf in Resources */ = {isa = PBXBuildFile; fileRef = E5C301161F6E769200F96B59 /* privacyPolicy.rtf */; };
+		E5C3011E1F6E81F900F96B59 /* endUserLicenceAgreement.rtf in Resources */ = {isa = PBXBuildFile; fileRef = E5C3011D1F6E81F900F96B59 /* endUserLicenceAgreement.rtf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +84,9 @@
 		E53F16B61F559B49008504E3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E53F16B71F559B49008504E3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E58C40C61F583D7900676C74 /* DisclaimerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisclaimerController.swift; sourceTree = "<group>"; };
+		E5C301141F6E75C300F96B59 /* termsOfService.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = termsOfService.rtf; sourceTree = "<group>"; };
+		E5C301161F6E769200F96B59 /* privacyPolicy.rtf */ = {isa = PBXFileReference; explicitFileType = text.rtf; fileEncoding = 4; path = privacyPolicy.rtf; sourceTree = "<group>"; };
+		E5C3011D1F6E81F900F96B59 /* endUserLicenceAgreement.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = endUserLicenceAgreement.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +147,7 @@
 		E53F0D311F559802008504E3 /* FreeGiving */ = {
 			isa = PBXGroup;
 			children = (
+				E5C301111F6E74BD00F96B59 /* Document */,
 				E53F16991F5599CB008504E3 /* Model */,
 				E53F167E1F55998F008504E3 /* Controller */,
 				E53F16B41F559B17008504E3 /* extension.swift */,
@@ -200,6 +207,16 @@
 				E53F167F1F55999F008504E3 /* MainTabBarController.swift */,
 			);
 			name = MainTabBarController;
+			sourceTree = "<group>";
+		};
+		E5C301111F6E74BD00F96B59 /* Document */ = {
+			isa = PBXGroup;
+			children = (
+				E5C301141F6E75C300F96B59 /* termsOfService.rtf */,
+				E5C301161F6E769200F96B59 /* privacyPolicy.rtf */,
+				E5C3011D1F6E81F900F96B59 /* endUserLicenceAgreement.rtf */,
+			);
+			name = Document;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,7 +326,10 @@
 				E53F16B81F559B49008504E3 /* Info.plist in Resources */,
 				E53F0D3D1F559803008504E3 /* LaunchScreen.storyboard in Resources */,
 				E53F16B91F559B49008504E3 /* GoogleService-Info.plist in Resources */,
+				E5C301171F6E769200F96B59 /* privacyPolicy.rtf in Resources */,
+				E5C301151F6E75C300F96B59 /* termsOfService.rtf in Resources */,
 				E53F16AE1F5599D9008504E3 /* CustomCalloutView.xib in Resources */,
+				E5C3011E1F6E81F900F96B59 /* endUserLicenceAgreement.rtf in Resources */,
 				E53F0D3A1F559802008504E3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

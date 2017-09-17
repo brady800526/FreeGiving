@@ -19,6 +19,8 @@ class LoginController: UIViewController, UITextViewDelegate {
         
         case privacyPolicy = "privacyPolicy"
         
+        case endUserLicenceAgreement = "endUserLicenceAgreement"
+        
     }
     
     let loginBackgroundImageView: UIImageView = {
@@ -177,8 +179,19 @@ class LoginController: UIViewController, UITextViewDelegate {
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.titleLabel?.font = UIFont(name: "Marker Felt", size: 24)
+        button.addTarget(self, action: #selector(handleLoginRegister), for: .touchUpInside)
         return button
     }()
+    
+    func handleLoginRegister() {
+        
+        if loginRegisterSegmentedControl.selectedSegmentIndex == 0 {
+            handleLogin()
+        } else {
+            handleRegister()
+        }
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -199,7 +212,7 @@ class LoginController: UIViewController, UITextViewDelegate {
         setupEULALabel()
 
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-
+        
         view.addGestureRecognizer(tap)
     }
 
