@@ -96,8 +96,8 @@ class LoginController: UIViewController, UITextViewDelegate {
         return view
     }()
     
-    lazy var EULATextView: UITextView = {
-        let tv = UITextView()
+    lazy var EULATextView: UIEULATextView = {
+        let tv = UIEULATextView()
         tv.translatesAutoresizingMaskIntoConstraints = false
 
         let style = NSMutableParagraphStyle()
@@ -356,12 +356,12 @@ extension UIColor {
     }
 }
 
-extension UITextView {
+class UIEULATextView: UITextView {
     
-    override open func becomeFirstResponder() -> Bool {
-    
+    override func becomeFirstResponder() -> Bool {
+        
         return false
-
+        
     }
     
 }

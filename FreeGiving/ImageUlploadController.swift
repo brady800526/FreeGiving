@@ -26,7 +26,7 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
     let uploadBackgroundView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(red: 54, green: 157, blue: 199)
+        view.backgroundColor = UIColor(red: 174, green: 209, blue: 233)
         return view
     }()
 
@@ -36,14 +36,14 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         iv.isUserInteractionEnabled = true
-        iv.image = UIImage(named: "album-placeholder")
+        iv.image = #imageLiteral(resourceName: "album-placeholder")
         iv.layer.cornerRadius = 40
         iv.layer.borderWidth = 5
         iv.layer.borderColor = UIColor.white.cgColor
         iv.layer.shadowOffset = CGSize(width: 3, height: 3)
         iv.layer.shadowColor = UIColor.black.cgColor
         iv.layer.shadowRadius = 5
-        iv.layer.shadowOpacity = 1
+        iv.layer.shadowOpacity = 0.5
         iv.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectUploadImageView)))
         return iv
     }()
@@ -58,7 +58,7 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
         label.layer.shadowOffset = CGSize(width: 3, height: 3)
         label.layer.shadowColor = UIColor.black.cgColor
         label.layer.shadowRadius = 5
-        label.layer.shadowOpacity = 0.5
+        label.layer.shadowOpacity = 0.3
         label.layer.cornerRadius = 20
         return label
     }()

@@ -194,6 +194,7 @@ class MapController: UIViewController, UISearchBarDelegate {
     }
 
     func fetchUserAndSetupNavBarTitle() {
+
         guard let uid = Auth.auth().currentUser?.uid else { return }
 
         Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -232,10 +233,8 @@ class MapController: UIViewController, UISearchBarDelegate {
 
     func handleUpload() {
 
-        // swiftlint:disable force_cast
         let vc = ImageUploadController()
         let nv = UINavigationController(rootViewController: vc)
-        // swiftlint:enable force_cast
 
         vc.mapView = self.mapView
 
@@ -254,9 +253,7 @@ class MapController: UIViewController, UISearchBarDelegate {
 
         }
 
-        // swiftlint:disable force_cast
         let vc = LoginController()
-        // swiftlint:enable force_cast
 
         vc.mapViewController = self
 

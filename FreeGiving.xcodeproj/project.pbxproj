@@ -164,8 +164,7 @@
 			children = (
 				E52E872D1F69909800D2FA7A /* Appdelegate */,
 				E56E92731F6980B0007D99B3 /* MainTabBarController */,
-				E53F16811F5599A9008504E3 /* LoginController.swift */,
-				E53F16821F5599A9008504E3 /* LoginController+loginHandler.swift */,
+				E5C301211F6EC71E00F96B59 /* LoginController */,
 				E53F16851F5599B2008504E3 /* MapController.swift */,
 				E53F16861F5599B2008504E3 /* MapController+handlerLocatoinHandler.swift */,
 				E53F16871F5599B2008504E3 /* MapController+handleMapSearch.swift */,
@@ -217,6 +216,15 @@
 				E5C3011D1F6E81F900F96B59 /* endUserLicenceAgreement.rtf */,
 			);
 			name = Document;
+			sourceTree = "<group>";
+		};
+		E5C301211F6EC71E00F96B59 /* LoginController */ = {
+			isa = PBXGroup;
+			children = (
+				E53F16811F5599A9008504E3 /* LoginController.swift */,
+				E53F16821F5599A9008504E3 /* LoginController+loginHandler.swift */,
+			);
+			name = LoginController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
