@@ -167,5 +167,46 @@ extension LoginController {
         })
 
     }
+    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        
+        switch URL.absoluteString {
+            
+        case Declaim.termsOfService.rawValue:
+            
+            let termsOfServiceFile = Bundle.main.path(forResource: Declaim.termsOfService.rawValue, ofType: "text")
+            
+            var termsOfServiceString = ""
+            
+            do {
+                
+                guard let termsOfServiceFile = termsOfServiceFile
+                    else {
+                        
+                        print("termsOfServiceFile not exists, checkout the termsOfServiceFile again")
+                        
+                        break
+                }
+                
+                termsOfServiceString = try String(contentsOfFile: termsOfServiceFile, encoding: String.Encoding.utf8)
+                
+            } catch let error {
+                
+                print(error)
+                
+            }
+            
+            print("I am in")
+            
+        case Declaim.privacyPolicy.rawValue:
+            
+            print("Here I am")
+            
+        default: break
+            
+        }
+        
+        return true
+    }
 
 }

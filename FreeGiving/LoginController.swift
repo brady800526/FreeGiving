@@ -101,7 +101,7 @@ class LoginController: UIViewController, UITextViewDelegate {
         let style = NSMutableParagraphStyle()
         style.alignment = .center
         let myAttributes = [
-            NSFontAttributeName: UIFont(name: "Marker Felt", size: 15.0),
+            NSFontAttributeName: UIFont(name: "Marker Felt", size: 15.0) as Any,
             NSForegroundColorAttributeName: UIColor.white,
             NSParagraphStyleAttributeName: style
         ]
@@ -123,28 +123,8 @@ class LoginController: UIViewController, UITextViewDelegate {
         tv.attributedText = DeclaimationOfAppString
         tv.delegate = self
         return tv
+        
     }()
-    
-    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-        
-        switch URL.absoluteString {
-            
-        case Declaim.termsOfService.rawValue:
-            
-            print("I am in")
-            
-        case Declaim.privacyPolicy.rawValue:
-            
-            print("Here I am")
-            
-        default: break
-            
-            
-            
-        }
-        
-        return true
-    }
 
     let loginRegisterSegmentedControl: UISegmentedControl = {
         let sc = UISegmentedControl(items: ["Login", "Register"])
@@ -361,4 +341,14 @@ extension UIColor {
     class func hyperlinkColor() -> UIColor {
         return UIColor(red: 55, green: 184, blue: 235)
     }
+}
+
+extension UITextView {
+    
+    override open func becomeFirstResponder() -> Bool {
+    
+        return false
+
+    }
+    
 }
