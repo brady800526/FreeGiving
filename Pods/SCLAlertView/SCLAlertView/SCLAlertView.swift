@@ -233,6 +233,12 @@ open class SCLAlertView: UIViewController {
         setup()
     }
     
+    public func setAlignmentLeft() {
+    
+        viewText.textAlignment = .left
+    
+    }
+    
     required public init?(coder aDecoder: NSCoder) {
         fatalError("NSCoding not supported")
     }

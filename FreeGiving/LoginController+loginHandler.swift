@@ -32,7 +32,7 @@ extension LoginController {
 
             if let error = error {
 
-                SCLAlertView().showWarning("Hold On", subTitle:error.localizedDescription, closeButtonTitle:"OK")
+                SCLAlertView().showError("SIGN IN ERROR", subTitle:error.localizedDescription, closeButtonTitle:"OK")
 
                 return
 
@@ -68,7 +68,7 @@ extension LoginController {
 
             if let error = error {
 
-                SCLAlertView().showWarning("Hold On", subTitle:error.localizedDescription, closeButtonTitle:"OK")
+                SCLAlertView().showError("REGISTER ERROR", subTitle:error.localizedDescription, closeButtonTitle:"OK")
                 return
             }
 
@@ -139,12 +139,12 @@ extension LoginController {
             kWindowHeight: UIScreen.main.bounds.height * 0.9
         )
 
-        let EULAView = SCLAlertView(appearance: appearance)
+        let alertView = SCLAlertView(appearance: appearance)
         
-        let endUserLicenceAgreementrtfPath = Bundle.main.url(forResource: Declaim.endUserLicenceAgreement.rawValue, withExtension: "rtf")!
+        let declaimRtfPath = Bundle.main.url(forResource: declaim.rawValue, withExtension: "rtf")!
         
         let attributedStringWithRtf = try! NSAttributedString(
-            url: endUserLicenceAgreementrtfPath,
+            url: declaimRtfPath,
             options: [NSDocumentTypeDocumentAttribute : NSRTFTextDocumentType],
             documentAttributes: nil)
         
@@ -166,9 +166,10 @@ extension LoginController {
 
         }
         
-        EULAView.showInfo(declaimTitle,
+        alertView.setAlignmentLeft()
+        alertView.showInfo(declaimTitle,
                           subTitle: attributedStringWithRtf.string,
-                          closeButtonTitle:"OK"
+                          closeButtonTitle:"Agree"
         )
     }
 
