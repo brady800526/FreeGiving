@@ -64,6 +64,8 @@ extension MapController : CLLocationManagerDelegate {
 
         let autoCompleteController = GMSAutocompleteViewController()
 
+        autoCompleteController.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
+        
         autoCompleteController.delegate = self
 
         self.present(autoCompleteController, animated: true, completion: nil)
