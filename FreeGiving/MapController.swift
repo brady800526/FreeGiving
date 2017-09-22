@@ -79,29 +79,25 @@ class MapController: UIViewController, UISearchBarDelegate {
         
         navigationController?.navigationBar.barTintColor = UIColor.orange
         
-        navigationItem.leftBarButtonItem?.tintColor = UIColor.white
-        
-        navigationItem.rightBarButtonItem?.tintColor = UIColor.white
-        
     }
     
     func handleSearch() {
         
         let autoCompleteController = GMSAutocompleteViewController()
         
+        autoCompleteController.hidesBottomBarWhenPushed = true
+        
         autoCompleteController.delegate = self
         
-        autoCompleteController.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
+        autoCompleteController.secondaryTextColor = .lightGray
         
-        autoCompleteController.secondaryTextColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
+        autoCompleteController.primaryTextColor = .lightGray
         
-        autoCompleteController.primaryTextColor = .lightGray;
+        autoCompleteController.primaryTextHighlightColor = UIColor.black
         
-        autoCompleteController.primaryTextHighlightColor = UIColor.gray
+        autoCompleteController.tableCellSeparatorColor = .orange
         
-        autoCompleteController.tableCellSeparatorColor = .lightGray;
         
-        autoCompleteController.tintColor = .lightGray;
         
         self.navigationController?.pushViewController(autoCompleteController, animated: true)
         

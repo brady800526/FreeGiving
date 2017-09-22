@@ -29,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UITabBar.appearance().tintColor = UIColor.orange
         
+        UINavigationBar.appearance().tintColor = UIColor.white
+        
         if let font = UIFont(name: "Marker Felt", size: 20) {
             
             UINavigationBar.appearance().titleTextAttributes = [
