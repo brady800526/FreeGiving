@@ -38,6 +38,10 @@
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>I want to locate where you are for search product</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>I want to locate where you are for search product</string>
+	<key>NSLocationUsageDescription</key>
+	<string>I want to locate where you are for search product</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>upload your product image</string>
 	<key>UILaunchStoryboardName</key>

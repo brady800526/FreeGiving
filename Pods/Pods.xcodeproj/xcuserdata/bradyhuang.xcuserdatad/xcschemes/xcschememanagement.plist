@@ -9,11 +9,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Cluster.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Floaty.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -54,20 +49,10 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SwifterSwift.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>06A16103BB11CC5264937B5C3DC64DF7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>1E5E2D7BC2D7F75764838822371681CF</key>
+		<key>46A6CBE75B2363C658C8004126680725</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -82,12 +67,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8CF763AF743225C5812E7F495B76A06A</key>
+		<key>724F1239CECE36A11380AA5FB840E8BC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>98C7EBDE2C8E99369A82EBF6EA114C22</key>
+		<key>ACC672E7DC095CDDC23C2D173B4B337D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -107,12 +92,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E6BC2463706712E326F04082E42B8090</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EE426E5D29F20C51204BA9687714CC27</key>
+		<key>E1504CB83552750020812693BEE23088</key>
 		<dict>
 			<key>primary</key>
 			<true/>

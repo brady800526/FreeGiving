@@ -66,7 +66,7 @@ class CustomCalloutView: UIView {
 
                     postStatus.setValuesForKeys(dictionary)
 
-                    if postStatus.fromId == Auth.auth().currentUser?.uid && postStatus.toId == self.userId && postStatus.checked == "false" && postStatus.postKey == self.post?.key {
+                    if postStatus.fromId == Auth.auth().currentUser?.uid && postStatus.toId == self.userId && postStatus.checked == "false" && postStatus.postKey == self.post?.productKey {
 
                         self.checkBox.onAnimationType = .stroke
 
@@ -142,7 +142,7 @@ class CustomCalloutView: UIView {
 
                 postStatus.setValuesForKeys(dictionary)
 
-                if postStatus.fromId == Auth.auth().currentUser?.uid && postStatus.toId == self.userId && postStatus.checked == "false" && postStatus.postKey == self.post?.key {
+                if postStatus.fromId == Auth.auth().currentUser?.uid && postStatus.toId == self.userId && postStatus.checked == "false" && postStatus.postKey == self.post?.productKey {
 
                     ref.child("trackings").child(itemSnapshot.key).removeValue()
 
@@ -180,7 +180,7 @@ class CustomCalloutView: UIView {
 
                     guard let uid = Auth.auth().currentUser?.uid,
                         let userId = self.userId,
-                        let key = self.post?.key else { return }
+                        let key = self.post?.productKey else { return }
 
                     let values = ["fromId": uid, "toId": userId, "postKey": key, "checked": "false", "timeStamp": NSNumber(value: Date().timeIntervalSinceReferenceDate), "attention": txt.text ?? "NA"] as [String : Any]
 

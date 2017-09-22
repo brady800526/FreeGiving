@@ -1,4 +1,4 @@
-//
+
 //  MapViewController+delegateHandler.swift
 //  FreeGiving
 //
@@ -16,35 +16,29 @@ import GooglePlaces
 extension MapController : CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse {
-            locationManager.requestLocation()
-        }
+        
+        locationManager.startUpdatingLocation()
+
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
+            
             let span = MKCoordinateSpanMake(0.05, 0.05)
+            
             let region = MKCoordinateRegion(center: location.coordinate, span: span)
+
             mapView.setRegion(region, animated: true)
+            
+            locationManager.stopUpdatingLocation()
+            
         }
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("error:: (error)")
-    }
-
-    // Set the mapView behavior when viewdidload
-
-    func setLocationManagerBehavior() {
-
-        locationManager.delegate = self
-
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-
-        locationManager.requestWhenInUseAuthorization()
-
-        locationManager.requestLocation()
-
+        
+        print(error)
+        
     }
 
     // Set the location search table

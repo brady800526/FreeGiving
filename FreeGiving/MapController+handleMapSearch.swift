@@ -14,12 +14,15 @@ import GooglePlaces
 extension MapController: GMSAutocompleteViewControllerDelegate {
 
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-
+        
         let span = MKCoordinateSpanMake(0.05, 0.05)
-        let region = MKCoordinateRegionMake(place.coordinate, span)
-        mapView.setRegion(region, animated: true)
-        self.dismiss(animated: true, completion: nil) // dismiss after select place
 
+        let region = MKCoordinateRegionMake(place.coordinate, span)
+        
+        self.mapView.setRegion(region, animated: true)
+
+        self.navigationController?.popViewController(animated: false)
+        
     }
 
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
@@ -29,6 +32,8 @@ extension MapController: GMSAutocompleteViewControllerDelegate {
     }
 
     func wasCancelled(_ viewController: GMSAutocompleteViewController) {
-        self.dismiss(animated: true, completion: nil) // when cancel search
+        
+        self.navigationController?.popViewController(animated: true)
+        
     }
 }

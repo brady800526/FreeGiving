@@ -1,6 +1,5 @@
 PODS:
   - BEMCheckBox (1.4.1)
-  - Cluster (1.0.7)
   - Crashlytics (3.8.4):
     - Fabric (~> 1.6.3)
   - Fabric (1.6.11)
@@ -70,12 +69,10 @@ PODS:
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
-  - SwifterSwift (1.6.4)
   - SwiftLint (0.20.0)
 
 DEPENDENCIES:
   - BEMCheckBox
-  - Cluster
   - Crashlytics
   - Fabric
   - Firebase/Auth
@@ -89,12 +86,10 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift (= 4.0.10)
   - SCLAlertView
   - SDWebImage (~> 4.0)
-  - SwifterSwift
   - SwiftLint
 
 SPEC CHECKSUMS:
   BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
-  Cluster: 7a15791640cc44cde312be37ff18b918fc3c2367
   Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   Firebase: c7ad0731eab26d18a3fc547dd048b0f7cd9c63ae
@@ -114,9 +109,8 @@ SPEC CHECKSUMS:
   Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
   SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
-  SwifterSwift: 92c73c47c3cbf7d5f788adf6459bf07b5d23d3fb
   SwiftLint: 3f7543509c931d1291395335f34e245d3919b7f2
 
-PODFILE CHECKSUM: 8a3e797639a4f0bfd9feafc1478b8b37cde13ef9
+PODFILE CHECKSUM: 2b4f2c3b08c979a24d48b34934eb5bf33ff7a462
 
 COCOAPODS: 1.2.1

@@ -13,7 +13,6 @@ target 'FreeGiving' do
   pod 'Firebase/Storage'
   pod 'Firebase/Messaging'
   pod 'IQKeyboardManagerSwift', '4.0.10'
-  pod 'SwifterSwift'
   pod 'SDWebImage', '~> 4.0'
   pod 'Floaty', '~> 3.0'
   pod 'GoogleMaps'
@@ -22,6 +21,5 @@ target 'FreeGiving' do
   pod 'SCLAlertView'
   pod 'Fabric'
   pod 'Crashlytics'
-  pod 'Cluster'
 
 end

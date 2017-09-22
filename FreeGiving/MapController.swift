@@ -13,14 +13,11 @@ import MapKit
 import CoreLocation
 import Floaty
 import Crashlytics
-import Cluster
 import GooglePlaces
 
 class MapController: UIViewController, UISearchBarDelegate {
 
     let locationManager = CLLocationManager()
-
-    let clusterManager = ClusterManager()
 
     var posts = [Post]()
 
@@ -30,93 +27,126 @@ class MapController: UIViewController, UISearchBarDelegate {
 
     var postBeGiven = [String]()
 
-    let mapView: MKMapView = {
+    lazy var mapView: MKMapView = {
         let mapview = MKMapView()
         mapview.translatesAutoresizingMaskIntoConstraints = false
+        mapview.delegate = self
         return mapview
     }()
-
-    override func viewWillAppear(_ animated: Bool) {
-
-        fetchPostsBeGiven()
-
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        
+        return .lightContent
+        
     }
-
+    
     override func viewDidLoad() {
 
         super.viewDidLoad()
-
-        self.view.addSubview(mapView)
-
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(handleSearch))
-
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(handleLogout))
-
-        mapView.delegate = self
-
+        
         checkedIfUserLoggedIn()
-
+        
         setLocationManagerBehavior()
 
-        fetchPostsBeGiven()
-
-        self.navigationController?.navigationBar.barTintColor = UIColor.orange
-
-        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
-
-        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
-
-        float.title = "photo"
-
-        float.titleLabel.font = UIFont(name: "Marker Felt", size: 18)
-
-        float.imageSize = CGSize(width: 28, height: 28)
-
-        float.imageOffset = CGPoint(x: -6, y: 0)
-
-        float.icon = UIImage(named: "camera")
-
-        float.tintColor = UIColor.white
-
-        float.buttonColor = UIColor.clear
-
-        float.handler = { item in
-
-            self.handleUpload()
-
-        }
-
-        floaty.addItem(item: float)
-
-        self.mapView.addSubview(floaty)
-
+        view.addSubview(mapView)
+        
+        mapView.addSubview(floaty)
+        
         setupMapView()
-
-    }
-
-    func handleSearch() {
-
-        let autoCompleteController = GMSAutocompleteViewController()
-
-        autoCompleteController.delegate = self
-
-        self.present(autoCompleteController, animated: true, completion: nil)
+        
+        setNavigationBarColor()
+        
+        setFloatButton()
+        
+        setMapViewBehavior()
+        
+        fetchPostsBeGiven()
 
     }
 
     func setupMapView() {
-
         mapView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         mapView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         mapView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
         mapView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-
     }
-
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-
-        return .lightContent
-
+    
+    func setNavigationBarColor() {
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(handleSearch))
+        
+        navigationController?.navigationBar.barTintColor = UIColor.orange
+        
+        navigationItem.leftBarButtonItem?.tintColor = UIColor.white
+        
+        navigationItem.rightBarButtonItem?.tintColor = UIColor.white
+        
+    }
+    
+    func handleSearch() {
+        
+        let autoCompleteController = GMSAutocompleteViewController()
+        
+        autoCompleteController.delegate = self
+        
+        self.navigationController?.pushViewController(autoCompleteController, animated: true)
+        
+    }
+    
+    // CheckIfUserLoggin before by checking uuid, if not send the user to login page
+    
+    func checkedIfUserLoggedIn() {
+        
+        if Auth.auth().currentUser?.uid != nil {
+            
+            fetchUserAndSetupNavBarTitle()
+            
+        } else {
+            
+            perform(#selector(handleLogout), with: nil, afterDelay: 0)
+            
+        }
+        
+    }
+    
+    // Set the mapView behavior when viewdidload
+    
+    func setLocationManagerBehavior() {
+        
+        locationManager.delegate = self
+        
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        locationManager.requestWhenInUseAuthorization()
+        
+        locationManager.startUpdatingLocation()
+        
+    }
+    
+    func setFloatButton() {
+        
+        float.title = "photo"
+        
+        float.titleLabel.font = UIFont(name: "Marker Felt", size: 18)
+        
+        float.imageSize = CGSize(width: 28, height: 28)
+        
+        float.imageOffset = CGPoint(x: -6, y: 0)
+        
+        float.icon = UIImage(named: "camera")
+        
+        float.tintColor = UIColor.white
+        
+        float.buttonColor = UIColor.clear
+        
+        float.handler = { item in
+            
+            self.handleUpload()
+            
+        }
+        
+        floaty.addItem(item: float)
+        
     }
 
     func fetchPostsBeGiven() {
@@ -134,6 +164,7 @@ class MapController: UIViewController, UISearchBarDelegate {
             }
 
             self.fetchPostannotations()
+
         })
 
     }
@@ -145,7 +176,9 @@ class MapController: UIViewController, UISearchBarDelegate {
             self.posts = [Post]()
 
             for annotation in self.mapView.annotations {
+
                 self.mapView.removeAnnotation(annotation)
+
             }
 
             for item in snapshot.children {
@@ -178,20 +211,6 @@ class MapController: UIViewController, UISearchBarDelegate {
         })
     }
 
-    // CheckIfUserLoggin before by checking uuid, if not send the user to login page
-
-    func checkedIfUserLoggedIn() {
-
-        if Auth.auth().currentUser?.uid == nil {
-
-            perform(#selector(handleLogout), with: nil, afterDelay: 0)
-
-        } else {
-            
-            fetchUserAndSetupNavBarTitle()
-        }
-
-    }
 
     func fetchUserAndSetupNavBarTitle() {
 
@@ -234,11 +253,11 @@ class MapController: UIViewController, UISearchBarDelegate {
     func handleUpload() {
 
         let vc = ImageUploadController()
-        let nv = UINavigationController(rootViewController: vc)
 
         vc.mapView = self.mapView
 
-        self.present(nv, animated: true, completion: nil)
+        navigationController?.pushViewController(vc, animated: false)
+
     }
 
     func handleLogout() {

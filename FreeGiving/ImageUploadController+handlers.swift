@@ -16,7 +16,7 @@ extension ImageUploadController: UIImagePickerControllerDelegate, UINavigationCo
 
     func handleDismiss() {
 
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
 
     }
 
@@ -39,13 +39,11 @@ extension ImageUploadController: UIImagePickerControllerDelegate, UINavigationCo
 
         var selectedImageFromPicker: UIImage?
 
-//        if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
-//            
-//            selectedImageFromPicker = editedImage
-//            
-//        }
-//        else
-            if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+        if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
+            
+            selectedImageFromPicker = editedImage
+            
+        } else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
 
             selectedImageFromPicker = originalImage
 
@@ -57,7 +55,7 @@ extension ImageUploadController: UIImagePickerControllerDelegate, UINavigationCo
 
         }
 
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
 
     }
 
@@ -67,7 +65,7 @@ extension ImageUploadController: UIImagePickerControllerDelegate, UINavigationCo
 
         print("image cacnel")
 
-        dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
 
     }
 
@@ -75,7 +73,7 @@ extension ImageUploadController: UIImagePickerControllerDelegate, UINavigationCo
 
         handleUploadPhoto()
 
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
 
     }
 
@@ -163,7 +161,7 @@ extension ImageUploadController: UIImagePickerControllerDelegate, UINavigationCo
 
             self.mapView?.setRegion(region, animated: true)
 
-            self.dismiss(animated: true, completion: nil) // dismiss after select place
+            self.navigationController?.popViewController(animated: true) // dismiss after select place
 
             print("Saved product detail successfully into Firebase db")
 

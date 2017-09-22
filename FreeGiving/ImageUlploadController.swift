@@ -182,10 +182,12 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
 
         self.navigationController?.navigationBar.barTintColor = UIColor.orange
 
-        self.navigationItem.title = "Product"
+        self.navigationItem.title = "Product Upload"
 
         uploadProductName.delegate = self
+        
         uploadProductDescription.delegate = self
+        
         uploadProductLocation.delegate = self
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(handleDismiss))
@@ -224,14 +226,9 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
     }
 
     func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+        
         self.dismiss(animated: true, completion: nil) // when cancel search
-    }
-
-    func openSearchAddress() {
-        let autoCompleteController = GMSAutocompleteViewController()
-        autoCompleteController.delegate = self
-
-        self.present(autoCompleteController, animated: true, completion: nil)
+        
     }
 
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -249,6 +246,15 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
 
         }
     }
+    
+    func openSearchAddress() {
+        
+        let autoCompleteController = GMSAutocompleteViewController()
+        
+        autoCompleteController.delegate = self
+        
+        self.present(autoCompleteController, animated: true, completion: nil)
+    }
 
     func textViewDidEndEditing(_ textView: UITextView) {
 
@@ -257,7 +263,9 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
         case uploadProductName:
 
             if uploadProductName.text.isEmpty {
+                
                 uploadProductName.text = "Descrition"
+                
                 uploadProductName.textColor = UIColor.lightGray
             }
 
@@ -266,6 +274,7 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
             if uploadProductLocation.text.isEmpty {
 
                 uploadProductLocation.text = "Product Name"
+                
                 uploadProductLocation.textColor = UIColor.lightGray
             }
 
@@ -274,6 +283,7 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
             if uploadProductDescription.text.isEmpty {
 
                 uploadProductDescription.text = "Product Location"
+                
                 uploadProductDescription.textColor = UIColor.lightGray
 
             }
@@ -284,20 +294,32 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
     }
 
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
         if textView == uploadProductName {
-        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
-        let numberOfChars = newText.characters.count // for Swift use count(newText)
-        return numberOfChars < 20
-        } else if textView == uploadProductDescription {
+            
             let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+            
             let numberOfChars = newText.characters.count // for Swift use count(newText)
+            
+            return numberOfChars < 20
+            
+        } else if textView == uploadProductDescription {
+            
+            let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+            
+            let numberOfChars = newText.characters.count // for Swift use count(newText)
+            
             return numberOfChars < 100
+            
         } else {
+            
             return true
+            
         }
     }
 
     func setupUploadBackgroundScrollView() {
+        
         uploadBackgroundScrollView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         uploadBackgroundScrollView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         uploadBackgroundScrollView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
