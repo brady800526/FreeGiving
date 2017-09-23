@@ -41,37 +41,4 @@ extension MapController : CLLocationManagerDelegate {
         
     }
 
-    // Set the location search table
-
-    func setLocationSearchTable() {
-
-        let searchBar = UISearchBar()
-
-        searchBar.delegate = self
-
-        searchBar.sizeToFit()
-
-        searchBar.placeholder = "Search for places"
-
-        navigationItem.titleView = searchBar
-
-        searchBar.showsCancelButton = false
-
-        definesPresentationContext = true
-    }
-
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-
-        let autoCompleteController = GMSAutocompleteViewController()
-
-        autoCompleteController.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
-        
-        autoCompleteController.delegate = self
-
-        self.present(autoCompleteController, animated: true, completion: nil)
-
-        return true
-
-    }
-
 }

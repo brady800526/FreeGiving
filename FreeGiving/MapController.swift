@@ -23,7 +23,7 @@ class MapController: UIViewController, UISearchBarDelegate {
 
     var float = FloatyItem()
 
-    var floaty = Floaty()
+//    var floaty = Floaty()
 
     var postBeGiven = [String]()
 
@@ -32,6 +32,19 @@ class MapController: UIViewController, UISearchBarDelegate {
         mapview.translatesAutoresizingMaskIntoConstraints = false
         mapview.delegate = self
         return mapview
+    }()
+    
+    let locateCurrentLocationButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(#imageLiteral(resourceName: "gps").withRenderingMode(.alwaysTemplate), for: .normal)
+        button.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10)
+        button.tintColor = .white
+        button.backgroundColor = .orange
+        button.layer.masksToBounds = true
+        button.layer.opacity = 1
+        button.addTarget(self, action: #selector(locateCurrentPlace), for: .touchUpInside)
+        return button
     }()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -50,9 +63,11 @@ class MapController: UIViewController, UISearchBarDelegate {
 
         view.addSubview(mapView)
         
-        mapView.addSubview(floaty)
+        view.addSubview(locateCurrentLocationButton)
         
         setupMapView()
+        
+        setupButton()
         
         setNavigationBarColor()
         
@@ -63,12 +78,31 @@ class MapController: UIViewController, UISearchBarDelegate {
         fetchPostsBeGiven()
 
     }
+    
+    override func viewDidLayoutSubviews() {
+        
+        locateCurrentLocationButton.layer.cornerRadius = locateCurrentLocationButton.frame.size.width/2
+        
+    }
 
     func setupMapView() {
         mapView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         mapView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         mapView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
         mapView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+    }
+    
+    func setupButton() {
+        locateCurrentLocationButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -10).isActive = true
+        locateCurrentLocationButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -tabBarController!.tabBar.frame.size.height - 10).isActive = true
+        locateCurrentLocationButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        locateCurrentLocationButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+    }
+    
+    func locateCurrentPlace() {
+        
+        locationManager.startUpdatingLocation()
+        
     }
     
     func setNavigationBarColor() {
@@ -143,7 +177,7 @@ class MapController: UIViewController, UISearchBarDelegate {
         
         float.imageOffset = CGPoint(x: -6, y: 0)
         
-        float.icon = UIImage(named: "camera")
+        float.icon = #imageLiteral(resourceName: "camera")
         
         float.tintColor = UIColor.white
         
@@ -155,7 +189,7 @@ class MapController: UIViewController, UISearchBarDelegate {
             
         }
         
-        floaty.addItem(item: float)
+//        floaty.addItem(item: float)
         
     }
 

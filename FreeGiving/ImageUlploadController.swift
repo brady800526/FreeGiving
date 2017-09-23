@@ -264,7 +264,7 @@ class ImageUploadController: UIViewController, GMSAutocompleteViewControllerDele
 
             if uploadProductName.text.isEmpty {
                 
-                uploadProductName.text = "Descrition"
+                uploadProductName.text = "Description"
                 
                 uploadProductName.textColor = UIColor.lightGray
             }
